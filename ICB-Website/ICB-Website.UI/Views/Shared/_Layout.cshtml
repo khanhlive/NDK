@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <style>
+        .banner {
+            background-image:url(/Images/banner-1.jpg);
+            height:222px;
+            width:100%;
+        }
+    </style>
+    
+    <div class="wrapper">
+        <header class="">
+            <div class="banner">
+            </div>
+            <div class="container" style="">
+                <div class="logo">
+                    <img src="~/Images/icblogo.png" width="150" height="150" />
+                </div>
+            </div>
+        </header>
+        <nav class="nav navbar-brand">
+            mavbar
+        </nav>
+        <section class="container-fluid">
+            content
+            @RenderBody()
+        </section>
+        <footer class="container-fluid">footer</footer>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
