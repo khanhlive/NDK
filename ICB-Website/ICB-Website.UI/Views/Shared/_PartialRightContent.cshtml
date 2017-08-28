@@ -1,0 +1,165 @@
+﻿<div class="row" style="margin-left: 3px; margin-top: 5px;">
+    <div class="block-right">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blue category-right text-uppercase">
+                    <span class="col-md-2"><i class="fa fa-calendar icon-rightmenu" aria-hidden="true"></i></span>
+                    @*<span class="text-category-right">  lịch trực</span>*@
+                    <span class="text-category-right">@Html.ActionLink("Lịch trực", "index", "lichtrucview", null, new { @style = "color: #fff" })</span>
+                </div>
+                <div class="blue category-right text-uppercase">
+                    <span class="col-md-2"><i class="fa fa-hospital-o icon-rightmenu" aria-hidden="true"></i></span>
+                    <span class="text-category-right"><a style="color:#fff;" href="@Url.Action("quytrinhkhambenh", "trangchu")">Quy trình khám bệnh</a></span>
+                </div>
+                <div class="blue category-right text-uppercase">
+                    <span class="col-md-2"><i class="fa fa-medkit icon-rightmenu" aria-hidden="true"></i></span>
+                    <span class="text-category-right"><a style="color:#fff;" href="@Url.Action("thutuchanhchinh", "trangchu")">Thủ tục hành chính</a></span>
+                </div>
+                <div class="blue category-right text-uppercase">
+                    <span class="col-md-2"><i class="fa fa-phone-square icon-rightmenu" aria-hidden="true"></i></span>
+                    <span class="text-category-right"><a style="color:#fff;" href="@Url.Action("index", "lienhe")">liên hệ</a></span>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row">
+                <div class="col-md-12 ">
+                    <div class="login-right col-md-12">
+                        <label class="control-label">Đăng nhập nội bộ</label>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input id="txt-username" type="text" placeholder="Tên đăng nhập" class="form-control" />
+                                </div>
+                                <div class="col-md-4" style="vertical-align: central;"><a id="btn-user-login" href="#" style="margin-top: 25px; vertical-align: central;">Đăng nhập</a></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input id="txt-password" type="password" placeholder="Mật khẩu" class="form-control" />
+                                </div>
+                                <div class="col-md-4" style="vertical-align: central;"><a href="#" style="vertical-align: central;">Quên mật khẩu</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="login-infor col-md-12" hidden="hidden">
+                        <div class="form-group">
+                            <p>Xin chào, <a href="" id="user-name"></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
+
+    <div class="block-right">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blue category-right text-uppercase">
+                    <span class="col-md-2"><i class="fa fa-stethoscope icon-rightmenu" aria-hidden="true"></i></span>
+                    <span class="text-category-right atitle">Nuôi con bằng sữa mẹ</span>
+                </div>
+            </div>
+            <div class="form-group" id="choconbu">
+                <div class="col-md-12">
+                    <a href='@Url.Action("choconbu", "tintuc")'>
+                        <img class="img-responsive" src="~/Content/images/cach-cho-con-bu-2.jpg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="block-right">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hrtext"><span class="text-uppercase">Sức khỏe</span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="suckhoe-rightcontent">
+                </div>
+            </div>
+
+        </div>*@
+
+    <div class="block-right">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hrtext"><span class="text-uppercase">@Html.ActionLink("Thư viện ảnh", "gallery", "tintuc", null, new { @style = "color: #333" })</span></div>
+            </div>
+        </div>
+        <div class="row">
+            <a href='@Url.Action("gallery", "tintuc")'>
+                <div class="col-md-12" id="thuvienanh-rightcontent">
+
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="block-right">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blue category-right text-uppercase">
+                    <span class="col-md-2"><i class="fa fa-youtube-play icon-rightmenu" aria-hidden="true"></i></span>
+                    <span class="text-category-right">Video</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            
+
+
+                @*bẹnh viện nhị chiểu
+                <iframe width="100%" height="230" src="https://www.youtube.com/embed/d5TFM7a_UTQ" frameborder="0" allowfullscreen></iframe>*@
+            </div>
+        </div>
+
+    </div>
+    @*<div class="block-right">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="~/Content/images/logo_chilinh.png" class="img-responsive" />
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                        <i class="fa fa-quote-left  fa-2x"></i>
+                        Tất cả vì sự hài lòng của người bệnh
+
+                        <i class="fa fa-quote-right  fa-2x"></i>
+                    </h3>
+                </div>
+            </div>
+        </div>*@
+
+    @*<div class="block-right">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blue category-right text-uppercase">
+                        <span class="col-md-2"><i class="fa fa-sun-o" aria-hidden="true"></i></span>
+                        <span class="text-category-right">Thời tiết</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <select class="form-control">
+                        <option selected="selected">Hà Nội</option>
+                        <option>Bắc Ninh</option>
+                        <option>Bắc Giang</option>
+                        <option>Hà Nam</option>
+                        <option>Hải Phòng</option>
+                        <option>Hà Đông</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <img class="img-responsive" src="~/Images/thoitiet.png" />
+                </div>
+            </div>
+
+        </div>*@
+</div>

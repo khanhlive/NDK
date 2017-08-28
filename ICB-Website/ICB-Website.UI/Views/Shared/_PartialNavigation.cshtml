@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-default navbar-inverse" style="margin-top: -5px;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="@Url.Action("index", "trangchu")">TRANG CHỦ</a></li>
+                <li><a href="@Url.Action("gioithieu", "trangchu")">GIỚI THIỆU</a></li>
+                <li><a href="@Url.Action("index", "tintuc")">TIN TỨC</a></li>
+                <li><a href="@Url.Action("hoatdong", "tintuc")">HOẠT ĐỘNG</a></li>
+                <li><a href="@Url.Action("thongtinyhoc", "yhoc")">THÔNG TIN Y HỌC</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PHÁC ĐỒ ĐIỀU TRỊ <span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="category-phacdodieutri-nav">
+                    </ul>
+                </li>
+                @*<li><a href="@Url.Action("phacdodieutri", "yhoc", new { id = 0})">PHÁC ĐỒ ĐIỀU TRỊ</a></li>*@
+                <li><a href="@Url.Action("index", "vanban")">VĂN BẢN</a></li>
+                <li><a href="@Url.Action("index", "hoidap")">HỎI ĐÁP</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
