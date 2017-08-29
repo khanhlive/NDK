@@ -32,19 +32,21 @@ h1,h2,h3,h4,h5,h6,p,label{
 	margin:0;
 }
 .header{
-	background: url(../images/1.jpg) no-repeat;
+	background: url(../images/banner-2.jpg) no-repeat;
 	width:100%;
 	display:block;
-	height:690px;
+	height:200px;
 	  background-size: cover;
 }
 .header-top {
   background: #1b3e5c;
   padding: 2em 0;
 }
-.logo{
-	float:left;
-	position:relative;
+.logo {
+    float: left;
+    position: relative;
+    top: 24px;
+    left:0px;
 }
 .top-nav{
 	float:right;
@@ -62,9 +64,11 @@ h1,h2,h3,h4,h5,h6,p,label{
 .top-nav span.menu{
 	display: none;
 }
-.logo img{
-	position:absolute;
-	  top: -145px;
+.logo img {
+    position: absolute;
+    top: 0px;
+    width:150px;
+    height:150px;
 }
 /* Effect 1: Brackets */
 .top-nav ul li a::before,
@@ -837,7 +841,7 @@ ul.grid-part {
 }
 @media(max-width:1024px){
 .header {
-  height: 550px;
+  height: 200px;
 }
 .welcome h5 {
   font-size: 1em;
@@ -951,7 +955,7 @@ p.footer-in {
   width: 70%;
 }
 .logo img {
-  top: -132px;
+  /*top: -132px;*/
 }
 .header-top {
   padding: 1em 0;
@@ -1030,7 +1034,7 @@ p.footer-in {
   width: 88%;
 }
 .header {
-  height: 445px;
+  height: 200px;
 }
 /*--about--*/
 .about-bottom h2,.about-top h1{
@@ -1111,7 +1115,7 @@ p.footer-in {
   right: 36%;
 }
 .header {
-  height: 336px;
+  height: 200px;
 }
 .sed-top img {
   margin: 0 auto;
@@ -1119,7 +1123,7 @@ p.footer-in {
 }
 .logo img{
 	width:140px;
-	 top: -58px;
+	 /*top: -58px;*/
 }
 .content-welcome {
   padding: 2em 0;
