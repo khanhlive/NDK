@@ -14,6 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- Custom Theme files -->
     <!--theme-style-->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="Content/Site.css" rel="stylesheet" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,8 +30,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
-    <div class="header-top">
-        <div class="container">
+    <div class="">
+
+        <div>
+            <nav id='cssmenu'>
+                <div class="logo-mobile"><a href="index.html">Responsive </a></div>
+                <div id="head-mobile"></div>
+                <div class="button"></div>
+                <ul style="margin-bottom:0px;">
+                    <li class='active'><a href='#'>HOME</a></li>
+                    <li><a href='#'>ABOUT</a></li>
+                    <li>
+                        <a href='#'>PRODUCTS</a>
+                        <ul>
+                            <li>
+                                <a href='#'>Product 1</a>
+                                <ul>
+                                    <li><a href='#'>Sub Product</a></li>
+                                    <li><a href='#'>Sub Product</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href='#'>Product 2</a>
+                                <ul>
+                                    <li><a href='#'>Sub Product</a></li>
+                                    <li><a href='#'>Sub Product</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href='#'>BIO</a></li>
+                    <li><a href='#'>VIDEO</a></li>
+                    <li><a href='#'>GALLERY</a></li>
+                    <li><a href='#'>CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--<div class="container">
             
             <div class="top-nav">
                 <span class="menu"><img src="images/menu.png" alt="">  </span>
@@ -50,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </script>
             </div>
             <div class="clearfix"></div>
-        </div>
+        </div>-->
     </div>
     <!--//header-->
     <!--content-->
@@ -239,6 +276,68 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <script src="js/jquery.wmuSlider.js"></script>
                 <script>
                     $('.example1').wmuSlider();
+                </script>
+
+                <script>
+                    (function ($) {
+                        $.fn.menumaker = function (options) {
+                            var cssmenu = $(this), settings = $.extend({
+                                format: "dropdown",
+                                sticky: false
+                            }, options);
+                            return this.each(function () {
+                                $(this).find(".button").on('click', function () {
+                                    $(this).toggleClass('menu-opened');
+                                    var mainmenu = $(this).next('ul');
+                                    if (mainmenu.hasClass('open')) {
+                                        mainmenu.slideToggle().removeClass('open');
+                                    }
+                                    else {
+                                        mainmenu.slideToggle().addClass('open');
+                                        if (settings.format === "dropdown") {
+                                            mainmenu.find('ul').show();
+                                        }
+                                    }
+                                });
+                                cssmenu.find('li ul').parent().addClass('has-sub');
+                                multiTg = function () {
+                                    cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
+                                    cssmenu.find('.submenu-button').on('click', function () {
+                                        $(this).toggleClass('submenu-opened');
+                                        if ($(this).siblings('ul').hasClass('open')) {
+                                            $(this).siblings('ul').removeClass('open').slideToggle();
+                                        }
+                                        else {
+                                            $(this).siblings('ul').addClass('open').slideToggle();
+                                        }
+                                    });
+                                };
+                                if (settings.format === 'multitoggle') multiTg();
+                                else cssmenu.addClass('dropdown');
+                                if (settings.sticky === true) cssmenu.css('position', 'fixed');
+                                resizeFix = function () {
+                                    var mediasize = 1000;
+                                    if ($(window).width() > mediasize) {
+                                        cssmenu.find('ul').show();
+                                    }
+                                    if ($(window).width() <= mediasize) {
+                                        cssmenu.find('ul').hide().removeClass('open');
+                                    }
+                                };
+                                resizeFix();
+                                return $(window).on('resize', resizeFix);
+                            });
+                        };
+                    })(jQuery);
+
+                    (function ($) {
+                        $(document).ready(function () {
+                            $("#cssmenu").menumaker({
+                                format: "multitoggle"
+                            });
+                        });
+                    })(jQuery);
+
                 </script>
 
                 <!---->

@@ -355,6 +355,7 @@
     <Content Include="Views\Shared\_PartialRightContent.cshtml" />
     <Content Include="Views\Shared\_PartialSlider.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

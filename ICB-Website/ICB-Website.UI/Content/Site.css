@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -17,9 +17,9 @@ header {
     position: relative;
     width: 100%;
     background: #333;
-}
+}*/
 
-.logo {
+.logo-mobile {
     position: relative;
     z-index: 123;
     padding: 10px;
@@ -29,7 +29,7 @@ header {
     width: 15%
 }
 
-    .logo a {
+    .logo-mobile a {
         color: #6DDB07;
     }
 
