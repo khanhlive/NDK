@@ -78,6 +78,8 @@
     <Content Include="wp-content\themes\xmax-1.0.0\library\assets\fonts\awesome\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="wp-content\uploads\2014\06\Big-buck-bunny.webm" />
     <Content Include="wp-content\uploads\bfi_thumb\Wedding-Sign-2xau0ibajlr01u3fqtsi6i.15.delayed" />
+    <Content Include="wp-includes\fonts\dashicons.eot" />
+    <Content Include="wp-includes\fonts\dashicons.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -481,6 +483,30 @@
     <Content Include="wp-content\uploads\bfi_thumb\Wedding-Sign-2xau0ibb0706eq054aeozu.jpg" />
     <Content Include="wp-content\uploads\bfi_thumb\Wedding-Sign-2xau0ibbb9viv9qis660wa.jpg" />
     <Content Include="wp-content\uploads\bfi_thumb\Wedding-Sign-2xau0ibbehy6vzt0muot8q.jpg" />
+    <Content Include="wp-includes\css\buttonsc797.css" />
+    <Content Include="wp-includes\css\dashiconsc797.css" />
+    <Content Include="wp-includes\fonts\dashicons.svg" />
+    <Content Include="wp-includes\js\backbone.min9632.js" />
+    <Content Include="wp-includes\js\comment-replyc797.js" />
+    <Content Include="wp-includes\js\jquery\jquery-migrate330a.js" />
+    <Content Include="wp-includes\js\jquery\jquery.form018d.js" />
+    <Content Include="wp-includes\js\jquery\jqueryb8ff.js" />
+    <Content Include="wp-includes\js\mediaelement\background.png" />
+    <Content Include="wp-includes\js\mediaelement\bigplay.png" />
+    <Content Include="wp-includes\js\mediaelement\bigplay.svg" />
+    <Content Include="wp-includes\js\mediaelement\controls.png" />
+    <Content Include="wp-includes\js\mediaelement\controls.svg" />
+    <Content Include="wp-includes\js\mediaelement\jumpforward.png" />
+    <Content Include="wp-includes\js\mediaelement\loading.gif" />
+    <Content Include="wp-includes\js\mediaelement\mediaelement-and-player.min7796.js" />
+    <Content Include="wp-includes\js\mediaelement\mediaelementplayer.mineb0c.css" />
+    <Content Include="wp-includes\js\mediaelement\skipback.png" />
+    <Content Include="wp-includes\js\mediaelement\wp-mediaelementc797.css" />
+    <Content Include="wp-includes\js\mediaelement\wp-playlistc797.js" />
+    <Content Include="wp-includes\js\underscore.min4511.js" />
+    <Content Include="wp-includes\js\wp-embedc797.js" />
+    <Content Include="wp-includes\js\wp-utilc797.js" />
+    <Content Include="wp-includes\wlwmanifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
