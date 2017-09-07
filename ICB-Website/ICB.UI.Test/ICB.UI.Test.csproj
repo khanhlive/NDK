@@ -65,6 +65,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="home.html" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\ab.jpg" />
+    <Content Include="Images\banner-1.jpg" />
+    <Content Include="Images\banner-2.jpg" />
+    <Content Include="Images\banner-3.jpg" />
+    <Content Include="Images\co.png" />
+    <Content Include="Images\icblogo.png" />
+    <Content Include="Images\img-sprite.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\menu.png" />
+    <Content Include="Images\ne.jpg" />
+    <Content Include="Images\ne1.jpg" />
+    <Content Include="Images\ne2.jpg" />
+    <Content Include="Images\si.jpg" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
