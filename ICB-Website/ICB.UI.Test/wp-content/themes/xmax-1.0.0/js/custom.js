@@ -219,10 +219,25 @@ jQuery(document).ready(function() {
                     navigation: true
 
                 });
+                var owl5 = jQuery(".owl-carousel5");
+                owl5.owlCarousel({
+                    items: 1,
+                    itemsDesktop: [1024, 2],
+                    itemsDesktopSmall: [980, 2],
+                    itemsTablet: [640, 1],
+                    autoPlay: true,
+                    slideSpeed: 800,
+                    pagination: false,
+                    navigationText: false,
+                    navigation: true
+
+                });
                 jQuery('.owl-prev').addClass('fa fa-angle-left');
                 jQuery('.owl-next').addClass('fa fa-angle-right');
                 jQuery('.owl-carousel1 .owl-buttons .owl-prev').removeClass('fa fa-angle-left').addClass('fa fa-chevron-left');
                 jQuery('.owl-carousel1 .owl-buttons .owl-next').removeClass('fa fa-angle-right').addClass('fa fa-chevron-right');
+                jQuery('.owl-carousel5 .owl-buttons .owl-prev').hide();
+                jQuery('.owl-carousel5 .owl-buttons .owl-next').hide();
             }
         }]);
 
