@@ -32,4 +32,28 @@
     margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
+    z-index:999;
+}
+.entry-item-img{
+    height:40px;
+    width:40px;
+    float:left;
+    margin-right:10px;
+    display:block;
+}
+#kopa-services ul li{
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid #dadada;
+}
+.owl-carousel7 .owl-controls .owl-buttons div{
+    background-color:transparent !important;
+}
+.owl-carousel7 .item{
+    border-right:0px solid #dbdbdb !important;
+    margin-left:0px !important;
+}
+.owl-carousel7 .owl-item:last-child .item {
+    border-right: 1px solid #dbdbdb !important;
+    /*margin-left: 0px !important;*/
 }

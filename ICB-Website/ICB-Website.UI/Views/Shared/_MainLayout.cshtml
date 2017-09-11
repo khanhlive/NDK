@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    @Styles.Render("~/Content/css")
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/megafish.css" rel="stylesheet" />
+    <link href="~/Content/mega-menu.css" rel="stylesheet" />
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/owl.theme.css" rel="stylesheet" />
+    <link href="~/Plugins/fotorama-4.6.4/fotorama.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/Content/xmax-theme.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+    <link href="~/Scripts/mediaelement/knd-mediaelement.css" rel="stylesheet" />
+    <link href="~/Content/icb-style.css" rel="stylesheet" />*@
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!-- header -->
+    @Html.Partial("_Header")
+    <!-- end header-->
+    <!--begin body-->
+
+    <div class="wrapper clearfix">
+        <div style="border:1px solid #dadada;">
+            @RenderSection("TopSlider",false)
+
+            <div class="main-wrapper clearfix">=
+                <!--Left SideBar Menu-->
+                @Html.Partial("_LeftSideMenu")
+                <!-- End Left SideBar Menu-->
+                <div class="kopa-main-col" style="margin-right:0px;">
+                    <!--  Begin RenderBody  -->
+                    @RenderBody()
+                    <!-- End RenderBody -->
+                </div>
+            </div>
+
+            @RenderSection("KhachHang",false)
+
+
+            <div class="bottom-sidebar clearfix">
+                <div class="main-wrapper clearfix">
+                    <div class="bottom-sidebar-wrapper clearfix">
+                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-7">
+                            <div id="tag_cloud-2" class="widget widget_tag_cloud clearfix">
+                                <h3 class="widget-title">Tags</h3><div class="tagcloud">
+                                    <a href='indexe939.html?tag=audio' class='tag-link-54 tag-link-position-1' title='5 topics' style='font-size: 8pt;'>audio</a>
+                                    <a href='indexa5c4.html?tag=gallery' class='tag-link-56 tag-link-position-2' title='5 topics' style='font-size: 8pt;'>gallery</a>
+                                    <a href='indexc7e9.html?tag=post' class='tag-link-57 tag-link-position-3' title='21 topics' style='font-size: 22pt;'>post</a>
+                                    <a href='indexa491.html?tag=soundcloud' class='tag-link-55 tag-link-position-4' title='5 topics' style='font-size: 8pt;'>soundcloud</a>
+                                    <a href='indexecab.html?tag=standard' class='tag-link-51 tag-link-position-5' title='6 topics' style='font-size: 9.75pt;'>standard</a>
+                                    <a href='index62ae.html?tag=video' class='tag-link-52 tag-link-position-6' title='5 topics' style='font-size: 8pt;'>video</a>
+                                    <a href='index3562.html?tag=vimeo' class='tag-link-53 tag-link-position-7' title='5 topics' style='font-size: 8pt;'>vimeo</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-8">
+                            <div id="kopa_twitter-2" class="widget widget-twitters clearfix">
+                                <h3 class="widget-title">Recent Twitter</h3>            <div class="widget-content">
+                                    <div id="tweets" class="tweets" data-username="wordPress" data-limit="2">
+                                        Sorry, there was a problem when load
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-9">
+                            <div id="kopa-posts-list-square-thumbnail-4" class="widget kopa-posts-list-square-thumbnail clearfix">
+                                <h3 class="widget-title">Recent Articles</h3>            <ul class="sub-menu-list-article">
+                                    <li class="clearfix">
+                                        <article class="entry-item clearfix">
+                                            <div class="entry-thumb">
+                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5728c0eemqkef4a.jpg" alt="Driving in Leather Driving Gloves"></a>
+
+                                            </div>
+
+                                            <div class="entry-content">
+                                                <h2 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h2>
+                                                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li class="clearfix ">
+                                        <article class="entry-item clearfix">
+                                            <div class="entry-thumb">
+                                                <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="~/Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28k8d34le4a151je.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia"></a>
+                                            </div>
+
+                                            <div class="entry-content">
+                                                <h2 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h2>
+                                                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
+                                            </div>
+                                        </article>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-10"><div id="kopa-flickr-widget-2" class="widget kopa-flickr-widget clearfix"><h3 class="widget-title">Photo Flickr</h3><div class="widget-content"><div class="flickr-wrap clearfix" data-id="71865026@N00" data-limit="6" data-tag=""><ul class="clearfix list-unstyled"></ul></div></div></div></section>
+                    </div>
+                </div>
+            </div>
+            <!--/end BOTTOM-SIDERBAR-->
+
+            <footer id="kopa-footer">
+                <nav class="footer-nav">
+                    <ul id="footer-menu" class="footer-menu clearfix">
+                        <li id="menu-item-1652" class="menu-item "><a href="index9bef.html?page_id=54">Blogpost</a></li>
+                        <li id="menu-item-1653" class="menu-item "><a href="indexf536.html?page_id=50">Video</a></li>
+                        <li id="menu-item-1654" class="menu-item "><a href="index028b.html?page_id=52">Gallery</a></li>
+                        <li id="menu-item-1651" class="menu-item "><a href="indexedfb.html?page_id=58">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                    <p>© COPYRIGHT 2014. XMAX THEME BY KOPASOFT</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!--end body-->
+
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var kopa_variable = {
+            "url": {
+                "template_directory_uri": location.origin + "/Plugins/themes",
+                "ajax": "http:\/\/upsidethemes.net\/demo\/xmax\/wp-admin\/admin-ajax.php"
+            }, "template": { "post_id": 1696 }, "contact": { "address": " B7+B9 Building - Tran Thai Tong Street", "marker": "http:\/\/upsidethemes.net\/demo\/xmax\/wp-content\/themes\/xmax-1.0.0\/images\/marker.png" }, "recaptcha": { "status": true }, "i18n": { "SEARCH": "Search...", "LOADING": "Loading...", "LOAD_MORE": "Load more", "VIEW": "View", "VIEWS": "Views", "validate": { "form": { "CHECKING": "Checking", "SUBMIT": "Submit", "SENDING": "Sending..." }, "recaptcha": { "INVALID": "Your captcha is incorrect. Please try again", "REQUIRED": "Captcha is required" }, "name": { "REQUIRED": "Please enter your name", "MINLENGTH": "At least {0} characters required" }, "email": { "REQUIRED": "Please enter your email", "EMAIL": "Please enter a valid email" }, "url": { "REQUIRED": "Please enter your url", "URL": "Please enter a valid url" }, "message": { "REQUIRED": "Please enter a message", "MINLENGTH": "At least {0} characters required" } } }
+        };
+        var kopa_variable_fonts = ["Roboto:400,500,700", "Open+Sans:300,400,600,700,800"];
+/* ]]> */
+    </script>
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/js")
+    @Scripts.Render("~/bundles/custom")*@
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Plugins/jssor.slider.min.js"></script>
+    <script type='text/javascript' src="~/Plugins/themes/comment-reply.js"></script>
+    <script type='text/javascript' src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Plugins/themes/modernizr.js"></script>
+    <script type='text/javascript' src="~/Plugins/fotorama-4.6.4/fotorama.js"></script>
+    <script src="~/Plugins/themes/owl.carousel.js"></script>
+    @*<script type='text/javascript' src="~/Plugins/OwlCarousel2/owl.carousel.min.js"></script>*@
+    <script type='text/javascript' src='~/Scripts/custom/custom.js'></script>
+    <script type='text/javascript' src='~/Plugins/themes/knd-embed.js'></script>
+    <script type='text/javascript' src='~/Scripts/underscore.min.js'></script>
+    <script type='text/javascript' src='~/Plugins/themes/knd-util.js'></script>
+    <script type='text/javascript' src='~/Scripts/backbone.min.js'></script>
+    <script type='text/javascript' src='~/Scripts/mediaelement/mediaelement-and-player.min.js'></script>
+    <script type='text/javascript' src='~/Plugins/themes/knd-playlist.js'></script>
+    
+    <script src="~/Scripts/apps/app.js"></script>
+</body>
+</html>

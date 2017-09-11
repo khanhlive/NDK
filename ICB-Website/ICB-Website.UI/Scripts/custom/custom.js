@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
      * ------------------------------------------------------------
      */
     Modernizr.load([{
-            load: [kopa_variable.url.template_directory_uri + '/js/hoverIntent.js', kopa_variable.url.template_directory_uri + '/js/superfish.min.js'],
+        load: [kopa_variable.url.template_directory_uri + '/hoverIntent.js', location.origin+ '/Scripts/superfish.min.js'],
             complete: function() {
                 jQuery('.sf-menu').superfish({
                     speed: 'fast',
@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
      * ------------------------------------------------------------
      */
     Modernizr.load([{
-            load: [kopa_variable.url.template_directory_uri + '/js/jquery.flexslider.js'],
+            load: [kopa_variable.url.template_directory_uri + '/jquery.flexslider.js'],
             complete: function() {
                 jQuery('.kopa-slider-1').flexslider({
                     animation: "slide",
@@ -116,7 +116,7 @@ jQuery(document).ready(function() {
      * ------------------------------------------------------------
      */
     Modernizr.load([{
-            load: [kopa_variable.url.template_directory_uri + '/js/jquery.mCustomScrollbar.js'],
+            load: [kopa_variable.url.template_directory_uri + '/jquery.mCustomScrollbar.js'],
             complete: function() {
                 jQuery(".kopa-scrollbar-widget").mCustomScrollbar({
                     horizontalScroll: true,
@@ -144,7 +144,7 @@ jQuery(document).ready(function() {
      * ------------------------------------------------------------
      */
     Modernizr.load([{
-            load: [kopa_variable.url.template_directory_uri + '/js/jquery.masonry.js', kopa_variable.url.template_directory_uri + '/js/imagesloaded.js'],
+            load: [kopa_variable.url.template_directory_uri + '/jquery.masonry.js', kopa_variable.url.template_directory_uri + '/imagesloaded.js'],
             complete: function() {
                 var $container2 = jQuery('.video-masonry-wrap > ul');
                 imagesLoaded($container2, function() {
@@ -177,69 +177,12 @@ jQuery(document).ready(function() {
      * OWL CAROUSEL
      * ------------------------------------------------------------
      */
-    Modernizr.load([{
-            load: [kopa_variable.url.template_directory_uri + '/js/owl.carousel.js'],
-            complete: function() {
-                jQuery(".menu-owl-carousel").owlCarousel({
-                    singleItem: true,
-                    pagination: false,
-                    navigationText: false,
-                    navigation: true
-                });
-                jQuery(".owl-carousel3").owlCarousel({
-                    singleItem: true,
-                    pagination: false,
-                    navigationText: false,
-                    navigation: true
-                });
-                jQuery(".owl-carousel4").owlCarousel({
-                    singleItem: true,
-                    pagination: false,
-                    navigationText: false,
-                    navigation: true
-                });
-                var owl2 = jQuery(".owl-carousel1");
-                owl2.owlCarousel({
-                    items: 2,
-                    itemsDesktop: [1024, 2],
-                    itemsDesktopSmall: [980, 2],
-                    itemsTablet: [640, 1],
-                    slideSpeed: 400,
-                    navigationText: false,
-                    navigation: true,
-                    pagination: false,
-                    autoPlay: true,
-                    stopOnHover: true
-                });
-                var owl3 = jQuery(".owl-carousel2");
-                owl3.owlCarousel({
-                    items: 4,
-                    pagination: false,
-                    navigationText: false,
-                    navigation: true
-
-                });
-                var owl5 = jQuery(".owl-carousel5");
-                owl5.owlCarousel({
-                    items: 1,
-                    itemsDesktop: [1024, 2],
-                    itemsDesktopSmall: [980, 2],
-                    itemsTablet: [640, 1],
-                    autoPlay: true,
-                    slideSpeed: 800,
-                    pagination: false,
-                    navigationText: false,
-                    navigation: true
-
-                });
-                jQuery('.owl-prev').addClass('fa fa-angle-left');
-                jQuery('.owl-next').addClass('fa fa-angle-right');
-                jQuery('.owl-carousel1 .owl-buttons .owl-prev').removeClass('fa fa-angle-left').addClass('fa fa-chevron-left');
-                jQuery('.owl-carousel1 .owl-buttons .owl-next').removeClass('fa fa-angle-right').addClass('fa fa-chevron-right');
-                jQuery('.owl-carousel5 .owl-buttons .owl-prev').hide();
-                jQuery('.owl-carousel5 .owl-buttons .owl-next').hide();
-            }
-        }]);
+    //Modernizr.load([{
+    //        load: [kopa_variable.url.template_directory_uri + '/js/owl.carousel.js'],
+    //        complete: function() {
+                
+    //        }
+    //    }]);
 
     /*
      * ------------------------------------------------------------
@@ -312,7 +255,7 @@ jQuery(document).ready(function() {
      * ------------------------------------------------------------
      */
     Modernizr.load([{
-            load: [kopa_variable.url.template_directory_uri + '/js/jquery.magnific-popup.js'],
+            load: [kopa_variable.url.template_directory_uri + '/jquery.magnific-popup.js'],
             complete: function() {
                 jQuery("a.magnific_youtube_or_vimeo").magnificPopup({
                     type: 'iframe',
@@ -364,7 +307,7 @@ jQuery(document).ready(function() {
     if (jQuery(".contact-form").length > 0) {
         Modernizr.load([
             {
-                load: [kopa_variable.url.template_directory_uri + '/js/jquery.validate.js'],
+                load: [kopa_variable.url.template_directory_uri + '/jquery.validate.js'],
                 complete: function() {
                     if (jQuery("#contact-form").length > 0) {
                         var i18n = kopa_variable.i18n.validate;
@@ -483,8 +426,8 @@ jQuery(document).ready(function () {
     if (flickrs.length > 0) {
         Modernizr.load([
             {
-                load: [kopa_variable.url.template_directory_uri + '/js/jflickrfeed.js',
-                    kopa_variable.url.template_directory_uri + '/js/imgliquid.js'],
+                load: [kopa_variable.url.template_directory_uri + '/jflickrfeed.js',
+                    kopa_variable.url.template_directory_uri + '/imgliquid.js'],
                 complete: function() {
                     jQuery.each(flickrs, function(index, item) {
                         var limit = parseInt(jQuery(this).data('limit'));
@@ -514,7 +457,7 @@ jQuery(document).ready(function () {
      * ------------------------------------------------------------
      */
     Modernizr.load([{
-            load: kopa_variable.url.template_directory_uri + '/js/jquery.navgoco.js',
+            load: kopa_variable.url.template_directory_uri + '/jquery.navgoco.js',
             complete: function() {
                 jQuery(".top-menu-mobile").navgoco({
                     accordion: true
@@ -550,7 +493,7 @@ jQuery(document).ready(function () {
     if (maps.length > 0) {
         Modernizr.load([
             {
-                load: kopa_variable.url.template_directory_uri + '/js/gmaps.js',
+                load: kopa_variable.url.template_directory_uri + '/gmaps.js',
                 complete: function() {
                     jQuery.each(maps, function(index, item) {
                         var map = jQuery(this);

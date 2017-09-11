@@ -304,6 +304,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="home.html" />
+    <Content Include="Plugins\jssor.slider.min.js" />
     <Content Include="Plugins\OwlCarousel2\assets\ajax-loader.gif" />
     <Content Include="Plugins\OwlCarousel2\assets\owl.carousel.css" />
     <Content Include="Plugins\OwlCarousel2\assets\owl.carousel.min.css" />
@@ -326,6 +327,8 @@
     <Content Include="Plugins\themes\jquery.navgoco.js" />
     <Content Include="Plugins\themes\knd-playlist.js" />
     <Content Include="Plugins\themes\modernizr.js" />
+    <Content Include="Plugins\themes\owl.carousel.js" />
+    <Content Include="Scripts\apps\app.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\backbone.min.map" />
@@ -587,16 +590,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_PartialFooter.cshtml" />
-    <Content Include="Views\Shared\_PartialNavigation.cshtml" />
-    <Content Include="Views\Shared\_PartialRightContent.cshtml" />
-    <Content Include="Views\Shared\_PartialSlider.cshtml" />
-    <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Scripts\mediaelement\silverlightmediaelement.xap" />
     <Content Include="Uploads\Images\2014\06\Big-buck-bunny.webm" />
     <Content Include="Uploads\Images\bfi_thumb\Wedding-Sign-2xau0ibajlr01u3fqtsi6i.15.delayed" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\_TopSlider.cshtml" />
+    <Content Include="Views\Shared\_LeftSideMenu.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
