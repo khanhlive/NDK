@@ -838,17 +838,13 @@ li.mega-item ul li {
 
 /* =========================================================Main-col============================================================*/
 .kopa-main-col {
-    width: 719px;
+    width: 771px;
     margin-right: 35px;
     float: left;
 }
-.kopa-main-col {
-    width: 719px;
-    margin-right: 35px;
-    float: left;
-}
+
 .sidebar {
-    width: 342px;
+    width: 290px;
     float: left;
 }
 .widget-area-2 {
