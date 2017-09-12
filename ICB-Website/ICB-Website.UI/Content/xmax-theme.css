@@ -1115,18 +1115,18 @@ li.mega-item ul li {
     width: 100%;
 }
 .kopa-article-list-widget .entry-icon {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     background: #0088b2;
     display: block;
     float: left;
-    margin-right: 35px;
+    margin-right: 15px;
     border-radius: 4px;
     font-family: 'FontAwesome';
     font-size: 20px;
     color: #fff;
     text-align: center;
-    line-height: 60px;
+    line-height: 48px;
 }
 .article-icon .entry-date {
     margin-bottom: 5px;

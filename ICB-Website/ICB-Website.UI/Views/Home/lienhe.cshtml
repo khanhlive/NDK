@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "lienhe";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.NotRenderSideBar = true;
+}
+
+
+
+<!--kp-map-->
+<div id="contact-box">
+    <h4 class="contact-title">Contact form</h4>
+
+
+    <form id="contact-form" class="contact-form clearfix" action="http://upsidethemes.net/demo/xmax/wp-admin/admin-ajax.php" method="post" novalidate="novalidate">
+
+        <div class="contact-top clearfix">
+
+            <p class="input-block col-md-4 col-sm-4 col-xs-4">
+                <label for="contact_name" class="required">Your name <span>*</span></label>
+                <input type="text" value="" id="contact_name" name="contact_name" class="valid">
+            </p>
+
+            <p class="input-block col-md-4 col-sm-4 col-xs-4">
+                <label for="contact_email" class="required">Email <span>*</span></label>
+                <input type="text" value="" id="contact_email" name="contact_email" class="valid">
+            </p>
+
+            <p class="input-block col-md-4 col-sm-4 col-xs-4">
+                <label for="contact_url" class="required">Website</label>
+                <input type="text" name="contact_url" class="valid" value="" id="contact_url">
+            </p>
+
+        </div>
+
+        <!-- contact-left -->
+        <div class="contact-bottom">
+            <p class="textarea-block">
+                <label for="contact_message" class="required">Message <span>*</span></label>
+                <textarea name="contact_message" id="contact_message" cols="88" rows="6"></textarea>
+            </p>
+        </div>
+
+
+        <div class="recaptcha-block clearfix">
+            <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6Lc6ou4SAAAAAF2yR3zRLTSljpTCPpdFRqWD5wXt"></script>
+
+            <noscript>
+                <iframe src="http://api.recaptcha.net/noscript?k=6Lc6ou4SAAAAAF2yR3zRLTSljpTCPpdFRqWD5wXt" height="300" width="500" frameborder="0"></iframe><br />
+                <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+            </noscript>
+        </div>
+
+        <!-- contact-right -->
+        <div class="clear"></div>
+        <p class="contact-button clearfix">
+            <input type="hidden" id="ajax_nonce" name="ajax_nonce" value="ea2e04a6a8" /><input type="hidden" name="_wp_http_referer" value="/demo/xmax/?page_id=58" /><input type="hidden" id="ajax_nonce_recaptcha" name="ajax_nonce_recaptcha" value="8a148f4163" />                    <input type="hidden" name="action" value="kopa_send_contact">
+            <span><input type="submit" value="Send message" id="submit-contact"></span>
+        </p>
+    </form>
+
+
+    <div id="contact_response"></div>
+
+</div>
+
+<!--contact-box-->
+<div id="contact-info">
+    <h2 class="contact-title">Contact information</h2>
+    <address>
+        <p class="clearfix"><i class="fa fa-map-marker"></i><span class="media-body"> B7+B9 Building - Tran Thai Tong Street</span></p>
+
+        <p class="clearfix"><i class="fa fa-phone"></i><span class="media-body">+61 (0) 3 8376 6286</span></p>
+
+        <p class="clearfix"><i class="fa fa-envelope"></i><a class="media-body" href="mailto:kopatheme@gmail.com">kopatheme@gmail.com</a></p>
+
+        <p class="clearfix"><i class="fa fa-clock-o"></i><span class="media-body">Monday - Friday 9.00 - 12.00</span></p>
+    </address>
+</div>
+

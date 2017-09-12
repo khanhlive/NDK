@@ -6,8 +6,8 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    @Styles.Render("~/Content/css")
-    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/magnific-popup.css" rel="stylesheet" />
     <link href="~/Content/megafish.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
     <link href="~/Content/xmax-theme.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
     <link href="~/Scripts/mediaelement/knd-mediaelement.css" rel="stylesheet" />
-    <link href="~/Content/icb-style.css" rel="stylesheet" />*@
+    <link href="~/Content/icb-style.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -32,16 +32,27 @@
     <div class="wrapper clearfix">
         <div style="border:1px solid #dadada;">
             @RenderSection("TopSlider",false)
-
+            
             <div class="main-wrapper clearfix">
-                <!--Left SideBar Menu-->
-                @Html.Partial("_LeftSideMenu")
-                <!-- End Left SideBar Menu-->
-                <div class="kopa-main-col" style="margin-right:0px;">
+                <div class="kopa-breadcrumb clearfix"><span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://upsidethemes.net/demo/xmax" itemprop="url"><span itemprop="title"></span>Home</span></a></span>&nbsp;/&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="index363a.html?cat=45" itemprop="url"><span itemprop="title">People</span></a></span>&nbsp;/&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a class="current-page" itemprop="url" href="index9e97.html?p=1486"><span itemprop="title">Driving in Leather Driving Gloves</span></a></span></div>
+                @if (ViewBag.NotRenderSideBar == null || ViewBag.NotRenderSideBar == false)
+                {
+                    <!--Left SideBar Menu-->
+                    @Html.Partial("_LeftSideMenu")
+                    <!-- End Left SideBar Menu-->
+                    <div class="kopa-main-col" style="margin-right:0px;">
+                        <!--  Begin RenderBody  -->
+                        @RenderBody()
+                        <!-- End RenderBody -->
+                    </div>
+                }
+                else
+                {
                     <!--  Begin RenderBody  -->
                     @RenderBody()
-                    <!-- End RenderBody -->
-                </div>
+                        <!-- End RenderBody -->
+                }
+
             </div>
 
             @RenderSection("KhachHang",false)

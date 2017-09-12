@@ -57,3 +57,41 @@
     border-right: 1px solid #dbdbdb !important;
     /*margin-left: 0px !important;*/
 }
+@media only screen and (max-width: 799px) and (min-width: 768px) {
+    .kopa-logo {
+    display:none !important;
+    }
+    .name-company {
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+
+    .name-company {
+        display: none !important;
+    }
+    
+}
+@media only screen and (min-width: 799px) and (max-width: 979px) {
+
+    .kopa-logo {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+
+    .kopa-logo {
+        display: none !important;
+    }
+}
+
+#tin-tuc-noi-bat .kopa-other-post .entry-thumb {
+    width: 98px;
+    margin-right: 15px;
+}
+
+#tin-tuc-noi-bat .kopa-other-post .entry-title {
+    font-size: 13px !important;
+    line-height: 16px !important;
+}

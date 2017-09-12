@@ -4,21 +4,31 @@
         <div class="wrapper clearfix">
             <nav id="top-nav" class="top-nav pull-left">
                 <ul id="top-menu" class="top-menu clearfix">
-                    <li id="menu-item-1352" class="menu-item "><a href="indexedfb.html?page_id=58">Contact Us</a></li>
-                    <li id="menu-item-1322" class="menu-item "><a href="wp-admin/index.html">Sign in</a></li>
+                    <li id="menu-item-1352" class="menu-item "><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
+                    <li id="menu-item-1322" class="menu-item "><a href="">@ICB_Website.UI.Resources.RHome.Login</a></li>
                 </ul>
-            </nav><nav class="top-nav-mobile clearfix">
-                <a class="pull" href="#">Menu<span class="fa fa-caret-down"></span></a><ul id="top-menu-mobile" class="top-menu-mobile">
-                    <li class="menu-item"><a href="indexedfb.html?page_id=58">Contact Us</a></li>
-                    <li class="menu-item"><a href="wp-admin/index.html">Sign in</a></li>
+            </nav>
+            <nav class="top-nav-mobile clearfix">
+                <a class="pull" href="#">Menu<span class="fa fa-caret-down"></span></a>
+                <ul id="top-menu-mobile" class="top-menu-mobile">
+                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
+                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Login</a></li>
                 </ul>
             </nav>
 
             <div class="search-box pull-right">
+                
                 <form method="get" class="search-form" action="http://upsidethemes.net/demo/xmax/">
-                    <input type="text" name="s" placeholder="Search..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search...'">
+                    <input type="text" name="search" placeholder="@ICB_Website.UI.Resources.RHome.Search ..." onfocus="this.placeholder = ''" onblur="this.placeholder = '@ICB_Website.UI.Resources.RHome.Search ...'">
                     <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
                 </form>
+            </div>
+            <div class="pull-right">
+                <ul id="top-menu" class="top-menu">
+                    <li class="menu-item"><a href="@Url.Action("ChangeLanguage","Home",new { lang="vi" })"><img style="margin-top:-4px;" src="~/Images/vi.png" /> Tiếng Việt</a></li>
+                    <li class="menu-item" style="margin-right:-1px;"><a href="@Url.Action("ChangeLanguage","Home",new { lang="en" })"><img style="margin-top:-4px;" src="~/Images/en.png" /> English</a></li>
+                </ul>
+               
             </div>
 
         </div><!--/end .search-box-->
@@ -31,7 +41,7 @@
             </div>
 
             <div class="kopa-logo-small pull-left">
-                <a href="#"><img src="/Images/icblogo.png" alt="Xmax" /></a>
+                <a href="#">ICB Certification</a>
             </div>
 
             <div class="kopa-top-banner">
@@ -47,13 +57,13 @@
 
                 </div>
             </div>
-            <div class="">
-                <span class="name-company"> CÔNG TY CỔ PHẦN CHỨNG NHẬN QUỐC TẾ </span>
+            <div class="name-company">
+                <span class=""> CÔNG TY CỔ PHẦN CHỨNG NHẬN QUỐC TẾ </span>
             </div>
             <nav class="main-nav-mobile clearfix">
                 <a class="pull"><span class="fa fa-bars"></span></a><ul id="main-menu-mobile" class="main-menu-mobile">
-                    <li class="menu-item"><a href="indexedfb.html?page_id=58">Contact Us</a></li>
-                    <li class="menu-item"><a href="wp-admin/index.html">Sign in</a></li>
+                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
+                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -67,10 +77,11 @@
                 <div class="button"></div>
 
                 <ul style="margin-bottom:0px;" class="main-menu sf-menu">
-                    <li class='active'><a href='#'>HOME</a></li>
-                    <li class="menu-item"><a href='#'>ABOUT</a></li>
+                    <li class='menu-item'><a href='@Url.Action("Index2","Home")'>@ICB_Website.UI.Resources.RHome.Home</a></li>
+                    <li class="menu-item"><a href='@Url.Action("gioithieu","Home")'>@ICB_Website.UI.Resources.RHome.AboutUS</a></li>
+                    <li class="menu-item"><a href='@Url.Action("danhsachtintuc","Home")'>@ICB_Website.UI.Resources.RHome.News</a></li>
                     <li class="menu-item">
-                        <a href='#'>PRODUCTS</a>
+                        <a href='#'>@ICB_Website.UI.Resources.RHome.Products</a>
                         <ul class="sub-menu">
                             <li class="menu-item">
                                 <a href='#'>Product 1</a>
@@ -88,10 +99,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href='#'>BIO</a></li>
-                    <li><a href='#'>VIDEO</a></li>
-                    <li><a href='#'>GALLERY</a></li>
-                    <li><a href='#'>CONTACT</a></li>
+                    <li><a href='#'>@ICB_Website.UI.Resources.RHome.Partner</a></li>
+                    <li><a href='#'>@ICB_Website.UI.Resources.RHome.Document</a></li>
+                    <li><a href='@Url.Action("lienhe","Home")'>@ICB_Website.UI.Resources.RHome.Contact</a></li>
                 </ul>
 
             </nav>

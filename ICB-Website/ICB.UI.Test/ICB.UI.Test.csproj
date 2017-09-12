@@ -81,6 +81,9 @@
     <Content Include="Images\ne1.jpg" />
     <Content Include="Images\ne2.jpg" />
     <Content Include="Images\si.jpg" />
+    <Content Include="index9bef.html" />
+    <Content Include="index9e97.html" />
+    <Content Include="indexedfb.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\OwlCarousel2\LICENSE" />
     <Content Include="Scripts\OwlCarousel2\README.md" />
