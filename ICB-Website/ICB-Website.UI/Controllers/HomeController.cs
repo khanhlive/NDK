@@ -28,7 +28,7 @@ namespace ICB_Website.UI.Controllers
             cookie.Value = lang;
             HttpContext.Response.Cookies.Add(cookie);
             //string url=HttpContext.
-            return RedirectToAction("Index2");
+            return RedirectToAction("Index");
         }
 
         public async Task<ActionResult> Index2()
