@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB073180-EE6A-409D-9A24-620E6443207D}</ProjectGuid>
+    <ProjectGuid>{1FF71339-E504-444B-AB19-20AA47B1C608}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NDK.ApplicationCore</RootNamespace>
-    <AssemblyName>NDK.ApplicationCore</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ICB.Business</RootNamespace>
+    <AssemblyName>ICB.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,13 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EFGenericRepository\EntityFrameworkRepository.cs" />
-    <Compile Include="EFGenericRepository\IRepository.cs" />
-    <Compile Include="Extensions\ResponseResults\AccessEntityStatusCode.cs" />
-    <Compile Include="Extensions\ResponseResults\Class1.cs" />
-    <Compile Include="Extensions\ResponseResults\ResponseResult.cs" />
-    <Compile Include="Models\EntitiesCore.cs" />
+    <Compile Include="Entities\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NDK.ApplicationCore\NDK.ApplicationCore\NDK.ApplicationCore.csproj">
+      <Project>{db073180-ee6a-409d-9a24-620e6443207d}</Project>
+      <Name>NDK.ApplicationCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
