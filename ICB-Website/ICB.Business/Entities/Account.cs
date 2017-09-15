@@ -5,9 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace ICB.Business.Entities
 {
+    public class ICBContextInitializer: CreateDatabaseIfNotExists<ICBContext>
+    {
+        protected override void Seed(ICBContext context)
+        {
+            base.Seed(context);
+        }
+    }
+    public class ICBContext:DbContext
+    {
+        public ICBContext()
+        {
+            //Database.SetInitializer<ICBContext>(new DropCreateDatabaseAlways<ICBContext>());
+        }
+
+        //public DbSet<Account> Accounts { get; set; }
+        //public DbSet<News> Newss { get; set; }
+        //public DbSet<Document> Documents { get; set; }
+        //public DbSet<Category> Categorys { get; set; }
+        //public DbSet<Service> Services { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<SystemConfig> SystemConfigs { get; set; }
+
+    }
     public class Account : IEntitiesCore<Account>
     {
         public bool Compare(Account target)
@@ -123,6 +149,42 @@ namespace ICB.Business.Entities
         public string Thumbnail { get; set; }
         public string Icon { get; set; }
         public Nullable<int> Order { get; set; }
+        public int Status { get; set; }
+    }
+
+    public class Feedback
+    {
+        [Key]
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Theme { get; set; }
+        public string Content { get; set; }
+        public int Status { get; set; }
+        public string ContentFeedback { get; set; }
+        public bool Answered  { get; set; }
+        public DateTime CreateTime { get; set; }
+        public int UserID { get; set; }
+
+        public virtual Account Account { get; set; }
+    }
+
+    [Table("System")]
+    public class SystemConfig
+    {
+        [Key]
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string NameENG { get; set; }
+        public string Address { get; set; }
+        public string Tel { get; set; }
+        public string Fax { get; set; }
+        public string Hotline { get; set; }
+        public string Email { get; set; }
+        public string Website { get; set; }
+        public int Category { get; set; }
         public int Status { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -13,6 +14,7 @@ namespace ICB_Website.UI
     {
         protected void Application_Start()
         {
+            Database.SetInitializer<ICB.Business.Entities.ICBContext>(new CreateDatabaseIfNotExists<ICB.Business.Entities.ICBContext>());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
