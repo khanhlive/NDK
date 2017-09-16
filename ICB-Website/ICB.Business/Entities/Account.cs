@@ -128,7 +128,7 @@ namespace ICB.Business.Entities
         public int Status { get; set; }
         public DateTime CreateTime { get; set; }
         public Nullable<DateTime> LastMordifiedTime { get; set; }
-        public double ViewCounter { get; set; }
+        public Int64 ViewCounter { get; set; }
         public int UserID { get; set; }
         public virtual Category Category { get; set; }
 

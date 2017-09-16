@@ -6,40 +6,17 @@ using System.Web.Mvc;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using ICB.Business.Entities;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using ICB.Business.Models;
 
 namespace ICB_Website.UI.Controllers
 {
-    public class MyClass
-    {
-        public int ID { get; set; }
-    }
-    public class DB:DbContext
-    {
-        public DB():base("EmployeeContext") {  }
-
-        public DbSet<MyClass> Myclasses { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-    }
-
-    public class MyClassInit: DropCreateDatabaseIfModelChanges<DB>
-    {
-        protected override void Seed(DB context)
-        {
-            base.Seed(context);
-        }
-    }
+    
     public class HomeController : Controller
     {
         // GET: Home
         public ActionResult Index()
         {
-            
-            DB db1 = new DB();
             
             return View();
         }
@@ -55,7 +32,6 @@ namespace ICB_Website.UI.Controllers
             HttpCookie cookie = new HttpCookie("lang");
             cookie.Value = lang;
             HttpContext.Response.Cookies.Add(cookie);
-            //string url=HttpContext.
             return RedirectToAction("Index");
         }
 

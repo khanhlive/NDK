@@ -50,7 +50,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Access\AccountProvider.cs" />
+    <Compile Include="Access\ApplicationManager.cs" />
+    <Compile Include="Access\CategoryProvider.cs" />
+    <Compile Include="Access\CustomerProvider.cs" />
+    <Compile Include="Access\DocumentProvider.cs" />
+    <Compile Include="Access\FeedbackProvider.cs" />
+    <Compile Include="Access\NewsProvider.cs" />
+    <Compile Include="Access\ServiceProvider.cs" />
+    <Compile Include="Access\SystemConfigProvider.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\Feedback.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\SystemConfig.cs" />
+    <Compile Include="Models\WebContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +80,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
