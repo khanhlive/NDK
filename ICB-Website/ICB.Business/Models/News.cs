@@ -10,27 +10,25 @@ namespace ICB.Business.Models
     {
         public int ID { get; set; }
 
+        [Required]
         [StringLength(500)]
         public string Caption { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string ThumbnailURL { get; set; }
 
-        public DateTime? PostedDate { get; set; }
+        public DateTime PostedDate { get; set; }
 
-        public int? UserID { get; set; }
+        public int UserID { get; set; }
 
-        public int? Category { get; set; }
+        public int Category { get; set; }
 
-        public int? Status { get; set; }
+        public int Status { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string ContentReview { get; set; }
 
         [Column(TypeName = "ntext")]
-        [Required]
         public string Content { get; set; }
 
         public virtual Account Account { get; set; }

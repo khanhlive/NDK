@@ -17,20 +17,18 @@ namespace ICB.Business.Models
 
         public int ID { get; set; }
 
+        [Required]
         [StringLength(500)]
         public string Name { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string Title { get; set; }
 
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string NameENG { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string TitleENG { get; set; }
 

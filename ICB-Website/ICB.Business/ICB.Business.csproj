@@ -59,6 +59,7 @@
     <Compile Include="Access\NewsProvider.cs" />
     <Compile Include="Access\ServiceProvider.cs" />
     <Compile Include="Access\SystemConfigProvider.cs" />
+    <Compile Include="Entities\Apps\RoleManager.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Service.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\SystemConfig.cs" />
     <Compile Include="Models\WebContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +81,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-namespace ICB.Business.Models
+﻿namespace ICB.Business.Models
 {
     using System;
     using System.Collections.Generic;
@@ -20,18 +20,22 @@ namespace ICB.Business.Models
 
         public int ID { get; set; }
 
-        [StringLength(50)]
+        [Required(ErrorMessage ="Chưa nhập tên đăng nhập")]
+
+        [StringLength(50,MinimumLength =6, ErrorMessage ="Tên đăng nhập từ 6-50 ký tự")]
         public string Username { get; set; }
 
-        [StringLength(100)]
+        [Required(ErrorMessage ="Chưa nhập mật khẩu")]
+        [StringLength(100,MinimumLength =6,ErrorMessage ="Mật khẩu từ 6-100 ký tự")]
         public string Password { get; set; }
 
-        public byte? Role { get; set; }
+        public byte Role { get; set; }
 
-        public DateTime? CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
 
-        [MaxLength(500)]
-        public byte[] Email { get; set; }
+        [Required]
+        [StringLength(500)]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(250)]
@@ -43,17 +47,17 @@ namespace ICB.Business.Models
 
         public bool IsLocked { get; set; }
 
-        [Required]
         [StringLength(15)]
         public string PhoneNumber { get; set; }
 
-        public DateTime LastLoginTime { get; set; }
+        public DateTime? LastLoginTime { get; set; }
 
-        public DateTime LastMordifiedTime { get; set; }
+        public DateTime? LastMordifiedTime { get; set; }
 
-        [Required]
         [StringLength(500)]
         public string ImageURL { get; set; }
+        
+        public string  RetypePassword { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Document> Documents { get; set; }

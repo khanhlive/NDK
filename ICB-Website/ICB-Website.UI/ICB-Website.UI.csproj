@@ -204,7 +204,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\accountController.cs" />
+    <Compile Include="Areas\admin\Controllers\customerController.cs" />
+    <Compile Include="Areas\admin\Controllers\dashboardController.cs" />
+    <Compile Include="Areas\admin\Controllers\documentController.cs" />
+    <Compile Include="Areas\admin\Controllers\feedbackController.cs" />
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\admin\Controllers\mailboxController.cs" />
+    <Compile Include="Areas\admin\Controllers\newsController.cs" />
+    <Compile Include="Areas\admin\Controllers\serviceController.cs" />
+    <Compile Include="Areas\admin\Controllers\settingController.cs" />
+    <Compile Include="Areas\admin\Controllers\supportController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -233,11 +243,17 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\accountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ControllerBase.cs" />
+    <Compile Include="Models\Entities\LoginModel.cs" />
+    <Compile Include="Models\Entities\Register.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Security\AppAuthorizeAttribute.cs" />
+    <Compile Include="Models\Security\SessionApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Resources\RHome.Designer.cs">
@@ -2648,17 +2664,14 @@
     <Content Include="Plugins\twbsPagination\Gruntfile.js" />
     <Content Include="Plugins\twbsPagination\jquery.twbsPagination.js" />
     <Content Include="Plugins\twbsPagination\jquery.twbsPagination.min.js" />
+    <Content Include="Scripts\AdminLTE\admin.js" />
     <Content Include="Scripts\AdminLTE\app.js" />
     <Content Include="Scripts\AdminLTE\app.min.js" />
     <Content Include="Scripts\AdminLTE\demo.js" />
     <Content Include="Scripts\AdminLTE\pages\dashboard.js" />
     <Content Include="Scripts\AdminLTE\pages\dashboard2.js" />
     <Content Include="Scripts\apps\app.js" />
-    <Content Include="Scripts\App\adminCustom.js" />
-    <Content Include="Scripts\App\benhnhan\benhnhan.js" />
     <Content Include="Scripts\App\common.js" />
-    <Content Include="Scripts\App\danhmuc\danhmuc.js" />
-    <Content Include="Scripts\App\xaphuong\xa-phuong.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\backbone.min.map" />
@@ -2772,6 +2785,20 @@
     <Content Include="Plugins\ionicons-2.0.1\scss\_ionicons-font.scss" />
     <Content Include="Plugins\ionicons-2.0.1\scss\_ionicons-icons.scss" />
     <Content Include="Plugins\ionicons-2.0.1\scss\_ionicons-variables.scss" />
+    <Content Include="Areas\admin\Views\dashboard\Index.cshtml" />
+    <Content Include="Areas\admin\Views\news\Index.cshtml" />
+    <Content Include="Areas\admin\Views\feedback\Index.cshtml" />
+    <Content Include="Areas\admin\Views\mailbox\Index.cshtml" />
+    <Content Include="Areas\admin\Views\document\Vanban.cshtml" />
+    <Content Include="Areas\admin\Views\document\Tailieu.cshtml" />
+    <Content Include="Areas\admin\Views\customer\Index.cshtml" />
+    <Content Include="Areas\admin\Views\service\Index.cshtml" />
+    <Content Include="Areas\admin\Views\account\Index.cshtml" />
+    <Content Include="Areas\admin\Views\mailbox\allquestion.cshtml" />
+    <Content Include="Areas\admin\Views\mailbox\allanswer.cshtml" />
+    <Content Include="Areas\admin\Views\mailbox\trash.cshtml" />
+    <Content Include="Areas\admin\Views\setting\Index.cshtml" />
+    <Content Include="Areas\admin\Views\support\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
@@ -3047,6 +3074,9 @@
     <Content Include="Views\Home\danhsachtintuc.cshtml" />
     <Content Include="Views\Home\tintuc.cshtml" />
     <Content Include="Views\Home\lienhe.cshtml" />
+    <Content Include="Views\account\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3073,6 +3103,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\NDK.ApplicationCore\NDK.ApplicationCore\NDK.ApplicationCore.csproj">
+      <Project>{db073180-ee6a-409d-9a24-620e6443207d}</Project>
+      <Name>NDK.ApplicationCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ICB.Business\ICB.Business.csproj">
       <Project>{1ff71339-e504-444b-ab19-20aa47b1c608}</Project>
       <Name>ICB.Business</Name>

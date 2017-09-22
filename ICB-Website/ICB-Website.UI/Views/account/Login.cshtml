@@ -1,0 +1,61 @@
+﻿@model ICB_Website.UI.Models.Entities.LoginModel
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html">Chứng nhận quốc tế</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Đăng nhập</p>
+        @using (Html.BeginForm("Login", "account", FormMethod.Post))
+        {
+            <div class="form-group has-feedback">
+
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                @Html.ValidationMessageFor(x=>x.Username)
+            </div>
+            <div class="form-group has-feedback">
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+            <span>@Html.ValidationMessage("loginError")</span>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            @Html.CheckBoxFor(x => x.Remember) Ghi nhớ
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        }
+        
+        <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                <i class="fa fa-facebook"></i> Sign in using
+                Facebook
+            </a>
+            <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                <i class="fa fa-google-plus"></i> Sign in using
+                Google+
+            </a>
+        </div>
+        <!-- /.social-auth-links -->
+        <a href="#">Quên mật khẩu</a><br>
+        <a href="@Url.Action("register","account")" class="text-center">Đăng ký thành viên mới</a>
+    </div>
+    <!-- /.login-box-body -->
+</div>
+

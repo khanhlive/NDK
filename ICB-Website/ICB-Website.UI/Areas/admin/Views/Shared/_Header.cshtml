@@ -1,7 +1,7 @@
 ﻿<header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
+    <a href="@Url.Action("Index", "Home", new {area="admin" })" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixeurrlls -->
         <span class="logo-mini"><b>I</b>CB</span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>ICB</b>&nbsp;Certification</span>
@@ -217,7 +217,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="~/images/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Khánh</span>
+                        <span class="hidden-xs">@ICB_Website.UI.Models.Security.SessionApp.Fullname</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -225,7 +225,7 @@
                             <img src="~/images/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
+                                @ICB_Website.UI.Models.Security.SessionApp.Fullname - Web Developer
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>

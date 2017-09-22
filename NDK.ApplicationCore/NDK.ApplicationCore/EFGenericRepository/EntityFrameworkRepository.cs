@@ -20,7 +20,7 @@ namespace NDK.ApplicationCore.EFGenericRepository
         /// <summary>
         /// DbSet
         /// </summary>
-        private readonly DbSet<T> dbSet;
+        protected readonly DbSet<T> dbSet;
 
         /// <summary>
         /// DbContext Entities

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace ICB.Business.Access
 {
-    public class ApplicationManager<T, KeyType>: EntityFrameworkRepository<T, KeyType> where T : class
+    public class ApplicationManager<T, KeyType> : EntityFrameworkRepository<T, KeyType> where T : class
     {
-        protected ApplicationManager():base(new ICB.Business.Models.WebContext()) { }
+        public ApplicationManager() : base(new ICB.Business.Models.WebContext()) { }
+        
     }
 }

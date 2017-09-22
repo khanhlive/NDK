@@ -19,7 +19,6 @@ namespace ICB.Business.Models
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Service> Services { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -33,13 +32,18 @@ namespace ICB.Business.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Account>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
                 .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Documents)
-                .WithOptional(e => e.Account)
-                .HasForeignKey(e => e.UserIDCreated);
+                .WithRequired(e => e.Account)
+                .HasForeignKey(e => e.UserIDCreated)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Feedbacks)
@@ -49,13 +53,15 @@ namespace ICB.Business.Models
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.News)
-                .WithOptional(e => e.Account)
-                .HasForeignKey(e => e.UserID);
+                .WithRequired(e => e.Account)
+                .HasForeignKey(e => e.UserID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Services)
-                .WithOptional(e => e.Account)
-                .HasForeignKey(e => e.UserID);
+                .WithRequired(e => e.Account)
+                .HasForeignKey(e => e.UserID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.NameENG)
@@ -64,6 +70,11 @@ namespace ICB.Business.Models
             modelBuilder.Entity<Category>()
                 .Property(e => e.TitleENG)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(e => e.Services)
+                .WithRequired(e => e.Category)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
                 .Property(e => e.PhoneNumber)
