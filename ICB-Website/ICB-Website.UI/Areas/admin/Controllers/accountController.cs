@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICB_Website.UI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +7,9 @@ using System.Web.Mvc;
 
 namespace ICB_Website.UI.Areas.admin.Controllers
 {
-    public class accountController : Controller
+    public class accountController : ControllerApp
     {
+        public accountController():base("Tài khoản","Tài khoản") { }
         // GET: admin/account
         public ActionResult Index()
         {

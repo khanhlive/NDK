@@ -59,7 +59,9 @@
     <Compile Include="Access\NewsProvider.cs" />
     <Compile Include="Access\ServiceProvider.cs" />
     <Compile Include="Access\SystemConfigProvider.cs" />
+    <Compile Include="Entities\Apps\ModuleManager.cs" />
     <Compile Include="Entities\Apps\RoleManager.cs" />
+    <Compile Include="Entities\Message\MessageManager.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />

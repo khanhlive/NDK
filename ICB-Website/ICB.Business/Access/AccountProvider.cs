@@ -24,5 +24,14 @@ namespace ICB.Business.Access
             string hashPassword = NDK.ApplicationCore.Extensions.Hepler.StringHelper.CreateMD5(password);
             return await context.Set<Account>().FirstOrDefaultAsync(p => p.Username == username && p.Password == hashPassword);
         }
+
+        public bool CheckUsername(string username)
+        {
+            return context.Set<Account>().Any(p => p.Username == username);
+        }
+        public async Task<bool> CheckUsernameAsync(string username)
+        {
+            return await context.Set<Account>().AnyAsync(p => p.Username == username);
+        }
     }
 }

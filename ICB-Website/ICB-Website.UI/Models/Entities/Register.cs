@@ -8,7 +8,7 @@ namespace ICB_Website.UI.Models.Entities
 {
     public class Register
     {
-        [Required]
+        [Required(ErrorMessage ="Chưa nhập họ tên")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Tên đăng nhập từ 6-50 ký tự")]
         public string Username { get; set; }
         [Required(ErrorMessage ="Chưa nhập mật khẩu")]

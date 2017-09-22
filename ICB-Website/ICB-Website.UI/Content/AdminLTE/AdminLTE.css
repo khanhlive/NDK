@@ -967,7 +967,7 @@ a:focus {
   border-bottom-left-radius: 0;
   background-color: #ffffff;
   padding: 7px 10px;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
   color: #444444;
   font-size: 14px;
 }
@@ -1014,7 +1014,7 @@ a:focus {
   display: block;
   white-space: nowrap;
   /* Prevent text from breaking */
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a:hover,
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a:hover,
@@ -1120,7 +1120,7 @@ a:focus {
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body {
   padding: 15px;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
   border-top: 1px solid #dddddd;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-body:before,
@@ -1580,7 +1580,7 @@ a:focus {
   display: none;
 }
 .box .nav-stacked > li {
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
   margin: 0;
 }
 .box .nav-stacked > li:last-of-type {
@@ -1591,10 +1591,10 @@ a:focus {
   overflow: auto;
 }
 .box .border-right {
-  border-right: 1px solid #f4f4f4;
+  border-right: 1px solid #ddd;
 }
 .box .border-left {
-  border-left: 1px solid #f4f4f4;
+  border-left: 1px solid #ddd;
 }
 .box.box-solid {
   border-top: 0;
@@ -1746,7 +1746,7 @@ a:focus {
   position: relative;
 }
 .box-header.with-border {
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
 }
 .collapsed-box .box-header.with-border {
   border-bottom: none;
@@ -1833,7 +1833,7 @@ a:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  border-top: 1px solid #f4f4f4;
+  border-top: 1px solid #ddd;
   padding: 10px;
   background-color: #ffffff;
 }
@@ -2151,7 +2151,7 @@ a:focus {
 .timeline > li > .timeline-item > .timeline-header {
   margin: 0;
   color: #555;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
   padding: 10px;
   font-size: 16px;
   line-height: 1.1;
@@ -2488,12 +2488,12 @@ a:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
-.nav-tabs-custom > .nav-tabs {
-  margin: 0;
-  border-bottom-color: #f4f4f4;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-}
+    .nav-tabs-custom > .nav-tabs {
+        margin: 0;
+        border-bottom-color: #ddd;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
 .nav-tabs-custom > .nav-tabs > li {
   border-top: 3px solid transparent;
   margin-bottom: -2px;
@@ -2527,11 +2527,11 @@ a:focus {
   background-color: #fff;
   color: #444;
 }
-.nav-tabs-custom > .nav-tabs > li.active > a {
-  border-top-color: transparent;
-  border-left-color: #f4f4f4;
-  border-right-color: #f4f4f4;
-}
+    .nav-tabs-custom > .nav-tabs > li.active > a {
+        border-top-color: transparent;
+        border-left-color: #ddd;
+        border-right-color: #ddd;
+    }
 .nav-tabs-custom > .nav-tabs > li:first-of-type {
   margin-left: 0;
 }
@@ -2550,10 +2550,10 @@ a:focus {
 .nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type > a {
   border-left-width: 1px;
 }
-.nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type.active > a {
-  border-left-color: #f4f4f4;
-  border-right-color: transparent;
-}
+    .nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type.active > a {
+        border-left-color: #ddd;
+        border-right-color: transparent;
+    }
 .nav-tabs-custom > .nav-tabs > li.header {
   line-height: 35px;
   padding: 0 10px;
@@ -2650,7 +2650,7 @@ a:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
 }
 .product-list-in-box > .item:last-of-type {
   border-bottom-width: 0;
@@ -2665,16 +2665,16 @@ a:focus {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  border-top: 1px solid #f4f4f4;
+  border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
-  border-bottom: 2px solid #f4f4f4;
+    border-bottom: 2px solid #ddd;
 }
 .table tr td .progress {
   margin-top: 5px;
 }
 .table-bordered {
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ddd;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -2682,7 +2682,7 @@ a:focus {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ddd;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
@@ -2998,10 +2998,10 @@ table.text-center th {
   }
 }
 .modal-header {
-  border-bottom-color: #f4f4f4;
+  border-bottom-color: #ddd;
 }
 .modal-footer {
-  border-top-color: #f4f4f4;
+    border-top-color: #ddd;
 }
 .modal-primary .modal-header,
 .modal-primary .modal-footer {
@@ -3095,10 +3095,10 @@ table.text-center th {
   padding: 5px;
 }
 .mailbox-controls.with-border {
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
 }
 .mailbox-read-info {
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
   padding: 10px;
 }
 .mailbox-read-info h3 {
@@ -3319,7 +3319,7 @@ table.text-center th {
 .invoice {
   position: relative;
   background: #fff;
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ddd;
   padding: 20px;
   margin: 10px 25px;
 }
@@ -4841,7 +4841,7 @@ table.text-center th {
   padding: 2px;
 }
 .attachment-block {
-  border: 1px solid #f4f4f4;
+  border: 1px solid #ddd;
   padding: 5px;
   margin-bottom: 10px;
   background: #f7f7f7;
