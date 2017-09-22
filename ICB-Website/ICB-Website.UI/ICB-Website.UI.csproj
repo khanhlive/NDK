@@ -2799,6 +2799,7 @@
     <Content Include="Areas\admin\Views\mailbox\trash.cshtml" />
     <Content Include="Areas\admin\Views\setting\Index.cshtml" />
     <Content Include="Areas\admin\Views\support\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\2.jpg" />
