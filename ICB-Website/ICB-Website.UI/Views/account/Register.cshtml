@@ -45,13 +45,13 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> Tôi đồng ý với các <a href="#">điều khoản</a>
+                            <input id="ckb-dangky-dieukhoan" type="checkbox"> Tôi đồng ý với các <a href="#">điều khoản</a>
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>
+                    <button type="submit" id="btn-register-submit" disabled class="btn btn-primary btn-block btn-flat">Đăng ký</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -61,6 +61,19 @@
     <!-- /.form-box -->
 </div>
 <!-- /.register-box -->
+@section scripts{
+    <script type="text/javascript">
 
+        $(document).ready(function () {
+            $('#ckb-dangky-dieukhoan').on('ifChanged',function (e) {
+                if ($(this).is(':checked')) {
+                    $('#btn-register-submit').removeAttr("disabled");
+                } else {
+                    $('#btn-register-submit').attr({ "disabled":'disabled'});
+                }
+            });
+        });
+    </script>
+    }
 
 

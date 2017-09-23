@@ -17,7 +17,7 @@ namespace ICB_Website.UI.Areas.admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new {controller="Home", action = "Index", id = UrlParameter.Optional },
+                new {controller="Dashboard", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "ICB_Website.UI.Areas.admin.Controllers" }
             );
         }

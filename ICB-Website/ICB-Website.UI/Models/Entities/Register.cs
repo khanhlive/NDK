@@ -10,6 +10,7 @@ namespace ICB_Website.UI.Models.Entities
     {
         [Required(ErrorMessage ="Chưa nhập họ tên")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Tên đăng nhập từ 6-50 ký tự")]
+        [RegularExpression("^([a-zA-Z0-9 .&'-]+)$", ErrorMessage = "Tên đăng nhập không đúng định dạng")]
         public string Username { get; set; }
         [Required(ErrorMessage ="Chưa nhập mật khẩu")]
         [DataType(DataType.Password,ErrorMessage ="Mật khẩu không đúng")]

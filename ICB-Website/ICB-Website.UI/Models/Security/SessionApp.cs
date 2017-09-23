@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICB.Business.Entities.Apps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -100,6 +101,26 @@ namespace ICB_Website.UI.Models.Security
             set
             {
                 HttpContext.Current.Session["Fullname"] = value;
+            }
+        }
+
+        public static int RoleType
+        {
+            get
+            {
+                var roleType = HttpContext.Current.Session["RoleType"];
+                if (roleType == null)
+                {
+                    return RoleManager.Guest;
+                }
+                else
+                {
+                    return ((int)roleType);
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["RoleType"] = value;
             }
         }
 

@@ -14,6 +14,7 @@
             <table class="table table-striped jambo_table table-bordered">
                 <thead>
                     <tr>
+                        <th><input type="checkbox" class="checkboxall flat" /> </th>
                         <th>#</th>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -22,18 +23,21 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td><input type="checkbox" class="flat" name="table_records"></td>
                         <td scope="row">1</td>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>mdo</td>
                     </tr>
                     <tr>
+                        <td><input type="checkbox" class="flat" name="table_records"></td>
                         <td scope="row">2</td>
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>fat</td>
                     </tr>
                     <tr>
+                        <td><input type="checkbox" class="flat" name="table_records"></td>
                         <td scope="row">3</td>
                         <td>Larry</td>
                         <td>the Bird</td>
@@ -49,33 +53,33 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('table').DataTable({
-                language: DataTableLanguage,
-                dom: "Bfrtip",
-                buttons: [
+            APPLICATION.CreateDataTable($('table'),
+                [
                     {
-                        text: '<i class="fa fa-plus"></i>&nbsp;&nbsp;Thêm mới',
+                        text: '<i class="fa fa-plus"></i>&nbsp;Thêm mới',
                         action: function () {
-                            alert('Thêm mới');
-                        },
-                        //className:'btn btn-success'
+
+                        }
                     },
                     {
-                        text: '<i class="fa fa-edit"></i>&nbsp;&nbsp;Sửa',
+                        text: '<i class="fa fa-edit"></i>&nbsp;Sửa',
                         action: function () {
-                            alert('Thêm mới');
-                        },
-                        //className: 'btn btn-primary'
+
+                        }
                     },
                     {
-                        text: '<i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa',
+                        text: '<i class="fa fa-trash"></i>&nbsp;Xóa',
                         action: function () {
-                            alert('Thêm mới');
-                        },
-                        //className: 'btn btn-danger'
+
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-refresh"></i>&nbsp;Làm mới',
+                        action: function () {
+
+                        }
                     }
-                ]
-            });
+                ], true);
         });
     </script>
     }

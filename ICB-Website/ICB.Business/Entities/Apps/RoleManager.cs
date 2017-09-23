@@ -13,5 +13,6 @@ namespace ICB.Business.Entities.Apps
         public const int Manager = 2;
         public const int Writer = 3;
         public const int Member = 4;
+        public const int Guest = 5;
     }
 }

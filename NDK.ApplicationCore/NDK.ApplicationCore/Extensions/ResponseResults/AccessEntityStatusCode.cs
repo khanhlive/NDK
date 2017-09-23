@@ -13,4 +13,10 @@ namespace NDK.ApplicationCore.Extensions.ResponseResults
         NotFound = 2,
         Failed = 3
     }
+
+    public class AccessEntityResult
+    {
+        public AccessEntityStatusCode Status { get; set; }
+        public string Message { get; set; }
+    }
 }

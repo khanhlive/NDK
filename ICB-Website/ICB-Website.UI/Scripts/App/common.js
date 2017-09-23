@@ -26,7 +26,13 @@ var ResponseStatus = {
     Existed: 3,
     Used: 4
 };
-
+$(document).ready(function () {
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green',
+        increaseArea: '20%' // optional
+    });
+});
 ///End Variable
 function show_errmess(errmess) {
     $.notify({
@@ -109,6 +115,29 @@ function Show_message_KQ_Traloi(status,text) {
             break;
         default:
 
+    }
+}
+
+
+////
+var APPLICATION = {
+    CreateDataTable: function (table, buttons, isHasCheck) {
+        var setting = {
+            language: DataTableLanguage,
+            dom: "Bfrtip"
+            
+        };
+        if (isHasCheck) {
+            setting['columnDefs']= [
+                { orderable: false, targets: [0] }
+            ]
+        }
+        if (buttons) {
+            setting.buttons = buttons;
+        } else {
+            setting.buttons = [];
+        }
+        return $(table).DataTable(setting);
     }
 }
 
