@@ -19,8 +19,9 @@ body {
   height: 100%;
 }
 body {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
+  font-size:13px;
   overflow-x: hidden;
   overflow-y: auto;
 }

@@ -16,6 +16,10 @@
     }
 }
 
+.btn {
+    border-radius: 0px;
+}
+
 /* *********  tables styling  ******************************* */
 .bulk-actions {
     display: none;

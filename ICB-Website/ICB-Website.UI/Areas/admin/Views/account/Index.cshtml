@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ICB.Business.Models.Account>
 @{
     ViewBag.Title = "Admin: Quản lý tài khoản";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
@@ -15,34 +15,29 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" class="checkboxall flat" /> </th>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Ngày tạo</th>
+                        <th>Quyền</th>
+                        <th>Chấp thuận</th>
+                        <th>Đã khóa</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><input type="checkbox" class="flat" name="table_records"></td>
-                        <td scope="row">1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mdo</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="flat" name="table_records"></td>
-                        <td scope="row">2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="flat" name="table_records"></td>
-                        <td scope="row">3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>twitter</td>
-                    </tr>
+                    @foreach (var account in Model)
+                    {
+                        <tr>
+                            <td><input type="checkbox" class="flat" value="@account.ID" name="table_records"></td>
+                            <td>@account.Username</td>
+                            <td>@account.Fullname</td>
+                            <td>@account.Email</td>
+                            <td>@account.CreateTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                            <td>@account.Role</td>
+                            <td><input type="checkbox" @if (account.IsActive) { <text> checked="checked" </text>  } /></td>
+                            <td><input type="checkbox" @if (account.IsLocked) { <text> checked="checked" </text>   } /></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -58,13 +53,13 @@
                     {
                         text: '<i class="fa fa-plus"></i>&nbsp;Thêm mới',
                         action: function () {
-
+                            $('#modal-account').modal({ backdrop: 'static', keyboard: false, show: true });
                         }
                     },
                     {
                         text: '<i class="fa fa-edit"></i>&nbsp;Sửa',
                         action: function () {
-
+                            $('#modal-account').modal("show");
                         }
                     },
                     {
@@ -83,4 +78,24 @@
         });
     </script>
     }
+<div class="modal fade" id="modal-account">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
