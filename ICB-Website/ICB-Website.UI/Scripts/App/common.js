@@ -1,4 +1,26 @@
-﻿///plugin common
+﻿String.prototype.MilisecondsToLongString = function () {
+    var datetime = moment(this);
+    if (datetime._isValid == true) {
+        return datetime.format('DD/MM/YYYY');
+    } else {
+        return '';
+    }
+}
+String.prototype.MilisecondsToShortString = function () {
+    var datetime = moment(this);
+    if (datetime._isValid == true) {
+        return datetime.format('DD/MM/YYYY HH:mm:ss');
+    } else {
+        return '';
+    }
+}
+String.prototype.Moment = function () {
+    var datetime = moment(this);
+    if (datetime._isValid == true) {
+        return datetime;
+    } else return undefined;
+}
+///plugin common
 
 var DataTableLanguage = {
     "sProcessing": "Đang xử lý...",
@@ -26,11 +48,27 @@ var ResponseStatus = {
     Existed: 3,
     Used: 4
 };
+
 $(document).ready(function () {
+
+    //////iCheck
     $('input').iCheck({
         checkboxClass: 'icheckbox_flat-green',
         radioClass: 'iradio_flat-green',
         increaseArea: '20%' // optional
+    });
+
+
+    ////event for button checkall in table header
+
+    $('table input[name=checkall]').on('ifChanged', function () {
+        var table = $(this).closest('table');
+        if ($(this).is(':checked')) {
+            table.find('tbody input[name=table_records]:not(:checked)').iCheck('check');
+            
+        } else {
+            table.find('tbody input[name=table_records]:checked').iCheck('uncheck');
+        }
     });
 });
 ///End Variable
@@ -90,19 +128,7 @@ $(function () {
 })
 
 ///
-function Call_Ajax(url,contentType,type,data,successCallback,header) {
-    $.ajax({
-        url: url,
-        contentType: contentType,
-        headers:header,
-        type: type,
-        data: data,
-        success: successCallback,
-        error: function (err) {
-            show_errmess(err.responseText);
-        }
-    });
-}
+
 
 
 function Show_message_KQ_Traloi(status,text) {
@@ -138,6 +164,69 @@ var APPLICATION = {
             setting.buttons = [];
         }
         return $(table).DataTable(setting);
+    },
+    Ajax: function (url, contentType, type, data, successCallback, header) {
+        $.ajax({
+            url: url,
+            contentType: contentType,
+            headers: header,
+            type: type,
+            data: data,
+            success: successCallback,
+            error: function (err) {
+                show_errmess(err.responseText);
+            }
+        });
+    },
+
+    GetDisplayRole: function (role) {
+        switch (role) {
+            case 0:
+                return 'Quản trị hệ thống';
+            case 1:
+                return 'Quản trị';
+            case 2:
+                return 'Quản lý Website';
+            case 3:
+                return 'Người viết bài';
+            case 4:
+                return 'Thành viên';
+            case 5:
+                return 'Khách vãng lai';
+            default:
+                return '';
+        }
+    },
+
+    INIT_CHECKBOX: function (elementContainer) {
+        if (elementContainer) {
+            var list = $(elementContainer).find('input[type=checkbox],input[type=radio]');
+            $.each(list, function (a, b) {
+                if ($(b).closest('div[class^=icheckbox]').length > 0 || $(b).closest('div[class^=iradio]').length > 0) {
+
+                } else {
+                    $(b).iCheck({
+                        checkboxClass: 'icheckbox_flat-green',
+                        radioClass: 'iradio_flat-green',
+                        increaseArea: '20%' // optional
+                    });
+                }
+            });
+        } else {
+            var list = $('input[type:checkbox],input[type:radio]');
+            $.each(list, function (a, b) {
+                if ($(b).closest('div[class^=icheckbox]').length > 0 || $(b).closest('div[class^=iradio]').length > 0) {
+
+                } else {
+                    $(b).iCheck({
+                        checkboxClass: 'icheckbox_flat-green',
+                        radioClass: 'iradio_flat-green',
+                        increaseArea: '20%' // optional
+                    });
+                }
+            });
+        }
     }
+
 }
 

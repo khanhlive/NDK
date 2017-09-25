@@ -14,5 +14,26 @@ namespace ICB.Business.Entities.Apps
         public const int Writer = 3;
         public const int Member = 4;
         public const int Guest = 5;
+
+        
+        public static string GetDisplayName(int role)
+        {
+            List<RoleModel> list = new List<RoleModel>();
+            list.Add(new RoleModel { Value = 0, Name = "Quản trị hệ thống", NameENG = "SuperAdmin" });
+            list.Add(new RoleModel { Value = 1, Name = "Quản trị", NameENG = "Admin" });
+            list.Add(new RoleModel { Value = 2, Name = "Quản lý Website", NameENG = "Manager" });
+            list.Add(new RoleModel { Value = 3, Name = "Người viết bài", NameENG = "Writer" });
+            list.Add(new RoleModel { Value = 4, Name = "Thành viên", NameENG = "Member" });
+            list.Add(new RoleModel { Value = 5, Name = "Khách", NameENG = "Guest" });
+            RoleModel roleModel = list.FirstOrDefault(x => x.Value == role);
+            return roleModel == null ? "" : roleModel.Name;
+        }
+    }
+
+    public class RoleModel
+    {
+        public int Value { get; set; }
+        public string Name { get; set; }
+        public string NameENG { get; set; }
     }
 }

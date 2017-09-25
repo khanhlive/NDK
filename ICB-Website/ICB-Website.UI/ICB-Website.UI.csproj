@@ -2729,6 +2729,7 @@
     <Content Include="Scripts\AdminLTE\pages\dashboard2.js" />
     <Content Include="Scripts\apps\app.js" />
     <Content Include="Scripts\App\common.js" />
+    <Content Include="Scripts\App\controller.js" />
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\backbone.min.js" />
     <Content Include="Scripts\backbone.min.map" />
@@ -2886,6 +2887,7 @@
     <Content Include="Plugins\datatables\datatables.net\.bower.json" />
     <Content Include="Plugins\datatables\datatables.net\bower.json" />
     <Content Include="Plugins\datatables\datatables.net\Readme.md" />
+    <Content Include="Areas\admin\Views\Shared\_LayoutModal.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
@@ -2913,16 +2915,6 @@
     <Content Include="Plugins\themes\knd-util.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\custom\auto-scroll-gallery.js" />
-    <Content Include="Scripts\custom\confirm-delete.js" />
-    <Content Include="Scripts\custom\custom.js" />
-    <Content Include="Scripts\custom\generate.js" />
-    <Content Include="Scripts\custom\open-ckeditor-about.js" />
-    <Content Include="Scripts\custom\open-ckeditor-news.js" />
-    <Content Include="Scripts\custom\open-ckeditor-phacdo.js" />
-    <Content Include="Scripts\custom\open-ckeditor.js" />
-    <Content Include="Scripts\custom\open-ckfinder.js" />
-    <Content Include="Scripts\custom\run-text-hot-new.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -2988,8 +2980,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\script-controller\admin-controller.js" />
-    <Content Include="Scripts\script-controller\user-controller.js" />
     <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\superfish.min.js" />
     <Content Include="Scripts\supersubs.js" />

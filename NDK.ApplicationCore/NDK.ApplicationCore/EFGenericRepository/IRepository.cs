@@ -71,6 +71,11 @@ namespace NDK.ApplicationCore.EFGenericRepository
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        ICollection<T> GetAll();
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         T GetByID(KeyType id);

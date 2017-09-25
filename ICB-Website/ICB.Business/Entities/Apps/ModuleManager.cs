@@ -14,6 +14,7 @@ namespace ICB.Business.Entities.Apps
     
     public enum ModuleType
     {
+        Base,
         Register,
         Login,
         

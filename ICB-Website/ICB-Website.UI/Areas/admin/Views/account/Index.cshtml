@@ -11,10 +11,10 @@
         </div>
         <div class="box-body">
 
-            <table class="table table-striped jambo_table table-bordered">
+            <table class="table table-striped jambo_table table-bordered" id="ACCOUNT_ALLACCOUNT">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" class="checkboxall flat" /> </th>
+                        <th><input type="checkbox" name="checkall" class="checkboxall flat" /> </th>
                         <th>Tên đăng nhập</th>
                         <th>Họ tên</th>
                         <th>Email</th>
@@ -33,9 +33,9 @@
                             <td>@account.Fullname</td>
                             <td>@account.Email</td>
                             <td>@account.CreateTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
-                            <td>@account.Role</td>
-                            <td><input type="checkbox" @if (account.IsActive) { <text> checked="checked" </text>  } /></td>
-                            <td><input type="checkbox" @if (account.IsLocked) { <text> checked="checked" </text>   } /></td>
+                            <td>@ICB.Business.Entities.Apps.RoleManager.GetDisplayName(account.Role)</td>
+                            <td><span @if (account.IsActive) { <text> class="state icheckbox_flat-green checked" </text>  } else { <text> class="state icheckbox_flat-green" </text> }> </span></td>
+                            <td><span @if (account.IsLocked) { <text> class="state icheckbox_flat-green checked" </text>   } else { <text> class="state icheckbox_flat-green" </text>  }> </span></td>
                         </tr>
                     }
                 </tbody>
@@ -48,37 +48,11 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            APPLICATION.CreateDataTable($('table'),
-                [
-                    {
-                        text: '<i class="fa fa-plus"></i>&nbsp;Thêm mới',
-                        action: function () {
-                            $('#modal-account').modal({ backdrop: 'static', keyboard: false, show: true });
-                        }
-                    },
-                    {
-                        text: '<i class="fa fa-edit"></i>&nbsp;Sửa',
-                        action: function () {
-                            $('#modal-account').modal("show");
-                        }
-                    },
-                    {
-                        text: '<i class="fa fa-trash"></i>&nbsp;Xóa',
-                        action: function () {
-
-                        }
-                    },
-                    {
-                        text: '<i class="fa fa-refresh"></i>&nbsp;Làm mới',
-                        action: function () {
-
-                        }
-                    }
-                ], true);
+            
         });
     </script>
     }
-<div class="modal fade" id="modal-account">
+<div class="modal fade" id="modal-account-add">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

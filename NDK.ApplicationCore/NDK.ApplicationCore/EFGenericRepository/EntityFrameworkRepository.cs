@@ -185,7 +185,7 @@ namespace NDK.ApplicationCore.EFGenericRepository
         public virtual Tuple<AccessEntityStatusCode, T> Update(T item, KeyType id)
         {
             var model = this.context.Set<T>().Find(id);
-            if (model!=null)
+            if (model != null)
             {
                 this.context.Set<T>().Attach(item);
                 this.context.Entry<T>(item).State = EntityState.Modified;
@@ -195,9 +195,9 @@ namespace NDK.ApplicationCore.EFGenericRepository
             }
             else
             {
-                return Tuple.Create( AccessEntityStatusCode.NotFound, item);
+                return Tuple.Create(AccessEntityStatusCode.NotFound, item);
             }
-            
+
         }
 
         /// <summary>
@@ -230,6 +230,7 @@ namespace NDK.ApplicationCore.EFGenericRepository
         {   
             this.context.Dispose();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -237,6 +238,15 @@ namespace NDK.ApplicationCore.EFGenericRepository
         public virtual async Task<ICollection<T>> GetAllAsync()
         {
             return await this.context.Set<T>().ToListAsync();
+        }
+
+        /// <summary>
+        /// Lấy danh sách
+        /// </summary>
+        /// <returns></returns>
+        public virtual ICollection<T> GetAll()
+        {
+            return this.context.Set<T>().ToList();
         }
     }
     
