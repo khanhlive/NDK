@@ -8,7 +8,6 @@
 }
 String.prototype.MilisecondsToLongString = function () {
     var datetime = moment(this.toString());
-    console.log(this);
     if (datetime._isValid == true) {
         return datetime.format('DD/MM/YYYY HH:mm:ss');
     } else {
@@ -42,20 +41,20 @@ var DataTableLanguage = {
 };
 ////Variable
 var ResponseStatus = {
-    FormInValid: -1,
+    
     OK: 0,
-    NotExist: 1,
-    NotSaved: 2,
-    Existed: 3,
-    Used: 4
+    Failed: 3,
+    NotFound: 2,
+    Existed: 1,
+    ModelFailed: 4
 };
 
 $(document).ready(function () {
 
     //////iCheck
     $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-green',
-        radioClass: 'iradio_flat-green',
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue',
         increaseArea: '20%' // optional
     });
 
@@ -73,7 +72,7 @@ $(document).ready(function () {
     });
 });
 ///End Variable
-function show_errmess(errmess) {
+function ShowNotifyError(errmess) {
     $.notify({
         icon: 'glyphicon glyphicon-remove-sign',
         title: "<strong>Lỗi: </strong> ",
@@ -87,7 +86,7 @@ function show_errmess(errmess) {
     });
 }
 
-function show_warning(warningmess) {
+function ShowNotifyWarning(warningmess) {
 
     $.notify({
         icon: 'glyphicon glyphicon-warning-sign',
@@ -104,7 +103,7 @@ function show_warning(warningmess) {
 
 //alertwarning
 
-function show_alert(mess) {
+function ShowNotifySuccess(mess) {
 
     $.notify({
         icon: 'glyphicon glyphicon-ok-sign',
@@ -219,11 +218,11 @@ $(function () {
 
 function Show_message_KQ_Traloi(status,text) {
     switch (status) {
-        case 0: show_alert(text);
+        case 0: ShowNotifySuccess(text);
             break;
-        case 1: show_errmess(text);
+        case 1: ShowNotifyError(text);
             break;
-        case 2: show_errmess(text);
+        case 2: ShowNotifyWarning(text);
             break;
         default:
 
@@ -240,7 +239,34 @@ var APPLICATION = {
             "initComplete": function (settings, json) {
                 if (initCompleteCallback)
                     initCompleteCallback(setting, json);
-            }
+                var dataTableWrapper = $(table).closest('.dataTables_wrapper');
+                if (dataTableWrapper.length > 0) {
+                    dataTableWrapper.find('.dt-buttons .btn').removeClass('btn-default');
+                }
+                ///
+                
+                $(table).find('[name=table_records]').unbind('ifChecked').on('ifChecked', function (e) {
+                    var multiple = $(table).attr('data-multiple');
+                    if (multiple=='multiple') {
+                        $(this).closest('tr').addClass('active');
+                    } else {
+                        var trs = $(table).find('tbody tr.active');
+                        trs.find('[name=table_records]').iCheck('uncheck');
+                        trs.removeClass('active');
+                        $(this).closest('tr').addClass('active');
+                    }
+                    //if ($(this).is(':checked')) {
+                    //    $(this).closest('tr').addClass('active');
+                    //} else {
+                    //    $(this).closest('tr').removeClass('active');
+                    //}
+                });
+                $(table).find('[name=table_records]').unbind('ifUnchecked').on('ifUnchecked', function (e) {
+                    
+                    $(this).closest('tr').removeClass('active');
+                });
+            },
+            responsive: true
             
         };
         if (isHasCheck) {
@@ -265,7 +291,7 @@ var APPLICATION = {
             data: data,
             success: successCallback,
             error: function (err) {
-                show_errmess(err.responseText);
+                ShowNotifyError(err.responseText);
             }
         });
     },
@@ -297,27 +323,48 @@ var APPLICATION = {
 
                 } else {
                     $(b).iCheck({
-                        checkboxClass: 'icheckbox_flat-green',
-                        radioClass: 'iradio_flat-green',
+                        checkboxClass: 'icheckbox_minimal-blue',
+                        radioClass: 'iradio_minimal-blue',
                         increaseArea: '20%' // optional
                     });
                 }
             });
         } else {
-            var list = $('input[type:checkbox],input[type:radio]');
+            var list = $('input[type=checkbox],input[type=radio]');
             $.each(list, function (a, b) {
                 if ($(b).closest('div[class^=icheckbox]').length > 0 || $(b).closest('div[class^=iradio]').length > 0) {
 
                 } else {
                     $(b).iCheck({
-                        checkboxClass: 'icheckbox_flat-green',
-                        radioClass: 'iradio_flat-green',
+                        checkboxClass: 'icheckbox_minimal-blue',
+                        radioClass: 'iradio_minimal-blue',
                         increaseArea: '20%' // optional
                     });
                 }
             });
         }
-    }
+    },
 
+    MESSAGEFOR: function (element,message) {
+        if (element) {
+            var container = $(element).closest('div');
+            if (container.find('span.help-block').length <= 0) {
+                container.append('<span class="help-block">' + (message ? message : '') + '</span>');
+            } else {
+                container.find('span.help-block').text(message);
+            }
+            container.closest('.form-group').addClass('has-error');
+        }
+    },
+
+    CLEAN_MESSAGEFOR: function (element) {
+        if (element) {
+            var container = $(element).closest('div');
+            if (container.find('span.help-block').length > 0) {
+                container.find('span.help-block').text('');
+            }
+            container.closest('.form-group').removeClass('has-error');
+        }
+    },
 }
 

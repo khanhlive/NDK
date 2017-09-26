@@ -20,9 +20,23 @@
     border-radius: 0px;
 }
 
-/* *********  tables styling  ******************************* */
-.bulk-actions {
-    display: none;
+.form-no-bottom{
+
+}
+.form-no-bottom .form-group {
+    margin-bottom:5px;
+}
+
+
+    table tbody tr td [class^=icheck]{
+        background-color:#fff;
+    }
+    /* *********  tables styling  ******************************* */
+    .bulk-actions {
+        display: none;
+    }
+.icheckbox_minimal-blue {
+    background-color:#fff;
 }
 
 table.countries_list {
@@ -253,11 +267,12 @@ table.display tr.even.row_selected td {
 table.display tr.odd.row_selected td {
     background-color: #9FAFD1;
 }
-
+table.jambo_table thead th div[class^="icheckbox"] {
+    background-color: #fff;
+}
 /* *********  /tables styling  ****************************** */
-
-.modal .modal-body{
-    overflow:hidden;
+.modal .modal-body {
+    overflow: hidden;
 }
 table[data-dttable] tbody tr td.function span:first-child{
     margin-right:5px;
@@ -294,3 +309,48 @@ ul.select2-results__options{
 div[data-notify=container]{
     z-index:9999 !important;
 }
+
+
+/*iCheck custom*/
+/* iCheck plugin Flat skin, green
+----------------------------------- */
+/*[class^="icheckbox_flat"],
+[class^="iradio_flat-green"] {
+    width: 18px;
+    height: 18px;
+}
+
+[class^="icheckbox_flat"] {
+    background-position: -1px -1px;
+}
+
+.checked[class^="icheckbox_flat"] {
+    background-position: -23px -1px;
+}
+
+.disabled[class^="icheckbox_flat"] {
+    background-position: -45px -1px;
+}
+
+.checked.disabled[class^="icheckbox_flat"] {
+    background-position: -67px -1px;
+}
+
+.iradio_flat-green {
+    background-position: -88px 0;
+}
+
+    .iradio_flat-green.checked {
+        background-position: -110px 0;
+    }
+
+    .iradio_flat-green.disabled {
+        background-position: -132px 0;
+        cursor: default;
+    }
+
+    .iradio_flat-green.checked.disabled {
+        background-position: -154px 0;
+    }*/
+
+/*end iCheck custom*/

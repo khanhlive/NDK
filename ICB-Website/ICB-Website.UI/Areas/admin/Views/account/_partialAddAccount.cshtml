@@ -1,0 +1,205 @@
+﻿@{ 
+    Layout = null;
+}
+
+<div class="modal fade" id="modal-account-add">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thêm mới tài khoản</h4>
+            </div>
+            <form class="form-horizontal form-no-bottom" id="frm-add-account" onsubmit="return false" novalidate>
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Họ tên: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="txtFullname" placeholder="Họ tên" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tên đăng nhập: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="txtUsername" placeholder="Tên đăng nhập" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Mật khẩu: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="txtPassword" placeholder="Mật khẩu" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Xác nhận mật khẩu: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="txtRetypePassword" placeholder="Xác nhận mật khẩu" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Email: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="txtEmail" placeholder="Địa chỉ Email" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Số điện thoại: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="txtPhoneNumber" placeholder="Số điện thoại" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Quyền: </label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="Role">
+                                <option value>Chọn quyền</option>
+                                @foreach (var item in ICB.Business.Entities.Apps.RoleManager.GetAllRole())
+                                {
+                                    <option value="@item.Value">@item.Name</option>
+                                }
+                            </select>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">&nbsp;</label>
+                        <div class="col-md-8">
+                            <label class="checkbox"><input class="" type="checkbox" name="ckbIsActive" />&nbsp;&nbsp; Đã xác nhận</label>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">&nbsp;</label>
+                        <div class="col-md-8">
+                            <label class="checkbox"><input class="" type="checkbox" name="ckbIsLocked" />&nbsp;&nbsp; Đã khóa</label>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#frm-add-account').formValidation({
+            //err: {
+            //    container:'popover'
+            //},
+            message: 'This value is not valid',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                Role: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa chọn quyền tài khoản'
+                        }
+                    }
+                },
+                txtFullname: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập họ tên'
+                        }
+                    }
+                },
+                txtUsername: {
+                    message: 'Tên đăng nhập không hợp lệ',
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập tên đăng nhập'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'Tên đăng nhập từ 6-50 ký tự'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: 'Tên đăng nhập chỉ gồm: chữ cái, chữ số, dấu chấm, gạch dưới.'
+                        }
+                    }
+                },
+                txtEmail: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập email'
+                        },
+                        emailAddress: {
+                            message: 'Địa chỉ email không hợp lệ'
+                        }
+                    }
+                },
+                txtPassword: {
+                    validators: {
+                        stringLength: {
+                            min: 6,
+                            max: 100,
+                            message: 'Mật khẩu quá ngắn'
+                        },
+                        notEmpty: {
+                            message: 'Chưa nhập mật khẩu'
+                        },
+                        different: {
+                            field: 'username',
+                            message: 'Mật khẩu không được giống với tên đăng nhập'
+                        },
+                        //identical: {
+                        //    field: 'txtRetypePassword',
+                        //    message: 'Mật khẩu không trùng khớp'
+                        //}
+                    }
+                },
+                txtRetypePassword: {
+                    validators: {
+                        identical: {
+                            field: 'txtPassword',
+                            message: 'Mật khẩu không trùng khớp'
+                        }
+                    }
+                },
+                txtPhoneNumber: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập số điện thoại'
+                        }
+                    }
+                }
+            }
+        }).on('err.form.fv', function (e) {
+            // The e parameter is same as one
+            // in the prevalidate.form.fv event above
+
+            // Do something ...
+        })
+            .on('success.form.fv', function (e) {
+                // The e parameter is same as one
+                // in the prevalidate.form.fv event above
+                ACCOUNT_ADD_ACCOUNT();
+                // Do something ...
+            });
+    });
+</script>*@

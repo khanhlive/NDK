@@ -12,7 +12,7 @@ namespace NDK.ApplicationCore.Extensions.ResponseResults
         Existed = 1,
         NotFound = 2,
         Failed = 3,
-        ModelFailed=4
+        ModelFailed = 4
     }
 
     public class AccessEntityResult

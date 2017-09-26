@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace ICB_Website.UI.Areas.admin.Controllers
 {
-    [AttributeRouting.RoutePrefix("tai-khoan")]
+    [AttributeRouting.RoutePrefix("admin/tai-khoan")]
     public class accountController : ControllerApp
     {
         public accountController():base("Tài khoản","Tài khoản") { }
@@ -35,22 +35,22 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> Insert(Register model)
+        public async Task<JsonResult> Insert(Account model)
         {
             if (ModelState.IsValid)
             {
                 AccountProvider provider = new AccountProvider();
-                Account account = new Account();
-                account.CreateTime = DateTime.Now;
-                account.Email = model.Email;
-                account.Fullname = model.Fullname;
-                account.IsActive = true;
-                account.IsDeleted = false;
-                account.IsLocked = false;
-                account.Password = NDK.ApplicationCore.Extensions.Hepler.StringHelper.CreateMD5(model.Password);
-                account.Role = RoleManager.Member;
-                account.Username = model.Username;
-                return Json(await provider.RegisterAsync(account));
+                //Account account = new Account();
+                model.CreateTime = DateTime.Now;
+                //account.Email = model.Email;
+                //account.Fullname = model.Fullname;
+                //account.IsActive = true;
+                model.IsDeleted = false;
+                //account.IsLocked = false;
+                model.Password = NDK.ApplicationCore.Extensions.Hepler.StringHelper.CreateMD5(model.Password);
+                model.Role = RoleManager.Member;
+                //account.Username = model.Username;
+                return Json(await provider.RegisterAsync(model));
             }
             else
             {

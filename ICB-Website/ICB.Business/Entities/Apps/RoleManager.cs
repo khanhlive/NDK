@@ -28,6 +28,17 @@ namespace ICB.Business.Entities.Apps
             RoleModel roleModel = list.FirstOrDefault(x => x.Value == role);
             return roleModel == null ? "" : roleModel.Name;
         }
+        public static List<RoleModel> GetAllRole()
+        {
+            List<RoleModel> list = new List<RoleModel>();
+            list.Add(new RoleModel { Value = 0, Name = "Quản trị hệ thống", NameENG = "SuperAdmin" });
+            list.Add(new RoleModel { Value = 1, Name = "Quản trị", NameENG = "Admin" });
+            list.Add(new RoleModel { Value = 2, Name = "Quản lý Website", NameENG = "Manager" });
+            list.Add(new RoleModel { Value = 3, Name = "Người viết bài", NameENG = "Writer" });
+            list.Add(new RoleModel { Value = 4, Name = "Thành viên", NameENG = "Member" });
+            list.Add(new RoleModel { Value = 5, Name = "Khách", NameENG = "Guest" });
+            return list;
+        }
     }
 
     public class RoleModel
