@@ -1,13 +1,14 @@
-﻿String.prototype.MilisecondsToLongString = function () {
-    var datetime = moment(this);
+﻿String.prototype.MilisecondsToShortString = function () {
+    var datetime = moment(this.toString());
     if (datetime._isValid == true) {
         return datetime.format('DD/MM/YYYY');
     } else {
         return '';
     }
 }
-String.prototype.MilisecondsToShortString = function () {
-    var datetime = moment(this);
+String.prototype.MilisecondsToLongString = function () {
+    var datetime = moment(this.toString());
+    console.log(this);
     if (datetime._isValid == true) {
         return datetime.format('DD/MM/YYYY HH:mm:ss');
     } else {
@@ -15,7 +16,7 @@ String.prototype.MilisecondsToShortString = function () {
     }
 }
 String.prototype.Moment = function () {
-    var datetime = moment(this);
+    var datetime = moment(this.toString());
     if (datetime._isValid == true) {
         return datetime;
     } else return undefined;
@@ -118,6 +119,91 @@ function show_alert(mess) {
     });
 }
 
+////message
+
+function MESSAGEBOX(message, title, callback) {
+    
+    var html = '<div class="modal fade">';
+    html += '<div class="modal-dialog" role= "document">';
+    html += '<div class="modal-content">';
+    html += '<div class="modal-header">';
+    html += '    <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+    html += '       <span aria-hidden="true">&times;</span>';
+    html += '  </button>';
+    html += '   <h4 class="modal-title">' + (title ? title : 'Thông báo') + '</h4>';
+    html += ' </div>';
+    html += '<div class="modal-body">';
+    html += '    <p>' + (message) + '</p>';
+    html += ' </div>';
+    html += '  <div class="modal-footer">';
+    html += '     <button type="button" class="btn btn-primary" data-dismiss="modal">Xác nhận</button>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '</div >';
+    html += ' </div >';
+    var divModal = $('#modal-messagebox');
+    divModal.find('.modal').modal('hide');
+    divModal.empty;
+    divModal.html(html);
+    divModal.find('.modal').on('shown.bs.modal', function (e) {
+        $(this).find('button[data-dismiss]').focus();
+    });
+    divModal.find('.modal').on('hidden.bs.modal', function (e) {
+        divModal.empty();
+    });
+    divModal.find('.modal button').on('click', function (e) {
+        if (callback) {
+            callback(e);
+        }
+    });
+    divModal.find('.modal').modal('show');
+}
+
+function CONFIRMBOX(message, title, successCallback,cancelCallback) {
+    var html = '<div class="modal fade">';
+    html += '<div class="modal-dialog" role= "document">';
+    html += '<div class="modal-content">';
+    html += '<div class="modal-header">';
+    html += '    <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+    html += '       <span aria-hidden="true">&times;</span>';
+    html += '  </button>';
+    html += '   <h4 class="modal-title">' + (title ? title : 'Thông báo') + '</h4>';
+    html += ' </div>';
+    html += '<div class="modal-body">';
+    html += '    <p>' + (message) + '</p>';
+    html += ' </div>';
+    html += '  <div class="modal-footer">';
+    html += '<button type="button" class="btn btn-primary" id="btn-ok">Xác nhận</button>';
+    html += '     <button type="button" class="btn btn-secondary" id="btn-cancel" data-dismiss="modal">Đóng</button>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '</div >';
+    html += ' </div >';
+    var divModal = $('#modal-confirmbox');
+    divModal.find('.modal').modal('hide');
+    divModal.empty;
+    divModal.html(html);
+    divModal.find('.modal').on('shown.bs.modal', function (e) {
+        divModal.find('.modal #btn-ok').focus();
+    });
+    divModal.find('.modal').on('hidden.bs.modal', function (e) {
+        divModal.empty();
+    });
+    divModal.find('.modal #btn-ok').on('click', function (e) {
+        divModal.find('.modal').modal('hide');
+        if (successCallback) {
+            successCallback(e);
+        }
+    });
+    divModal.find('.modal #btn-cancel').on('click', function (e) {
+        if (cancelCallback) {
+            cancelCallback(e);
+        }
+    });
+    divModal.find('.modal').modal('show');
+}
+///end message
+
 $(function () {
     //$('.select2').select2();
     $('[data-mask]').inputmask();
@@ -147,10 +233,14 @@ function Show_message_KQ_Traloi(status,text) {
 
 ////
 var APPLICATION = {
-    CreateDataTable: function (table, buttons, isHasCheck) {
+    CreateDataTable: function (table, buttons, isHasCheck, initCompleteCallback) {
         var setting = {
             language: DataTableLanguage,
-            dom: "Bfrtip"
+            dom: "Bfrtip",
+            "initComplete": function (settings, json) {
+                if (initCompleteCallback)
+                    initCompleteCallback(setting, json);
+            }
             
         };
         if (isHasCheck) {
@@ -165,6 +255,7 @@ var APPLICATION = {
         }
         return $(table).DataTable(setting);
     },
+
     Ajax: function (url, contentType, type, data, successCallback, header) {
         $.ajax({
             url: url,
