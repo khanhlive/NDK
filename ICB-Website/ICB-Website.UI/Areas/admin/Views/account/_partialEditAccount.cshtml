@@ -13,10 +13,19 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Thêm mới tài khoản</h4>
+                <h4 class="modal-title">Cập nhật tài khoản: <b class="lbl-Username btn-link" style="font-weight:bold;"></b></h4>
             </div>
-            <form class="form-horizontal form-no-bottom" id="frm-update-account" onsubmit="return false" novalidate>
+            <form class="form-horizontal form-no-bottom" id="frm-update-account" method="post" onsubmit="return false;" novalidate>
                 <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tên đăng nhập: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" readonly name="txtUsername" placeholder="Tên đăng nhập" />
+                            <input name="ID" type="hidden"/>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-4">Họ tên: </label>
                         <div class="col-md-8">
@@ -24,14 +33,7 @@
                             <span class="help-block"></span>
                         </div>
                     </div>
-                    <div class="form-group has-feedback">
-                        <label class="control-label col-md-4">Tên đăng nhập: </label>
-                        <div class="col-md-8">
-                            <input class="form-control" name="txtUsername" placeholder="Tên đăng nhập" />
-                            <span class="help-block"></span>
-                        </div>
-
-                    </div>
+                    
                     <div class="form-group has-feedback">
                         <label class="control-label col-md-4">Mật khẩu: </label>
                         <div class="col-md-8">
@@ -95,9 +97,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp; Xóa</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                    <button type="button" id="btn-update-account-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" data-id="" onclick="ACCOUNT_DELETE(this);" id="btn-update-account-delete" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp; Xóa</button>
+                    <button type="button"  class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
                 </div>
             </form>
             
@@ -105,3 +107,96 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#frm-update-account').formValidation({
+            //err: {
+            //    container:'popover'
+            //},
+            message: 'Thông tin nhập không hợp lệ',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                Role: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa chọn quyền tài khoản'
+                        }
+                    }
+                },
+                txtFullname: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập họ tên'
+                        }
+                    }
+                },
+                //txtUsername: {
+                //    message: 'Tên đăng nhập không hợp lệ',
+                //    validators: {
+                //        notEmpty: {
+                //            message: 'Chưa nhập tên đăng nhập'
+                //        },
+                //        stringLength: {
+                //            min: 6,
+                //            max: 30,
+                //            message: 'Tên đăng nhập từ 6-50 ký tự'
+                //        },
+                //        regexp: {
+                //            regexp: /^[a-zA-Z0-9_\.]+$/,
+                //            message: 'Tên đăng nhập chỉ gồm: chữ cái, chữ số, dấu chấm, gạch dưới.'
+                //        }
+                //    }
+                //},
+                txtEmail: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập email'
+                        },
+                        emailAddress: {
+                            message: 'Địa chỉ email không hợp lệ'
+                        }
+                    }
+                },
+                txtPassword: {
+                    validators: {
+                        stringLength: {
+                            min: 6,
+                            max: 100,
+                            message: 'Mật khẩu quá ngắn'
+                        },
+                        //notEmpty: {
+                        //    message: 'Chưa nhập mật khẩu'
+                        //},
+                        different: {
+                            field: 'username',
+                            message: 'Mật khẩu không được giống với tên đăng nhập'
+                        },
+                        //identical: {
+                        //    field: 'txtRetypePassword',
+                        //    message: 'Mật khẩu không trùng khớp'
+                        //}
+                    }
+                },
+                txtRetypePassword: {
+                    validators: {
+                        identical: {
+                            field: 'txtPassword',
+                            message: 'Mật khẩu không trùng khớp'
+                        }
+                    }
+                },
+                txtPhoneNumber: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập số điện thoại'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>

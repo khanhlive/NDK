@@ -187,10 +187,10 @@ namespace NDK.ApplicationCore.EFGenericRepository
             var model = this.context.Set<T>().Find(id);
             if (model != null)
             {
-                this.context.Set<T>().Attach(item);
-                this.context.Entry<T>(item).State = EntityState.Modified;
+
+                this.context.Entry<T>(model).CurrentValues.SetValues(item);// = EntityState.Modified;
                 int counter = this.context.SaveChanges();
-                this.context.Entry<T>(item).GetDatabaseValues();
+                this.context.Entry<T>(model).GetDatabaseValues();
                 return Tuple.Create(counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed, item);
             }
             else
@@ -211,10 +211,10 @@ namespace NDK.ApplicationCore.EFGenericRepository
             var model =await this.context.Set<T>().FindAsync(id);
             if (model != null)
             {
-                this.context.Set<T>().Attach(item);
-                this.context.Entry<T>(item).State = EntityState.Modified;
+                this.context.Entry<T>(model).CurrentValues.SetValues(item);
+                //this.context.Entry<T>(item).State = EntityState.Modified;
                 int counter = await this.context.SaveChangesAsync();
-                this.context.Entry<T>(item).GetDatabaseValues();
+                this.context.Entry<T>(model).GetDatabaseValues();
                 return Tuple.Create(counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed, item);
             }
             else

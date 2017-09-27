@@ -8,6 +8,7 @@ using System.Data.Entity;
 using NDK.ApplicationCore.Extensions.ResponseResults;
 using ICB.Business.Entities.Message;
 using ICB.Business.Entities.Apps;
+using NDK.ApplicationCore.Extensions.Hepler;
 
 namespace ICB.Business.Access
 {
@@ -79,6 +80,71 @@ namespace ICB.Business.Access
                 }
             }
         }
-        
+
+        public Tuple<AccessEntityStatusCode, Account> Edit(Account account, int id)
+        {
+
+
+            Account edit = this.GetByID(id);
+            if (edit != null)
+            {
+                if (string.IsNullOrEmpty(account.Password) || string.IsNullOrWhiteSpace(account.Password))
+                {
+                    account.Password = edit.Password;
+                    account.CreateTime = edit.CreateTime;
+                    account.Documents = edit.Documents;
+                    account.Feedbacks = edit.Feedbacks;
+                    account.IsDeleted = edit.IsDeleted;
+                    account.LastLoginTime = edit.LastLoginTime;
+                    account.LastMordifiedTime = edit.LastMordifiedTime;
+                    account.Services = edit.Services;
+                    return this.Update(account, id);
+                }
+                else
+                {
+                    account.Password = StringHelper.CreateMD5(account.Password);
+                    return this.Update(account, id);
+                }
+            }
+            else
+            {
+                return new Tuple<AccessEntityStatusCode, Account>(AccessEntityStatusCode.NotFound, null);
+            }
+
+        }
+
+
+        public async Task<Tuple<AccessEntityStatusCode, Account>> EditAsync(Account account, int id)
+        {
+
+            Account edit = await this.GetByIDAsync(id);
+            if (edit != null)
+            {
+                account.Password = edit.Password;
+                account.CreateTime = edit.CreateTime;
+                account.Documents = edit.Documents;
+                account.Feedbacks = edit.Feedbacks;
+                account.IsDeleted = edit.IsDeleted;
+                account.LastLoginTime = edit.LastLoginTime;
+                account.LastMordifiedTime = edit.LastMordifiedTime;
+                account.Services = edit.Services;
+                if (string.IsNullOrEmpty(account.Password) || string.IsNullOrWhiteSpace(account.Password))
+                {
+                    account.Password = edit.Password;
+                    return await this.UpdateAsync(account, id);
+                }
+                else
+                {
+                    account.Password = StringHelper.CreateMD5(account.Password);
+                    return await this.UpdateAsync(account, id);
+                }
+            }
+            else
+            {
+                return new Tuple<AccessEntityStatusCode, Account>(AccessEntityStatusCode.NotFound, null);
+            }
+
+        }
+
     }
 }

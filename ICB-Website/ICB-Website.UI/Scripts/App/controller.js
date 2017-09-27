@@ -2,10 +2,26 @@
     if ($('[data-controller=account]').length > 0) {
         ACCOUNT_INIT_TABLE_ALLACCOUNT();
         ACCOUNT_ADD_INITFORM();
+        $('#btn-update-account-submit').click(function (e) {
+            $('#frm-update-account').data('formValidation').validate();
+            if ($('#frm-update-account').data('formValidation').isValid()) {
+                ACCOUNT_UPDATE_ACCOUNT();
+            }
+            
+        });
+        $('#btn-add-account-submit').click(function (e) {
+            $('#frm-add-account').data('formValidation').validate();
+            if ($('#frm-add-account').data('formValidation').isValid()) {
+                ACCOUNT_ADD_ACCOUNT();
+            }
+
+            return false;
+        });
     }
     
 });
 
+//////  ACCOUNT //////
 var ACCOUNTController = {
     dom: $('#ACCOUNT_ALLACCOUNT'),
     mainTable: null,
@@ -21,14 +37,45 @@ var ACCOUNTController = {
         {
             text: '<i class="fa fa-edit"></i>&nbsp;&nbsp;Sửa&nbsp;&nbsp;',
             action: function () {
-                $('#modal-account-update').modal({ backdrop: 'static', keyboard: false, show: true });
+                var form = $('#frm-update-account');
+                var table = $('#ACCOUNT_ALLACCOUNT');
+                var tr = table.find('tbody tr.active');
+                var data_id = tr.data('id');
+                if (data_id) {
+                    APPLICATION.ShowLoading();
+                    APPLICATION.Ajax('/admin/account/getbyid/' + data_id, 'application/json', 'GET', null, function (d) {
+                        
+                        form.find('[name=ID]').val(d.ID);
+                        form.find('[name=Role]').val(d.Role);
+                        form.find('[name=txtFullname]').val(d.Fullname);
+                        form.find('[name=txtUsername]').val(d.Username);
+                        form.find('[name=txtPassword]').val();
+                        form.find('[name=txtRetypePassword]').val('');
+                        form.find('[name=txtEmail]').val(d.Email);
+                        form.find('[name=txtPhoneNumber]').val(d.PhoneNumber);
+                        form.find('[name=ckbIsActive]').iCheck(d.IsActive ? 'check' : 'uncheck');
+                        form.find('[name=ckbIsLocked]').iCheck(d.IsLocked ? 'check' : 'uncheck');
+                        $('#btn-update-account-delete').attr({ 'data-id': d.ID });
+                        $('#modal-account-update').modal({ backdrop: 'static', keyboard: false, show: true });
+                        $('#modal-account-update').on('shown.bs.modal', function (e) {
+                            
+                            form.data('formValidation').resetForm();
+                        });
+                        APPLICATION.HideLoading();
+                    });
+                } else {
+                    APPLICATION.HideLoading();
+                }
             },
             className: 'btn-info'
         },
         {
             text: '<i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa&nbsp;&nbsp;',
             action: function () {
-
+                var table = $('#ACCOUNT_ALLACCOUNT');
+                var tr = table.find('tbody tr.active');
+                var data_id = tr.data('id');
+                ACCOUNT_DELETE_ACCOUNT(data_id);
             },
             className: 'btn-danger'
         },
@@ -66,9 +113,9 @@ function ACCOUNT_RELOAD_ALLACCOUNT() {
     $('div[data-controller=account] .btn-account-refresh i').addClass('fa-spin');
     APPLICATION.Ajax('/admin/account/GetAllAccount', 'application/json', 'GET', null, function (response) {
         if (ACCOUNTController.mainTable) {
-            ACCOUNTController.mainTable.clear().draw();
+            ACCOUNTController.mainTable.rows().clear().draw();
             $.each(response, function (a, b) {
-                ACCOUNTController.mainTable.row.add([
+                var tr = ACCOUNTController.mainTable.row.add([
                     '<input type="checkbox" class="flat" value="' + b.ID + '" name="table_records" />',
                     b.Username,
                     b.Fullname,
@@ -78,17 +125,20 @@ function ACCOUNT_RELOAD_ALLACCOUNT() {
                     '<span class="icheckbox_minimal-blue ' + (b.IsActive ? 'checked' : '') + '"></span>',
                     '<span class="icheckbox_minimal-blue ' + (b.IsLocked ? 'checked' : '') + '"></span>'
                 ]).draw(false);
+                tr.nodes().to$().attr({ 'data-id': b.ID });
+                
             });
+            
             APPLICATION.INIT_CHECKBOX(ACCOUNTController.dom.find('tbody'));
             setTimeout(function () {
                 $('div[data-controller=account] .btn-account-refresh i').removeClass('fa-spin');
             }, 1000);
-            
+            APPLICATION.DataTable.AddEventToCheckbox($(ACCOUNTController.dom));
         } else {
             ACCOUNTController.mainTable = null;
             var html = '';
             $.each(response, function (a, b) {
-                html += '<tr>';
+                html += '<tr data-id="' + b.ID + '">';
                 html += '<td><input type="checkbox" class="flat" value="' + b.ID + '" name="table_records" /></td>';
                 html += '<td>' + b.Username + '</td>';
                 html += '<td>' + b.Fullname + '</td>';
@@ -231,7 +281,8 @@ function ACCOUNT_ADD_INITFORM() {
                 }
             }
         }
-    }).on('err.form.fv', function (e) {
+    })
+        .on('err.form.fv', function (e) {
         // The e parameter is same as one
         // in the prevalidate.form.fv event above
 
@@ -240,7 +291,71 @@ function ACCOUNT_ADD_INITFORM() {
         .on('success.form.fv', function (e) {
             // The e parameter is same as one
             // in the prevalidate.form.fv event above
-            ACCOUNT_ADD_ACCOUNT();
+            //ACCOUNT_ADD_ACCOUNT();
             // Do something ...
         });
 }
+
+
+function ACCOUNT_UPDATE_ACCOUNT() {
+    var form = $("#frm-update-account");
+    var id = form.find('[name=ID]').val();
+    var fullname = form.find('[name=txtFullname]').val();
+    var role = form.find('[name=Role]').val();
+    var username = form.find('[name=txtUsername]').val();
+    var password = form.find('[name=txtPassword]').val();
+    var email = form.find('[name=txtEmail]').val();
+    var phone = form.find('[name=txtPhoneNumber]').val();
+    var isActive = form.find('[name=ckbIsActive]').is(':checked');
+    var isLocked = form.find('[name=ckbIsLocked]').is(':checked');
+    var Account = {
+        ID: id,
+        Username: username,
+        Password: password,
+        Role: role,
+        Email: email,
+        Fullname: fullname,
+        IsActive: isActive,
+        IsLocked: isLocked,
+        PhoneNumber: phone
+    };
+    APPLICATION.Ajax('/admin/account/update/'+Account.ID, 'application/json', 'PUT', JSON.stringify(Account), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            ACCOUNT_RESETFIELD('add');
+            $('#modal-account-update').modal('hide');
+            ShowNotifySuccess(d.Message);
+            ACCOUNT_RELOAD_ALLACCOUNT();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+function ACCOUNT_DELETE_ACCOUNT(id) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa tài khoản này không?', 'Xóa tài khoản', function (e) {
+            APPLICATION.Ajax('/admin/account/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    ShowNotifySuccess('Xóa thành công');
+                    $('#modal-account-update').modal('hide');
+                    ACCOUNT_RELOAD_ALLACCOUNT();
+                } else {
+                    ShowNotifyError(d.Message);
+                }
+            });
+
+        });
+    }
+}
+
+function ACCOUNT_DELETE(element) {
+    var id = $(element).data('id');
+    if (id) {
+        ACCOUNT_DELETE_ACCOUNT(id);
+    }
+}
+
+
+////   END ACCOUNT   /////
+
+

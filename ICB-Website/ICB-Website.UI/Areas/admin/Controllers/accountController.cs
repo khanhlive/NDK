@@ -4,6 +4,7 @@ using ICB.Business.Entities.Message;
 using ICB.Business.Models;
 using ICB_Website.UI.Models;
 using ICB_Website.UI.Models.Entities;
+using ICB_Website.UI.Models.Security;
 using NDK.ApplicationCore.Extensions.ResponseResults;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ using System.Web.Mvc;
 
 namespace ICB_Website.UI.Areas.admin.Controllers
 {
+    [AttributeRouting.RouteArea("admin")]
     [AttributeRouting.RoutePrefix("admin/tai-khoan")]
     public class accountController : ControllerApp
     {
         public accountController():base("Tài khoản","Tài khoản") { }
 
         [AttributeRouting.Web.Mvc.Route("")]
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin,RoleManager.Manager)]
         // GET: admin/account
         public async Task<ActionResult> Index()
         {
@@ -61,10 +64,11 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         [HttpPut]
         public async Task<JsonResult> Update(int id,Account account)
         {
+            ModelState.Remove("Password");
             if (ModelState.IsValid)
             {
                 AccountProvider provider = new AccountProvider();
-                Tuple<AccessEntityStatusCode, Account> result = await provider.UpdateAsync(account, id);
+                Tuple<AccessEntityStatusCode, Account> result = await provider.EditAsync(account, id);
                 return Json(new AccessEntityResult { Status = result.Item1, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) });
             }
             else
@@ -87,6 +91,13 @@ namespace ICB_Website.UI.Areas.admin.Controllers
                 AccessEntityStatusCode accessEntityStatusCode = await accountProvider.DeleteAsync(account);
                 return Json(new AccessEntityResult { Status = accessEntityStatusCode, Message = MessageManager.GetErrorMessage(ModuleType.Base, accessEntityStatusCode) });
             }
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetByID(int id)
+        {
+            AccountProvider accountProvider = new AccountProvider();
+            return Json(await accountProvider.GetByIDAsync(id), JsonRequestBehavior.AllowGet);
         }
     }
 }

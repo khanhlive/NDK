@@ -1,9 +1,53 @@
-﻿
+﻿@model List<ICB.Business.Models.Customer>
 @{
     ViewBag.Title = "Admin: Quản lý khách hàng";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 <div data-controller="customer">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách khách hàng</h3>
 
+        </div>
+        <div class="box-body">
+
+            <table class="table table-striped jambo_table table-bordered dt-responsive no-wrap" id="CUSTOMER_ALLCUSTOMER">
+                <thead>
+                    <tr>
+                        <th width="100"></th>
+                        <th>Tên khách hàng</th>
+                        <th>Title</th>
+                        <th>Tên đầy đủ</th>
+                        <th>Trang chủ công ty</th>
+                        <th>Email</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Hình ảnh</th>
+                        <th>Icon</th>
+                        <th>Thứ tự</th>
+                        <th>Sử dụng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model)
+                    {
+                        <tr data-id="@customer.ID">
+                            <td width="100"><input type="checkbox" class="flat" value="@customer.ID" name="table_records" /></td>
+                            <td>@customer.Name</td>
+                            <td>@customer.Title</td>
+                            <td>@customer.Fullname</td>
+                            <td>@customer.Website</td>
+                            <td>@customer.Email</td>
+                            <td>@customer.PhoneNumber</td>
+                            <td>@customer.Address</td>
+                            <td>@customer.Thumbnail</td>
+                            <td>@customer.Icon</td>
+                            <td>@customer.Order</td>
+                            <td><span @if (customer.Status == 1) { <text> class="icheckbox_minimal-blue checked" </text>     } else { <text> class="icheckbox_minimal-blue" </text>    }> </span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-

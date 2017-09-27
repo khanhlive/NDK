@@ -66,6 +66,7 @@ namespace ICB.Business.Entities.Message
                     return "Lỗi hệ thống";
             }
         }
+
     }
     public abstract class MessageBase
     {
@@ -77,6 +78,7 @@ namespace ICB.Business.Entities.Message
         protected string AccountNotFound = "Tài khoản không tồn tại";
         protected string MsgDefault = "Thông báo từ Website";
         protected string ModelFailed_Base = "Thông tin không hợp lệ";
+        protected string Update = "Cập nhật thành công";
         public abstract string GetMessage(MessageType messageType);
     }
 
@@ -88,6 +90,16 @@ namespace ICB.Business.Entities.Message
             {
                 case MessageType.ModelFailed:
                     return this.ModelFailed_Base;
+                case MessageType.Success:
+                    return this.Success;
+                case MessageType.Failed:
+                    return this.Failed_Base;
+                case MessageType.NotFound:
+                    return this.NotFound;
+                case MessageType.Existed:
+                    return this.Existed;
+                case MessageType.Update:
+                    return this.Update;
                 default:
                     return this.MsgDefault;
             }
@@ -99,6 +111,7 @@ namespace ICB.Business.Entities.Message
         protected new string Success = "Đăng ký tài khoản thành công";
         protected string Failed = "Không đăng ký được tài khoản";
         protected string ModelFailed = "Thông tin không hợp lệ";
+        protected new string Update = "Cập nhật thành công";
 
         public override string GetMessage(MessageType messageType)
         {
@@ -151,6 +164,7 @@ namespace ICB.Business.Entities.Message
 
     public enum MessageType
     {
+        Update,
         Success,
         Failed,
         NotFound,

@@ -11,7 +11,7 @@
         </div>
         <div class="box-body">
 
-            <table class="table table-striped jambo_table table-bordered dt-responsive no-wrap" id="ACCOUNT_ALLACCOUNT" data-multiple="multiple">
+            <table class="table table-striped jambo_table table-bordered dt-responsive no-wrap" id="ACCOUNT_ALLACCOUNT">
                 <thead>
                     <tr>
                         <th>@*<input type="checkbox" name="checkall" class="checkboxall flat" />*@ </th>
@@ -27,7 +27,7 @@
                 <tbody>
                     @foreach (var account in Model)
                     {
-                        <tr>
+                        <tr data-id="@account.ID">
                             <td><input type="checkbox" class="flat" value="@account.ID" name="table_records"></td>
                             <td>@account.Username</td>
                             <td>@account.Fullname</td>

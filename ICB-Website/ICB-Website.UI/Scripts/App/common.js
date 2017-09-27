@@ -247,7 +247,7 @@ var APPLICATION = {
                 
                 $(table).find('[name=table_records]').unbind('ifChecked').on('ifChecked', function (e) {
                     var multiple = $(table).attr('data-multiple');
-                    if (multiple=='multiple') {
+                    if (multiple == 'multiple') {
                         $(this).closest('tr').addClass('active');
                     } else {
                         var trs = $(table).find('tbody tr.active');
@@ -255,14 +255,9 @@ var APPLICATION = {
                         trs.removeClass('active');
                         $(this).closest('tr').addClass('active');
                     }
-                    //if ($(this).is(':checked')) {
-                    //    $(this).closest('tr').addClass('active');
-                    //} else {
-                    //    $(this).closest('tr').removeClass('active');
-                    //}
                 });
                 $(table).find('[name=table_records]').unbind('ifUnchecked').on('ifUnchecked', function (e) {
-                    
+
                     $(this).closest('tr').removeClass('active');
                 });
             },
@@ -280,6 +275,26 @@ var APPLICATION = {
             setting.buttons = [];
         }
         return $(table).DataTable(setting);
+    },
+
+    DataTable: {
+        AddEventToCheckbox: function (row) {
+            $(row).find('[name=table_records]').unbind('ifChecked').on('ifChecked', function (e) {
+                var multiple = $(row).closest('table').attr('data-multiple');
+                if (multiple == 'multiple') {
+                    $(this).closest('tr').addClass('active');
+                } else {
+                    var trs = $(row).closest('table').find('tbody tr.active');
+                    trs.find('[name=table_records]').iCheck('uncheck');
+                    trs.removeClass('active');
+                    $(this).closest('tr').addClass('active');
+                }
+            });
+            $(row).find('[name=table_records]').unbind('ifUnchecked').on('ifUnchecked', function (e) {
+
+                $(this).closest('tr').removeClass('active');
+            });
+        }
     },
 
     Ajax: function (url, contentType, type, data, successCallback, header) {
@@ -366,5 +381,13 @@ var APPLICATION = {
             container.closest('.form-group').removeClass('has-error');
         }
     },
+
+    ShowLoading: function () {
+        $('#pnl-main-loading').show();
+    },
+
+    HideLoading: function () {
+        $('#pnl-main-loading').hide();
+    }
 }
 
