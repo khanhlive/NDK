@@ -99,7 +99,8 @@ namespace ICB_Website.UI.Controllers
         [AttributeRouting.Web.Mvc.Route("dang-xuat")]
         public ActionResult Logout()
         {
-            return RedirectToAction("Index");
+            SessionApp.Logout();
+            return Redirect(Url.Action("Index", "Home", new { area = "" }));
         }
     }
 }

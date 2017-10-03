@@ -13,6 +13,7 @@ namespace ICB_Website.UI.Models.Security
             get
             {
                 var login = HttpContext.Current.Session["IsLogin"];
+                
                 if (login==null)
                 {
                     return false;
@@ -124,5 +125,14 @@ namespace ICB_Website.UI.Models.Security
             }
         }
 
+        public static void Logout()
+        {
+            SessionApp.IsLogin = false;
+            SessionApp.Email = null;
+            SessionApp.Fullname = null;
+            SessionApp.Role = null;
+            SessionApp.RoleType = -1;
+            SessionApp.Username = null;
+        }
     }
 }

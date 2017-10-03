@@ -135,6 +135,9 @@
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>Tin tức</value>
   </data>

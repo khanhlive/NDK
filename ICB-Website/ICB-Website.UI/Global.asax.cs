@@ -12,6 +12,7 @@ namespace ICB_Website.UI
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Application_Start()
         {
             //Database.SetInitializer<ICB.Business.Entities.ICBContext>(new CreateDatabaseIfNotExists<ICB.Business.Entities.ICBContext>());
@@ -20,6 +21,7 @@ namespace ICB_Website.UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -36,6 +38,12 @@ namespace ICB_Website.UI
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("vi");
             }
             
+        }
+
+        protected void Application_Error()
+        {
+            Exception exception = Server.GetLastError();
+            log.Error("System error", exception);
         }
     }
 }

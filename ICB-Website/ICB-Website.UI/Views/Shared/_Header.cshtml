@@ -5,7 +5,16 @@
             <nav id="top-nav" class="top-nav pull-left">
                 <ul id="top-menu" class="top-menu clearfix">
                     <li class="menu-item "><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
-                    <li class="menu-item "><a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a></li>
+                    <li class="menu-item ">
+                    @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
+                    {
+                        <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
+                    }
+                    </li>
                     @if (ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Admin
                 || ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Superadmin)
                     {
@@ -17,7 +26,16 @@
                 <a class="pull" href="#">Menu<span class="fa fa-caret-down"></span></a>
                 <ul id="top-menu-mobile" class="top-menu-mobile">
                     <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
-                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Login</a></li>
+                    <li class="menu-item">
+                        @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
+                        {
+                            <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
+                        }
+                    </li>
                     @if (ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Admin
         || ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Superadmin)
                     {
@@ -72,9 +90,24 @@
             </div>
             <nav class="main-nav-mobile clearfix">
                 <a class="pull"><span class="fa fa-bars"></span></a><ul id="main-menu-mobile" class="main-menu-mobile">
-                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
-                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Login</a></li>
-                </ul>
+    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
+    <li class="menu-item">
+        @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
+        {
+            <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
+        }
+    </li>
+    @if (ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Admin
+        || ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Superadmin)
+    {
+        <li class="menu-item"><a href="@Url.Action("Index","dashboard",new { area="admin"})">@ICB_Website.UI.Resources.RHome.AdminPanel</a></li>
+    }
+</ul>
+
             </nav>
         </div>
     </div><!--/end .header-middle-->
