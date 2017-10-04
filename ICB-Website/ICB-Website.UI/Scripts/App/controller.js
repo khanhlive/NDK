@@ -7,7 +7,7 @@
             if ($('#frm-update-account').data('formValidation').isValid()) {
                 ACCOUNT_UPDATE_ACCOUNT();
             }
-            
+
         });
         $('#btn-add-account-submit').click(function (e) {
             $('#frm-add-account').data('formValidation').validate();
@@ -18,7 +18,24 @@
             return false;
         });
     }
-    
+
+    if ($('[data-controller=customer]').length > 0) {
+        CUSTOMER_INIT_TABLE();
+
+        $('#btn-customer-browser').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (url) {
+                var decodedUri = decodeURIComponent(url);
+                $(".img-thumbnail").attr('src', decodedUri);
+                $(".image").val(decodedUri);
+                $("#image-url").text(decodedUri);
+                $("#images-url").text(decodedUri);
+            }
+            ckfinder.popup();
+        });
+    }
+
+
 });
 
 //////  ACCOUNT //////
@@ -358,4 +375,80 @@ function ACCOUNT_DELETE(element) {
 
 ////   END ACCOUNT   /////
 
+//// KHACH HANG // /////
 
+//////  ACCOUNT //////
+var CUSTOMERController = {
+    dom: $('#CUSTOMER_ALLCUSTOMER'),
+    mainTable: null,
+    options: [
+        {
+            text: '<i class="fa fa-plus"></i>&nbsp;Thêm mới&nbsp;',
+            action: function () {
+                $('#modal-customer-add').modal({ backdrop: 'static', keyboard: false, show: true });
+            },
+            className: 'btn-success'
+
+        },
+        {
+            text: '<i class="fa fa-edit"></i>&nbsp;&nbsp;Sửa&nbsp;&nbsp;',
+            action: function () {
+                var form = $('#frm-update-account');
+                var table = $('#ACCOUNT_ALLACCOUNT');
+                var tr = table.find('tbody tr.active');
+                var data_id = tr.data('id');
+                if (data_id) {
+                    APPLICATION.ShowLoading();
+                    APPLICATION.Ajax('/admin/account/getbyid/' + data_id, 'application/json', 'GET', null, function (d) {
+
+                        form.find('[name=ID]').val(d.ID);
+                        form.find('[name=Role]').val(d.Role);
+                        form.find('[name=txtFullname]').val(d.Fullname);
+                        form.find('[name=txtUsername]').val(d.Username);
+                        form.find('[name=txtPassword]').val();
+                        form.find('[name=txtRetypePassword]').val('');
+                        form.find('[name=txtEmail]').val(d.Email);
+                        form.find('[name=txtPhoneNumber]').val(d.PhoneNumber);
+                        form.find('[name=ckbIsActive]').iCheck(d.IsActive ? 'check' : 'uncheck');
+                        form.find('[name=ckbIsLocked]').iCheck(d.IsLocked ? 'check' : 'uncheck');
+                        $('#btn-update-account-delete').attr({ 'data-id': d.ID });
+                        $('#modal-account-update').modal({ backdrop: 'static', keyboard: false, show: true });
+                        $('#modal-account-update').on('shown.bs.modal', function (e) {
+
+                            form.data('formValidation').resetForm();
+                        });
+                        APPLICATION.HideLoading();
+                    });
+                } else {
+                    APPLICATION.HideLoading();
+                }
+            },
+            className: 'btn-info'
+        },
+        {
+            text: '<i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa&nbsp;&nbsp;',
+            action: function () {
+                var table = $('#ACCOUNT_ALLACCOUNT');
+                var tr = table.find('tbody tr.active');
+                var data_id = tr.data('id');
+                ACCOUNT_DELETE_ACCOUNT(data_id);
+            },
+            className: 'btn-danger'
+        },
+        {
+            text: '<i class="fa fa-refresh"></i>&nbsp;Làm mới&nbsp;',
+            action: function () {
+                ACCOUNT_RELOAD_ALLACCOUNT();
+            },
+            className: 'btn-account-refresh btn-primary'
+        }
+    ]
+}
+
+
+function CUSTOMER_INIT_TABLE() {
+    CUSTOMERController.mainTable = APPLICATION.CreateDataTable(CUSTOMERController.dom, CUSTOMERController.options, true);
+}
+
+
+//// END KHACH HANG  //////

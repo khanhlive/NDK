@@ -25,5 +25,11 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
             return View(await customerProvider.GetAllAsync());
         }
+        [AttributeRouting.Web.Mvc.Route("getall")]
+        public async Task<JsonResult> GetAll()
+        {
+            CustomerProvider customerProvider = new CustomerProvider();
+            return Json(await customerProvider.GetAllAsync(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

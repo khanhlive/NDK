@@ -1,0 +1,90 @@
+﻿@{ 
+    Layout = null;
+}
+<div class="modal fade" id="modal-customer-add">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thêm mới khách hàng</h4>
+            </div>
+            <form class="form-horizontal form-no-bottom" id="frm-add-customer" onsubmit="return false" novalidate>
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tên khách hàng: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Name" placeholder="Tên khách hàng" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tiêu đề: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Title" placeholder="Tiêu đề" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Email: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email" name="Email" placeholder="Email" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Địa chỉ: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="Address" placeholder="Địa chỉ" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Website: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Website" placeholder="Website" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Số điện thoại: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="PhoneNumber" placeholder="Số điện thoại" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Ảnh: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Thumbnail" placeholder="Ảnh" />
+                            <button type="button" id="btn-customer-browser" class="btn btn-primary">Browser</button>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Trạng thái: </label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="Status">
+                                <option value>Chọn trạng thái</option>
+                                
+                            </select>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-add-account-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

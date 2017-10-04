@@ -16,15 +16,10 @@
                     <tr>
                         <th width="100"></th>
                         <th>Tên khách hàng</th>
-                        <th>Title</th>
-                        <th>Tên đầy đủ</th>
-                        <th>Trang chủ công ty</th>
                         <th>Email</th>
                         <th>Điện thoại</th>
                         <th>Địa chỉ</th>
                         <th>Hình ảnh</th>
-                        <th>Icon</th>
-                        <th>Thứ tự</th>
                         <th>Sử dụng</th>
                     </tr>
                 </thead>
@@ -34,14 +29,10 @@
                         <tr data-id="@customer.ID">
                             <td width="100"><input type="checkbox" class="flat" value="@customer.ID" name="table_records" /></td>
                             <td>@customer.Name</td>
-                            <td>@customer.Title</td>
-                            <td>@customer.Fullname</td>
-                            <td>@customer.Website</td>
                             <td>@customer.Email</td>
                             <td>@customer.PhoneNumber</td>
                             <td>@customer.Address</td>
                             <td>@customer.Thumbnail</td>
-                            <td>@customer.Icon</td>
                             <td>@customer.Order</td>
                             <td><span @if (customer.Status == 1) { <text> class="icheckbox_minimal-blue checked" </text>     } else { <text> class="icheckbox_minimal-blue" </text>    }> </span></td>
                         </tr>
@@ -51,3 +42,5 @@
         </div>
     </div>
 </div>
+
+@Html.Partial("_partialAdd")
