@@ -280,6 +280,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\accountController.cs" />
+    <Compile Include="Areas\admin\Controllers\categoryController.cs" />
     <Compile Include="Areas\admin\Controllers\customerController.cs" />
     <Compile Include="Areas\admin\Controllers\dashboardController.cs" />
     <Compile Include="Areas\admin\Controllers\documentController.cs" />
@@ -3670,6 +3671,8 @@
     <Content Include="Plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Plugins\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\admin\Views\customer\_partialEdit.cshtml" />
+    <Content Include="Areas\admin\Views\category\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
@@ -3910,6 +3913,7 @@
     <Content Include="Uploads\Images\bfi_thumb\Wedding-Sign-2xau0ibb0706eq054aeozu.jpg" />
     <Content Include="Uploads\Images\bfi_thumb\Wedding-Sign-2xau0ibbb9viv9qis660wa.jpg" />
     <Content Include="Uploads\Images\bfi_thumb\Wedding-Sign-2xau0ibbehy6vzt0muot8q.jpg" />
+    <Content Include="Uploads\Images\Koala.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

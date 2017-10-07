@@ -26,6 +26,8 @@ namespace ICB.Business.Models
 
         public int? Order { get; set; }
 
+        public int? Active { get; set; }
+
         [StringLength(500)]
         public string NameENG { get; set; }
 

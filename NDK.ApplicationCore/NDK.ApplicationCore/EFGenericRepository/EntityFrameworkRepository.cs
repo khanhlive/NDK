@@ -191,7 +191,7 @@ namespace NDK.ApplicationCore.EFGenericRepository
                 this.context.Entry<T>(model).CurrentValues.SetValues(item);// = EntityState.Modified;
                 int counter = this.context.SaveChanges();
                 this.context.Entry<T>(model).GetDatabaseValues();
-                return Tuple.Create(counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed, item);
+                return Tuple.Create(counter >= 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed, item);
             }
             else
             {
@@ -215,7 +215,7 @@ namespace NDK.ApplicationCore.EFGenericRepository
                 //this.context.Entry<T>(item).State = EntityState.Modified;
                 int counter = await this.context.SaveChangesAsync();
                 this.context.Entry<T>(model).GetDatabaseValues();
-                return Tuple.Create(counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed, item);
+                return Tuple.Create(counter >= 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed, item);
             }
             else
             {
@@ -247,6 +247,34 @@ namespace NDK.ApplicationCore.EFGenericRepository
         public virtual ICollection<T> GetAll()
         {
             return this.context.Set<T>().ToList();
+        }
+
+        public virtual async Task<AccessEntityStatusCode> DeleteAsync(KeyType id)
+        {
+            T item = this.GetByID(id);
+            if (item == null)
+            {
+                return AccessEntityStatusCode.NotFound;
+            }
+            else
+            {
+                AccessEntityStatusCode statusCode = await this.DeleteAsync(item);
+                return statusCode;
+            }
+        }
+
+        public virtual AccessEntityStatusCode Delete(KeyType id)
+        {
+            T item = this.GetByID(id);
+            if (item == null)
+            {
+                return AccessEntityStatusCode.NotFound;
+            }
+            else
+            {
+                AccessEntityStatusCode statusCode = this.Delete(item);
+                return statusCode;
+            }
         }
     }
     

@@ -17,7 +17,20 @@ namespace NDK.ApplicationCore.EFGenericRepository
     /// <typeparam name="KeyType">Kiểu dữ liệu Key Field </typeparam>
     public interface IRepository<T,KeyType> where T : class
     {
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<AccessEntityStatusCode> DeleteAsync(KeyType id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        AccessEntityStatusCode Delete(KeyType id);
+
         /// <summary>
         /// 
         /// </summary>

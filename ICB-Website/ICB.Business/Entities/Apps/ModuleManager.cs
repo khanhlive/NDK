@@ -17,6 +17,7 @@ namespace ICB.Business.Entities.Apps
         Base,
         Register,
         Login,
+        Customer
         
     }
 }

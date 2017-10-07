@@ -19,7 +19,9 @@ namespace ICB.Business.Entities.Message
                 case ModuleType.Register:
                     return MessageManager.GetMessage(new RegisterMessage(), messageType);
                 case ModuleType.Login:
-                    break;
+                    return MessageManager.GetMessage(new LoginMessage(), messageType);
+                case ModuleType.Customer:
+                    return MessageManager.GetMessage(new CustomerMessage(), messageType);
                 default:
                     break;
             }
@@ -37,6 +39,8 @@ namespace ICB.Business.Entities.Message
                     return MessageManager.GetMessage(new RegisterMessage(), accessEntityStatusCode);
                 case ModuleType.Login:
                     return MessageManager.GetMessage(new LoginMessage(), accessEntityStatusCode);
+                case ModuleType.Customer:
+                    return MessageManager.GetMessage(new CustomerMessage(), accessEntityStatusCode);
                 default:
                     break;
             }
@@ -162,11 +166,50 @@ namespace ICB.Business.Entities.Message
         }
     }
 
+    public class CustomerMessage : MessageBase
+    {
+        protected new string Success = "Thêm mới khách hàng thành công";
+        protected string Failed = "Không thêm được khách hàng";
+        protected string ModelFailed = "Thông tin khách hàng không hợp lệ";
+        protected string DeleteSuccess = "Khách hàng đã được xóa thành công";
+        protected string DeleteFailed = "Không xóa được khách hàng";
+        protected string UpdateFailed = "Không cập nhật được khách hàng";
+        public override string GetMessage(MessageType messageType)
+        {
+            switch (messageType)
+            {
+                case MessageType.Update:
+                    return this.Update;
+                case MessageType.UpdateFailed:
+                    return this.UpdateFailed;
+                case MessageType.Success:
+                    return this.Success;
+                case MessageType.Failed:
+                    return this.Failed;
+                case MessageType.DeleteSuccess:
+                    return this.DeleteSuccess;
+                case MessageType.DeleteFailed:
+                    return this.DeleteFailed;
+                case MessageType.NotFound:
+                    return this.NotFound;
+                case MessageType.Existed:
+                    return this.Existed;
+                case MessageType.ModelFailed:
+                    return this.ModelFailed;
+                default:
+                    return this.MsgDefault;
+            }
+        }
+    }
+
     public enum MessageType
     {
         Update,
+        UpdateFailed,
         Success,
         Failed,
+        DeleteSuccess,
+        DeleteFailed,
         NotFound,
         Existed,
         Account_Existed,

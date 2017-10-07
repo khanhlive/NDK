@@ -4,6 +4,39 @@
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 <div data-controller="service">
-
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách khách hàng</h3>
+        </div>
+        <div class="box-body">
+            <table class="table table-striped jambo_table table-bordered dt-responsive no-wrap" id="SERVICE_ALLSERVICE">
+                <thead>
+                    <tr>
+                        <th width="100"></th>
+                        <th>Tên khách hàng</th>
+                        <th>Email</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Hình ảnh</th>
+                        <th>Sử dụng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model)
+                    {
+                        <tr data-id="@customer.ID">
+                            <td style="width:60px !important"><input type="checkbox" class="flat" value="@customer.ID" name="table_records" /></td>
+                            <td>@customer.Name</td>
+                            <td>@customer.Email</td>
+                            <td>@customer.PhoneNumber</td>
+                            <td>@customer.Address</td>
+                            <td><img class="img-thumbnail" width="70" height="50" alt="@customer.Thumbnail" title="@customer.Title" src="@customer.Thumbnail" /> </td>
+                            <td><span @if (customer.Status == 1) { <text> class="icheckbox_minimal-blue checked" </text> } else { <text> class="icheckbox_minimal-blue" </text>     }> </span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 

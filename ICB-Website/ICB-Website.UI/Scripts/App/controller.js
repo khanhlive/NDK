@@ -9,6 +9,7 @@
             }
 
         });
+
         $('#btn-add-account-submit').click(function (e) {
             $('#frm-add-account').data('formValidation').validate();
             if ($('#frm-add-account').data('formValidation').isValid()) {
@@ -21,21 +22,37 @@
 
     if ($('[data-controller=customer]').length > 0) {
         CUSTOMER_INIT_TABLE();
-
+        CUSTOMER_INIT_FORMVALIDATION();
         $('#btn-customer-browser').click(function () {
             var ckfinder = new CKFinder();
-            ckfinder.selectActionFunction = function (url) {
+            ckfinder.selectActionFunction = function (url, a, b) {
+                console.log(url);
+                console.log(b);
+                console.log(a);
                 var decodedUri = decodeURIComponent(url);
-                $(".img-thumbnail").attr('src', decodedUri);
-                $(".image").val(decodedUri);
+                $("#img-customer-thumbnail").attr('src', decodedUri);
+                $("#frm-add-customer [name=Thumbnail]").attr({ 'value': decodedUri });
+                $("#frm-add-customer").formValidation('revalidateField', 'Thumbnail');
                 $("#image-url").text(decodedUri);
                 $("#images-url").text(decodedUri);
             }
             ckfinder.popup();
         });
+
+        $('#btn-add-customer-submit').click(function () {
+            $('#frm-add-customer').data('formValidation').validate();
+            if ($('#frm-add-customer').data('formValidation').isValid()) {
+                CUSTOMER_ADD();
+            }
+        });
+        
+        $('#btn-update-customer-submit').click(function (e) {
+            $('#frm-update-customer').data('formValidation').validate();
+            if ($('#frm-update-customer').data('formValidation').isValid()) {
+                CUSTOMER_UPDATE();
+            }
+        });
     }
-
-
 });
 
 //////  ACCOUNT //////
@@ -298,19 +315,7 @@ function ACCOUNT_ADD_INITFORM() {
                 }
             }
         }
-    })
-        .on('err.form.fv', function (e) {
-        // The e parameter is same as one
-        // in the prevalidate.form.fv event above
-
-        // Do something ...
-    })
-        .on('success.form.fv', function (e) {
-            // The e parameter is same as one
-            // in the prevalidate.form.fv event above
-            //ACCOUNT_ADD_ACCOUNT();
-            // Do something ...
-        });
+    });
 }
 
 
@@ -377,7 +382,6 @@ function ACCOUNT_DELETE(element) {
 
 //// KHACH HANG // /////
 
-//////  ACCOUNT //////
 var CUSTOMERController = {
     dom: $('#CUSTOMER_ALLCUSTOMER'),
     mainTable: null,
@@ -393,27 +397,28 @@ var CUSTOMERController = {
         {
             text: '<i class="fa fa-edit"></i>&nbsp;&nbsp;Sửa&nbsp;&nbsp;',
             action: function () {
-                var form = $('#frm-update-account');
-                var table = $('#ACCOUNT_ALLACCOUNT');
+                var form = $('#frm-update-customer');
+                var table = $('#CUSTOMER_ALLCUSTOMER');
                 var tr = table.find('tbody tr.active');
                 var data_id = tr.data('id');
+                
                 if (data_id) {
                     APPLICATION.ShowLoading();
-                    APPLICATION.Ajax('/admin/account/getbyid/' + data_id, 'application/json', 'GET', null, function (d) {
-
+                    APPLICATION.Ajax('/admin/khach-hang/' + data_id, 'application/json', 'GET', null, function (d) {
+                        $('#modal-customer-update .lbl-name').text(d.Name);
                         form.find('[name=ID]').val(d.ID);
-                        form.find('[name=Role]').val(d.Role);
-                        form.find('[name=txtFullname]').val(d.Fullname);
-                        form.find('[name=txtUsername]').val(d.Username);
-                        form.find('[name=txtPassword]').val();
-                        form.find('[name=txtRetypePassword]').val('');
-                        form.find('[name=txtEmail]').val(d.Email);
-                        form.find('[name=txtPhoneNumber]').val(d.PhoneNumber);
-                        form.find('[name=ckbIsActive]').iCheck(d.IsActive ? 'check' : 'uncheck');
-                        form.find('[name=ckbIsLocked]').iCheck(d.IsLocked ? 'check' : 'uncheck');
-                        $('#btn-update-account-delete').attr({ 'data-id': d.ID });
-                        $('#modal-account-update').modal({ backdrop: 'static', keyboard: false, show: true });
-                        $('#modal-account-update').on('shown.bs.modal', function (e) {
+                        form.find('[name=Name]').val(d.Name);
+                        form.find('[name=Title]').val(d.Title);
+                        form.find('[name=Address]').val(d.Address);
+                        form.find('[name=Website]').val(d.Address);
+                        form.find('[name=Status]').val(d.Status);
+                        form.find('[name=Email]').val(d.Email);
+                        form.find('[name=PhoneNumber]').val(d.PhoneNumber);
+                        form.find('[name=Thumbnail]').val(d.Thumbnail);
+                        form.find('#img-customer-thumbnail-edit').attr({ 'src': d.Thumbnail });
+                        $('#btn-update-customer-delete').attr({ 'data-id': d.ID });
+                        $('#modal-customer-update').modal({ backdrop: 'static', keyboard: false, show: true });
+                        $('#modal-customer-update').on('shown.bs.modal', function (e) {
 
                             form.data('formValidation').resetForm();
                         });
@@ -428,27 +433,241 @@ var CUSTOMERController = {
         {
             text: '<i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa&nbsp;&nbsp;',
             action: function () {
-                var table = $('#ACCOUNT_ALLACCOUNT');
+                var table = $('#CUSTOMER_ALLCUSTOMER');
                 var tr = table.find('tbody tr.active');
                 var data_id = tr.data('id');
-                ACCOUNT_DELETE_ACCOUNT(data_id);
+                CUSTOMER_DELETE(data_id);
             },
             className: 'btn-danger'
         },
         {
             text: '<i class="fa fa-refresh"></i>&nbsp;Làm mới&nbsp;',
             action: function () {
-                ACCOUNT_RELOAD_ALLACCOUNT();
+                CUSTOMER_RELOAD_ALLCUSTOMER();
             },
             className: 'btn-account-refresh btn-primary'
         }
     ]
 }
 
+function CUSTOMER_INIT_FORMVALIDATION() {
+    $('#frm-add-customer,#frm-update-customer').formValidation({
+        //err: {
+        //    container:'popover'
+        //},
+        message: 'This value is not valid',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            Address: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập địa chỉ khách hàng'
+                    }
+                }
+            },
+            Name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập tên khách hàng'
+                    }
+                }
+            },
+            Thumbnail: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa chọn ảnh đại diện'
+                    }
+                }
+            },
+            Email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập email'
+                    },
+                    emailAddress: {
+                        message: 'Địa chỉ email không hợp lệ'
+                    }
+                }
+            },
+            PhoneNumber: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập số điện thoại'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]{10,11}$/,
+                        message: 'Số điện thoại không đúng định dạng.'
+                    }
+                }
+            }
+        }
+    });
+}
 
 function CUSTOMER_INIT_TABLE() {
     CUSTOMERController.mainTable = APPLICATION.CreateDataTable(CUSTOMERController.dom, CUSTOMERController.options, true);
 }
 
+function CUSTOMER_RESETFIELD() {
+
+    var form = $("#frm-add-customer");
+    form.find('[name=Name]').val('');
+    form.find('[name=Title]').val('');
+    form.find('[name=Address]').val('');
+    form.find('[name=Website]').val('');
+    form.find('[name=Status]').val('');
+    form.find('[name=Email]').val('');
+    form.find('[name=PhoneNumber]').val('');
+    form.find('[name=Thumbnail]').val('');
+    form.data('formValidation').resetForm();
+
+}
+
+function CUSTOMER_ADD() {
+    var form = $("#frm-add-customer");
+    
+    var name = form.find('[name=Name]').val();
+    var title = form.find('[name=Title]').val();
+    var address = form.find('[name=Address]').val();
+    var website = form.find('[name=Website]').val();
+    var email = form.find('[name=Email]').val();
+    var phone = form.find('[name=PhoneNumber]').val();
+    var status = form.find('[name=Status]').val();
+    var thumbnail = form.find('[name=Thumbnail]').val();
+    var Customer = {
+        Name: name,
+        Title: title,
+        Address: address,
+        Email: email,
+        Website: website,
+        Status: status,
+        PhoneNumber: phone,
+        Thumbnail: thumbnail
+        
+    };
+    APPLICATION.Ajax('/admin/customer/insert', 'application/json', 'POST', JSON.stringify(Customer), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            CUSTOMER_RESETFIELD();
+            $('#modal-customer-add').modal('hide');
+            ShowNotifySuccess(d.Message);
+            CUSTOMER_RELOAD_ALLCUSTOMER();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+function CUSTOMER_RELOAD_ALLCUSTOMER() {
+    $('div[data-controller=customer] .btn-account-refresh i').addClass('fa-spin');
+    APPLICATION.Ajax('/admin/customer/getall', 'application/json', 'GET', null, function (response) {
+        if (CUSTOMERController.mainTable) {
+            CUSTOMERController.mainTable.rows().clear().draw();
+            $.each(response, function (a, b) {
+                var tr = CUSTOMERController.mainTable.row.add([
+                    '<input type="checkbox" class="flat" value="' + b.ID + '" name="table_records" />',
+                    b.Name,
+                    b.Email,
+                    b.PhoneNumber,
+                    (b.Address),
+                    '<img class="img-thumbnail" width="70" height="50" alt="' + (b.Thumbnail) + '" title="' + (b.Title) + '" src="' + (b.Thumbnail)+'" />',
+                    '<span class="icheckbox_minimal-blue ' + (b.Status ? 'checked' : '') + '"></span>'
+                    
+                ]).draw(false);
+                tr.nodes().to$().attr({ 'data-id': b.ID });
+
+            });
+
+            APPLICATION.INIT_CHECKBOX(CUSTOMERController.dom.find('tbody'));
+            setTimeout(function () {
+                $('div[data-controller=customer] .btn-account-refresh i').removeClass('fa-spin');
+            }, 1000);
+            APPLICATION.DataTable.AddEventToCheckbox($(CUSTOMERController.dom));
+        } else {
+            CUSTOMERController.mainTable = null;
+            var html = '';
+            $.each(response, function (a, b) {
+                html += '<tr data-id="' + b.ID + '">';
+                html += '<td><input type="checkbox" class="flat" value="' + b.ID + '" name="table_records" /></td>';
+                html += '<td>' + b.Name + '</td>';
+                html += '<td>' + b.Email + '</td>';
+                html += '<td>' + b.PhoneNumber + '</td>';
+                html += '<td>' + (b.Address) + '</td>';
+                html += '<td> < img class="img-thumbnail" width= "70" height= "50" alt= "' + (b.Thumbnail) + '" title= "' + (b.Title) + '" src= "' + (b.Thumbnail)+'" /></td>';
+                html += '<td><span class="icheckbox_minimal-blue ' + (b.Status ? 'checked' : '') + '"></span></td>';
+                html += '</tr>';
+            });
+            CUSTOMERController.dom.find('tbody').empty();
+            CUSTOMERController.dom.find('tbody').html(html);
+            APPLICATION.INIT_CHECKBOX(CUSTOMERController.dom.find('tbody'));
+            CUSTOMERController.mainTable = CUSTOMERController.mainTable = APPLICATION.CreateDataTable(CUSTOMERController.dom, CUSTOMERController.options, true);
+        }
+
+
+
+    });
+}
+
+function CUSTOMER_UPDATE() {
+    var form = $("#frm-update-customer");
+    var id = form.find('[name=ID]').val();
+    var name = form.find('[name=Name]').val();
+    var title = form.find('[name=Title]').val();
+    var address = form.find('[name=Address]').val();
+    var website = form.find('[name=Website]').val();
+    var email = form.find('[name=Email]').val();
+    var phone = form.find('[name=PhoneNumber]').val();
+    var status = form.find('[name=Status]').val();
+    var thumbnail = form.find('[name=Thumbnail]').val();
+    var Customer = {
+        Name: name,
+        Title: title,
+        Address: address,
+        Email: email,
+        Website: website,
+        Status: status,
+        PhoneNumber: phone,
+        Thumbnail: thumbnail,
+        ID: id
+    };
+
+    APPLICATION.Ajax('/admin/customer/update/' + Customer.ID, 'application/json', 'PUT', JSON.stringify(Customer), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            CUSTOMER_RESETFIELD();
+            $('#modal-customer-update').modal('hide');
+            ShowNotifySuccess('Cập nhật thành công');
+            CUSTOMER_RELOAD_ALLCUSTOMER();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+function CUSTOMER_DELETE(id) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa khách hàng này không?', 'Xóa khách hàng', function (e) {
+            APPLICATION.Ajax('/admin/customer/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    ShowNotifySuccess('Xóa thành công');
+                    $('#modal-customer-update').modal('hide');
+                    CUSTOMER_RELOAD_ALLCUSTOMER();
+                } else {
+                    ShowNotifyError(d.Message);
+                }
+            });
+
+        });
+    }
+}
+
+function CUSTOMER_DELETE_CUSTOMER(element) {
+    var id = $(element).data('id');
+    if (id) {
+        CUSTOMER_DELETE(id);
+    }
+}
 
 //// END KHACH HANG  //////

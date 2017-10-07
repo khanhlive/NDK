@@ -27,13 +27,12 @@
                     @foreach (var customer in Model)
                     {
                         <tr data-id="@customer.ID">
-                            <td width="100"><input type="checkbox" class="flat" value="@customer.ID" name="table_records" /></td>
+                            <td style="width:60px !important"><input type="checkbox" class="flat" value="@customer.ID" name="table_records" /></td>
                             <td>@customer.Name</td>
                             <td>@customer.Email</td>
                             <td>@customer.PhoneNumber</td>
                             <td>@customer.Address</td>
-                            <td>@customer.Thumbnail</td>
-                            <td>@customer.Order</td>
+                            <td><img class="img-thumbnail" width="70" height="50" alt="@customer.Thumbnail" title="@customer.Title" src="@customer.Thumbnail" /> </td>
                             <td><span @if (customer.Status == 1) { <text> class="icheckbox_minimal-blue checked" </text>     } else { <text> class="icheckbox_minimal-blue" </text>    }> </span></td>
                         </tr>
                     }
@@ -44,3 +43,4 @@
 </div>
 
 @Html.Partial("_partialAdd")
+@Html.Partial("_partialEdit")

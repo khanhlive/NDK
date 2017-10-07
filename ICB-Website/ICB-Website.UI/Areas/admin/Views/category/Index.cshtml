@@ -1,0 +1,43 @@
+﻿@model List<ICB.Business.Models.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div data-controller="category">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Nhóm danh mục</h3>
+        </div>
+        <div class="box-body">
+            <table class="table table-striped jambo_table table-bordered dt-responsive no-wrap" id="CATEGORY_ALLCATEGORY">
+                <thead>
+                    <tr>
+                        <th width="100"></th>
+                        <th>Tên</th>
+                        <th>Nội dung</th>
+                        <th>Tên(ENG)</th>
+                        <th>Nội dung(ENG)</th>
+                        <th>Sử dụng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr data-id="@category.ID">
+                            <td style="width:60px !important"><input type="checkbox" class="flat" value="@category.ID" name="table_records" /></td>
+                            <td>@category.Name</td>
+                            <td>@category.Title</td>
+                            <td>@category.NameENG</td>
+                            <td>@category.TitleENG</td>
+                            <td><span @if (category.Active == 1) { <text> class="icheckbox_minimal-blue checked" </text>  } else { <text> class="icheckbox_minimal-blue" </text> }> </span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
