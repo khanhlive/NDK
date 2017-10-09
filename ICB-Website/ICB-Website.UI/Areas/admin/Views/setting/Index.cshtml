@@ -1,9 +1,107 @@
 ﻿
 @{
-    ViewBag.Title = "Admin: Quản lý hệ thống";
+    ViewBag.Title = "Admin: Thông tin trang web";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 <div data-controller="website">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Thông tin chi tiết</h3>
 
+        </div>
+        <div class="box-body">
+            <form class="form-horizontal form-no-bottom" id="frm-setting-website" onsubmit="return false" novalidate>
+                <input type="hidden" name="ID" />
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Tên công ty<span class="text-required">(*)</span>: </label>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" rows="2" name="Name" placeholder="Tên công ty"></textarea>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Tên công ty (tiếng anh):</label>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" name="NameENG" rows="2" placeholder="Tên công ty(tiếng anh)"></textarea>
+                                    <span class="help-block"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Số điện thoại: </label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="Tel" placeholder="Số điện thoại" />
+                                    <span class="help-block"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Hotline:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="Hotline" placeholder="Số hotline" />
+                                    <span class="help-block"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Email:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="Email" placeholder="Email" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Fax:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="Fax" placeholder="Fax" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Website:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="Webiste" placeholder="Trang web công ty" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Địa chỉ: </label>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" type="text" name="Address" placeholder="Địa chỉ" rows="2"></textarea>
+                                    <span class="help-block"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" onclick="CATEGORY_DELETE_CATEGORY(this);" id="btn-update" class="btn btn-warning"><i class="fa fa-edit"></i>&nbsp;&nbsp; Sửa</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 

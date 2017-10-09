@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="modal fade" id="modal-category-update">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Cập nhật nhóm danh mục: <b class="lbl-name btn-link" style="font-weight:bold;"></b></h4>
+            </div>
+            <form class="form-horizontal form-no-bottom" id="frm-update-category" onsubmit="return false" novalidate>
+                <input type="hidden" name="ID" />
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tên nhóm<span class="text-required">(*)</span>: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Name" placeholder="Tên nhóm" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Mô tả<span class="text-required">(*)</span>: </label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" name="Title" rows="4" placeholder="Mô tả nhóm danh mục"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tên nhóm(ENG): </label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="NameENG" placeholder="Tên nhóm tiếng anh" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Mô tả(ENG): </label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" name="TitleENG" rows="4" placeholder="Mô tả nhóm (Tiếng anh)"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">&nbsp;</label>
+                        <div class="col-md-8">
+                            <label class="checkbox"><input class="" checked="checked" type="checkbox" name="Active" />&nbsp;&nbsp; Sử dụng</label>
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-update-category-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" data-id="" onclick="CATEGORY_DELETE_CATEGORY(this);" id="btn-update-category-delete" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp; Xóa</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

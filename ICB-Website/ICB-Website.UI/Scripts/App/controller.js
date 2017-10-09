@@ -53,6 +53,8 @@
             }
         });
     }
+
+    CATEGORY_INIT();
 });
 
 //////  ACCOUNT //////
@@ -671,3 +673,297 @@ function CUSTOMER_DELETE_CUSTOMER(element) {
 }
 
 //// END KHACH HANG  //////
+
+
+//// NHÓM DANH MỤC // /////
+
+function CATEGORY_INIT() {
+    if ($('[data-controller=category]').length > 0) {
+        CATEGORY_INIT_TABLE();
+        CATEGORY_INIT_FORMVALIDATION();
+        $('#btn-update-category-submit').click(function (e) {
+            $('#frm-update-category').data('formValidation').validate();
+            if ($('#frm-update-category').data('formValidation').isValid()) {
+                CATEGORY_UPDATE();
+            }
+        });
+
+        $('#btn-add-category-submit').click(function (e) {
+            $('#frm-add-category').data('formValidation').validate();
+            if ($('#frm-add-category').data('formValidation').isValid()) {
+                CATEGORY_ADD();
+            }
+            return false;
+        });
+    }
+}
+
+var CATEGORYController = {
+    dom: $('#CATEGORY_ALLCATEGORY'),
+    mainTable: null,
+    options: [
+        {
+            text: '<i class="fa fa-plus"></i>&nbsp;Thêm mới&nbsp;',
+            action: function () {
+                $('#modal-category-add').modal({ backdrop: 'static', keyboard: false, show: true });
+            },
+            className: 'btn-success'
+
+        },
+        {
+            text: '<i class="fa fa-edit"></i>&nbsp;&nbsp;Sửa&nbsp;&nbsp;',
+            action: function () {
+                var form = $('#frm-update-category');
+                var table = $('#CATEGORY_ALLCATEGORY');
+                var tr = table.find('tbody tr.active');
+                var data_id = tr.data('id');
+
+                if (data_id) {
+                    APPLICATION.ShowLoading();
+                    APPLICATION.Ajax('/admin/nhom-danh-muc/' + data_id, 'application/json', 'GET', null, function (d) {
+                        $('#modal-category-update .lbl-name').text(d.Name);
+                        form.find('[name=ID]').val(d.ID);
+                        form.find('[name=Name]').val(d.Name);
+                        form.find('[name=Title]').val(d.Title);
+                        form.find('[name=NameENG]').val(d.NameENG);
+                        form.find('[name=TitleENG]').val(d.TitleENG);
+                        if (d.Active == 1) {
+                            form.find('[name=Active]').iCheck('check');
+                        } else form.find('[name=Active]').iCheck('uncheck');
+                        
+                        $('#btn-update-category-delete').attr({ 'data-id': d.ID });
+                        $('#modal-category-update').modal({ backdrop: 'static', keyboard: false, show: true });
+                        $('#modal-category-update').on('shown.bs.modal', function (e) {
+
+                            form.data('formValidation').resetForm();
+                        });
+                        APPLICATION.HideLoading();
+                    });
+                } else {
+                    APPLICATION.HideLoading();
+                }
+            },
+            className: 'btn-info'
+        },
+        {
+            text: '<i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa&nbsp;&nbsp;',
+            action: function () {
+                var table = $('#CATEGORY_ALLCATEGORY');
+                var tr = table.find('tbody tr.active');
+                var data_id = tr.data('id');
+                CATEGORY_DELETE(data_id);
+            },
+            className: 'btn-danger'
+        },
+        {
+            text: '<i class="fa fa-refresh"></i>&nbsp;Làm mới&nbsp;',
+            action: function () {
+                CATEGORY_RELOAD_ALLCATEGORY();
+            },
+            className: 'btn-category-refresh btn-primary'
+        }
+    ]
+}
+
+function CATEGORY_INIT_TABLE() {
+    CATEGORYController.mainTable = APPLICATION.CreateDataTable(CATEGORYController.dom, CATEGORYController.options, true);
+}
+
+
+function CATEGORY_RELOAD_ALLCATEGORY() {
+    $('div[data-controller=category] .btn-category-refresh i').addClass('fa-spin');
+    APPLICATION.Ajax('/admin/category/getall', 'application/json', 'GET', null, function (response) {
+        if (CATEGORYController.mainTable) {
+            CATEGORYController.mainTable.rows().clear().draw();
+            $.each(response, function (a, b) {
+                var tr = CATEGORYController.mainTable.row.add([
+                    '<input type="checkbox" class="flat" value="' + b.ID + '" name="table_records" />',
+                    b.Name,
+                    b.Title,
+                    b.NameENG,
+                    (b.TitleENG),
+                    '<span class="icheckbox_minimal-blue ' + (b.Active == 1 ? 'checked' : '') + '"></span>'
+                ]).draw(false);
+                tr.nodes().to$().attr({ 'data-id': b.ID });
+            });
+
+            APPLICATION.INIT_CHECKBOX(CATEGORYController.dom.find('tbody'));
+            setTimeout(function () {
+                $('div[data-controller=category] .btn-category-refresh i').removeClass('fa-spin');
+            }, 1000);
+            APPLICATION.DataTable.AddEventToCheckbox($(CATEGORYController.dom));
+        } else {
+            CUSTOMERController.mainTable = null;
+            var html = '';
+            $.each(response, function (a, b) {
+                html += '<tr data-id="' + b.ID + '">';
+                html += '<td><input type="checkbox" class="flat" value="' + b.ID + '" name="table_records" /></td>';
+                html += '<td>' + b.Name + '</td>';
+                html += '<td>' + b.Title + '</td>';
+                html += '<td>' + b.NameENG + '</td>';
+                html += '<td>' + (b.TitleENG) + '</td>';
+                html += '<td><span class="icheckbox_minimal-blue ' + (b.Active == 1 ? 'checked' : '') + '"></span></td>';
+                html += '</tr>';
+            });
+            CATEGORYController.dom.find('tbody').empty();
+            CATEGORYController.dom.find('tbody').html(html);
+            APPLICATION.INIT_CHECKBOX(CATEGORYController.dom.find('tbody'));
+            CATEGORYController.mainTable = CATEGORYController.mainTable = APPLICATION.CreateDataTable(CATEGORYController.dom, CATEGORYController.options, true);
+        }
+    });
+}
+
+function CATEGORY_INIT_FORMVALIDATION() {
+    $('#frm-add-category,#frm-update-category').formValidation({
+        //err: {
+        //    container:'popover'
+        //},
+        message: 'Dữ liệu nhập không hợp lệ',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            Title: {
+                validators: {
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    }
+                }
+            },
+            Name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập tên nhóm danh mục'
+                    },
+                    stringLength: {
+                        max: 250,
+                        message:'Chỉ nhập tối đa 250 ký tự'
+                    }
+                }
+            },
+            TitleENG: {
+                validators: {
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    }
+                }
+            },
+            NameENG: {
+                validators: {
+                    stringLength: {
+                        max: 250,
+                        message: 'Chỉ nhập tối đa 250 ký tự'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function CATEGORY_RESETFIELD() {
+    var form = $("#frm-add-category");
+    form.find('[name=Name]').val('');
+    form.find('[name=Title]').val('');
+    form.find('[name=NameENG]').val('');
+    form.find('[name=TitleENG]').val('');
+    form.find('[name=Active]').iCheck('check');
+    form.data('formValidation').resetForm();
+    var form1 = $("#frm-update-category");
+    form1.find('[name=Name]').val('');
+    form1.find('[name=ID]').val('');
+    form1.find('[name=Title]').val('');
+    form1.find('[name=NameENG]').val('');
+    form1.find('[name=TitleENG]').val('');
+    form1.find('[name=Active]').iCheck('check');
+    form1.data('formValidation').resetForm();
+}
+
+function CATEGORY_ADD() {
+    var form = $("#frm-add-category");
+    var name = form.find('[name=Name]').val();
+    var title = form.find('[name=Title]').val();
+    var nameENG = form.find('[name=NameENG]').val();
+    var titleENG = form.find('[name=TitleENG]').val();
+    var active = form.find('[name=Active]').is(':checked');
+    var Category = {
+        Name: name,
+        Title: title,
+        NameENG: nameENG,
+        TitleENG: titleENG,
+        Active: active
+
+    };
+    APPLICATION.Ajax('/admin/category/insert', 'application/json', 'POST', JSON.stringify(Category), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            CATEGORY_RESETFIELD();
+            $('#modal-category-add').modal('hide');
+            ShowNotifySuccess(d.Message);
+            CATEGORY_RELOAD_ALLCATEGORY();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+
+function CATEGORY_UPDATE() {
+    var form = $("#frm-update-category");
+    var id = form.find('[name=ID]').val();
+    var name = form.find('[name=Name]').val();
+    var title = form.find('[name=Title]').val();
+    var nameENG = form.find('[name=NameENG]').val();
+    var titleENG = form.find('[name=TitleENG]').val();
+    var active = form.find('[name=Active]').is(':checked');
+    var Category = {
+        ID: id,
+        Name: name,
+        Title: title,
+        NameENG: nameENG,
+        TitleENG: titleENG,
+        Active: active
+
+    };
+
+    APPLICATION.Ajax('/admin/category/update/' + Category.ID, 'application/json', 'PUT', JSON.stringify(Category), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            CATEGORY_RESETFIELD();
+            $('#modal-category-update').modal('hide');
+            ShowNotifySuccess('Cập nhật thành công');
+            CATEGORY_RELOAD_ALLCATEGORY();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+
+function CATEGORY_DELETE(id) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa nhóm danh mục này không?', 'Xóa nhóm danh mục', function (e) {
+            APPLICATION.Ajax('/admin/category/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    ShowNotifySuccess('Xóa thành công');
+                    $('#modal-category-update').modal('hide');
+                    CATEGORY_RELOAD_ALLCATEGORY();
+                } else {
+                    ShowNotifyError(d.Message);
+                }
+            });
+
+        });
+    }
+}
+
+
+function CATEGORY_DELETE_CATEGORY(element) {
+    var id = $(element).data('id');
+    if (id) {
+        CATEGORY_DELETE(id);
+    }
+}
+
+//// end NHÓM DANH MỤC // /////

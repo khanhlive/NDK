@@ -1,6 +1,6 @@
 ﻿@model List<ICB.Business.Models.Category>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Admin: Quản lý nhóm danh mục";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,10 +14,10 @@
                 <thead>
                     <tr>
                         <th width="100"></th>
-                        <th>Tên</th>
-                        <th>Nội dung</th>
-                        <th>Tên(ENG)</th>
-                        <th>Nội dung(ENG)</th>
+                        <th>Tên nhóm</th>
+                        <th>Mô tả</th>
+                        <th>Tên nhóm(ENG)</th>
+                        <th>Mô tả(ENG)</th>
                         <th>Sử dụng</th>
                     </tr>
                 </thead>
@@ -40,4 +40,5 @@
 </div>
 
 
-
+@Html.Partial("_partialAdd")
+@Html.Partial("_partialEdit")

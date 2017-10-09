@@ -22,6 +22,8 @@ namespace ICB.Business.Entities.Message
                     return MessageManager.GetMessage(new LoginMessage(), messageType);
                 case ModuleType.Customer:
                     return MessageManager.GetMessage(new CustomerMessage(), messageType);
+                case ModuleType.Category:
+                    return MessageManager.GetMessage(new CategoryMessage(), messageType);
                 default:
                     break;
             }
@@ -41,6 +43,8 @@ namespace ICB.Business.Entities.Message
                     return MessageManager.GetMessage(new LoginMessage(), accessEntityStatusCode);
                 case ModuleType.Customer:
                     return MessageManager.GetMessage(new CustomerMessage(), accessEntityStatusCode);
+                case ModuleType.Category:
+                    return MessageManager.GetMessage(new CategoryMessage(), accessEntityStatusCode);
                 default:
                     break;
             }
@@ -174,6 +178,43 @@ namespace ICB.Business.Entities.Message
         protected string DeleteSuccess = "Khách hàng đã được xóa thành công";
         protected string DeleteFailed = "Không xóa được khách hàng";
         protected string UpdateFailed = "Không cập nhật được khách hàng";
+        public override string GetMessage(MessageType messageType)
+        {
+            switch (messageType)
+            {
+                case MessageType.Update:
+                    return this.Update;
+                case MessageType.UpdateFailed:
+                    return this.UpdateFailed;
+                case MessageType.Success:
+                    return this.Success;
+                case MessageType.Failed:
+                    return this.Failed;
+                case MessageType.DeleteSuccess:
+                    return this.DeleteSuccess;
+                case MessageType.DeleteFailed:
+                    return this.DeleteFailed;
+                case MessageType.NotFound:
+                    return this.NotFound;
+                case MessageType.Existed:
+                    return this.Existed;
+                case MessageType.ModelFailed:
+                    return this.ModelFailed;
+                default:
+                    return this.MsgDefault;
+            }
+        }
+    }
+
+
+    public class CategoryMessage : MessageBase
+    {
+        protected new string Success = "Thêm mới nhóm danh mục thành công";
+        protected string Failed = "Không thêm được nhóm danh mục";
+        protected string ModelFailed = "Thông tin nhóm danh mục không hợp lệ";
+        protected string DeleteSuccess = "Nhóm danh mục đã được xóa thành công";
+        protected string DeleteFailed = "Không xóa được nhóm danh mục";
+        protected string UpdateFailed = "Không cập nhật được nhóm danh mục";
         public override string GetMessage(MessageType messageType)
         {
             switch (messageType)
