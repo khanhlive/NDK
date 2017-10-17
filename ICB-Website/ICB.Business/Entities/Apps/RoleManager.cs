@@ -47,4 +47,10 @@ namespace ICB.Business.Entities.Apps
         public string Name { get; set; }
         public string NameENG { get; set; }
     }
+
+    public enum DocumentType
+    {
+        TaiLieu = 1,
+        VanBan = 2
+    }
 }

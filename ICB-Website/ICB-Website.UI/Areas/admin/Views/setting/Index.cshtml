@@ -1,4 +1,4 @@
-﻿
+﻿@model ICB.Business.Models.SystemConfig
 @{
     ViewBag.Title = "Admin: Thông tin trang web";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
@@ -19,7 +19,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Tên công ty<span class="text-required">(*)</span>: </label>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" rows="2" name="Name" placeholder="Tên công ty"></textarea>
+                                    @*<textarea class="form-control" rows="2" name="Name" placeholder="Tên công ty" >@Model.Name</textarea>*@
+                                    @Html.TextAreaFor(x=>x.Name, new { @class="form-control",@rows="2", @placeholder= "Tên công ty" })
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -28,7 +29,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Tên công ty (tiếng anh):</label>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" name="NameENG" rows="2" placeholder="Tên công ty(tiếng anh)"></textarea>
+                                    @*<textarea class="form-control" name="NameENG" rows="2" placeholder="Tên công ty(tiếng anh)"></textarea>*@
+                                    @Html.TextAreaFor(x => x.NameENG, new { @class = "form-control", @rows = "2", @placeholder = "Tên công ty(tiếng anh)" })
                                     <span class="help-block"></span>
                                 </div>
 
@@ -39,7 +41,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Số điện thoại: </label>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="Tel" placeholder="Số điện thoại" />
+                                    @*<input class="form-control" name="Tel" placeholder="Số điện thoại" />*@
+                                    @Html.TextBoxFor(x => x.Tel, new { @class = "form-control", @placeholder = "Số điện thoại" })
                                     <span class="help-block"></span>
                                 </div>
 
@@ -49,7 +52,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Hotline:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="Hotline" placeholder="Số hotline" />
+                                    @*<input class="form-control" name="Hotline" placeholder="Số hotline" />*@
+                                    @Html.TextBoxFor(x => x.Hotline, new { @class = "form-control", @placeholder = "Số hotline" })
                                     <span class="help-block"></span>
                                 </div>
 
@@ -60,6 +64,7 @@
                                 <label class="control-label col-md-4">Email:</label>
                                 <div class="col-md-8">
                                     <input class="form-control" name="Email" placeholder="Email" />
+                                    @*@Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })*@
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -69,7 +74,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Fax:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="Fax" placeholder="Fax" />
+                                    @*<input class="form-control" name="Fax" placeholder="Fax" />*@
+                                    @Html.TextBoxFor(x => x.Fax, new { @class = "form-control", @placeholder = "Fax" })
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -78,7 +84,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Website:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="Webiste" placeholder="Trang web công ty" />
+                                    @*<input class="form-control" name="Webiste" placeholder="Trang web công ty" />*@
+                                    @Html.TextBoxFor(x => x.Website, new { @class = "form-control", @placeholder = "Trang web công ty" })
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -87,7 +94,8 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Địa chỉ: </label>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" type="text" name="Address" placeholder="Địa chỉ" rows="2"></textarea>
+                                    @*<textarea class="form-control" type="text" name="Address" placeholder="Địa chỉ" rows="2"></textarea>*@
+                                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @rows = "2", @placeholder = "Địa chỉ" })
                                     <span class="help-block"></span>
                                 </div>
 
@@ -97,11 +105,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btn-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
-                    <button type="button" onclick="CATEGORY_DELETE_CATEGORY(this);" id="btn-update" class="btn btn-warning"><i class="fa fa-edit"></i>&nbsp;&nbsp; Sửa</button>
+                    @*<button type="button" onclick="CATEGORY_DELETE_CATEGORY(this);" id="btn-update" class="btn btn-warning"><i class="fa fa-edit"></i>&nbsp;&nbsp; Sửa</button>*@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
 
+    });
+</script>

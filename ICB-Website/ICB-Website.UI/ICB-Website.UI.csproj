@@ -146,6 +146,12 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -327,6 +333,7 @@
     <Compile Include="Models\ControllerBase.cs" />
     <Compile Include="Models\Entities\LoginModel.cs" />
     <Compile Include="Models\Entities\Register.cs" />
+    <Compile Include="Models\HtmlHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Security\AppAuthorizeAttribute.cs" />
     <Compile Include="Models\Security\SessionApp.cs" />
@@ -399,6 +406,7 @@
     <Content Include="Content\megafish.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\owl.theme.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
@@ -553,6 +561,10 @@
     <Content Include="Plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="Plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
     <Content Include="Plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Plugins\datetimepicker\css\bootstrap-datetimepicker-standalone.css" />
+    <Content Include="Plugins\datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="Plugins\datetimepicker\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Plugins\datetimepicker\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Plugins\chartjs\Chart.js" />
     <Content Include="Plugins\chartjs\Chart.min.js" />
     <Content Include="Plugins\ckeditor\adapters\jquery.js" />
@@ -3675,6 +3687,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\admin\Views\document\VB_Create.cshtml" />
+    <Content Include="Areas\admin\Views\document\VB_Edit.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\1.jpg" />

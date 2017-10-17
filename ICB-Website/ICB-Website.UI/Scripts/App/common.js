@@ -58,6 +58,15 @@ $(document).ready(function () {
         increaseArea: '20%' // optional
     });
 
+    ////datetimepicker
+
+    $('input.datetimepicker').datetimepicker({
+        format: 'DD/MM/YYYY HH:mm:ss'
+    });
+    $('input.datepicker').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
+
 
     ////event for button checkall in table header
 

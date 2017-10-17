@@ -30,6 +30,10 @@ namespace ICB.Business.Models
         [StringLength(500)]
         public string Description { get; set; }
 
+        public string Content { get; set; }
+        public int UserUpdate { get; set; }
+        public DateTime? UpdateTime { get; set; }
+
         public virtual Account Account { get; set; }
     }
 }

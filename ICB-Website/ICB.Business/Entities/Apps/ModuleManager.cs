@@ -18,7 +18,8 @@ namespace ICB.Business.Entities.Apps
         Register,
         Login,
         Customer,
-        Category
+        Category,
+        Document
         
     }
 }

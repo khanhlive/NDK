@@ -37,6 +37,8 @@
     <link href="~/Plugins/bootstrap-slider/slider.css" rel="stylesheet" />
     <link href="~/Plugins/timepicker/bootstrap-timepicker.css" rel="stylesheet" />
 
+    <link href="~/Plugins/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Plugins/datetimepicker/css/bootstrap-datetimepicker-standalone.css" rel="stylesheet" />
     <!-- bootstrap formValidation - text editor -->
     <link href="~/Plugins/formValidation/css/formValidation.min.css" rel="stylesheet" />
 
@@ -113,6 +115,7 @@
     @Html.Partial("_LayoutModal")
     <!-- ./wrapper -->
     <!-- end body-->
+    <script src="~/Scripts/moment.min.js"></script>
     <script src="~/Plugins/bootstrap-table-master/bootstrap-table.js"></script>
     <script src="~/Plugins/bootstrap-table-master/locale/bootstrap-table-vi-VN.js"></script>
     <!-- Morris.js charts -->
@@ -129,7 +132,7 @@
     <script src="~/Plugins/input-mask/jquery.inputmask.numeric.extensions.js"></script>
     <script src="~/Plugins/input-mask/jquery.inputmask.phone.extensions.js"></script>
     <script src="~/Plugins/input-mask/jquery.inputmask.regex.extensions.js"></script>
-
+    <script src="~/Plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Plugins/jquery.alphanum/jquery.alphanum.js"></script>
 
     <script src="~/Plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
@@ -149,7 +152,8 @@
     <script src="~/Plugins/datatables/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
     <script src="~/Plugins/datatables/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 
-
+    @*<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>*@
+    <script src="~/Plugins/ckeditor/ckeditor.js"></script>
     <script src="~/Plugins/ckfinder/ckfinder.js"></script>
     <script src="~/Plugins/formValidation/js/formValidation.min.js"></script>
     <script src="~/Plugins/formValidation/js/framework/bootstrap.min.js"></script>
@@ -157,7 +161,7 @@
     <!--&lt;!&ndash; jQuery Knob Chart &ndash;&gt;-->
     <script src="~/Plugins/knob/jquery.knob.js"></script>
     <!--&lt;!&ndash; daterangepicker &ndash;&gt;-->
-    <script src="~/Scripts/moment.min.js"></script>
+    
     <script src="~/Plugins/daterangepicker/daterangepicker.js"></script>
 
     <script src="~/Scripts/jquery.validate.js"></script>

@@ -242,6 +242,8 @@ namespace ICB.Business.Entities.Message
             }
         }
     }
+    
+
 
     public enum MessageType
     {

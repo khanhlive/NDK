@@ -26,9 +26,6 @@
         $('#btn-customer-browser').click(function () {
             var ckfinder = new CKFinder();
             ckfinder.selectActionFunction = function (url, a, b) {
-                console.log(url);
-                console.log(b);
-                console.log(a);
                 var decodedUri = decodeURIComponent(url);
                 $("#img-customer-thumbnail").attr('src', decodedUri);
                 $("#frm-add-customer [name=Thumbnail]").attr({ 'value': decodedUri });
@@ -55,6 +52,7 @@
     }
 
     CATEGORY_INIT();
+    SETTING_INIT();
 });
 
 //////  ACCOUNT //////
@@ -967,3 +965,150 @@ function CATEGORY_DELETE_CATEGORY(element) {
 }
 
 //// end NHÓM DANH MỤC // /////
+
+
+
+//// thông tin website  /////
+
+function SETTING_INIT() {
+    if ($('[data-controller=website]').length > 0) {
+
+        //SETTING_DISABLED_ALLFIELD();
+        setTimeout(function () {
+            $("#frm-setting-website [name=Name]").focus();
+        }, 100);
+        $('#frm-setting-website').formValidation({
+            //err: {
+            //    container:'popover'
+            //},
+            message: 'Dữ liệu nhập không hợp lệ',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                Name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Chưa nhập tên công ty'
+                        },
+                        stringLength: {
+                            max: 250,
+                            message: 'Chỉ nhập tối đa 250 ký tự'
+                        }
+                    }
+                },
+                Email: {
+                    validators: {
+                        
+                        emailAddress: {
+                            message: 'Địa chỉ email không hợp lệ'
+                        }
+                    }
+                },
+                Tel: {
+                    validators: {
+                        
+                        regexp: {
+                            regexp: /^[0-9]{10,11}$/,
+                            message: 'Số điện thoại không đúng định dạng.'
+                        }
+                    }
+                },
+                Hotline: {
+                    validators: {
+                       
+                        regexp: {
+                            regexp: /^[0-9]{10,11}$/,
+                            message: 'Số hotline không đúng định dạng.'
+                        }
+                    }
+                }
+            }
+        });
+
+        $("#frm-setting-website #btn-submit").click(function () {
+            $('#frm-setting-website').data('formValidation').validate();
+            if ($('#frm-setting-website').data('formValidation').isValid()) {
+                SETTING_INSERTorUPDATE();
+            }
+        });
+        
+        $("#frm-setting-website .btn-secondary").click(function () {
+            SETTING_RELOAD_INFO_WEBSITE();
+        });
+
+    }
+
+    if ($('#frm-vanban-create').length > 0) {
+        $('#frm-vanban-create #browser').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (url, a, b) {
+                var decodedUri = decodeURIComponent(url);
+                $("#frm-vanban-create .img-thumbnail").attr('src', decodedUri);
+                $("#frm-vanban-create [name=Path]").attr({ 'value': decodedUri });
+                //$("#frm-add-customer").formValidation('revalidateField', 'Thumbnail');
+            }
+            ckfinder.popup();
+        });
+    }
+}
+
+function SETTING_INSERTorUPDATE() {
+    var form = $("#frm-setting-website");
+    var name = form.find('[name=Name]').val();
+    var tel = form.find('[name=Tel]').val();
+    var hotline = form.find('[name=Hotline]').val();
+    var nameENG = form.find('[name=NameENG]').val();
+    var email = form.find('[name=Email]').val();
+    var fax = form.find('[name=Fax]').val();
+    var website = form.find('[name=Website]').val();
+    var address = form.find('[name=Address]').val();
+    var Setting = {
+        Name: name,
+        Tel: tel,
+        Hotline: hotline,
+        NameENG: nameENG,
+        Email: email,
+        Fax: fax,
+        Website: website,
+        Address: address
+    };
+    APPLICATION.Ajax('/admin/setting/insertorupdate', 'application/json', 'POST', JSON.stringify(Setting), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            //SETTING_DISABLED_ALLFIELD();
+            ShowNotifySuccess('Chỉnh sửa thông tin trang web thành công');
+            SETTING_RELOAD_INFO_WEBSITE();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+function SETTING_RELOAD_INFO_WEBSITE() {
+    APPLICATION.Ajax('/admin/setting/get-info', 'application/json', 'GET', null, function (d) {
+        var form = $("#frm-setting-website");
+        form.find('[name=Name]').val(d.Name);
+        form.find('[name=Tel]').val(d.Tel);
+        form.find('[name=Hotline]').val(d.Hotline);
+        form.find('[name=NameENG]').val(d.NameENG);
+        form.find('[name=Email]').val(d.Email);
+        form.find('[name=Fax]').val(d.Fax);
+        form.find('[name=Website]').val(d.Website);
+        form.find('[name=Address]').val(d.Address);
+    });
+}
+
+function SETTING_DISABLED_ALLFIELD() {
+    var form = $("#frm-setting-website");
+    form.find('input,textarea,select').attr({ 'disabled': 'disabled' });
+    
+}
+
+function SETTING_ENABLED_ALLFIELD() {
+    var form = $("#frm-setting-website");
+    form.find('input,textarea,select').removeAttr('disabled');
+
+}
+//// end thông tin website   ////

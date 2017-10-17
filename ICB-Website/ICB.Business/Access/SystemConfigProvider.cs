@@ -1,4 +1,6 @@
-﻿using ICB.Business.Models;
+﻿using ICB.Business.Entities.Apps;
+using ICB.Business.Entities.Message;
+using ICB.Business.Models;
 using NDK.ApplicationCore.Extensions.ResponseResults;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ namespace ICB.Business.Access
 {
     public class SystemConfigProvider : ApplicationManager<Models.SystemConfig, int>
     {
-        public AccessEntityStatusCode InsertOrUpdate(SystemConfig systemConfig)
+        public AccessEntityResult InsertOrUpdate(SystemConfig systemConfig)
         {
             SystemConfig item = this.GetAll().FirstOrDefault();
             if (item == null)
@@ -27,7 +29,8 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
-                return this.Insert(item);
+                var result = ( this.Insert(item));
+                return new AccessEntityResult { Status = result, Message = MessageManager.GetErrorMessage(ModuleType.Base, result) };
             }
             else
             {
@@ -42,11 +45,12 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
-                return this.Update(item, item.ID).Item1;
+                var result = this.Update(item, item.ID);
+                return new AccessEntityResult { Status = result.Item1,Data=result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
         }
 
-        public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> InsertOrUpdateAsync(SystemConfig systemConfig)
+        public async Task<AccessEntityResult> InsertOrUpdateAsync(SystemConfig systemConfig)
         {
             SystemConfig item = this.GetAll().FirstOrDefault();
             if (item == null)
@@ -63,7 +67,8 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
-                return (await this.InsertAsync(item));
+                var result = (await this.InsertAsync(item));
+                return new AccessEntityResult { Status = result.Item1, Data=result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
             else
             {
@@ -78,7 +83,8 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
-                return await this.UpdateAsync(item, item.ID);
+                var result = await this.UpdateAsync(item, item.ID);
+                return new AccessEntityResult { Status = result.Item1, Data = result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
         }
 
