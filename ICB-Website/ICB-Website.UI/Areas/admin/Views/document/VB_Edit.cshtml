@@ -1,5 +1,4 @@
-﻿
-
+﻿@model ICB.Business.Models.Document
 @{
     ViewBag.Title = "Admin: Chỉnh sửa văn bản";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
@@ -13,26 +12,30 @@
 
         </div>
         <div class="box-body">
-
+            <a id="lnk-list-vanban" href="@Url.Action("vanban","document", new { area="admin"})"></a>
             <form id="frm-vanban-edit" onsubmit="return false;" novalidate>
-
+                
+                @Html.HiddenFor(x=>x.ID)
+                @Html.HiddenFor(x => x.CategoryID)
+                @Html.HiddenFor(x => x.UserIDCreated)
                 <div class="row">
                     <div class="col-md-7">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Tiêu đề: <span class="text-required">(*)</span></label>
-                                    <input class="form-control" data-val="true" data-val-required="Vui lòng nhập tiêu đề tin tức" id="tieude" name="tieude" type="text" value="">
+                                    @Html.TextBoxFor(x=>x.Caption, new { @class="form-control" })
+                                    
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="control-label">Ngày đăng: <span class="text-required">(*)</span></label>
                                     <div class="input-group">
-                                        <input class="form-control datetimepicker" id="txt_ngaydang" name="ngaydang" type="text" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")">
+                                        @Html.TextBoxFor(x => x.CreateTime, new { @class = "form-control datetimepicker",@Value= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") })
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
@@ -40,9 +43,25 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">Trạng thái:</label>
+                                    <div>
+                                        <label class="radio">
+                                            @if (Model != null)
+                                            {
+                                                if (Model.Status == 1)
+                                                {
+                                                    <span class="text-success"><i class="fa fa-check-circle-o"></i> <text>@ICB.Business.Entities.Apps.DocumentStatus.GetStatusText(Model.Status)</text></span>
+                                                }
+                                                else
+                                                {
+                                                    <text>@ICB.Business.Entities.Apps.DocumentStatus.GetStatusText(Model.Status)</text>
+                                                }
+                                            }
+                                        </label>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -51,8 +70,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Mô tả ngắn:</label>
-                                    <textarea class="form-control" cols="20" data-val="true" data-val-required="Vui lòng nhập mô tả ngắn tin tức" id="motangan" name="motangan" rows="10"></textarea>
-                                    <span class="field-validation-valid" data-valmsg-for="motangan" data-valmsg-replace="true" style="color: #f50000;"></span>
+                                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control",@cols="20", @rows="5" })
+
                                 </div>
                             </div>
 
@@ -64,20 +83,19 @@
                                 <label class="control-label">Ảnh đại diện: <span class="text-required">(*)</span></label>
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div>
-                                        <img class="img-thumbnail" style="width: 100%; min-height:200px; max-height:300px; margin-bottom: 10px;" src="~/Images/ne1.jpg">
+                                        <img class="img-thumbnail" style=" min-height:100px; max-height:300px; margin-bottom: 10px;" src="@if (Model != null) { <text>@Model.Path</text> } ">
                                     </div>
-                                    <div class="form-group">
 
-                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="input-group">
-                                                <input class="form-control" id="image" name="Path" readonly="readonly" type="text" value="">
-                                                <div class="input-group-btn">
-                                                    <a id="browser" class="btn btn-primary" data-dismiss="fileupload">Duyệt ảnh...</a>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    @Html.TextBoxFor(x => x.Path, new {@id="image", @class = "form-control", @readonly = "readonly" })
+                                                    <div class="input-group-btn">
+                                                        <a id="browser" class="btn btn-primary" data-dismiss="fileupload">Duyệt ảnh...</a>
+                                                    </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -90,8 +108,7 @@
                         <div class="form-group">
 
                             <label class="control-label">Nội dung:</label>
-
-                            <textarea cols="10" id="editor1" name="editor1" style="width:100%" rows="10" data-sample="1" data-sample-short=""></textarea>
+                            @Html.TextAreaFor(x=>x.Content,new { @class="form-control",@id="txtContent", @style = "width:100%", @rows = "10", @data_sample = "1", @data_sample_short = "" })
 
                         </div>
                     </div>
@@ -99,6 +116,7 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button type="button" id="btn-vanban-save" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Lưu</button>
+                        <button type="button" onclick="VANBAN_DELETE(@Model.ID,false);" id="btn-vanban-remove" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa</button>
                         <button type="button" class="btn btn-default" id="btn-vanban-cancel"><i class="fa fa-remove"></i>&nbsp;&nbsp;Hủy</button>
                     </div>
                 </div>
@@ -110,7 +128,7 @@
 </div>
 <script type="text/javascript">
             $(document).ready(function () {
-                CKEDITOR.replace('editor1', {
+                CKEDITOR.replace('txtContent', {
                     customConfig: '/Plugins/ckeditor/config.js'
                 });
 

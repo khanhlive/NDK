@@ -146,5 +146,12 @@ namespace ICB.Business.Access
 
         }
 
+        public static string GetName(int id)
+        {
+            AccountProvider accountProvider = new AccountProvider();
+            Account account =  accountProvider.GetByID(id);
+            return account == null ? "" : account.Username;
+        }
+
     }
 }

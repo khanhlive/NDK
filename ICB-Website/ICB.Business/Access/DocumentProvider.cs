@@ -13,7 +13,10 @@ namespace ICB.Business.Access
 {
     public class DocumentProvider : ApplicationManager<Models.Document, int>
     {
-        
+        public DocumentProvider()
+        {
+            this.context.Configuration.ProxyCreationEnabled = false;
+        }
 
         #region Chung
 
@@ -49,6 +52,7 @@ namespace ICB.Business.Access
 
         public async Task<AccessEntityResult> EditAsync(int id, Document document)
         {
+            
             Document edit = this.GetByID(id);
             if (edit == null)
             {

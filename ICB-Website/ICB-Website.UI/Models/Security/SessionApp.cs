@@ -47,6 +47,25 @@ namespace ICB_Website.UI.Models.Security
                 HttpContext.Current.Session["Username"] = value;
             }
         }
+        public static int UserID
+        {
+            get
+            {
+                var userid = HttpContext.Current.Session["UserID"];
+                if (userid == null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return ((int)(userid));
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session["UserID"] = value;
+            }
+        }
         public static string Role
         {
             get

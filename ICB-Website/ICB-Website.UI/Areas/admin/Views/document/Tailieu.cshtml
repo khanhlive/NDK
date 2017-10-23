@@ -1,9 +1,192 @@
-﻿
+﻿@model PagedList.IPagedList<ICB.Business.Models.Document>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Admin: Quản lý tài liệu";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    ViewBag.ContentName = "Quản lý tài liệu";
+    ViewBag.Header = "Quản lý tài liệu";
 }
 <div data-controller="document-2">
 
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách tài liệu</h3>
+            <div class="box-tools pull-right">
+
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="margin-bottom">
+                <button type="button" id="btn-create-tailieu-add" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Thêm mới</button>
+                <a href="@Url.Action("tailieu","document",new { area="admin"})" id="lnk-list-vanban"></a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped jambo_table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tiêu đề</th>
+                            <th>Ngày tạo</th>
+                            <th>Người tạo</th>
+                            <th>Mô tả</th>
+                            <th>Trạng thái</th>
+                            <th colspan="3" class="text-center">Chức năng</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Caption</td>
+                                <td>@ICB_Website.UI.Models.HtmlHelper.FormatDatetime(item.CreateTime, NDK.ApplicationCore.Models.Common.DatetimeFormatString[1])</td>
+                                <td>@ICB.Business.Access.AccountProvider.GetName(item.UserIDCreated)</td>
+                                <td>@item.Description</td>
+                                <td>@ICB.Business.Entities.Apps.DocumentStatus.GetStatusText(item.Status)</td>
+                                <td width="50" class="text-center"><a href="#" class=" btn-sm btn-primary"><i class="fa fa-globe"></i></a></td>
+                                <td width="50" class="text-center"><a href="javascript:TAILIEU_OPEN_MODAL_UPDATE(@item.ID);" class=" btn-sm btn-warning"><i class="fa fa-edit"></i></a></td>
+                                <td width="50" class="text-center"><a href="javascript:VANBAN_DELETE(@item.ID,true);" class=" btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+
+                            i++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination text-right pull-right">
+                @Html.PagedListPager(Model, page => Url.Action("Tailieu", "document", new { area = "admin", page, pagesize = 10 }), ICB_Website.UI.Models.HtmlHelper.GetPagedListRenderOptions)
+            </div>
+
+        </div>
+    </div>
 </div>
 
+
+<div class="modal fade" id="modal-tailieu-create">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thêm mới tài liệu</h4>
+            </div>
+            <form class="form-horizontal form-no-bottom" id="frm-create-tailieu" onsubmit="return false" novalidate>
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tiêu đề: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Caption" placeholder="Tiêu đề" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Mô tả: </label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" name="Description" placeholder="Mô tả" rows="4"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback ">
+                        <label class="control-label col-md-4">Đường dẫn: </label>
+                        <div class="col-md-8">
+                            <div class="input-group" style="margin-bottom:10px;">
+                                <input class="form-control" type="text" readonly="readonly" name="Path" placeholder="Đường dẫn..." />
+                                <span class="input-group-btn">
+                                    <button type="button" id="btn-create-tailieu-find-file" class="btn btn-primary"><i class="fa fa-search"></i> Duyệt...</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Trạng thái: </label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="Status">
+                                <option value="1">Sử dụng</option>
+                                <option value="0">Không sử dụng</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-create-tailieu-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-tailieu-edit">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Cập nhật tài liệu</h4>
+            </div>
+            <form class="form-horizontal form-no-bottom" id="frm-edit-tailieu" onsubmit="return false" novalidate>
+                <input type="hidden" name="ID" />
+                <input type="hidden" name="CreateTime" />
+                <input type="hidden" name="UserIDCreated" />
+                <input type="hidden" name="Content" />
+                <input type="hidden" name="CategoryID" />
+                <div class="modal-body">
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Tiêu đề: </label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="Caption" placeholder="Tiêu đề" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Mô tả: </label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" name="Description" placeholder="Mô tả" rows="4"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback ">
+                        <label class="control-label col-md-4">Đường dẫn: </label>
+                        <div class="col-md-8">
+                            <div class="input-group" style="margin-bottom:10px;">
+                                <input class="form-control" type="text" readonly="readonly" name="Path" placeholder="Đường dẫn..." />
+                                <span class="input-group-btn">
+                                    <button type="button" id="btn-edit-tailieu-find-file" class="btn btn-primary"><i class="fa fa-search"></i> Duyệt...</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label col-md-4">Trạng thái: </label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="Status">
+                                <option value="1">Sử dụng</option>
+                                <option value="0">Không sử dụng</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-edit-tailieu-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
+                    <button type="button" id="btn-edit-tailieu-delete" data-id="" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp; Xóa</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

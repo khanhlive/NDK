@@ -50,9 +50,13 @@
             }
         });
     }
+    VANBAN_INIT();
 
     CATEGORY_INIT();
+
     SETTING_INIT();
+
+    TAILIEU_INIT();
 });
 
 //////  ACCOUNT //////
@@ -1112,3 +1116,341 @@ function SETTING_ENABLED_ALLFIELD() {
 
 }
 //// end thông tin website   ////
+
+//// văn bản   //////
+
+function VANBAN_INIT() {
+    if ($('[data-controller=document]').length > 0) {
+
+        VANBAN_INIT_FormValidation();
+
+        $("#frm-vanban-create #btn-vanban-save").click(function () {
+            $('#frm-vanban-create').data('formValidation').validate();
+            if ($('#frm-vanban-create').data('formValidation').isValid()) {
+                VANBAN_CREATE();
+            }
+        });
+
+        $("#frm-vanban-edit #btn-vanban-save").click(function () {
+            $('#frm-vanban-edit').data('formValidation').validate();
+            if ($('#frm-vanban-edit').data('formValidation').isValid()) {
+                CATEGORY_UPDATE();
+            }
+        });
+    }
+}
+
+function VANBAN_INIT_FormValidation() {
+    $('#frm-vanban-create,#frm-vanban-edit').formValidation({
+        //err: {
+        //    container:'popover'
+        //},
+        message: 'Dữ liệu nhập không hợp lệ',
+        //icon: {
+        //    valid: 'glyphicon glyphicon-ok',
+        //    invalid: 'glyphicon glyphicon-remove',
+        //    validating: 'glyphicon glyphicon-refresh'
+        //},
+        fields: {
+            Caption: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập tiêu đề'
+                    },
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    }
+                }
+            },
+            CreateTime: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa chọn ngày đăng'
+                    }
+                }
+            },
+            Path: {
+                validators: {
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    },
+                    notEmpty: {
+                        message: 'Chưa chọn ảnh đại diện'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function VANBAN_CREATE() {
+    var form = $("#frm-vanban-create");
+    var caption = form.find('[name=Caption]').val();
+    var createtime = form.find('[name=CreateTime]').val();
+    var description = form.find('[name=Description]').val();
+    var path = form.find('[name=Path]').val();
+    var content = CKEDITOR.instances.txtContent.getData();
+    var Document = {
+        Caption: caption,
+        CreateTime: createtime,
+        Description: description,
+        Path: path,
+        Content: content
+
+    };
+    APPLICATION.Ajax('/admin/document/vb_insert', 'application/json', 'POST', JSON.stringify(Document), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            var backList = $('#lnk-list-vanban').attr('href');
+            location.href = backList;
+            ShowNotifySuccess(d.Message);
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+
+function CATEGORY_UPDATE() {
+    var form = $("#frm-vanban-edit");
+    var caption = form.find('[name=Caption]').val();
+    var id = form.find('[name=ID]').val();
+    var categoryID = form.find('[name=CategoryID]').val();
+    var userIDCreated = form.find('[name=UserIDCreated]').val();
+    var createtime = form.find('[name=CreateTime]').val();
+    var description = form.find('[name=Description]').val();
+    var path = form.find('[name=Path]').val();
+    var content = CKEDITOR.instances.txtContent.getData();
+    var Document = {
+        UserIDCreated: userIDCreated,
+        ID: id,
+        CategoryID: categoryID,
+        Caption: caption,
+        CreateTime: createtime,
+        Description: description,
+        Path: path,
+        Content: content
+
+    };
+    APPLICATION.Ajax('/admin/document/vb_update/' + Document.ID, 'application/json', 'PUT', JSON.stringify(Document), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            ShowNotifySuccess('Cập nhật thành công');
+            var backList = $('#lnk-list-vanban').attr('href');
+            location.href = backList;
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+function VANBAN_DELETE(id, isList) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa văn bản này không?', 'Xóa văn bản', function (e) {
+            APPLICATION.Ajax('/admin/document/vb_delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    MESSAGEBOX('Xóa văn bản thành công', 'Thông báo', function (e) {
+                        if (isList) {
+                            location.reload();
+                        } else {
+                            var backList = $('#lnk-list-vanban').attr('href');
+                            location.href = backList;
+                        }
+                    });
+                    
+                } else {
+                    ShowNotifyError("Không xóa được văn bản này, thử lại sau.");
+                }
+            });
+
+        });
+    }
+}
+
+/// end văn bản  ////
+
+function TAILIEU_INIT() {
+    if ($('[data-controller=document-2]').length > 0) {
+
+        TAILIEU_INIT_FormValidation();
+
+        $('#btn-create-tailieu-add').click(function (e) {
+            $('#modal-tailieu-create').modal({ show: true, backdrop: 'static', keyboard: true });
+        });
+
+        $('#btn-create-tailieu-find-file').click(function () {
+            var ckfinder = new CKFinder();
+            
+            ckfinder.selectActionFunction = function (url, a, b) {
+                var decodedUri = decodeURIComponent(url);
+                $("#img-customer-thumbnail").attr('src', decodedUri);
+                $("#frm-create-tailieu [name=Path]").attr({ 'value': decodedUri });
+                ///$("#frm-add-customer").formValidation('revalidateField', 'Thumbnail');
+                //$("#image-url").text(decodedUri);
+                //$("#images-url").text(decodedUri);
+            }
+            ckfinder.popup();
+        });
+
+        $('#btn-edit-tailieu-find-file').click(function () {
+            var ckfinder = new CKFinder();
+
+            ckfinder.selectActionFunction = function (url, a, b) {
+                var decodedUri = decodeURIComponent(url);
+                $("#img-customer-thumbnail").attr('src', decodedUri);
+                $("#frm-edit-tailieu [name=Path]").attr({ 'value': decodedUri });
+                ///$("#frm-add-customer").formValidation('revalidateField', 'Thumbnail');
+                //$("#image-url").text(decodedUri);
+                //$("#images-url").text(decodedUri);
+            }
+            ckfinder.popup();
+        });
+
+        $('#btn-create-tailieu-submit').click(function (e) {
+            $('#frm-create-tailieu').data('formValidation').validate();
+            if ($('#frm-create-tailieu').data('formValidation').isValid()) {
+                TAILIEU_CREATE();
+            }
+        });
+
+        $('#btn-edit-tailieu-submit').click(function (e) {
+            $('#frm-edit-tailieu').data('formValidation').validate();
+            if ($('#frm-edit-tailieu').data('formValidation').isValid()) {
+                TAILIEU_UPDATE();
+            }
+        });
+    }
+}
+
+function TAILIEU_INIT_FormValidation() {
+    $('#frm-create-tailieu,#frm-edit-tailieu').formValidation({
+        //err: {
+        //    container:'popover'
+        //},
+        message: 'Dữ liệu nhập không hợp lệ',
+        //icon: {
+        //    valid: 'glyphicon glyphicon-ok',
+        //    invalid: 'glyphicon glyphicon-remove',
+        //    validating: 'glyphicon glyphicon-refresh'
+        //},
+        fields: {
+            Caption: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập tiêu đề'
+                    },
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    }
+                }
+            },
+            Description: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập mô tả'
+                    }
+                }
+            },
+            Path: {
+                validators: {
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    },
+                    notEmpty: {
+                        message: 'Chưa chọn file tài liệu'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function TAILIEU_CREATE() {
+    var form = $("#frm-create-tailieu");
+    var caption = form.find('[name=Caption]').val();
+    var description = form.find('[name=Description]').val();
+    var path = form.find('[name=Path]').val();
+    var status = form.find('[name=Status]').val();
+    var Document = {
+        Caption: caption,
+        Description: description,
+        Path: path,
+        Status: status
+    };
+    APPLICATION.Ajax('/admin/document/tl_insert', 'application/json', 'POST', JSON.stringify(Document), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            $('#modal-tailieu-create').modal('hide');
+            alert(d.Message);
+            var backList = $('#lnk-list-vanban').attr('href');
+            location.href = backList;
+        } else {
+            alert(d.Message);
+        }
+    });
+}
+
+function TAILIEU_UPDATE() {
+    var form = $("#frm-edit-tailieu");
+    var caption = form.find('[name=Caption]').val();
+    var description = form.find('[name=Description]').val();
+    var path = form.find('[name=Path]').val();
+    var status = form.find('[name=Status]').val();
+    var id = form.find('[name=ID]').val();
+    var createTime = form.find('[name=CreateTime]').val();
+    var userIDCreated = form.find('[name=UserIDCreated]').val();
+    var content = form.find('[name=Content]').val();
+    var categoryID = form.find('[name=CategoryID]').val();
+    var Document = {
+        Caption: caption,
+        Description: description,
+        Path: path,
+        Status: status,
+        ID: id,
+        CreateTime: createTime,
+        UserIDCreated: userIDCreated,
+        Content: content,
+        CategoryID: categoryID
+    };
+    APPLICATION.Ajax('/admin/document/TL_Update/' + Document.ID, 'application/json', 'PUT', JSON.stringify(Document), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            $('#modal-tailieu-edit').modal('hide');
+            alert(d.Message);
+            
+            location.reload();
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+
+function TAILIEU_OPEN_MODAL_UPDATE(id) {
+    var form = $('#frm-edit-tailieu');
+    //$('#modal-tailieu-edit').modal('show');
+    var data_id = id;
+    if (data_id) {
+        //APPLICATION.ShowLoading();
+        APPLICATION.Ajax('/admin/document/getid/' + data_id, 'application/json', 'GET', null, function (d) {
+            form.find('[name=ID]').val(d.ID);
+            form.find('[name=CreateTime]').val(d.CreateTime.MilisecondsToLongString());
+            form.find('[name=UserIDCreated]').val(d.UserIDCreated);
+            form.find('[name=Content]').val(d.Content);
+            form.find('[name=CategoryID]').val(d.CategoryID);
+            form.find('[name=Caption]').val(d.Caption);
+            form.find('[name=Description]').val(d.Description);
+            form.find('[name=Path]').val(d.Path);
+            form.find('[name=Status]').val(d.Status);
+            $('#btn-edit-tailieu-delete').attr({ 'data-id': d.ID });
+            $('#modal-tailieu-edit').modal({ backdrop: 'static', keyboard: false, show: true });
+            $('#modal-tailieu-edit').on('shown.bs.modal', function (e) {
+                form.data('formValidation').resetForm();
+            });
+            APPLICATION.HideLoading();
+        });
+    } else {
+        APPLICATION.HideLoading();
+    }
+}
+/// begin tài liệu   /////

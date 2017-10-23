@@ -53,4 +53,25 @@ namespace ICB.Business.Entities.Apps
         TaiLieu = 1,
         VanBan = 2
     }
+    public class DocumentStatus
+    {
+        public static string GetStatusText(int status)
+        {
+            if (status == 0)
+            {
+                return "Chưa duyệt";
+            } else if (status == 1)
+            {
+                return "Đã duyệt";
+            }
+            else if (status == 2)
+            {
+                return "Đã xóa";
+            }
+            else
+            {
+                return "";
+            }
+        }
+    }
 }

@@ -56,6 +56,7 @@ namespace ICB.Business.Entities.Message
         {
             return messageBase.GetMessage(messageType);
         }
+
         protected static string GetMessage(MessageBase messageBase, AccessEntityStatusCode accessEntityStatusCode)
         {
             switch (accessEntityStatusCode)
@@ -87,6 +88,8 @@ namespace ICB.Business.Entities.Message
         protected string MsgDefault = "Thông báo từ Website";
         protected string ModelFailed_Base = "Thông tin không hợp lệ";
         protected string Update = "Cập nhật thành công";
+        protected string DeleteSuccess = "Xóa thành công";
+        protected string DeleteFailed = "Cập nhật thành công";
         public abstract string GetMessage(MessageType messageType);
     }
 
@@ -108,6 +111,10 @@ namespace ICB.Business.Entities.Message
                     return this.Existed;
                 case MessageType.Update:
                     return this.Update;
+                case MessageType.DeleteSuccess:
+                    return this.DeleteSuccess;
+                case MessageType.DeleteFailed:
+                    return this.DeleteFailed;
                 default:
                     return this.MsgDefault;
             }
@@ -175,8 +182,8 @@ namespace ICB.Business.Entities.Message
         protected new string Success = "Thêm mới khách hàng thành công";
         protected string Failed = "Không thêm được khách hàng";
         protected string ModelFailed = "Thông tin khách hàng không hợp lệ";
-        protected string DeleteSuccess = "Khách hàng đã được xóa thành công";
-        protected string DeleteFailed = "Không xóa được khách hàng";
+        protected new string DeleteSuccess = "Khách hàng đã được xóa thành công";
+        protected new string DeleteFailed = "Không xóa được khách hàng";
         protected string UpdateFailed = "Không cập nhật được khách hàng";
         public override string GetMessage(MessageType messageType)
         {
@@ -212,8 +219,8 @@ namespace ICB.Business.Entities.Message
         protected new string Success = "Thêm mới nhóm danh mục thành công";
         protected string Failed = "Không thêm được nhóm danh mục";
         protected string ModelFailed = "Thông tin nhóm danh mục không hợp lệ";
-        protected string DeleteSuccess = "Nhóm danh mục đã được xóa thành công";
-        protected string DeleteFailed = "Không xóa được nhóm danh mục";
+        protected new string DeleteSuccess = "Nhóm danh mục đã được xóa thành công";
+        protected new string DeleteFailed = "Không xóa được nhóm danh mục";
         protected string UpdateFailed = "Không cập nhật được nhóm danh mục";
         public override string GetMessage(MessageType messageType)
         {
@@ -242,7 +249,33 @@ namespace ICB.Business.Entities.Message
             }
         }
     }
-    
+
+
+    public class VanBanMessage : MessageBase
+    {
+        protected new string DeleteSuccess = "Văn bản đã được xóa thành công";
+        protected new string DeleteFailed = "Không xóa được văn bản";
+        public override string GetMessage(MessageType messageType)
+        {
+            switch (messageType)
+            {
+                case MessageType.Update:
+                    return this.Update;
+                case MessageType.Success:
+                    return this.Success;
+                case MessageType.DeleteSuccess:
+                    return this.DeleteSuccess;
+                case MessageType.DeleteFailed:
+                    return this.DeleteFailed;
+                case MessageType.NotFound:
+                    return this.NotFound;
+                case MessageType.Existed:
+                    return this.Existed;
+                default:
+                    return this.MsgDefault;
+            }
+        }
+    }
 
 
     public enum MessageType

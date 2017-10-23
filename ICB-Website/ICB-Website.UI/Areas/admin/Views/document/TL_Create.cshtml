@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Admin: Quản lý tài liệu";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    ViewBag.ContentName = "Quản lý tài liệu";
+    ViewBag.Header = "Quản lý tài liệu";
+}
+
+<div data-controller="document-2">
+
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Thông tin tài liệu</h3>
+            <div class="box-tools pull-right">
+
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form id="frm-tailieu-create" class="form-horizontal" onsubmit="return false;">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Tiêu đề:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="Caption"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

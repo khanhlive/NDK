@@ -48,6 +48,7 @@ namespace ICB_Website.UI.Controllers
                     SessionApp.Role = account.Role.ToString();
                     SessionApp.RoleType = account.Role;
                     SessionApp.Fullname = account.Fullname;
+                    SessionApp.UserID = account.ID;
                     return Redirect(Url.Action("Index", "Home"));
                 }
             }
