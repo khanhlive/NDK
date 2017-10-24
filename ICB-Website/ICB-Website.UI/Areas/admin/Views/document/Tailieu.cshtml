@@ -56,7 +56,7 @@
                                 <td>@ICB.Business.Entities.Apps.DocumentStatus.GetStatusText(item.Status)</td>
                                 <td width="50" class="text-center"><a href="#" class=" btn-sm btn-primary"><i class="fa fa-globe"></i></a></td>
                                 <td width="50" class="text-center"><a href="javascript:TAILIEU_OPEN_MODAL_UPDATE(@item.ID);" class=" btn-sm btn-warning"><i class="fa fa-edit"></i></a></td>
-                                <td width="50" class="text-center"><a href="javascript:VANBAN_DELETE(@item.ID,true);" class=" btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+                                <td width="50" class="text-center"><a href="javascript:TAILIEU_DELETE(@item.ID);" class=" btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
                             </tr>
 
                             i++;
@@ -183,7 +183,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btn-edit-tailieu-submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp; Lưu</button>
-                    <button type="button" id="btn-edit-tailieu-delete" data-id="" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp; Xóa</button>
+                    <button type="button" id="btn-edit-tailieu-delete" onclick="TAILIEU_DELETE_ACTION(this);" data-id="" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp; Xóa</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;&nbsp; Hủy</button>
                 </div>
             </form>

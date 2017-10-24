@@ -1453,4 +1453,27 @@ function TAILIEU_OPEN_MODAL_UPDATE(id) {
         APPLICATION.HideLoading();
     }
 }
+
+function TAILIEU_DELETE(id) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa tài liệu này không?', 'Xóa tài liệu', function (e) {
+            APPLICATION.Ajax('/admin/document/tl_delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    MESSAGEBOX('Xóa tài liệu thành công', 'Thông báo', function (e) {
+                            location.reload();
+                    });
+
+                } else {
+                    ShowNotifyError("Không xóa được tài liệu này, thử lại sau.");
+                }
+            });
+
+        });
+    }
+}
+
+function TAILIEU_DELETE_ACTION(element) {
+    var id = $(element).attr('data-id');
+    TAILIEU_DELETE(id);
+}
 /// begin tài liệu   /////
