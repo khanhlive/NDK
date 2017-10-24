@@ -3690,6 +3690,7 @@
     <Content Include="Areas\admin\Views\document\VB_Create.cshtml" />
     <Content Include="Areas\admin\Views\document\VB_Edit.cshtml" />
     <Content Include="Areas\admin\Views\document\TL_Create.cshtml" />
+    <Content Include="App_Data\icbWeb.bak" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\1.jpg" />
@@ -3962,7 +3963,6 @@
     <Content Include="Views\account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Uploads\Documents\" />
   </ItemGroup>
