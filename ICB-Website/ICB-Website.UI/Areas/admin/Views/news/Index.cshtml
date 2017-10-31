@@ -1,9 +1,73 @@
-﻿
+﻿@model PagedList.IPagedList<ICB.Business.Models.News>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Quản lý tin tức";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 <div data-controller="news">
 
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách tin tức</h3>
+            <div class="box-tools pull-right">
+
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="margin-bottom">
+                <a href="@Url.Action("Create", "news", new { area = "admin" })" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp;Thêm mới</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped jambo_table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Tiêu đề</th>
+                            <th>Ngày đăng</th>
+                            <th>Người đăng</th>
+                            <th>Mô tả ngắn</th>
+                            <th>Trạng thái</th>
+                            <th colspan="3" class="text-center">Chức năng</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.ThumbnailURL</td>
+                                <td>@item.Caption</td>
+                                <td>@ICB_Website.UI.Models.HtmlHelper.FormatDatetime(item.PostedDate, NDK.ApplicationCore.Models.Common.DatetimeFormatString[1])</td>
+                                <td>@ICB.Business.Access.AccountProvider.GetName(item.UserID)</td>
+                                <td>@item.ContentReview</td>
+                                <td>@item.Status</td>
+                                <td width="50" class="text-center"><a href="#" class=" btn-sm btn-primary"><i class="fa fa-globe"></i></a></td>
+                                <td width="50" class="text-center"><a href="@Url.Action("Edit", "News", new { area = "admin", id = item.ID })" class=" btn-sm btn-warning"><i class="fa fa-edit"></i></a></td>
+                                <td width="50" class="text-center"><a href="javascript:TINTUC_DELETE(@item.ID,true);" class=" btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+
+                            i++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination text-right pull-right">
+                @Html.PagedListPager(Model, page => Url.Action("Index", "News", new { area = "admin", page, pagesize = 10 }), ICB_Website.UI.Models.HtmlHelper.GetPagedListRenderOptions)
+            </div>
+
+        </div>
+    </div>
 </div>
 

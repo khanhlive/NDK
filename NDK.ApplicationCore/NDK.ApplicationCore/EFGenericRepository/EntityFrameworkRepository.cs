@@ -3,6 +3,7 @@ using NDK.ApplicationCore.Extensions.ResponseResults;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -145,8 +146,18 @@ namespace NDK.ApplicationCore.EFGenericRepository
         public virtual AccessEntityStatusCode Insert(T item)
         {
             this.context.Set<T>().Add(item);
-            int counter = this.context.SaveChanges();
-            return (counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed);
+            try
+            {
+                int counter = this.context.SaveChanges();
+                return (counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed);
+            }
+            catch (DbEntityValidationException ex)
+            {
+
+                throw;
+            }
+            
+            
         }
 
         /// <summary>

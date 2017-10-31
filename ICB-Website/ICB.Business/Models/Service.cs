@@ -15,7 +15,7 @@ namespace ICB.Business.Models
         [StringLength(500)]
         public string Name { get; set; }
 
-        [Required]
+        
         [StringLength(500)]
         public string NameENG { get; set; }
 
@@ -23,11 +23,11 @@ namespace ICB.Business.Models
         [StringLength(500)]
         public string Title { get; set; }
 
-        [Required]
+        
         [StringLength(500)]
         public string TitleENG { get; set; }
 
-        [Required]
+        
         [StringLength(500)]
         public string ImageURL { get; set; }
 
@@ -57,9 +57,9 @@ namespace ICB.Business.Models
 
         public int? Status { get; set; }
 
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
-        public DateTime LastMordifiedTime { get; set; }
+        public DateTime? LastMordifiedTime { get; set; }
 
         public long ViewCounter { get; set; }
 

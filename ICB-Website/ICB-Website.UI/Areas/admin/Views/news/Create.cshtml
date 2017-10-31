@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Thêm mới tin tức";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div data-controller="news" class="box box-primary">
+    <div class="box-header">
+        <h3 class="box-title">Thông tin tin tức</h3>
+    </div>
+    <div class="box-body">
+        <a id="lnk-list-vanban" href="@Url.Action("Index","news", new { area="admin"})"></a>
+        <form id="frm-tintuc-create" onsubmit="return false;" novalidate>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Tiêu đề: <span class="text-required">(*)</span></label>
+                                <input class="form-control" id="txtCaption" name="Caption" type="text" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Ngày đăng: <span class="text-required">(*)</span></label>
+                                <div class="input-group">
+                                    <input class="form-control datetimepicker" id="txtPostedDate" name="PostedDate" type="text" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Chuyên mục: <span class="text-required">(*)</span></label>
+                                <select class="form-control" id="ddlCategory" name="Category">
+                                    <option value="0">Category 0</option>
+                                    <option value="1">Category 1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Mô tả ngắn: <span class="text-required">(*)</span></label>
+                                <textarea class="form-control" cols="20" id="txtContentReview" name="ContentReview" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Ảnh đại diện: <span class="text-required">(*)</span></label>
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div>
+                                    <img class="img-thumbnail" style=" min-height:100px; max-height:300px; margin-bottom: 10px;" src="~/Images/ne1.jpg">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="image" name="ThumbnailURL" readonly="readonly" type="text" value="">
+                                                <div class="input-group-btn">
+                                                    <a id="browser" class="btn btn-primary" data-dismiss="fileupload">Duyệt ảnh...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Nội dung:</label>
+                        <textarea cols="10" id="txtContent" name="Content" style="width:100%" rows="10" data-sample="1" data-sample-short=""></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="button" id="btn-tintuc-save" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Lưu</button>
+                    <button type="button" class="btn btn-default" id="btn-tintuc-cancel"><i class="fa fa-remove"></i>&nbsp;&nbsp;Hủy</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        CKEDITOR.replace('txtContent', {
+            customConfig: '/Plugins/ckeditor/config.js'
+        });
+
+    });
+</script>

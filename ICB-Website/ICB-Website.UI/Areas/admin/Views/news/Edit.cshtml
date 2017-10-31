@@ -1,0 +1,106 @@
+﻿@model ICB.Business.Models.News
+@{
+    ViewBag.Title = "Chỉnh sửa tin tức";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div data-controller="news" class="box box-primary">
+    <div class="box-header">
+        <h3 class="box-title">Thông tin tin tức</h3>
+    </div>
+    <div class="box-body">
+        <a id="lnk-list-vanban" href="@Url.Action("Index","news", new { area="admin"})"></a>
+        <form id="frm-tintuc-edit" onsubmit="return false;" novalidate>
+            @Html.HiddenFor(p=>p.ID)
+            @Html.HiddenFor(p=>p.Status)
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Tiêu đề: <span class="text-required">(*)</span></label>
+                                @Html.TextBoxFor(p=>p.Caption,new { @id="txtCaption",@class="form-control"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Ngày đăng: <span class="text-required">(*)</span></label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(p => p.PostedDate, new { @id = "txtPostedDate", @class = "form-control datetimepicker",@Value= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") })
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Chuyên mục: <span class="text-required">(*)</span></label>
+                                @Html.DropDownListFor(p => p.Category, new List<SelectListItem> { new SelectListItem { Text = "Category 1", Value = "0" }, new SelectListItem { Text = "Category 1", Value = "1" } }, new { @id = "ddlCategory", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Mô tả ngắn: <span class="text-required">(*)</span></label>
+                                @Html.TextAreaFor(p => p.ContentReview, new { @id = "txtCaption", @class = "form-control",@rows="5" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Ảnh đại diện: <span class="text-required">(*)</span></label>
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div>
+                                    <img class="img-thumbnail" style=" min-height:100px; max-height:300px; margin-bottom: 10px;" @if (Model != null) { <text> src="@Model.ThumbnailURL" </text> }>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(p => p.ThumbnailURL, new { @id = "image", @class = "form-control", @readonly = "readonly" })
+                                                <div class="input-group-btn">
+                                                    <a id="browser" class="btn btn-primary" data-dismiss="fileupload">Duyệt ảnh...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Nội dung:</label>
+                        @Html.TextAreaFor(p => p.Content, new { @id = "txtContent", @class = "form-control",@rows="10" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="button" id="btn-tintuc-save" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Lưu</button>
+                    <button type="button" id="btn-tintuc-delete" onclick="TINTUC_DELETE_ACTION(this)" data-id="@Model.ID" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;&nbsp;Xóa</button>
+                    <button type="button" class="btn btn-default" id="btn-tintuc-cancel"><i class="fa fa-remove"></i>&nbsp;&nbsp;Hủy</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        CKEDITOR.replace('txtContent', {
+            customConfig: '/Plugins/ckeditor/config.js'
+        });
+
+    });
+</script>
+

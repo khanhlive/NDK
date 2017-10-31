@@ -1,17 +1,79 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ICB.Business.Access;
+using ICB.Business.Models;
+using ICB_Website.UI.Models;
 using System.Web.Mvc;
+using PagedList;
+using NDK.ApplicationCore.Extensions.ResponseResults;
+using ICB_Website.UI.Models.Security;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace ICB_Website.UI.Areas.admin.Controllers
 {
-    public class newsController : Controller
+    [AttributeRouting.RouteArea("admin")]
+    [AttributeRouting.RoutePrefix("tin-tuc")]
+    public class newsController : ControllerApp
     {
+        public newsController() : base("Quản lý tin tức", "Quản lý tin tức") { }
         // GET: admin/news
-        public ActionResult Index()
+        [AttributeRouting.Web.Mvc.Route("")]
+        public ActionResult Index(int page = 1, int pagesize = 10)
+        {
+            NewsProvider newsProvider = new NewsProvider();
+            IPagedList<News> listNews = newsProvider.FindAll(p=>p.Status==1).OrderByDescending(p=>p.PostedDate).ToPagedList(page, pagesize);
+            return View(listNews);
+        }
+
+        [HttpGet]
+        [AttributeRouting.Web.Mvc.Route("tin-tuc/them-moi")]
+        public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> CreatePost(News model)
+        {
+            model.Status = 1;
+            model.UserID = SessionApp.UserID;
+            if (ModelState.IsValid)
+            {
+                NewsProvider newsProvider = new NewsProvider();
+                var result = await newsProvider.AddAsync(model);
+                return Json(result);
+            }
+            else
+                return Json(new AccessEntityResult { Status = AccessEntityStatusCode.ModelFailed, Message = "Thông tin tin tức không hợp lệ, thử lại." });
+
+        }
+
+        [HttpGet]
+        [AttributeRouting.Web.Mvc.Route("tin-tuc/chinh-sua")]
+        public ActionResult Edit(int id)
+        {
+            NewsProvider newsProvider = new NewsProvider();
+            return View(newsProvider.GetByID(id));
+        }
+
+        [HttpPut]
+        public async Task<JsonResult> EditPut(int id, News model)
+        {
+            if (ModelState.IsValid)
+            {
+                NewsProvider newsProvider = new NewsProvider();
+                var result = await newsProvider.EditAsync(id,model);
+                return Json(result);
+            }
+            else
+                return Json(new AccessEntityResult { Status = AccessEntityStatusCode.ModelFailed, Message = "Thông tin tin tức không hợp lệ, thử lại." });
+        }
+
+        [HttpDelete]
+        public async Task<JsonResult> Delete(int id)
+        {
+            NewsProvider newsProvider = new NewsProvider();
+            var result = await newsProvider.DeleteAsync(id);
+            return Json(new AccessEntityResult { Status = result, Data = id, Message = "" });
         }
     }
 }

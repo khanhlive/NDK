@@ -57,6 +57,8 @@
     SETTING_INIT();
 
     TAILIEU_INIT();
+
+    TINTUC_INIT();
 });
 
 //////  ACCOUNT //////
@@ -1477,3 +1479,178 @@ function TAILIEU_DELETE_ACTION(element) {
     TAILIEU_DELETE(id);
 }
 /// begin tài liệu   /////
+
+//// begin tin tức  ////
+
+function TINTUC_INIT() {
+    if ($('[data-controller=news]').length > 0) {
+        TINTUC_INIT_FormVALIDATION();
+
+        $('#frm-tintuc-create #btn-tintuc-save').click(function (e) {
+            $('#frm-tintuc-create').data('formValidation').validate();
+            if ($('#frm-tintuc-create').data('formValidation').isValid()) {
+                TINTUC_CREATE();
+            }
+        });
+
+        $('#frm-tintuc-edit #btn-tintuc-save').click(function (e) {
+            $('#frm-tintuc-edit').data('formValidation').validate();
+            if ($('#frm-tintuc-edit').data('formValidation').isValid()) {
+                TINTUC_EDIT();
+            }
+        });
+
+        $('#browser').click(function () {
+            var ckfinder = new CKFinder();
+
+            ckfinder.selectActionFunction = function (url, a, b) {
+                var decodedUri = decodeURIComponent(url);
+                $(".img-thumbnail").attr('src', decodedUri);
+                $("[name=ThumbnailURL]").attr({ 'value': decodedUri });
+            }
+            ckfinder.popup();
+        });
+    }
+}
+
+function TINTUC_INIT_FormVALIDATION() {
+    $('#frm-tintuc-create,#frm-tintuc-edit').formValidation({
+        //err: {
+        //    container:'popover'
+        //},
+        message: 'Dữ liệu nhập không hợp lệ',
+        //icon: {
+        //    valid: 'glyphicon glyphicon-ok',
+        //    invalid: 'glyphicon glyphicon-remove',
+        //    validating: 'glyphicon glyphicon-refresh'
+        //},
+        fields: {
+            Caption: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập tiêu đề'
+                    },
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    }
+                }
+            },
+            ContentReview: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập nội dung ngắn'
+                    },
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    }
+                }
+            },
+            PostedDate: {
+                validators: {
+                    notEmpty: {
+                        message: 'Chưa nhập ngày đăng'
+                    }
+                }
+            },
+            ThumbnailURL: {
+                validators: {
+                    stringLength: {
+                        max: 500,
+                        message: 'Chỉ nhập tối đa 500 ký tự'
+                    },
+                    notEmpty: {
+                        message: 'Chưa chọn ảnh đại diện'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function TINTUC_CREATE() {
+    var form = $("#frm-tintuc-create");
+    var caption = form.find('[name=Caption]').val();
+    var content = CKEDITOR.instances.txtContent.getData();
+    var contentReview = form.find('[name=ContentReview]').val();
+    var posted = form.find('[name=PostedDate]').val();
+    //var status = form.find('[name=Status]').val();
+    var thumbnail = form.find('[name=ThumbnailURL]').val();
+    var News = {
+        Caption: caption,
+        ContentReview: contentReview,
+        ThumbnailURL: thumbnail,
+        //Status: status,
+        Content: content,
+        PostedDate: posted
+    };
+    APPLICATION.Ajax('/admin/news/CreatePost', 'application/json', 'POST', JSON.stringify(News), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            alert(d.Message);
+            var backList = $('#lnk-list-vanban').attr('href');
+            location.href = backList;
+        } else {
+            alert(d.Message);
+        }
+    });
+}
+
+function TINTUC_EDIT() {
+    var form = $("#frm-tintuc-edit");
+    var caption = form.find('[name=Caption]').val();
+    var content = CKEDITOR.instances.txtContent.getData();
+    var contentReview = form.find('[name=ContentReview]').val();
+    var posted = form.find('[name=PostedDate]').val();
+    var id = form.find('[name=ID]').val();
+    var status = form.find('[name=Status]').val();
+    var thumbnail = form.find('[name=ThumbnailURL]').val();
+    var News = {
+        ID: id,
+        Caption: caption,
+        ContentReview: contentReview,
+        ThumbnailURL: thumbnail,
+        Status: status,
+        Content: content,
+        PostedDate: posted
+    };
+    APPLICATION.Ajax('/admin/news/EditPut/' + News.ID, 'application/json', 'PUT', JSON.stringify(News), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            alert(d.Message);
+            var backList = $('#lnk-list-vanban').attr('href');
+            location.href = backList;
+        } else {
+            MESSAGEBOX(d.Message);
+        }
+    });
+}
+
+function TINTUC_DELETE(id,isList) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa tin tức này không?', 'Xóa tin tức', function (e) {
+            APPLICATION.Ajax('/admin/news/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    MESSAGEBOX('Xóa tin tức thành công', 'Thông báo', function (e) {
+                        if (isList) {
+                            location.reload();
+                        } else {
+                            var backList = $('#lnk-list-vanban').attr('href');
+                            location.href = backList;
+                        }
+                        
+                    });
+
+                } else {
+                    ShowNotifyError("Không xóa được tài liệu này, thử lại sau.");
+                }
+            });
+
+        });
+    }
+}
+
+function TINTUC_DELETE_ACTION(element) {
+    var id = $(element).attr('data-id');
+    TINTUC_DELETE(id, false);
+}
+////end tin tức ////
