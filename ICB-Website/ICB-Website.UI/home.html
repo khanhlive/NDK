@@ -992,48 +992,6 @@
     <script type='text/javascript' src='Scripts/mediaelement/mediaelement-and-player.min.js'></script>
     <script type='text/javascript' src='Plugins/themes/knd-playlist.js'></script>
     <script src="Plugins/jssor.slider.min.js"></script>
-    <!--<script>
-        jssor_slider1_init = function (containerId) {
-            var _SlideshowTransitions = [
-                { $Duration: 1800, x: 1, y: 0.2, $Delay: 30, $Cols: 10, $Rows: 5, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Reverse: true, $Formation: $JssorSlideshowFormations$.$FormationSwirl, $Assembly: 2050, $Easing: { $Left: $Jease$.$InOutSine, $Top: $Jease$.$OutWave, $Clip: $Jease$.$InOutQuad }, $Outside: true, $Round: { $Top: 1.3 } },
-                { $Duration: 500, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $Formation: $JssorSlideshowFormations$.$FormationSwirl, $Easing: $Jease$.$InQuad },
-                { $Duration: 500, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationSwirl, $Easing: $Jease$.$OutQuad },
-                { $Duration: 600, x: 1, y: -1, $Delay: 50, $Cols: 8, $Rows: 4, $SlideOut: true, $ChessMode: { $Column: 3, $Row: 12 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad }, $Opacity: 2 }
-            ];
-            var options = {
-                $AutoPlay: 1,
-                $SlideshowOptions: {
-                    $Class: $JssorSlideshowRunner$,
-                    $Transitions: _SlideshowTransitions,
-                    $TransitionsOrder: 1,
-                    $ShowLink: true
-                }
-            };
-            var jssor_slider1 = new $JssorSlider$(containerId, options);
-            //var jssor_slider1 = new $JssorSlider$('slider1_container', options);
-
-            //responsive code begin
-            //remove responsive code if you don't want the slider scales
-            //while window resizing
-            function ScaleSlider() {
-                var parentWidth = $('#slider1_container').parent().width();
-                if (parentWidth) {
-                    jssor_slider1.$ScaleWidth(parentWidth);
-                }
-                else
-                    window.setTimeout(ScaleSlider, 30);
-            }
-            //Scale slider after document ready
-            ScaleSlider();
-
-            //Scale slider while window load/resize/orientationchange.
-            $(window).bind("load", ScaleSlider);
-            $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
-        //responsive code end
-        };
-    </script>
-    <script>jssor_slider1_init('slider1_container');</script>-->
     <script src="Scripts/apps/app.js"></script>
 </body>
 </html>

@@ -68,5 +68,7 @@ namespace ICB.Business.Models
         public virtual Account Account { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public virtual IList<Service> Services { get; set; }
     }
 }

@@ -11,15 +11,15 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 {
     [AttributeRouting.RouteArea("admin")]
     [AttributeRouting.RoutePrefix("dich-vu")]
-    public class serviceController : ControllerApp
+    public class ServiceController : ControllerApp
     {
-        public serviceController() : base("Quản lý dịch vụ", "Quản lý dịch vụ") { }
+        public ServiceController() : base("Quản lý dịch vụ", "Quản lý dịch vụ") { }
         // GET: admin/service
         [AttributeRouting.Web.Mvc.Route("")]
         public ActionResult Index()
         {
             ServiceProvider serviceProvider = new ServiceProvider();
-            
+            var data = serviceProvider.GetFullServices();
             return View(serviceProvider.GetAll());
         }
 
