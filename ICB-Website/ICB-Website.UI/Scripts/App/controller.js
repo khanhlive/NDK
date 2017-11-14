@@ -1654,3 +1654,48 @@ function TINTUC_DELETE_ACTION(element) {
     TINTUC_DELETE(id, false);
 }
 ////end tin tức ////
+
+///dịch vụ ////
+
+function SERVICE_LOADGroup(type) {
+    APPLICATION.Ajax('/admin/service/getcategory?type=' + type, 'application/json', 'GET', null, function (d) {
+        var ddl = $("#frm-service-create #CategoryID");
+        ddl.empty();
+        $.each(d, function (a, b) {
+            ddl.append('<option value="' + b.Value + '">' + b.Text + '</option>');
+        });
+    })
+}
+
+
+function DICHVU_DELETE(id, isList) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa dịch vụ này không?', 'Xóa dịch vụ', function (e) {
+            APPLICATION.Ajax('/admin/service/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.Status == ResponseStatus.OK) {
+                    MESSAGEBOX('Xóa dịch vụ thành công', 'Thông báo', function (e) {
+                        if (isList) {
+                            location.reload();
+                        } else {
+                            var backList = $('#lnk-list-vanban').attr('href');
+                            location.href = backList;
+                        }
+
+                    });
+
+                } else if (d.Status == ResponseStatus.HasChild) {
+                    ShowNotifyError("Dịch vụ này là nhóm, không được xóa");
+                } else {
+                    ShowNotifyError("Không xóa được dịch vụ này, thử lại sau.");
+                }
+            });
+
+        });
+    }
+}
+
+function DICHVU_DELETE_ACTION(element) {
+    var id = $(element).attr('data-id');
+    DICHVU_DELETE(id, false);
+}
+///end dịch vụ ////

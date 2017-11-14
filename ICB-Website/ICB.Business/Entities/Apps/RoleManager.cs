@@ -53,6 +53,7 @@ namespace ICB.Business.Entities.Apps
         TaiLieu = 1,
         VanBan = 2
     }
+
     public class DocumentStatus
     {
         public static string GetStatusText(int status)
@@ -73,5 +74,17 @@ namespace ICB.Business.Entities.Apps
                 return "";
             }
         }
+    }
+
+    public enum ModelStatus
+    {
+        Active = 1,
+        NonActive = 0
+    }
+
+    public enum WebsiteCategory
+    {
+        Info = 0,
+        Slider = 1
     }
 }

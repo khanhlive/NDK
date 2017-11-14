@@ -1,8 +1,147 @@
-﻿
+﻿@model ICB.Business.Models.Service
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Admin: Thêm mới dịch vụ";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<div data-controller="service">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Thêm mới dịch vụ</h3>
+        </div>
+        <div class="box-body">
+            <a id="lnk-list-vanban" href="@Url.Action("Create","service", new { area="admin"})"></a>
+            <span>@Html.ValidationMessage("message") </span>
+            @Html.ValidationSummary(true)
+            <form id="frm-service-create" onsubmit="" action="@Url.Action("CreatePOST","service",new { area="admin" })" method="post" novalidate>
+                <div class="row">
+                    <div class="col-md-7 col-lg-9">
+                        <div class="row">
+                            <div class="col-md-8 ">
+                                <div class="form-group">
+                                    <label class="control-label">Tên dịch vụ: <span class="text-required">(*)</span></label>
+                                    @Html.TextBoxFor(x=>x.Name, new  {@class="form-control" })
+                                    @Html.ValidationMessageFor(x=>x.Name,"",new { @class="text-danger"})
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <label class="checkbox"> @Html.CheckBoxFor(x=>x.HasChild, new { @id = "ckbHasChild" }) Nhóm dịch vụ</label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Tên dịch vụ(ENG): </label>
+                                    <div class="">
+                                        <input class="form-control" id="txtNameENG" name="NameENG" type="text" value="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Nhóm: <span class="text-required">(*)</span></label>
+                                    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.Category, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group control-hide">
+                                    <label class="control-label">Mô tả ngắn: </label>
+                                    <textarea class="form-control" cols="20" id="txtIntroduction" name="Introduction" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">Ảnh đại diện: <span class="text-required">(*)</span></label>
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div>
+                                        <img class="img-thumbnail" style=" min-height:100px; max-height:300px; margin-bottom: 10px;" src="~/Images/ne1.jpg">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    
+                                                    @Html.TextBoxFor(x=>x.ThumbnailURL, new { @id="image",@class="form-control",@readonly="readonly" })
+                                                    <div class="input-group-btn">
+                                                        <a id="browser" class="btn btn-primary" data-dismiss="fileupload">Duyệt ảnh...</a>
+                                                    </div>
+                                                </div>
+                                                @Html.ValidationMessageFor(x => x.ThumbnailURL, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group control-hide">
+                            <label class="control-label">Nội dung:</label>
+                            <input id="txtProcedure" name="Procedure" type="hidden" />
+                            <textarea cols="10" id="txtContent" name="Content" style="width:100%" rows="10" data-sample="1" data-sample-short=""></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" id="btn-tintuc-save" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Lưu</button>
+                        <button type="button" class="btn btn-default" id="btn-tintuc-cancel"><i class="fa fa-remove"></i>&nbsp;&nbsp;Hủy</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        CKEDITOR.replace('txtContent', {
+            customConfig: '/Plugins/ckeditor/config.js',
+            height:600
+        });
+        $('#ckbHasChild').on('ifChanged', function (e) {
+            if ($(this).is(':checked')) {
+                $('#frm-service-create .control-hide').hide();
+                SERVICE_LOADGroup(1);
+            } else {
+                $('#frm-service-create .control-hide').show();
+                SERVICE_LOADGroup(2);
+            }
+
+        });
+        $('#browser').click(function () {
+            var ckfinder = new CKFinder();
+
+            ckfinder.selectActionFunction = function (url, a, b) {
+                var decodedUri = decodeURIComponent(url);
+                $(".img-thumbnail").attr('src', decodedUri);
+                $("#frm-service-create [name=ThumbnailURL]").attr({ 'value': decodedUri });
+                ///$("#frm-add-customer").formValidation('revalidateField', 'Thumbnail');
+                //$("#image-url").text(decodedUri);
+                //$("#images-url").text(decodedUri);
+            }
+            ckfinder.popup();
+        });
+        $('#frm-service-create').submit(function () {
+            $('#txtProcedure').val(htmlEscape(CKEDITOR.instances.txtContent.getData()));
+        });
+    });
+    
+</script>
 

@@ -1,8 +1,15 @@
-﻿@model List<ICB.Business.Models.Service>
+﻿@model List<ICB.Business.Models.ListService>
 @{
     ViewBag.Title = "Admin: Quản lý dịch vụ";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .groupRow {
+        background-color: #3585b3ba !important;
+        
+        font-weight: bold;
+    }
+</style>
 <div data-controller="service">
     <div class="box box-primary">
         <div class="box-header">
@@ -17,26 +24,39 @@
             <table class="table table-striped jambo_table table-bordered dt-responsive no-wrap" id="SERVICE_ALLSERVICE">
                 <thead>
                     <tr>
-                        <th width="100"></th>
-                        <th>Tên dịch vụ</th>
+                        <th></th>
+                        <th colspan="1">Tên dịch vụ</th>
                         <th>Tiêu đề</th>
-                        <th>Hình ảnh</th>
                         <th>Nhóm</th>
                         <th>Trạng thái</th>
+                        <th width="100" colspan="2" class="text-center">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr data-id="@item.ID">
-                            <td style="width:60px !important"><input type="checkbox" class="flat" value="@item.ID" name="table_records" /></td>
-                            <td>@item.Name</td>
-                            <td>@item.Caption</td>
-                            <td><img class="img-thumbnail" width="70" height="50" alt="@item.ThumbnailURL" title="@item.Title" src="@item.ThumbnailURL" /> </td>
-                            <td>@item.CategoryID</td>
-                            
-                            <td><span @if (item.Status == 1) { <text> class="icheckbox_minimal-blue checked" </text> } else { <text> class="icheckbox_minimal-blue" </text>     }> </span></td>
+                        <tr data-id="@item.ID" class="groupRow">
+
+                            <td colspan="3">@item.Caption</td>
+                            <td colspan="2">@item.CategoryID</td>
+                            <td style="width:60px" class="text-center"><a href="@Url.Action("Edit","service",new { @id=item.ID,area="admin"})" class="btn-sm btn-primary text-center"><i class="fa fa-edit"></i></a></td>
+                            <td style="width:60px" class="text-center"><a href="javascript:DICHVU_DELETE(@item.ID,true);" class="btn-sm btn-danger text-center"><i class="fa fa-trash"></i></a></td>
                         </tr>
+                        if (item.Services.Count > 0)
+                        {
+                            foreach (var item1 in item.Services)
+                            {
+                                <tr data-id="@item1.ID" class="" data-parent="@item1.ID">
+                                    <td width="60"></td>
+                                    <td>@item1.Name</td>
+                                    <td>@item1.Caption</td>
+                                    <td>@item1.CategoryID</td>
+                                    <td><span @if (item1.Status == 1) { <text> class="icheckbox_minimal-blue checked" </text>   } else { <text> class="icheckbox_minimal-blue" </text>       }> </span></td>
+                                    <td style="width:60px" class="text-center"><a href="@Url.Action("Edit","service",new { @id=item1.ID,area="admin"})" class="btn-sm btn-primary text-center"><i class="fa fa-edit"></i></a></td>
+                                    <td style="width:60px" class="text-center"><a href="javascript:DICHVU_DELETE(@item1.ID,true);" class="btn-sm btn-danger text-center"><i class="fa fa-trash"></i></a></td>
+                                </tr>
+                            }
+                        }
                     }
                 </tbody>
             </table>

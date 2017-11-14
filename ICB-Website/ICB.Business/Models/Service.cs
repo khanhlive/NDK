@@ -1,4 +1,4 @@
-namespace ICB.Business.Models
+﻿namespace ICB.Business.Models
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace ICB.Business.Models
     {
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Bạn chưa nhập tên dịch vụ")]
         [StringLength(500)]
         public string Name { get; set; }
 
@@ -19,7 +19,7 @@ namespace ICB.Business.Models
         [StringLength(500)]
         public string NameENG { get; set; }
 
-        [Required]
+        
         [StringLength(500)]
         public string Title { get; set; }
 
@@ -32,6 +32,7 @@ namespace ICB.Business.Models
         public string ImageURL { get; set; }
 
         [StringLength(500)]
+        [Required(ErrorMessage ="Bạn chưa chọn ảnh đại diện")]
         public string ThumbnailURL { get; set; }
 
         [StringLength(500)]
@@ -49,9 +50,10 @@ namespace ICB.Business.Models
         [StringLength(500)]
         public string DocumentArrayID { get; set; }
 
+        [Required(ErrorMessage ="Bạn chưa chọn nhóm")]
         public int CategoryID { get; set; }
 
-        public bool? HasChild { get; set; }
+        public bool HasChild { get; set; }
 
         public int? ServiceID { get; set; }
 
@@ -68,7 +70,6 @@ namespace ICB.Business.Models
         public virtual Account Account { get; set; }
 
         public virtual Category Category { get; set; }
-
-        public virtual IList<Service> Services { get; set; }
     }
+
 }

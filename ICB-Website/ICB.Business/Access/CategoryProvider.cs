@@ -12,6 +12,12 @@ namespace ICB.Business.Access
 {
     public class CategoryProvider : ApplicationManager<Models.Category,int>
     {
+        public CategoryProvider() { 
+        }
+        public CategoryProvider(bool proxy)
+        {
+            this.context.Configuration.ProxyCreationEnabled = proxy;
+        }
         public async Task<AccessEntityResult> AddAsync(Category category)
         {
 
