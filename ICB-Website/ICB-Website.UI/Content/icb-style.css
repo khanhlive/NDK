@@ -18,6 +18,12 @@
     width: 45%;
 }
 
+#danh-sach-tin-tuc-noi-bat .entry-date {
+    text-transform: none !important;
+    font-size: 10px !important;
+    margin-bottom: 0px !important;
+}
+
 .list-post-main-2 .owl-carousel5 .item {
     padding: 0px;
     margin-left: 0px;
@@ -35,15 +41,15 @@
     z-index:999;
 }
 .entry-item-img{
-    height:40px;
-    width:40px;
+    height:29px;
+    width:29px;
     float:left;
     margin-right:10px;
     display:block;
 }
 #kopa-services ul li{
     margin-bottom:10px;
-    padding-bottom:10px;
+    
     border-bottom:1px solid #dadada;
 }
 .owl-carousel7 .owl-controls .owl-buttons div{
@@ -94,4 +100,13 @@
 #tin-tuc-noi-bat .kopa-other-post .entry-title {
     font-size: 13px !important;
     line-height: 16px !important;
+}
+#danh-sach-tin-tuc-noi-bat .entry-title {
+    font-size: 13px !important;
+}
+.main-wrapper {
+    width: 1140px !important;
+}
+.kopa-main-col{
+    width:831px !important;
 }

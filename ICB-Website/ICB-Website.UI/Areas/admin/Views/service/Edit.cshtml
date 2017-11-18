@@ -96,10 +96,8 @@
                         <div class="form-group control-hide">
                             <label class="control-label">Nội dung:</label>
                             
-                            @Html.HiddenFor(x=>x.Procedure, new { @id = "txtProcedure" })
-                            <textarea cols="10" id="txtContent" name="Content" style="width:100%" rows="10" data-sample="1" data-sample-short="">
-
-</textarea>
+                            @Html.TextAreaFor(x=>x.Procedure, new { @id = "txtContent" })
+                            
                         </div>
                     </div>
                 </div>
@@ -118,7 +116,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#txtContent').text(htmlUnescape($('#txtProcedure').val()));
+        
         CKEDITOR.replace('txtContent', {
             customConfig: '/Plugins/ckeditor/config.js',
             height: 600
@@ -143,9 +141,7 @@
             }
             ckfinder.popup();
         });
-        $('#frm-service-edit').submit(function () {
-            $('#txtProcedure').val(htmlEscape(CKEDITOR.instances.txtContent.getData()));
-        });
+       
     });
 
 </script>

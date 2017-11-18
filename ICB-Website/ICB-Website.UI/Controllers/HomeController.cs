@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using ICB.Business.Models;
+using ICB.Business.Access;
+using PagedList;
 
 namespace ICB_Website.UI.Controllers
 {
-    
+    [AttributeRouting.RoutePrefix("")]
     public class HomeController : Controller
     {
         // GET: Home
+        [AttributeRouting.Web.Mvc.Route("trang-chu")]
         public ActionResult Index()
         {
             
@@ -35,32 +38,49 @@ namespace ICB_Website.UI.Controllers
             return RedirectToAction("Index");
         }
 
+        
         public async Task<ActionResult> Index2()
         {
             return View();
         }
 
+        [AttributeRouting.Web.Mvc.Route("gioi-thieu")]
         public async Task<ActionResult> gioithieu()
         {
-            return View();
+            SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            return View((await systemConfigProvider.GetGioiThieuAsync()));
         }
 
-        public async Task<ActionResult> danhsachtintuc()
+        [AttributeRouting.Web.Mvc.Route("tin-tuc")]
+        public async Task<ActionResult> danhsachtintuc(int page=1)
         {
-            return View();
+            NewsProvider newsProvider = new NewsProvider();
+            return View((await newsProvider.GetShowActiveAsync()).ToPagedList(page, 10));
         }
 
-
-        public async Task<ActionResult> tintuc()
+        [AttributeRouting.Web.Mvc.Route("tin-tuc/{id}")]
+        public async Task<ActionResult> tintuc(int? id)
         {
-            return View();
+            if (id==null)
+            {
+                return View();
+            }
+            else
+            {
+                NewsProvider newsProvider = new NewsProvider();
+                News news = await newsProvider.GetByIDAsync(id.Value);
+                return View(news);
+            }
         }
 
+        [AttributeRouting.Web.Mvc.Route("lien-he")]
         public async Task<ActionResult> lienhe()
         {
 
             return View();
         }
+
+        
 
 
     }

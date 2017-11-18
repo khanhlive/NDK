@@ -79,11 +79,29 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Competency Profile.
+        /// </summary>
+        public static string CompetencyProfile {
+            get {
+                return ResourceManager.GetString("CompetencyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
             get {
                 return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to days ago.
+        /// </summary>
+        public static string DaysAgo {
+            get {
+                return ResourceManager.GetString("DaysAgo", resourceCulture);
             }
         }
         
@@ -142,6 +160,15 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Posted.
+        /// </summary>
+        public static string Posted {
+            get {
+                return ResourceManager.GetString("Posted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Products.
         /// </summary>
         public static string Products {
@@ -151,11 +178,38 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Read more.
+        /// </summary>
+        public static string ReadMore {
+            get {
+                return ResourceManager.GetString("ReadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recent Post.
+        /// </summary>
+        public static string RecentPost {
+            get {
+                return ResourceManager.GetString("RecentPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        public static string Services {
+            get {
+                return ResourceManager.GetString("Services", resourceCulture);
             }
         }
     }

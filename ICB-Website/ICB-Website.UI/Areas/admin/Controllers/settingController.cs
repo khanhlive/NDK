@@ -5,11 +5,7 @@ using ICB.Business.Models;
 using ICB_Website.UI.Models;
 using ICB_Website.UI.Models.Security;
 using NDK.ApplicationCore.Extensions.ResponseResults;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ICB_Website.UI.Areas.admin.Controllers
@@ -24,6 +20,9 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         public ActionResult Index()
         {
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            ViewData["BANNER"] = systemConfigProvider.GetBanner();
+            var hoso = systemConfigProvider.GetHOSONANGLUC();
+            ViewBag.HOSONANGLUC = hoso == null ? "" : hoso.Name;
             return View(systemConfigProvider.Get());
         }
 
@@ -51,5 +50,90 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             return Json(await systemConfigProvider.GetAsync(), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public async Task<JsonResult> AddBanner(string src)
+        {
+            if (string.IsNullOrEmpty(src) || string.IsNullOrWhiteSpace(src))
+            {
+                return Json(new { AccessEntityStatusCode.ModelFailed });
+            }
+            else
+            {
+                SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+                var result = await systemConfigProvider.AddBanner(src);
+                return Json(new { result= result.Item1, data = result.Item2 });
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> EditBanner(int id, string src)
+        {
+            if (string.IsNullOrEmpty(src) || string.IsNullOrWhiteSpace(src))
+            {
+                return Json(new { result = AccessEntityStatusCode.ModelFailed });
+            }
+            else
+            {
+                SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+                var result = await systemConfigProvider.EditBanner(id, src);
+                return Json(new { result = result.Item1, data = result.Item2 });
+            }
+        }
+
+        [HttpDelete]
+        public async Task<JsonResult> RemoveBanner(int id)
+        {
+            SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            var model = systemConfigProvider.GetByID(id);
+            if (model == null)
+            {
+                return Json(new { result = AccessEntityStatusCode.NotFound });
+            }
+            else
+            {
+                var result = await systemConfigProvider.DeleteAsync(id);
+                return Json(new { result = result });
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Update_HOSO(string url)
+        {
+            SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            var result = await systemConfigProvider.INSERTorUPDATE_HOSO(url);
+            return Json(new { Status = result.Item1, data = result.Item2 });
+        }
+
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        public ActionResult AboutUs()
+        {
+            SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            var about = systemConfigProvider.GetGioiThieu();
+            ViewData["model"] = about == null ? "" : about.Content;
+            ViewData["name"]= about == null ? "" : about.Name;
+            return View(about);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        [ValidateInput(false)]
+        public async Task<ActionResult> AboutUsPOST(SystemConfig model)
+        {
+            model.Status = 1;
+            model.Category = (int)WebsiteCategory.GioiThieu;
+            SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            var result = await systemConfigProvider.INSERTorUPDATE_GIOITHIEU(model.Name,model.Content);
+            if (result.Item1== AccessEntityStatusCode.OK)
+            {
+                TempData["message"] = "Chỉnh sửa thông tin thành công";
+                return RedirectToAction("AboutUs");
+            }
+            else
+            {
+                TempData["message"] = "Không chỉnh sửa được thông tin giới thiệu";
+                return View("AboutUs");
+            }
+            
+        }
     }
 }

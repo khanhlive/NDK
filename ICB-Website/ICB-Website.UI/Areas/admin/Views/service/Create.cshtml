@@ -92,8 +92,7 @@
                     <div class="col-md-12">
                         <div class="form-group control-hide">
                             <label class="control-label">Nội dung:</label>
-                            <input id="txtProcedure" name="Procedure" type="hidden" />
-                            <textarea cols="10" id="txtContent" name="Content" style="width:100%" rows="10" data-sample="1" data-sample-short=""></textarea>
+                            <textarea cols="10" id="txtContent" name="Procedure" style="width:100%" rows="10" data-sample="1" data-sample-short=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -132,15 +131,10 @@
                 var decodedUri = decodeURIComponent(url);
                 $(".img-thumbnail").attr('src', decodedUri);
                 $("#frm-service-create [name=ThumbnailURL]").attr({ 'value': decodedUri });
-                ///$("#frm-add-customer").formValidation('revalidateField', 'Thumbnail');
-                //$("#image-url").text(decodedUri);
-                //$("#images-url").text(decodedUri);
             }
             ckfinder.popup();
         });
-        $('#frm-service-create').submit(function () {
-            $('#txtProcedure').val(htmlEscape(CKEDITOR.instances.txtContent.getData()));
-        });
+        
     });
     
 </script>

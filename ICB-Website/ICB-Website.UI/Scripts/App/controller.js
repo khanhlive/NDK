@@ -1047,6 +1047,16 @@ function SETTING_INIT() {
 
     }
 
+    $('#btn-banner-plus').click(function () {
+        var ckfinder = new CKFinder();
+
+        ckfinder.selectActionFunction = function (url, a, b) {
+            var decodedUri = decodeURIComponent(url);
+            SETTING_ADD_BANNER(decodedUri);
+        }
+        ckfinder.popup();
+    });
+
     if ($('#frm-vanban-create').length > 0) {
         $('#frm-vanban-create #browser').click(function () {
             var ckfinder = new CKFinder();
@@ -1086,6 +1096,7 @@ function SETTING_INSERTorUPDATE() {
             //SETTING_DISABLED_ALLFIELD();
             ShowNotifySuccess('Chỉnh sửa thông tin trang web thành công');
             SETTING_RELOAD_INFO_WEBSITE();
+            form.data('formValidation').resetForm();
         } else {
             MESSAGEBOX(d.Message);
         }
@@ -1117,6 +1128,75 @@ function SETTING_ENABLED_ALLFIELD() {
     form.find('input,textarea,select').removeAttr('disabled');
 
 }
+
+function SETTING_ADDBANNER_ACTION(model) {
+    var pnlBanner = $('#pnl-slider');
+    var html = '<div class="col-md-4 banner-demo" data-id="' + model.ID + '">';
+    html += '<img class="img-thumbnail" src= "' + model.Name + '" />';
+    html += '<button class="close" onclick="SETTING_REMOVE_BANNER(' + model.ID + ');" type="button" title="Xóa">&times;</button>';
+    html += '</div >';
+    pnlBanner.find('#button-plus').before(html);
+}
+
+function SETTING_ADD_BANNER(src) {
+
+    var model = { src: src };
+    if (src) {
+        APPLICATION.Ajax('/admin/setting/addbanner', 'application/json', 'POST', JSON.stringify(model), function (d) {
+            if (d.result == ResponseStatus.OK) {
+                ShowNotifySuccess('Thêm thành công');
+                SETTING_ADDBANNER_ACTION(d.data);
+            } else if (d.result == ResponseStatus.ModelFailed) {
+                alert('Đường dẫn ảnh không đúng');
+            }
+            else {
+                alert('Không thêm được thông tin hình ảnh');
+            }
+        });
+    } else {
+        ShowNotifyError('Đường dẫn ảnh bị trống.')
+    }
+}
+
+function SETTING_REMOVE_BANNER(id) {
+    if (id) {
+        CONFIRMBOX('Bạn có muốn xóa ảnh này không?', 'Xóa ảnh', function (e) {
+            APPLICATION.Ajax('/admin/setting/RemoveBanner/' + id, 'application/json', 'DELETE', null, function (d) {
+                if (d.result == ResponseStatus.OK) {
+                    ShowNotifySuccess('Xóa ảnh thành công');
+                    SETTING_REMOVEBANNER_ACTION(id);
+
+                } else {
+                    ShowNotifyError("Không xóa được ảnh này, thử lại sau.");
+                }
+            });
+
+        });
+    }
+}
+
+function SETTING_REMOVEBANNER_ACTION(id) {
+    var pnlBanner = $('#pnl-slider');
+    pnlBanner.find('.banner-demo[data-id=' + id + ']').remove();
+}
+
+function SETTING_UPDATE_HOSO() {
+    var url = $('#txtHosonangluc').val();
+    var model = { url: url };
+    APPLICATION.Ajax('/admin/setting/Update_Hoso', 'application/json', 'POST', JSON.stringify(model), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            ShowNotifySuccess('Thêm thành công');
+            SETTING_ADDBANNER_ACTION(d.data);
+            $('#iframe-hoso-demo').attr({ src: url });
+        } else if (d.Status == ResponseStatus.ModelFailed) {
+            alert('Đường dẫn hồ sơ không đúng');
+        }
+        else {
+            alert('Không thêm được thông tin hồ sơ');
+        }
+    });
+}
+
 //// end thông tin website   ////
 
 //// văn bản   //////

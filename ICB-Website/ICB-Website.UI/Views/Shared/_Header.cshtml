@@ -1,4 +1,8 @@
-﻿
+﻿@{ 
+    ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
+    var info = systemConfigProvider.Get();
+    var banner = systemConfigProvider.GetBanner();
+}
 <header id="kopa-header">
     <div class="header-top">
         <div class="wrapper clearfix">
@@ -76,9 +80,10 @@
                 <div id="slider1_container" style=" height: 200px;">
                     <!-- Slides Container -->
                     <div u="slides" style="cursor: move; width:1166px; height: 200px;">
-                        <div><img u="image" src="/Images//banner-1.jpg" /></div>
-                        <div><img u="image" src="/Images//banner-2.jpg" /></div>
-                        <div><img u="image" src="/Images//banner-3.jpg" /></div>
+                        @foreach (var item in banner)
+                        {
+                            <div><img u="image" src="@item.Name" /></div>
+                        }
 
                     </div>
                     <!-- Trigger -->
@@ -86,7 +91,7 @@
                 </div>
             </div>
             <div class="name-company">
-                <span class=""> CÔNG TY CỔ PHẦN CHỨNG NHẬN QUỐC TẾ </span>
+                <span class="">@info.Name</span>
             </div>
             <nav class="main-nav-mobile clearfix">
                 <a class="pull"><span class="fa fa-bars"></span></a><ul id="main-menu-mobile" class="main-menu-mobile">
@@ -144,6 +149,7 @@
                     </li>
                     <li><a href='#'>@ICB_Website.UI.Resources.RHome.Partner</a></li>
                     <li><a href='#'>@ICB_Website.UI.Resources.RHome.Document</a></li>
+                    <li><a href='#'>@ICB_Website.UI.Resources.RHome.CompetencyProfile</a></li>
                     <li><a href='@Url.Action("lienhe","Home")'>@ICB_Website.UI.Resources.RHome.Contact</a></li>
                 </ul>
 

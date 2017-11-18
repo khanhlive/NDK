@@ -1,87 +1,30 @@
-﻿
-<aside class="sidebar widget-area-5" style="margin-right:35px;">
-
-    @*<div id="kopa-ads-widget-3" class="widget kopa-ads-widget clearfix">
-        <a href="#" target="">
-            <img class="kopa-adv-000x000 kopa-adv-block img-responsive" src="~/Uploads/Images/2014/06/2.jpg">
-        </a>
-    </div>*@
+﻿@{ 
+    ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
+    var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID==0).ToList();
+    ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
+    var news = newsProvider.GetRecentPost();
+}
+<aside class="sidebar widget-area-5" style="margin-right:15px;">
 
     <div class="widget clearfix" id="kopa-services">
-        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>Services</h3>
+        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>@ICB_Website.UI.Resources.RHome.Services</h3>
         <ul class="clearfix">
-            <li class="item item-other">
-                <article class="entry-item clearfix">
-                    <a class="entry-item-img">
-                        <img src="~/Images/ne.jpg" />
-                    </a>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li class="item item-other">
-                <article class="entry-item clearfix">
-                    <a class="entry-item-img">
-                        <img src="~/Images/ne.jpg" />
-                    </a>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li class="item item-other">
-                <article class="entry-item clearfix">
-                    <a class="entry-item-img">
-                        <img src="~/Images/ne.jpg" />
-                    </a>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li class="item item-other">
-                <article class="entry-item clearfix">
-                    <a class="entry-item-img">
-                        <img src="~/Images/ne.jpg" />
-                    </a>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li class="item item-other">
-                <article class="entry-item clearfix">
-                    <a class="entry-item-img">
-                        <img src="~/Images/ne.jpg" />
-                    </a>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li class="item item-other">
-                <article class="entry-item clearfix">
-                    <a class="entry-item-img">
-                        <img src="~/Images/ne.jpg" />
-                    </a>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                        </header>
-                    </div>
-                </article>
-            </li>
+            @foreach (var item in services)
+            {
+                <li class="item item-other">
+                    <article class="entry-item clearfix">
+                        <a class="entry-item-img">
+                            <img src="@item.ThumbnailURL" />
+                        </a>
+                        <div class="entry-content">
+                            <header>
+                                <h4 class="entry-title" style="font-size:13px;"><a href="#" title="@item.Name">@item.Name</a></h4>
+                            </header>
+                        </div>
+                    </article>
+                </li>
+            }
+            
         </ul>
     </div>
     @*<div id="categories-2" class="widget widget_categories clearfix">
@@ -177,124 +120,27 @@
             </li>
         </ul>
     </div>*@
-    <div id="kopa-article-list-widget-12" class="widget kopa-article-list-widget article-icon clearfix">
-        <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>Recent Post</h3>            <ul class="clearfix">
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-                    <span class="entry-icon fa fa-link"></span>
-
-                    <div class="entry-content">
-                        <header>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>June 19, 2014</span>
-
-                            </p>
-
-                            <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                        </header>
-
-
-
-                    </div>
-                </article>
-            </li>
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-                    <span class="entry-icon fa fa-link"></span>
-
-                    <div class="entry-content">
-                        <header>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>June 19, 2014</span>
-
-                            </p>
-
-                            <h4 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-
-                        </header>
-
-
-
-                    </div>
-                </article>
-            </li>
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-                    <span class="entry-icon fa fa-music"></span>
-
-                    <div class="entry-content">
-                        <header>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>June 10, 2014</span>
-
-                            </p>
-
-                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                        </header>
-
-
-
-                    </div>
-                </article>
-            </li>
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-                    <span class="entry-icon fa fa-picture-o"></span>
-
-                    <div class="entry-content">
-                        <header>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>May 15, 2014</span>
-
-                            </p>
-
-                            <h4 class="entry-title"><a href="index62bc.html?p=754" title="The Gallery Library of Sammy">The Gallery Library of Sammy</a></h4>
-
-                        </header>
-
-
-
-                    </div>
-                </article>
-            </li>
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-                    <span class="entry-icon fa fa-film"></span>
-
-                    <div class="entry-content">
-                        <header>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>April 13, 2014</span>
-
-                            </p>
-
-                            <h4 class="entry-title"><a href="indexd13e.html?p=719" title="Paul si Cristina Rad Wedding Day">Paul si Cristina Rad Wedding Day</a></h4>
-
-                        </header>
-
-
-
-                    </div>
-                </article>
-            </li>
-
+    <div id="danh-sach-tin-tuc-noi-bat" class="widget kopa-article-list-widget article-icon clearfix">
+        <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.RecentPost</h3> 
+        <ul class="clearfix">
+            
+            @foreach (var item in news)
+            {
+                string caption = item.Caption.Length > ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength ? item.Caption.Substring(0, ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength) + "..." : item.Caption;
+                <li class="item other-item">
+                    <article class="entry-item clearfix">
+                        <span class="entry-icon fa fa-link"></span>
+                        <div class="entry-content">
+                            <header>
+                                <p class="entry-date">
+                                    @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@Math.Abs(NDK.ApplicationCore.Models.Common.GetDaysBetweenTimeAndToday(item.PostedDate)) @ICB_Website.UI.Resources.RHome.DaysAgo</span>
+                                </p>
+                                <h4 class="entry-title"><a href="@Url.Action("tintuc","Home",new { id=item.ID })" title="@item.Caption">@caption</a></h4>
+                            </header>
+                        </div>
+                    </article>
+                </li>
+            }
         </ul>
     </div>
 </aside>

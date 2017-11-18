@@ -35,5 +35,7 @@ namespace ICB_Website.UI.Models
                 return dateTime.ToString(format);
             }
         }
+
+        public static int TitleRecentPostMaxLength = 26;
     }
 }

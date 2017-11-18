@@ -123,8 +123,14 @@
   <data name="AdminPanel" xml:space="preserve">
     <value>Administrator Panel</value>
   </data>
+  <data name="CompetencyProfile" xml:space="preserve">
+    <value>Competency Profile</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
+  </data>
+  <data name="DaysAgo" xml:space="preserve">
+    <value>days ago</value>
   </data>
   <data name="Document" xml:space="preserve">
     <value>Document</value>
@@ -144,10 +150,22 @@
   <data name="Partner" xml:space="preserve">
     <value>Partner</value>
   </data>
+  <data name="Posted" xml:space="preserve">
+    <value>Posted</value>
+  </data>
   <data name="Products" xml:space="preserve">
     <value>Products</value>
   </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="RecentPost" xml:space="preserve">
+    <value>Recent Post</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
   </data>
 </root>

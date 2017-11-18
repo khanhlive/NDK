@@ -4,13 +4,6 @@
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .img-number{
-        
-        font-size:20px;
-    }
-</style>
-
 <div data-controller="website">
     <div class="box box-primary">
         <div class="box-header">
@@ -119,48 +112,61 @@
         </div>
         <div class="box-body">
             <form class="form-horizontal form-no-bottom" id="frm-setting-website-slider" onsubmit="return false" novalidate>
-                <input type="hidden" name="ID" />
+                
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <input class="form-control" id="txtURL" readonly="readonly" />
-                                    <span class="input-group-btn">
-                                        <button type="button" id="browser" class="btn btn-primary">Tìm ảnh...</button>
-                                    </span>
-                                </div>
-                                
+                        <div id="pnl-slider">
+                            @if (ViewData["BANNER"] != null)
+                            {
+                                foreach (var banner in (List<ICB.Business.Models.SystemConfig>)ViewData["BANNER"])
+                                {
+                                    <div class="col-md-4 banner-demo" data-id="@banner.ID">
+                                        <button class="close" onclick="SETTING_REMOVE_BANNER(@banner.ID);" type="button" title="Xóa">&times;</button>
+                                        <img class="img-thumbnail" src="@banner.Name" />
+
+                                    </div>
+                                }
+                            }
+                            <div class="col-md-4 banner-demo" id="button-plus">
+                                <a style="width:100%;height:auto;" class="btn-banner-plus img-thumbnail" href="javascript:void(0);" id="btn-banner-plus"><i class="fa fa-plus"></i></a>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Lưu</button>
                         </div>
                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Hồ sơ năng lực</h3>
+
+        </div>
+        <div class="box-body">
+            <form class="form-horizontal form-no-bottom" id="frm-setting-website-hoso" onsubmit="return false" novalidate>
+                <div class="modal-body">
                     <div class="row">
-                        <div id="pnl-slider">
-                            <div class="col-md-4 text-center">
-                                <img class="img-thumbnail" src="~/Images/banner-1.jpg" />
-
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <img class="img-thumbnail" src="~/Images/banner-2.jpg" />
-
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <img class="img-thumbnail" src="~/Images/banner-2.jpg" />
-
+                        <div class="col-md-12">
+                            <label class="control-label">Đường dẫn hồ sơ:</label>
+                            <div class="input-group">
+                                <input name="hosonangluc" class="form-control" id="txtHosonangluc" value="@ViewBag.HOSONANGLUC" type="text" />
+                                <span class="input-group-btn">
+                                    <button type="button" onclick="SETTING_UPDATE_HOSO();" class="btn btn-primary"><i class="fa fa-save"></i> Lưu </button>
+                                </span>
                             </div>
                         </div>
-                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">Xem trước:</label>
+                            <div class="">
+                                <iframe id="iframe-hoso-demo" style="width:100%;height:400px;" src="@ViewBag.HOSONANGLUC"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-
-    });
-</script>

@@ -466,91 +466,24 @@
 </div>
 
 @section KhachHang{
+    @{ 
+        var customerProvider =new ICB.Business.Access.CustomerProvider();
+        var khachhang = customerProvider.GetAll().Where(p => p.Status == (int)ICB.Business.Entities.Apps.ModelStatus.Active).ToList();
+    }
     <section class="widget-area-1 clearfix">
         <div class="widget kopa-list-post-no-thumb clearfix">
 
             <div class="list-post-main" style="width:100%;">
                 <div class="owl-carousel owl-carousel7" style="display:block;opacity:1;">
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <a href="#"><img src="~/Images/ne2.jpg" /></a>
-                        </article>
-                    </div>
+                    @foreach (var item in khachhang)
+                    {
+                        <div class="item">
+                            <article class="entry-item clearfix">
+                                <a href="javascript:void(0);"><img alt="@item.Name" src="@item.Thumbnail" /></a>
+                            </article>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div><!--/end widget.kopa-list-post-no-thumb-->

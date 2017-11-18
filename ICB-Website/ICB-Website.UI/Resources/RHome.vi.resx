@@ -123,8 +123,14 @@
   <data name="AdminPanel" xml:space="preserve">
     <value>Quản trị Website</value>
   </data>
+  <data name="CompetencyProfile" xml:space="preserve">
+    <value>Hồ sơ năng lực</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Liên hệ</value>
+  </data>
+  <data name="DaysAgo" xml:space="preserve">
+    <value>ngày trước</value>
   </data>
   <data name="Document" xml:space="preserve">
     <value>Tài liệu</value>
@@ -144,10 +150,22 @@
   <data name="Partner" xml:space="preserve">
     <value>Đối tác</value>
   </data>
+  <data name="Posted" xml:space="preserve">
+    <value>Đã đăng</value>
+  </data>
   <data name="Products" xml:space="preserve">
     <value>Sản phẩm</value>
   </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Xem thêm</value>
+  </data>
+  <data name="RecentPost" xml:space="preserve">
+    <value>Tin mới</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Dịch vụ</value>
   </data>
 </root>

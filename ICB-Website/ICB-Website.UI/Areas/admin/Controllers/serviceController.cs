@@ -38,6 +38,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreatePOST(Service service)
         {
             ModelState.Remove("ServiceID");
@@ -112,6 +113,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditPOST(Service service)
         {
             ModelState.Remove("ServiceID");
@@ -156,6 +158,13 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             var model = serviceProvider.GetByID(id);
             if (model.HasChild)
             {
+                var list = serviceProvider.GetNodeOfParent(model.ID);
+                if (list.Count==0)
+                {
+                    var result = await serviceProvider.DeleteAsync(id);
+                    return Json(new AccessEntityResult { Status = result, Data = id, Message = "" });
+                }
+                else
                 return Json(new AccessEntityResult { Status =  AccessEntityStatusCode.HasChild, Data = id, Message = "" });
             }
             else

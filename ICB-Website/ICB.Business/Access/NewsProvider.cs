@@ -4,6 +4,8 @@ using ICB.Business.Models;
 using NDK.ApplicationCore.Extensions.ResponseResults;
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ICB.Business.Access
 {
@@ -87,6 +89,25 @@ namespace ICB.Business.Access
             }
         }
 
+        public async Task<List<News>> GetShowActiveAsync()
+        {
+            return (await this.GetAllAsync()).Where(p => p.Status == (int)ModelStatus.Active).OrderByDescending(p => p.PostedDate).ToList();
+        }
+
+        public List<News> GetShow_Active()
+        {
+            return (this.GetAll()).Where(p => p.Status == (int)ModelStatus.Active).OrderByDescending(p => p.PostedDate).ToList();
+        }
+
+        public List<News> GetRecentPost()
+        {
+            return (this.GetAll()).Where(p => p.Status == (int)ModelStatus.Active).OrderByDescending(p => p.PostedDate).Take(5).ToList();
+        }
+        public async Task<List<News>> GetRecentPostAsync()
+        {
+            int status = (int)ModelStatus.Active;
+            return (await this.FindAllAsync(p => p.Status == status)).OrderByDescending(p => p.PostedDate).Take(5).ToList();
+        }
         #endregion
 
     }

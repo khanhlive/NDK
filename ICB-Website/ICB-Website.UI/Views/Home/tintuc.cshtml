@@ -1,4 +1,4 @@
-﻿
+﻿@model ICB.Business.Models.News
 @{
     ViewBag.Title = "gioithieu";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -68,67 +68,45 @@
 }
 
 <div class="kopa-entry-post">
-
-
     <div class="kopa-entry-post post-1486 post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-post tag-standard">
 
-        <header class="clearfix">
-
-            <h4 class="entry-title">Driving in Leather Driving Gloves</h4>
-
-            <div class="entry-meta clearfix">
-                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
-
-                <p class="entry-categories">in:&nbsp;<a href="index363a.html?cat=45" rel="category">People</a></p>
-
-                <p class="entry-comment"><a href="index9e97.html?p=1486#respond">No Comment</a></p>
-            </div>
-
-            <div class="kopa-social-link">
-                <ul class="clearfix">
-                    <li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Facebook" target="_blank" class="fa fa-facebook"></a></li>
-                    <li><a href="http://twitter.com/home?status=Driving%20in%20Leather%20Driving%20Gloves:+http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Twitter" target="_blank" class="fa fa-twitter"></a></li>
-                    <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Google" target="_blank" class="fa fa-google-plus"></a></li>
-                    <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486&amp;media=http://upsidethemes.net/demo/xmax/wp-content/uploads/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk53d9ua3ps37egwa.jpg&amp;description=Driving%20in%20Leather%20Driving%20Gloves" title="Pinterest" target="_blank" class="fa fa-pinterest"></a></li>
-                    <li><a href="mailto:?subject=Xmax%3A+Driving+in+Leather+Driving+Gloves&amp;body=I+recommend+this+page%3A+Driving+in+Leather+Driving+Gloves.+You+can+read+it+on%3A+http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Email" target="_blank" class="fa fa-envelope"></a></li>
-                </ul>
-            </div>
-
-        </header>
-
-        <div class="entry-content">
-
-            @*<div class="entry-thumb">
-                    <img src="wp-content/uploads/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk69ioe6z9agz239m.jpg" class="img-responsive" alt="Driving in Leather Driving Gloves" />
-                </div>*@
-
-
+        @if (Model != null)
+        {
+            <header class="clearfix">
+                <h4 class="entry-title">@Model.Caption</h4>
+                <div class="entry-meta clearfix">
+                    <p class="entry-date">@ICB_Website.UI.Resources.RHome.Posted:<span>@Model.PostedDate</span></p>
+                    <p class="entry-categories">in:&nbsp;<a href="#" rel="category">People</a></p>
+                    <p class="entry-comment"><a href="#">No Comment</a></p>
+                </div>
+                <div class="kopa-social-link">
+                    <ul class="clearfix">
+                        <li><a href="" title="Facebook" target="_blank" class="fa fa-facebook"></a></li>
+                        <li><a href="" title="Twitter" target="_blank" class="fa fa-twitter"></a></li>
+                        <li><a href="" title="Google" target="_blank" class="fa fa-google-plus"></a></li>
+                        <li><a href="" title="Pinterest" target="_blank" class="fa fa-pinterest"></a></li>
+                        <li><a href="" title="Email" target="_blank" class="fa fa-envelope"></a></li>
+                    </ul>
+                </div>
+            </header>
             <div class="entry-content">
-                <div id="lipsum">
-                    <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus faucibus luctus vel ac neque. Praesent in adipiscing odio. Fusce egestas, ante vel varius vehicula, ipsum augue tincidunt est, sed rutrum enim neque venenatis enim. Aenean vel vestibulum lacus. Curabitur vel eros at nunc ultricies malesuada. Praesent vitae dolor lobortis, cursus nulla sed, euismod quam. Quisque scelerisque velit a mollis sodales.</p>
-                    <p>Integer tempus laoreet lorem, quis auctor ante interdum id. Vivamus facilisis leo sed diam suscipit congue. Nam dolor est, imperdiet non urna sed, eleifend consequat magna. In hac habitasse platea dictumst. Curabitur lobortis diam suscipit lorem tristique, eu porttitor lorem fermentum. Morbi vehicula, tellus sit amet laoreet fermentum, leo urna commodo justo, at faucibus mi turpis ut eros. Aliquam id volutpat ligula. Phasellus quis odio convallis tortor posuere convallis ut vitae elit. Sed dapibus gravida augue et aliquet.</p>
-                    <p>Curabitur diam enim, suscipit ac elit non, imperdiet ornare urna. Nunc in tempor dolor, eget gravida odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia consectetur urna. Etiam nulla ipsum, tempus ut viverra vel, imperdiet sed nibh. Ut leo mauris, laoreet eget diam in, tristique feugiat metus. Sed placerat dolor in lacus aliquet consequat nec placerat velit. Pellentesque tincidunt pellentesque sem. Morbi eu leo ac augue vestibulum accumsan. Etiam venenatis euismod condimentum. Quisque nec libero ut justo laoreet congue. Mauris ut augue varius, egestas arcu eu, rhoncus augue. Vivamus in dui in nisl tempus hendrerit at eu libero.</p>
-                    <p>Etiam sem ante, rhoncus vel tincidunt ac, dapibus ut felis. Nam pharetra nunc sed diam varius tincidunt. Nunc pellentesque velit eleifend leo pharetra vehicula. Nunc vitae ante in diam euismod elementum ut in mi. Etiam vel dictum sem, at faucibus neque. In vitae auctor enim. Aenean id lectus quis orci fermentum condimentum vitae sed sapien. Proin mauris sapien, tincidunt ac purus et, tempor faucibus dui. Proin sed condimentum eros, id hendrerit turpis. Maecenas diam justo, laoreet at sodales ut, facilisis ac nibh. Sed cursus, orci sed vestibulum pharetra, risus ipsum commodo quam, eget egestas leo sapien eu elit. Nulla luctus enim eget elit auctor facilisis. Suspendisse luctus ornare est, a egestas nunc pulvinar vitae. Proin tellus mi, dictum quis ligula id, viverra mollis nisl. Curabitur sollicitudin aliquam dolor, ut vulputate sapien. Sed sit amet neque erat.</p>
-                    <p>Donec semper purus arcu, eget blandit erat tincidunt nec. Pellentesque ornare, tellus ut rutrum mattis, elit nisl hendrerit lorem, quis interdum orci urna nec sapien. Aliquam rutrum nunc id nisl blandit fringilla. Cras scelerisque eget augue in blandit. Integer elementum vulputate ante ac vestibulum. Nunc vitae justo sit amet neque fringilla ullamcorper vitae in leo. Pellentesque tempor laoreet pellentesque. Nunc eget cursus leo, vitae condimentum eros.</p>
-                    <p>Nullam ultricies nisi ut diam tincidunt rhoncus. Nulla commodo quam velit, nec iaculis nisl luctus a. Fusce et ullamcorper augue, eu tristique justo. Nullam ultrices orci ante, in malesuada nisl rutrum sit amet. Integer eleifend non orci at elementum. Aenean pretium bibendum purus, pulvinar mattis neque varius sit amet. Phasellus pharetra elit ac molestie imperdiet. Maecenas et enim nibh. Fusce vitae ultricies massa. Suspendisse potenti. Vestibulum ultricies sem nec felis faucibus egestas sed eu enim. Aliquam ornare dapibus ipsum, in pretium ligula ornare a.</p>
-                    <p>Nunc nec ullamcorper risus. Phasellus iaculis augue justo, egestas molestie nulla suscipit vel. Vestibulum mattis ipsum ultrices, posuere erat eget, elementum lorem. Nulla id nisi ultrices, hendrerit tellus et, rutrum nunc. Suspendisse potenti. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam feugiat lorem sit amet velit viverra, euismod pellentesque nisi bibendum. Phasellus semper libero lacus, eu posuere nibh semper ut. Suspendisse potenti. Curabitur blandit ac ligula ut sodales. Mauris hendrerit dolor eu lacus eleifend, eget aliquam justo adipiscing.</p>
-                    <p>Donec urna ligula, ullamcorper in dictum et, congue in enim. Maecenas quis interdum elit. Cras eleifend malesuada augue sed lacinia. Maecenas congue ultrices massa at fermentum. Ut eu malesuada arcu. Vivamus convallis consectetur lorem, ac pulvinar ligula venenatis quis. Nulla iaculis semper sem in adipiscing. Duis ultricies orci eu tincidunt iaculis. Praesent aliquet sollicitudin adipiscing. Quisque libero odio, egestas vitae felis non, pulvinar eleifend lectus. Maecenas ac malesuada nisl, vitae mollis augue. Sed at mollis libero. Maecenas pharetra mi eu tortor placerat, vitae consectetur risus dictum. Pellentesque id cursus massa.</p>
-                    <p>Sed sit amet erat eu libero lobortis dignissim vitae quis leo. Duis orci neque, gravida sit amet mi eget, auctor lobortis turpis. Quisque sit amet malesuada nulla. Sed accumsan, arcu ut interdum vestibulum, est dui dignissim est, vel laoreet libero urna a lacus. Integer vitae porttitor quam, vitae sagittis quam. Vivamus hendrerit tellus felis, quis dignissim sapien laoreet sed. Donec id nulla sed mi convallis pellentesque eget sed tellus. Ut eu viverra orci. Integer euismod eros quis neque aliquet vehicula. Maecenas tempor at velit in accumsan. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <p>Mauris ullamcorper tortor vel eros molestie feugiat. Vestibulum interdum mauris est, ac scelerisque dui viverra eu. Aliquam neque diam, dictum a eros ut, pretium faucibus nunc. In luctus mi augue, at consequat felis cursus quis. Etiam nec pharetra tortor, id tempor velit. In dapibus erat turpis, vel interdum lacus hendrerit a. Sed odio mauris, aliquam id consectetur at, commodo tincidunt augue.</p>
+                <div class="entry-content">
+                    <div id="lipsum">
+                        @Html.Raw(Model.Content)
+                    </div>
                 </div>
             </div>
-
-
-        </div>
+        }
+        
 
         <div class="single-post-bottom">
             <div class="kopa-social-link">
                 <ul class="clearfix">
-                    <li><a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Facebook" target="_blank" class="fa fa-facebook"></a></li>
-                    <li><a href="http://twitter.com/home?status=Driving%20in%20Leather%20Driving%20Gloves:+http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Twitter" target="_blank" class="fa fa-twitter"></a></li>
-                    <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Google" target="_blank" class="fa fa-google-plus"></a></li>
-                    <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486&amp;media=http://upsidethemes.net/demo/xmax/wp-content/uploads/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk53d9ua3ps37egwa.jpg&amp;description=Driving%20in%20Leather%20Driving%20Gloves" title="Pinterest" target="_blank" class="fa fa-pinterest"></a></li>
-                    <li><a href="mailto:?subject=Xmax%3A+Driving+in+Leather+Driving+Gloves&amp;body=I+recommend+this+page%3A+Driving+in+Leather+Driving+Gloves.+You+can+read+it+on%3A+http%3A%2F%2Fupsidethemes.net%2Fdemo%2Fxmax%2F%3Fp%3D1486" title="Email" target="_blank" class="fa fa-envelope"></a></li>
+                    <li><a href="" title="Facebook" target="_blank" class="fa fa-facebook"></a></li>
+                    <li><a href="" title="Twitter" target="_blank" class="fa fa-twitter"></a></li>
+                    <li><a href="" title="Google" target="_blank" class="fa fa-google-plus"></a></li>
+                    <li><a href="" title="Pinterest" target="_blank" class="fa fa-pinterest"></a></li>
+                    <li><a href="" title="Email" target="_blank" class="fa fa-envelope"></a></li>
                 </ul>
             </div>
 

@@ -7,6 +7,7 @@ using NDK.ApplicationCore.Extensions.ResponseResults;
 using ICB_Website.UI.Models.Security;
 using System.Threading.Tasks;
 using System.Linq;
+using ICB.Business.Entities.Apps;
 
 namespace ICB_Website.UI.Areas.admin.Controllers
 {
@@ -17,6 +18,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         public newsController() : base("Quản lý tin tức", "Quản lý tin tức") { }
         // GET: admin/news
         [AttributeRouting.Web.Mvc.Route("")]
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
         public ActionResult Index(int page = 1, int pagesize = 10)
         {
             NewsProvider newsProvider = new NewsProvider();
@@ -26,12 +28,14 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         [HttpGet]
         [AttributeRouting.Web.Mvc.Route("tin-tuc/them-moi")]
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public async Task<JsonResult> CreatePost(News model)
         {
             model.Status = 1;
@@ -49,6 +53,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         [HttpGet]
         [AttributeRouting.Web.Mvc.Route("tin-tuc/chinh-sua")]
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
         public ActionResult Edit(int id)
         {
             NewsProvider newsProvider = new NewsProvider();
@@ -56,6 +61,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         }
 
         [HttpPut]
+        [ValidateInput(false)]
         public async Task<JsonResult> EditPut(int id, News model)
         {
             if (ModelState.IsValid)

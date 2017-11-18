@@ -85,6 +85,8 @@ namespace ICB.Business.Entities.Apps
     public enum WebsiteCategory
     {
         Info = 0,
-        Slider = 1
+        Slider = 1,
+        HosoNangLuc = 3,
+        GioiThieu = 4
     }
 }

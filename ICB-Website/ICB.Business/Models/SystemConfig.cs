@@ -39,5 +39,8 @@ namespace ICB.Business.Models
         public int Category { get; set; }
 
         public int Status { get; set; }
+
+        public string Content { get; set; }
+        public string ContentENG { get; set; }
     }
 }
