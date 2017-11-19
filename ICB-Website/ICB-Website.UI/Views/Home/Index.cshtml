@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
+    var news = newsProvider.GetRecentPost().Take(3).ToList();
 }
 
 @section TopSlider{
@@ -73,115 +75,35 @@
     <div class="widget kopa-list-post-no-thumb slide-tintuc clearfix">
         <div class="list-post-main-2" style="">
             <div class="owl-carousel owl-carousel5" style="display:block;" id="pnl-demo">
-                <div class="item">
-                    <article class="entry-item clearfix ">
-                        <div class="entry-thumb">
-                            <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                            <div class="thumb-hover">
-                                <div class="thumb-icon">
-                                    <span class="icon-top"></span>
-                                    <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
+                @foreach (var item in news)
+                {
+                    <div class="item">
+                        <article class="entry-item clearfix ">
+                            <div class="entry-thumb">
+                                <a href="@Url.Action("tintuc","Home",new { @id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption" /></a>
+                                <div class="thumb-hover">
+                                    <div class="thumb-icon">
+                                        <span class="icon-top"></span>
+                                        <a class="fa fa-link" href="@Url.Action("tintuc","Home",new { @id=item.ID })" title="@item.Caption"></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="entry-content">
-                            <header>
-                                <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                <p class="entry-date">
-                                    Posted:&nbsp;                                            <span>June 19, 2014</span>
-
+                            <div class="entry-content">
+                                <header>
+                                    <h4 class="entry-title"><a href="@Url.Action("tintuc","Home",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
+                                    <p class="entry-date">
+                                        @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@NDK.ApplicationCore.Models.Common.GetDaysBetweenTimeAndToday(item.PostedDate) @ICB_Website.UI.Resources.RHome.DaysAgo</span>
+                                    </p>
+                                </header>
+                                <p>
+                                    @item.ContentReview
                                 </p>
-                            </header>
-
-                            <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                            <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="item">
-                    <article class="entry-item clearfix ">
-                        <div class="entry-thumb">
-                            <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                            <div class="thumb-hover">
-                                <div class="thumb-icon">
-                                    <span class="icon-top"></span>
-                                    <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                </div>
+                                <a href="@Url.Action("tintuc","Home",new { @id=item.ID })" class="more-link" title="@item.Caption">@ICB_Website.UI.Resources.RHome.ReadMore<span class="fa fa-angle-double-right "></span></a>
                             </div>
-                        </div>
+                        </article>
+                    </div>
+                }
 
-                        <div class="entry-content">
-                            <header>
-                                <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                <p class="entry-date">
-                                    Posted:&nbsp;                                            <span>June 19, 2014</span>
-
-                                </p>
-                            </header>
-
-                            <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                            <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="item">
-                    <article class="entry-item clearfix ">
-                        <div class="entry-thumb">
-                            <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                            <div class="thumb-hover">
-                                <div class="thumb-icon">
-                                    <span class="icon-top"></span>
-                                    <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="entry-content">
-                            <header>
-                                <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                <p class="entry-date">
-                                    Posted:&nbsp;                                            <span>June 19, 2014</span>
-
-                                </p>
-                            </header>
-
-                            <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                            <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="item">
-                    <article class="entry-item clearfix ">
-                        <div class="entry-thumb">
-                            <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                            <div class="thumb-hover">
-                                <div class="thumb-icon">
-                                    <span class="icon-top"></span>
-                                    <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="entry-content">
-                            <header>
-                                <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                <p class="entry-date">
-                                    Posted:&nbsp;<span>June 19, 2014</span>
-                                </p>
-                            </header>
-                            <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-                            <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                        </div>
-                    </article>
-                </div>
             </div>
         </div>
     </div><!--/end widget.kopa-list-post-no-thumb-->
