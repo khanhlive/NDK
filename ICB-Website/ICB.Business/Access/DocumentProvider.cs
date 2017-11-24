@@ -121,6 +121,25 @@ namespace ICB.Business.Access
         {
             return (await this.FindAllAsync(p => p.CategoryID == ((int)DocumentType.TaiLieu))).ToList();
         }
+
+        public List<Document> VB_GetRecentPost()
+        {
+            return this.FindAll(p => p.CategoryID == ((int)DocumentType.VanBan)).OrderByDescending(p => p.CreateTime).ToList();
+        }
+
+        public async Task<List<Document>> VB_GetRecentPostAsync()
+        {
+            return (await this.FindAllAsync(p => p.CategoryID == ((int)DocumentType.VanBan))).OrderByDescending(p => p.CreateTime).ToList();
+        }
+        public List<Document> TL_GetRecentPost()
+        {
+            return this.FindAll(p => p.CategoryID == ((int)DocumentType.TaiLieu)).OrderByDescending(p => p.CreateTime).ToList();
+        }
+
+        public async Task<List<Document>> TL_GetRecentPostAsync()
+        {
+            return (await this.FindAllAsync(p => p.CategoryID == ((int)DocumentType.TaiLieu))).OrderByDescending(p => p.CreateTime).ToList();
+        }
         #endregion
     }
 }

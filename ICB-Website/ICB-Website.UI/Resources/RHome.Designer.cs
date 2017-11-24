@@ -79,6 +79,15 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Articles.
+        /// </summary>
+        public static string AllArticles {
+            get {
+                return ResourceManager.GetString("AllArticles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Competency Profile.
         /// </summary>
         public static string CompetencyProfile {
@@ -151,6 +160,15 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other post.
+        /// </summary>
+        public static string OtherPost {
+            get {
+                return ResourceManager.GetString("OtherPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Partner.
         /// </summary>
         public static string Partner {
@@ -210,6 +228,15 @@ namespace ICB_Website.UI.Resources {
         public static string Services {
             get {
                 return ResourceManager.GetString("Services", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
             }
         }
     }

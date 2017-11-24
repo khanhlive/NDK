@@ -3,7 +3,10 @@
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
-    var news = newsProvider.GetRecentPost().Take(3).ToList();
+    var newsRecent = newsProvider.GetRecentPost().Take(3).ToList();
+    var news = newsProvider.GetShow_Active().Take(7).ToList();
+    var newsFirst = news.Count == 0 ? new ICB.Business.Models.News() : news.FirstOrDefault();
+    news = news.Count > 0 ? news.Skip(1).ToList() : new List<ICB.Business.Models.News>();
 }
 
 @section TopSlider{
@@ -75,22 +78,22 @@
     <div class="widget kopa-list-post-no-thumb slide-tintuc clearfix">
         <div class="list-post-main-2" style="">
             <div class="owl-carousel owl-carousel5" style="display:block;" id="pnl-demo">
-                @foreach (var item in news)
+                @foreach (var item in newsRecent)
                 {
                     <div class="item">
                         <article class="entry-item clearfix ">
                             <div class="entry-thumb">
-                                <a href="@Url.Action("tintuc","Home",new { @id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption" /></a>
+                                <a href="@Url.Action("Detail","news",new { @id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption" /></a>
                                 <div class="thumb-hover">
                                     <div class="thumb-icon">
                                         <span class="icon-top"></span>
-                                        <a class="fa fa-link" href="@Url.Action("tintuc","Home",new { @id=item.ID })" title="@item.Caption"></a>
+                                        <a class="fa fa-link" href="@Url.Action("Detail","news",new { @id=item.ID })" title="@item.Caption"></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="entry-content">
                                 <header>
-                                    <h4 class="entry-title"><a href="@Url.Action("tintuc","Home",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
+                                    <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
                                     <p class="entry-date">
                                         @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@NDK.ApplicationCore.Models.Common.GetDaysBetweenTimeAndToday(item.PostedDate) @ICB_Website.UI.Resources.RHome.DaysAgo</span>
                                     </p>
@@ -98,7 +101,7 @@
                                 <p>
                                     @item.ContentReview
                                 </p>
-                                <a href="@Url.Action("tintuc","Home",new { @id=item.ID })" class="more-link" title="@item.Caption">@ICB_Website.UI.Resources.RHome.ReadMore<span class="fa fa-angle-double-right "></span></a>
+                                <a href="@Url.Action("Detail","news",new { @id=item.ID })" class="more-link" title="@item.Caption">@ICB_Website.UI.Resources.RHome.ReadMore<span class="fa fa-angle-double-right "></span></a>
                             </div>
                         </article>
                     </div>
@@ -110,279 +113,113 @@
 </section>
 
 <div id="tin-tuc-noi-bat" class="widget kopa-article-list-widget-1 clearfix">
-    <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>News<a href="index3cd0.html?cat=49">All Articles</a></h3>
+    <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.News<a href="@Url.Action("Index","news")">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
     <article class="entry-item clearfix last-item ">
         <div class="entry-thumb">
-            <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
+            <a href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption"><img src="@newsFirst.ThumbnailURL" alt="@newsFirst.Caption" /></a>
             <div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
-                    <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
+                    <a class="fa fa-link" href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption"></a>
                 </div>
             </div>
         </div>
 
         <div class="entry-content">
             <header>
-                <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
+                <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption">@newsFirst.Caption</a></h4>
                 <p class="entry-date">
-                    Posted:&nbsp; <span>June 19, 2014</span>
+                    @ICB_Website.UI.Resources.RHome.Posted:&nbsp; <span>@newsFirst.PostedDate</span>
                 </p>
             </header>
-            <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-            <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
+            <p>
+                @newsFirst.ContentReview
+            </p>
+            <a href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" class="more-link" title="@newsFirst.Caption">@ICB_Website.UI.Resources.RHome.ReadMore<span class="fa fa-angle-double-right "></span></a>
         </div>
     </article>
     <div class="kopa-other-post">
         <h4 class="list-post-title">
-            <span>Other post</span>
+            <span>@ICB_Website.UI.Resources.RHome.OtherPost</span>
         </h4>
         <ul class="clearfix">
-            <li>
-                <article class="entry-item clearfix ">
 
-                    <div class="entry-thumb">
-                        <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="~/Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28piaw9cbwa4tfka.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>June 19, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix ">
-
-                    <div class="entry-thumb">
-                        <a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z"><img src="~/Uploads/Images/bfi_thumb/Girl-on-Rialto-Bridge-Venice-Italy-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Drunk In Love &#8211; Beyonce ft. Jay Z" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>June 10, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix ">
-
-                    <div class="entry-thumb">
-                        <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="~/Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28piaw9cbwa4tfka.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>June 19, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix ">
-
-                    <div class="entry-thumb">
-                        <a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z"><img src="~/Uploads/Images/bfi_thumb/Girl-on-Rialto-Bridge-Venice-Italy-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Drunk In Love &#8211; Beyonce ft. Jay Z" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>June 10, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix ">
-
-                    <div class="entry-thumb">
-                        <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="~/Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28piaw9cbwa4tfka.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>June 19, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix ">
-
-                    <div class="entry-thumb">
-                        <a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z"><img src="~/Uploads/Images/bfi_thumb/Girl-on-Rialto-Bridge-Venice-Italy-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Drunk In Love &#8211; Beyonce ft. Jay Z" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>June 10, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
+            @foreach (var item in news)
+            {
+                <li>
+                    <article class="entry-item clearfix ">
+                        <div class="entry-thumb">
+                            <a href="@Url.Action("Detail","news",new { @id=item.ID})" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption" /></a>
+                        </div>
+                        <div class="entry-content">
+                            <header>
+                                <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { @id=item.ID})" title="@item.Caption">@item.Caption</a></h4>
+                                <p class="entry-date">
+                                    @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@item.PostedDate</span>
+                                </p>
+                            </header>
+                        </div>
+                    </article>
+                </li>
+            }
         </ul>
     </div>
 </div>
 
+@{ 
+    var documentProvider = new ICB.Business.Access.DocumentProvider();
+    var documents = documentProvider.VB_GetRecentPost().Take(7).ToList();
+    var documentFirst = documents.FirstOrDefault() == null ? new ICB.Business.Models.Document():documents.FirstOrDefault();
+    documents = documents.Count == 0 ? new List<ICB.Business.Models.Document>() : documents.Skip(1).ToList();
+}
+
 <div id="kopa-posts-list-two-parts-6" class="widget kopa-article-list-widget-2 clearfix">
-    <h3 class="widget-title">Technology<a href="indexfa15.html?cat=51">All Articles</a></h3>
+    <h3 class="widget-title">@ICB_Website.UI.Resources.RHome.Text<a href="@Url.Action("vanban","Home")">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
     <article class="entry-item clearfix last-item post-754 ">
         <div class="entry-thumb">
-            <a href="index62bc.html?p=754" title="The Gallery Library of Sammy"><img src="~/Uploads/Images/bfi_thumb/Cafe-Workspace-with-Diary-2xau0ibap68p1fpgnso9vu.jpg" alt="The Gallery Library of Sammy" /></a>
+            <a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:250px;" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
             <div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
-                    <a class="fa fa-picture-o" href="index62bc.html?p=754" title="The Gallery Library of Sammy"></a>
+                    <a class="fa fa-picture-o" href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"></a>
                 </div>
             </div>
         </div>
         <div class="entry-content">
             <header>
-                <h4 class="entry-title"><a href="index62bc.html?p=754" title="The Gallery Library of Sammy">The Gallery Library of Sammy</a></h4>
+                <h4 class="entry-title"><a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption">@documentFirst.Caption</a></h4>
                 <p class="entry-date">
-                    Posted:&nbsp;<span>May 15, 2014</span>
+                    @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@documentFirst.CreateTime</span>
                 </p>
             </header>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+            <p>
+                @documentFirst.Description
+            </p>
         </div>
     </article>
     <div class="kopa-other-post">
         <h4 class="list-post-title">
-            <span>Other post</span>
+            <span>@ICB_Website.UI.Resources.RHome.OtherPost</span>
         </h4>
         <ul class="clearfix">
-            <li>
-                <article class="entry-item clearfix item-other ">
-
-                    <div class="entry-thumb">
-                        <a href="indexdc32.html?p=1309" title="Life Round Here (Feat. Angel Haze)"><img src="~/Uploads/Images/bfi_thumb/Speed-Run-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Life Round Here (Feat. Angel Haze)" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexdc32.html?p=1309" title="Life Round Here (Feat. Angel Haze)">Life Round Here (Feat. Angel Haze)</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>March 11, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix item-other">
-
-                    <div class="entry-thumb">
-                        <a href="index5628.html?p=1305" title="Fashion Glasses Symmetrical"><img src="~/Uploads/Images/bfi_thumb/Fashion-Glasses-Symmetrical-2xau0hk5cc6555ceqo2t56.jpg" alt="Fashion Glasses Symmetrical" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index5628.html?p=1305" title="Fashion Glasses Symmetrical">Fashion Glasses Symmetrical</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>February 11, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix item-other">
-
-                    <div class="entry-thumb">
-                        <a href="index4ac2.html?p=1331" title="Five Of London’s Best"><img src="~/Uploads/Images/bfi_thumb/Another-Edit-of-Steel-Bridge-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Five Of London’s Best" /></a>
-                    </div>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index4ac2.html?p=1331" title="Five Of London’s Best">Five Of London’s Best</a></h4>
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>January 3, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix item-other ">
-
-                    <div class="entry-thumb">
-                        <a href="indexdc32.html?p=1309" title="Life Round Here (Feat. Angel Haze)"><img src="~/Uploads/Images/bfi_thumb/Speed-Run-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Life Round Here (Feat. Angel Haze)" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexdc32.html?p=1309" title="Life Round Here (Feat. Angel Haze)">Life Round Here (Feat. Angel Haze)</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>March 11, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix item-other">
-
-                    <div class="entry-thumb">
-                        <a href="index5628.html?p=1305" title="Fashion Glasses Symmetrical"><img src="~/Uploads/Images/bfi_thumb/Fashion-Glasses-Symmetrical-2xau0hk5cc6555ceqo2t56.jpg" alt="Fashion Glasses Symmetrical" /></a>
-                    </div>
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index5628.html?p=1305" title="Fashion Glasses Symmetrical">Fashion Glasses Symmetrical</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>February 11, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-            <li>
-                <article class="entry-item clearfix item-other">
-
-                    <div class="entry-thumb">
-                        <a href="index4ac2.html?p=1331" title="Five Of London’s Best"><img src="~/Uploads/Images/bfi_thumb/Another-Edit-of-Steel-Bridge-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Five Of London’s Best" /></a>
-                    </div>
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index4ac2.html?p=1331" title="Five Of London’s Best">Five Of London’s Best</a></h4>
-                            <p class="entry-date">
-                                Posted:&nbsp;<span>January 3, 2014</span>
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
+            @foreach (var item in documents)
+            {
+                <li>
+                    <article class="entry-item clearfix item-other ">
+                        <div class="entry-thumb">
+                            <a href="@Url.Action("vanban","Home",new { @id=item.ID })" title="@item.Caption"><img src="@item.Path" alt="@item.Caption" /></a>
+                        </div>
+                        <div class="entry-content">
+                            <header>
+                                <h4 class="entry-title"><a href="@Url.Action("vanban","Home",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
+                                <p class="entry-date">
+                                    @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@documentFirst.CreateTime</span>
+                                </p>
+                            </header>
+                        </div>
+                    </article>
+                </li>
+            }
         </ul>
     </div>
 </div>

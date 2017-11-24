@@ -123,6 +123,9 @@
   <data name="AdminPanel" xml:space="preserve">
     <value>Quản trị Website</value>
   </data>
+  <data name="AllArticles" xml:space="preserve">
+    <value>Xem tất cả</value>
+  </data>
   <data name="CompetencyProfile" xml:space="preserve">
     <value>Hồ sơ năng lực</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="News" xml:space="preserve">
     <value>Tin tức</value>
   </data>
+  <data name="OtherPost" xml:space="preserve">
+    <value>Bài viết khác</value>
+  </data>
   <data name="Partner" xml:space="preserve">
     <value>Đối tác</value>
   </data>
@@ -167,5 +173,8 @@
   </data>
   <data name="Services" xml:space="preserve">
     <value>Dịch vụ</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Văn bản</value>
   </data>
 </root>

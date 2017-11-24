@@ -326,7 +326,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\accountController.cs" />
+    <Compile Include="Controllers\competencyProfileController.cs" />
+    <Compile Include="Controllers\contactsController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\newsController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3961,16 +3967,21 @@
     <Content Include="Views\Shared\_LeftSideMenu.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Home\gioithieu.cshtml" />
-    <Content Include="Views\Home\danhsachtintuc.cshtml" />
-    <Content Include="Views\Home\tintuc.cshtml" />
     <Content Include="Views\Home\lienhe.cshtml" />
     <Content Include="Views\account\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\account\Register.cshtml" />
+    <Content Include="Views\news\Index.cshtml" />
+    <Content Include="Views\news\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Uploads\Documents\" />
+    <Folder Include="Views\competencyProfile\" />
+    <Folder Include="Views\contacts\" />
+    <Folder Include="Views\Document\" />
+    <Folder Include="Views\Partner\" />
+    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

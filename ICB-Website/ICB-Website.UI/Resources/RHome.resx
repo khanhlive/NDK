@@ -123,6 +123,9 @@
   <data name="AdminPanel" xml:space="preserve">
     <value>Administrator Panel</value>
   </data>
+  <data name="AllArticles" xml:space="preserve">
+    <value>All Articles</value>
+  </data>
   <data name="CompetencyProfile" xml:space="preserve">
     <value>Competency Profile</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="News" xml:space="preserve">
     <value>News</value>
   </data>
+  <data name="OtherPost" xml:space="preserve">
+    <value>Other post</value>
+  </data>
   <data name="Partner" xml:space="preserve">
     <value>Partner</value>
   </data>
@@ -167,5 +173,8 @@
   </data>
   <data name="Services" xml:space="preserve">
     <value>Services</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
   </data>
 </root>
