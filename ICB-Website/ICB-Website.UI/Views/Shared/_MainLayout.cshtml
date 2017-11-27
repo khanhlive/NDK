@@ -34,7 +34,26 @@
             @RenderSection("TopSlider",false)
             
             <div class="main-wrapper clearfix">
-                <div class="kopa-breadcrumb clearfix"><span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://upsidethemes.net/demo/xmax" itemprop="url"><span itemprop="title"></span>Home</span></a></span>&nbsp;/&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="index363a.html?cat=45" itemprop="url"><span itemprop="title">People</span></a></span>&nbsp;/&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a class="current-page" itemprop="url" href="index9e97.html?p=1486"><span itemprop="title">Driving in Leather Driving Gloves</span></a></span></div>
+                @if (ViewBag.IsBreadcrumb == null || ViewBag.IsBreadcrumb == true)
+                {
+                    <div class="kopa-breadcrumb clearfix">
+                        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="http://upsidethemes.net/demo/xmax" itemprop="url">
+                                <span itemprop="title">
+                                </span>Home
+                            </a>
+                        </span>&nbsp;/&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="index363a.html?cat=45" itemprop="url"><span itemprop="title">People</span></a>
+                        </span>&nbsp;/&nbsp;
+                        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a class="current-page" itemprop="url" href="index9e97.html?p=1486">
+                                <span itemprop="title">Driving in Leather Driving Gloves</span>
+                            </a>
+                        </span>
+                    </div>
+                }
+
+                
                 @if (ViewBag.NotRenderSideBar == null || ViewBag.NotRenderSideBar == false)
                 {
                     <!--Left SideBar Menu-->
@@ -158,6 +177,8 @@
     @Scripts.Render("~/Scripts/js")
     @Scripts.Render("~/bundles/custom")*@
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Plugins/jssor.slider.min.js"></script>
     <script type='text/javascript' src="~/Plugins/themes/comment-reply.js"></script>
     <script type='text/javascript' src="~/Scripts/bootstrap.min.js"></script>

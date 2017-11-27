@@ -1,10 +1,12 @@
 ﻿@using PagedList.Mvc
-@model PagedList.IPagedList<ICB.Business.Models.News>
+@model PagedList.IPagedList<ICB.Business.Models.Customer>
 @{
-    ViewBag.Title = "Tin tức";
+    ViewBag.Title = "Đối tác - khách hàng";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-    var pageOption = new PagedList.Mvc.PagedListRenderOptions();
+    ViewBag.NotRenderSideBar = true;
+    ViewBag.IsBreadcrumb =false;
 }
+
 @section TopSlider{
 
     <section class="widget-area-1 clearfix">
@@ -68,67 +70,33 @@
         </div><!--/end widget.kopa-list-post-no-thumb-->
     </section>
 }
-<style>
-    .page-numbers li {
-        float: left;
-        padding: 0 !important;
-        
-    }
-        .page-numbers li a {
-            
-            display:block;
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-    #danh-sach-tin-tuc .entry-thumb {
-        width:257px;
-    }
-    #danh-sach-tin-tuc .news-highlight .entry-thumb {
-        width: 100%;
-    }
-</style>
-<div id="danh-sach-tin-tuc" class="widget kopa-article-list-widget-1 clearfix">
-    <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.News<a href="">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
-    @foreach (var item in Model)
-    {
-        <article class="entry-item clearfix last-item ">
-            <div class="entry-thumb">
-                <a href="@Url.Action("Detail","news",new {id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption" /></a>
-                <div class="thumb-hover">
-                    <div class="thumb-icon">
-                        <span class="icon-top"></span>
-                        <a class="fa fa-link" href="javascript:void(0);" title="@item.Caption"></a>
+<div class="kopa-entry-post">
+    <div class="kopa-entry-post post-1486 post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-post tag-standard">
+
+        <header class="clearfix">
+            <h4 class="entry-title">Đối tác - khách hàng</h4>
+        </header>
+        <div class="">
+            <div class="grid-partner">
+
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <div class="wrap-item">
+                            <div class="img"><img src="@item.Thumbnail" alt="" title=""></div>
+                            <div class="text"><span class="center">@item.Name</span></div>
+                            <a href="@item.Website"></a>
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
 
-            <div class="entry-content">
-                <header>
-                    <h4 class="entry-title"><a href="@Url.Action("Detail","news",new {id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
-                    <p class="entry-date">
-                        @ICB_Website.UI.Resources.RHome.Posted:&nbsp; <span>@item.PostedDate</span>
-                    </p>
-                </header>
-                <p>@item.ContentReview</p>
-                <a href="@Url.Action("Detail","news",new {id=item.ID })" class="more-link" title="@item.Caption">@ICB_Website.UI.Resources.RHome.ReadMore<span class="fa fa-angle-double-right"></span></a>
+                <div class="clear"></div>
             </div>
-        </article>
-    }
-
-    <div class="kopa-pagination clearfix">
-        @{
-            pageOption.DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded;
-            pageOption.DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded;
-            pageOption.DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded;
-            pageOption.DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded;
-            pageOption.ClassToApplyToFirstListItemInPager = "prev";
-            pageOption.ClassToApplyToLastListItemInPager = "next";
-            pageOption.ContainerDivClasses = new[] { "pagination-container" };
-            pageOption.UlElementClasses = new[] { "" };
-        }
-        @Html.PagedListPager(Model, page => Url.Action("Index", "news", new { page }), pageOption)
+        </div>
+        <!--/kopa-about-author-->
     </div>
 
 </div>
+
 
 

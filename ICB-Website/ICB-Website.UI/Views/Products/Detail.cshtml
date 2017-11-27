@@ -1,10 +1,9 @@
-﻿@using PagedList.Mvc
-@model PagedList.IPagedList<ICB.Business.Models.News>
+﻿@model ICB.Business.Models.Service
 @{
-    ViewBag.Title = "Tin tức";
+    ViewBag.Title = Model == null ? "" : Model.Caption;
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-    var pageOption = new PagedList.Mvc.PagedListRenderOptions();
 }
+
 @section TopSlider{
 
     <section class="widget-area-1 clearfix">
@@ -68,67 +67,40 @@
         </div><!--/end widget.kopa-list-post-no-thumb-->
     </section>
 }
-<style>
-    .page-numbers li {
-        float: left;
-        padding: 0 !important;
-        
-    }
-        .page-numbers li a {
-            
-            display:block;
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-    #danh-sach-tin-tuc .entry-thumb {
-        width:257px;
-    }
-    #danh-sach-tin-tuc .news-highlight .entry-thumb {
-        width: 100%;
-    }
-</style>
-<div id="danh-sach-tin-tuc" class="widget kopa-article-list-widget-1 clearfix">
-    <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.News<a href="">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
-    @foreach (var item in Model)
-    {
-        <article class="entry-item clearfix last-item ">
-            <div class="entry-thumb">
-                <a href="@Url.Action("Detail","news",new {id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption" /></a>
-                <div class="thumb-hover">
-                    <div class="thumb-icon">
-                        <span class="icon-top"></span>
-                        <a class="fa fa-link" href="javascript:void(0);" title="@item.Caption"></a>
+<div class="kopa-entry-post">
+    <div class="kopa-entry-post post-1486 post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-post tag-standard">
+
+        @if (Model != null)
+        {
+            <header class="clearfix">
+                <h4 class="entry-title">@Model.Caption</h4>
+                <div class="entry-meta clearfix">
+                    <p class="entry-date">@ICB_Website.UI.Resources.RHome.Posted:<span>@Model.CreateTime</span></p>
+                    <p class="entry-categories">in:&nbsp;<a href="#" rel="category">People</a></p>
+                    <p class="entry-comment"><a href="#">No Comment</a></p>
+                </div>
+                <div class="kopa-social-link">
+                    <ul class="clearfix">
+                        <li><a href="" title="Facebook" target="_blank" class="fa fa-facebook"></a></li>
+                        <li><a href="" title="Twitter" target="_blank" class="fa fa-twitter"></a></li>
+                        <li><a href="" title="Google" target="_blank" class="fa fa-google-plus"></a></li>
+                        <li><a href="" title="Pinterest" target="_blank" class="fa fa-pinterest"></a></li>
+                        <li><a href="" title="Email" target="_blank" class="fa fa-envelope"></a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="entry-content">
+                <div class="entry-content">
+                    <div id="lipsum">
+                        @Html.Raw(Model.Procedure)
                     </div>
                 </div>
             </div>
-
-            <div class="entry-content">
-                <header>
-                    <h4 class="entry-title"><a href="@Url.Action("Detail","news",new {id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
-                    <p class="entry-date">
-                        @ICB_Website.UI.Resources.RHome.Posted:&nbsp; <span>@item.PostedDate</span>
-                    </p>
-                </header>
-                <p>@item.ContentReview</p>
-                <a href="@Url.Action("Detail","news",new {id=item.ID })" class="more-link" title="@item.Caption">@ICB_Website.UI.Resources.RHome.ReadMore<span class="fa fa-angle-double-right"></span></a>
-            </div>
-        </article>
-    }
-
-    <div class="kopa-pagination clearfix">
-        @{
-            pageOption.DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded;
-            pageOption.DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded;
-            pageOption.DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded;
-            pageOption.DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded;
-            pageOption.ClassToApplyToFirstListItemInPager = "prev";
-            pageOption.ClassToApplyToLastListItemInPager = "next";
-            pageOption.ContainerDivClasses = new[] { "pagination-container" };
-            pageOption.UlElementClasses = new[] { "" };
         }
-        @Html.PagedListPager(Model, page => Url.Action("Index", "news", new { page }), pageOption)
+        <!--/kopa-about-author-->
     </div>
 
 </div>
+
 
 

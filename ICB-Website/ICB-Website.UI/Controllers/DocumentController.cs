@@ -3,28 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace ICB_Website.UI.Controllers
 {
-    public class DocumentController : Controller
+    [AttributeRouting.RoutePrefix("tai-lieu")]
+    public class documentController : Controller
     {
+        [AttributeRouting.Web.Mvc.Route("")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+        
         // GET: Document
-        public ActionResult Vanban()
+        public PartialViewResult Vanban(int page=1)
+        {
+            var documentProvider = new ICB.Business.Access.DocumentProvider();
+            var documents = documentProvider.VB_GetRecentPost().ToList();
+            ViewBag.documentFirst = documents.FirstOrDefault() == null ? new ICB.Business.Models.Document() : documents.FirstOrDefault();
+            documents = documents.Count == 0 ? new List<ICB.Business.Models.Document>() : documents.Skip(1).ToList();
+            return PartialView(documents.ToPagedList(page,5));
+        }
+
+        public ActionResult VB_Detail(int id)
         {
             return View();
         }
 
-        public ActionResult Vanban(int? id)
+        public ActionResult Tailieu(int page=1)
         {
-            return View();
+            var documentProvider = new ICB.Business.Access.DocumentProvider();
+            var documents = documentProvider.TL_GetRecentPost().ToList();
+            return View(documents.ToPagedList(page,10));
         }
 
-        public ActionResult Tailieu()
-        {
-            return View();
-        }
-
-        public ActionResult Tailieu(int? id)
+        public ActionResult TL_Detail(int id)
         {
             return View();
         }

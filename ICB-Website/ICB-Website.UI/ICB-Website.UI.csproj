@@ -328,11 +328,11 @@
     <Compile Include="Controllers\accountController.cs" />
     <Compile Include="Controllers\competencyProfileController.cs" />
     <Compile Include="Controllers\contactsController.cs" />
-    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\documentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\newsController.cs" />
-    <Compile Include="Controllers\PartnerController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\partnerController.cs" />
+    <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3973,15 +3973,17 @@
     <Content Include="Views\account\Register.cshtml" />
     <Content Include="Views\news\Index.cshtml" />
     <Content Include="Views\news\Detail.cshtml" />
+    <Content Include="Views\Products\Detail.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
+    <Content Include="Views\Document\Index.cshtml" />
+    <Content Include="Views\Document\Vanban.cshtml" />
+    <Content Include="Views\Document\Tailieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Uploads\Documents\" />
     <Folder Include="Views\competencyProfile\" />
     <Folder Include="Views\contacts\" />
-    <Folder Include="Views\Document\" />
-    <Folder Include="Views\Partner\" />
-    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -18,7 +18,7 @@
                         </a>
                         <div class="entry-content">
                             <header>
-                                <h4 class="entry-title" style="font-size:13px;"><a href="#" title="@item.Name">@item.Name</a></h4>
+                                <h4 class="entry-title" style="font-size:13px;"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a></h4>
                             </header>
                         </div>
                     </article>
@@ -27,99 +27,6 @@
             
         </ul>
     </div>
-    @*<div id="categories-2" class="widget widget_categories clearfix">
-        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>Categories List</h3>		<ul>
-            <li class="cat-item cat-item-48">
-                <a href="indexb0b4.html?cat=48">Fashion</a> (4)
-            </li>
-            <li class="cat-item cat-item-46">
-                <a href="index38d0.html?cat=46">Food</a> (1)
-            </li>
-            <li class="cat-item cat-item-45">
-                <a href="index363a.html?cat=45">People</a> (7)
-            </li>
-            <li class="cat-item cat-item-47">
-                <a href="indexf528.html?cat=47">Sunlights</a> (4)
-            </li>
-            <li class="cat-item cat-item-49">
-                <a href="index3cd0.html?cat=49">Technology</a> (2)
-            </li>
-            <li class="cat-item cat-item-50">
-                <a href="index8dbd.html?cat=50">Wedding</a> (3)
-            </li>
-        </ul>
-    </div>
-    <div id="kopa-article-list-widget-5" class="widget kopa-article-list-widget clearfix">
-        <h3 class="widget-title"><span class="icon-title fa fa-arrows"></span>Wedding<a href="index363a.html?cat=45">All Articles</a></h3>
-        <ul class="clearfix">
-
-            <li class="item last-item ">
-                <article class="entry-item clearfix">
-
-
-                    <div class="entry-thumb">
-                        <a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z"><img src="~/Uploads/Images/bfi_thumb/Girl-on-Rialto-Bridge-Venice-Italy-2xau0ht7c03xx8pz4bxngq.jpg" alt="Drunk In Love &#8211; Beyonce ft. Jay Z" class="img-responsive" /></a>
-                    </div>
-
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>June 10, 2014</span>
-
-                            </p>
-
-
-                        </header>
-
-                        <p>Phasellus feugiat venenatis volutpat. Sed posuere convallis eleifend. Nulla id ante quis neque</p>
-
-                    </div>
-                </article>
-            </li>
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="index8bfb.html?p=721" title="Wedding Photographer">Wedding Photographer</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>June 23, 2013</span>
-
-                            </p>
-
-
-                        </header>
-
-
-
-                    </div>
-                </article>
-            </li>
-
-            <li class="item other-item">
-                <article class="entry-item clearfix">
-
-
-                    <div class="entry-content">
-                        <header>
-                            <h4 class="entry-title"><a href="indexfa8d.html?p=570" title="Lifeline">Lifeline</a></h4>
-
-                            <p class="entry-date">
-                                Posted:&nbsp;                                                <span>December 14, 2012</span>
-
-                            </p>
-                        </header>
-                    </div>
-                </article>
-            </li>
-        </ul>
-    </div>*@
     <div id="danh-sach-tin-tuc-noi-bat" class="widget kopa-article-list-widget article-icon clearfix">
         <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.RecentPost</h3> 
         <ul class="clearfix">

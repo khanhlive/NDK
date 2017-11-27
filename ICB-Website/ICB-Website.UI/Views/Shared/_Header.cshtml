@@ -2,6 +2,8 @@
     ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
     var info = systemConfigProvider.Get();
     var banner = systemConfigProvider.GetBanner();
+    ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
+    var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID == 0).ToList();
 }
 <header id="kopa-header">
     <div class="header-top">
@@ -123,32 +125,35 @@
                 <div style="display:none;" class="logo-mobile"><a href="index.html">Responsive </a></div>
                 <div id="head-mobile"></div>
                 <div class="button"></div>
-
                 <ul style="margin-bottom:0px;" class="main-menu sf-menu">
                     <li class='menu-item'><a href='@Url.Action("Index","Home")'>@ICB_Website.UI.Resources.RHome.Home</a></li>
                     <li class="menu-item"><a href='@Url.Action("gioithieu","Home")'>@ICB_Website.UI.Resources.RHome.AboutUS</a></li>
                     <li class="menu-item"><a href='@Url.Action("Index","news")'>@ICB_Website.UI.Resources.RHome.News</a></li>
                     <li class="menu-item">
                         <a href='#'>@ICB_Website.UI.Resources.RHome.Products</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item">
-                                <a href='#'>Product 1</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                    <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item">
-                                <a href='#'>Product 2</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                    <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <div class="sf-mega col-md-push-0 col-sm-push-0 col-xs-push-0 col-md-12 col-sm-12 col-xs-12" style="padding-bottom:35px;">
+                            @foreach (var item in services)
+                            {
+                                <div class="sf-mega-section col-md-4 col-xs-4 col-sm-4 sub-menu-list-article" style="margin-bottom:0px;">
+                                    <div class="widget kopa-posts-list-square-thumbnail clearfix" style="margin-bottom:20px;">
+                                        <div class="clearfix post type-post ">
+                                            <article class="entry-item clearfix">
+                                                <div class="entry-thumb" style="width:45px;">
+                                                    <a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption"></a>
+                                                </div>
+                                                <div class="entry-content">
+                                                    <h2 class="entry-title"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Caption">@item.Caption</a></h2>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
                     </li>
-                    <li><a href='#'>@ICB_Website.UI.Resources.RHome.Partner</a></li>
-                    <li><a href='#'>@ICB_Website.UI.Resources.RHome.Document</a></li>
+                    <li><a href='@Url.Action("Index","partner")'>@ICB_Website.UI.Resources.RHome.Partner</a></li>
+                    <li><a href='@Url.Action("Index","document")'>@ICB_Website.UI.Resources.RHome.Document</a></li>
                     <li><a href='#'>@ICB_Website.UI.Resources.RHome.CompetencyProfile</a></li>
                     <li><a href='@Url.Action("lienhe","Home")'>@ICB_Website.UI.Resources.RHome.Contact</a></li>
                 </ul>
