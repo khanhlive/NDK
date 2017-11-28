@@ -9,17 +9,17 @@
     <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.Text<a href="#">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
     <article class="entry-item clearfix last-item post-754 ">
         <div class="entry-thumb">
-            <a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:250px;" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
+            <a href="@Url.Action("Detail","document",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:250px;" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
             <div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
-                    <a class="fa fa-picture-o" href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"></a>
+                    <a class="fa fa-picture-o" href="@Url.Action("Detail","document",new { @id=documentFirst.ID })" title="@documentFirst.Caption"></a>
                 </div>
             </div>
         </div>
         <div class="entry-content">
             <header>
-                <h4 class="entry-title"><a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption">@documentFirst.Caption</a></h4>
+                <h4 class="entry-title"><a href="@Url.Action("Detail","document",new { @id=documentFirst.ID })" title="@documentFirst.Caption">@documentFirst.Caption</a></h4>
                 <p class="entry-date">
                     @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@documentFirst.CreateTime</span>
                 </p>
@@ -41,11 +41,11 @@
                     <li>
                         <article class="entry-item clearfix item-other ">
                             <div class="entry-thumb">
-                                <a href="@Url.Action("vanban","Home",new { @id=item.ID })" title="@item.Caption"><img src="@item.Path" alt="@item.Caption" /></a>
+                                <a href="@Url.Action("Detail","document",new { @id=item.ID })" title="@item.Caption"><img src="@item.Path" alt="@item.Caption" /></a>
                             </div>
                             <div class="entry-content">
                                 <header>
-                                    <h4 class="entry-title"><a href="@Url.Action("vanban","Home",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
+                                    <h4 class="entry-title"><a href="@Url.Action("Detail","document",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
                                     <p class="entry-date">
                                         @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@item.CreateTime</span>
                                     </p>

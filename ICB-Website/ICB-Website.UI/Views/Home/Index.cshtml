@@ -10,67 +10,7 @@
 }
 
 @section TopSlider{
-
-    <section class="widget-area-1 clearfix">
-        <div class="widget kopa-list-post-no-thumb clearfix">
-            <span></span>
-
-            <h3 class="widget-title">New<span>Stories</span></h3>
-
-            <div class="list-post-main">
-                <div class="owl-carousel owl-carousel1">
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="index9e97.html?p=1486">Driving in Leather Driving Gloves</a></h4>
-                            <span class="entry-date">June 19, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="index3f68.html?p=1681">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-                            <span class="entry-date">June 19, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-                            <span class="entry-date">June 10, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="index62bc.html?p=754">The Gallery Library of Sammy</a></h4>
-                            <span class="entry-date">May 15, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="indexd13e.html?p=719">Paul si Cristina Rad Wedding Day</a></h4>
-                            <span class="entry-date">April 13, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="indexdc32.html?p=1309">Life Round Here (Feat. Angel Haze)</a></h4>
-                            <span class="entry-date">March 11, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="index5628.html?p=1305">Fashion Glasses Symmetrical</a></h4>
-                            <span class="entry-date">February 11, 2014</span>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="entry-item clearfix">
-                            <h4 class="entry-title"><a href="index4ac2.html?p=1331">Five Of London’s Best</a></h4>
-                            <span class="entry-date">January 3, 2014</span>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div><!--/end widget.kopa-list-post-no-thumb-->
-    </section>
+    @Html.Partial("_sectionSlider")
 }
 
 
@@ -174,20 +114,20 @@
 }
 
 <div id="kopa-posts-list-two-parts-6" class="widget kopa-article-list-widget-2 clearfix">
-    <h3 class="widget-title">@ICB_Website.UI.Resources.RHome.Text<a href="@Url.Action("vanban","Home")">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
+    <h3 class="widget-title"><span class="icon-title fa fa-address-book"></span>@ICB_Website.UI.Resources.RHome.Text<a href="@Url.Action("Detail","document")">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
     <article class="entry-item clearfix last-item post-754 ">
         <div class="entry-thumb">
             <a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:250px;" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
             <div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
-                    <a class="fa fa-picture-o" href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"></a>
+                    <a class="fa fa-picture-o" href="@Url.Action("Detail","document",new { @id=documentFirst.ID })" title="@documentFirst.Caption"></a>
                 </div>
             </div>
         </div>
         <div class="entry-content">
             <header>
-                <h4 class="entry-title"><a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption">@documentFirst.Caption</a></h4>
+                <h4 class="entry-title"><a href="@Url.Action("Detail","document",new { @id=documentFirst.ID })" title="@documentFirst.Caption">@documentFirst.Caption</a></h4>
                 <p class="entry-date">
                     @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@documentFirst.CreateTime</span>
                 </p>
@@ -207,11 +147,11 @@
                 <li>
                     <article class="entry-item clearfix item-other ">
                         <div class="entry-thumb">
-                            <a href="@Url.Action("vanban","Home",new { @id=item.ID })" title="@item.Caption"><img src="@item.Path" alt="@item.Caption" /></a>
+                            <a href="@Url.Action("Detail","document",new { @id=item.ID })" title="@item.Caption"><img src="@item.Path" alt="@item.Caption" /></a>
                         </div>
                         <div class="entry-content">
                             <header>
-                                <h4 class="entry-title"><a href="@Url.Action("vanban","Home",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
+                                <h4 class="entry-title"><a href="@Url.Action("Detail","document",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
                                 <p class="entry-date">
                                     @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@item.CreateTime</span>
                                 </p>

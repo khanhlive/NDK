@@ -132,6 +132,12 @@
   <data name="Contact" xml:space="preserve">
     <value>Liên hệ</value>
   </data>
+  <data name="Contactform" xml:space="preserve">
+    <value>Gửi thông tin liên hệ</value>
+  </data>
+  <data name="ContactInfomation" xml:space="preserve">
+    <value>Thông tin liên hệ</value>
+  </data>
   <data name="DaysAgo" xml:space="preserve">
     <value>ngày trước</value>
   </data>
@@ -176,5 +182,23 @@
   </data>
   <data name="Text" xml:space="preserve">
     <value>Văn bản</value>
+  </data>
+  <data name="Caption" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Họ tên</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Gửi đi</value>
   </data>
 </root>

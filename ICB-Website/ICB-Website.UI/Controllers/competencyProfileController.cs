@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace ICB_Website.UI.Controllers
 {
+    [AttributeRouting.RoutePrefix("ho-so-nang-luc")]
     public class competencyProfileController : Controller
     {
+        [AttributeRouting.Web.Mvc.Route("")]
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
         // GET: competencyProfile
         public ActionResult Index()
         {
-            return View();
+            ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
+            return View(systemConfigProvider.GetHOSONANGLUC());
         }
     }
 }

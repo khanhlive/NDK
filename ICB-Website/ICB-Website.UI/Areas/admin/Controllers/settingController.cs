@@ -23,6 +23,8 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             ViewData["BANNER"] = systemConfigProvider.GetBanner();
             var hoso = systemConfigProvider.GetHOSONANGLUC();
             ViewBag.HOSONANGLUC = hoso == null ? "" : hoso.Name;
+            ViewBag.Caption = hoso == null ? "" : hoso.Caption;
+            ViewBag.Description = hoso == null ? "" : hoso.Description;
             return View(systemConfigProvider.Get());
         }
 
@@ -101,6 +103,14 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         {
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
             var result = await systemConfigProvider.INSERTorUPDATE_HOSO(url);
+            return Json(new { Status = result.Item1, data = result.Item2 });
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Update_HOSO_Description(string Caption,string Description)
+        {
+            SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            var result = await systemConfigProvider.INSERTorUPDATE_HOSO_Description(Caption, Description);
             return Json(new { Status = result.Item1, data = result.Item2 });
         }
 

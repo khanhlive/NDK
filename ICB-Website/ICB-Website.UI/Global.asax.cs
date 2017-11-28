@@ -15,13 +15,15 @@ namespace ICB_Website.UI
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Application_Start()
         {
-            //Database.SetInitializer<ICB.Business.Entities.ICBContext>(new CreateDatabaseIfNotExists<ICB.Business.Entities.ICBContext>());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
+            Application["Counter"] = 0;
+            ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
+            Application["IsSetup"] = systemConfigProvider.Get() != null;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -44,6 +46,11 @@ namespace ICB_Website.UI
         {
             Exception exception = Server.GetLastError();
             log.Error("System error", exception);
+        }
+        public void Session_Start(object sender, EventArgs e)
+        {
+            int count = Convert.ToInt32(Application["Counter"]);
+            Application["Counter"] = count + 1;
         }
     }
 }

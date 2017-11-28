@@ -51,7 +51,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
                 model.IsDeleted = false;
                 //account.IsLocked = false;
                 model.Password = NDK.ApplicationCore.Extensions.Hepler.StringHelper.CreateMD5(model.Password);
-                model.Role = RoleManager.Member;
+                model.Role = model.Role;
                 //account.Username = model.Username;
                 return Json(await provider.RegisterAsync(model));
             }

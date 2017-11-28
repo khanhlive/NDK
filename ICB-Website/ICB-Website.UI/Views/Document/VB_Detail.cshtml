@@ -1,14 +1,11 @@
-﻿@model ICB.Business.Models.News
+﻿@model ICB.Business.Models.Document
 @{
     ViewBag.Title = Model.Caption;
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     List<ICB_Website.UI.Models.Breadcrumb> list = new List<ICB_Website.UI.Models.Breadcrumb>();
-    list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 1, Name = ICB_Website.UI.Resources.RHome.News, URL = Url.Action("Index","news") });
+    list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 1, Name = ICB_Website.UI.Resources.RHome.Document, URL = Url.Action("Index", "document") });
     list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 2, Name = Model.Caption, URL = "#" });
     ViewBag.Breadcrumb = list;
-}
-@section TopSlider{
-    @Html.Partial("_sectionSlider")
 }
 
 <div class="kopa-entry-post">
@@ -19,7 +16,7 @@
             <header class="clearfix">
                 <h4 class="entry-title">@Model.Caption</h4>
                 <div class="entry-meta clearfix">
-                    <p class="entry-date">@ICB_Website.UI.Resources.RHome.Posted:<span>@Model.PostedDate</span></p>
+                    <p class="entry-date">@ICB_Website.UI.Resources.RHome.Posted:<span>@Model.CreateTime</span></p>
                     <p class="entry-categories">in:&nbsp;<a href="#" rel="category">People</a></p>
                     <p class="entry-comment"><a href="#">No Comment</a></p>
                 </div>
@@ -41,7 +38,7 @@
                 </div>
             </div>
         }
-        
+
 
         <div class="single-post-bottom">
             <div class="kopa-social-link">
@@ -60,30 +57,8 @@
                 </ul>
             </div>
         </div>
-        
-        <div class="kopa-recent-post">
-            <h3 class="recent-title">Related articles</h3>
-            <ul class="clearfix">
-                @{ 
-                    List<ICB.Business.Models.News> relatedPost=(List<ICB.Business.Models.News>)ViewData["REALTEDPOST"];
-                }
 
-                @foreach (var item in relatedPost)
-                {
-                    <li>
-                        <article class="entry-item">
-                            <div class="entry-content">
-                                <header>
-                                    <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { id=item.ID})" title="@item.Caption">@item.Caption</a></h4>
-                                    <p class="entry-date">@ICB_Website.UI.Resources.RHome.Posted:<span>@item.PostedDate</span></p>
-                                </header>
-                                <p>@item.ContentReview</p>
-                            </div>
-                        </article>
-                    </li>
-                }
-            </ul>
-        </div>
+        
         <!--/kopa-recent-post-->
 
         <div class="kopa-author clearfix">

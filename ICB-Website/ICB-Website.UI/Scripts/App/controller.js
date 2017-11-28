@@ -1057,6 +1057,16 @@ function SETTING_INIT() {
         ckfinder.popup();
     });
 
+    $('#btn-logo-browser').click(function () {
+        var ckfinder = new CKFinder();
+        ckfinder.selectActionFunction = function (url, a, b) {
+            var decodedUri = decodeURIComponent(url);
+            $('#img-customer-thumbnail').attr({ src: decodedUri });
+            $('#frm-setting-website #txtImageURL').val(decodedUri);
+        }
+        ckfinder.popup();
+    });
+
     if ($('#frm-vanban-create').length > 0) {
         $('#frm-vanban-create #browser').click(function () {
             var ckfinder = new CKFinder();
@@ -1081,6 +1091,7 @@ function SETTING_INSERTorUPDATE() {
     var fax = form.find('[name=Fax]').val();
     var website = form.find('[name=Website]').val();
     var address = form.find('[name=Address]').val();
+    var imageUrl = form.find('[name=ImageURL]').val();
     var Setting = {
         Name: name,
         Tel: tel,
@@ -1089,7 +1100,8 @@ function SETTING_INSERTorUPDATE() {
         Email: email,
         Fax: fax,
         Website: website,
-        Address: address
+        Address: address,
+        ImageURL: imageUrl
     };
     APPLICATION.Ajax('/admin/setting/insertorupdate', 'application/json', 'POST', JSON.stringify(Setting), function (d) {
         if (d.Status == ResponseStatus.OK) {
@@ -1193,6 +1205,22 @@ function SETTING_UPDATE_HOSO() {
         }
         else {
             alert('Không thêm được thông tin hồ sơ');
+        }
+    });
+}
+
+function SETTING_UPDATE_HOSO_Description() {
+    var caption = $('#txtCaption').val();
+    var description = CKEDITOR.instances.txtDescription.getData()
+    var model = { Caption: caption, Description: description };
+    APPLICATION.Ajax('/admin/setting/Update_HOSO_Description', 'application/json', 'POST', JSON.stringify(model), function (d) {
+        if (d.Status == ResponseStatus.OK) {
+            ShowNotifySuccess('Đã cập nhật thông tin');
+        } else if (d.Status == ResponseStatus.ModelFailed) {
+            alert('Không chỉnh sửa được thông tin');
+        }
+        else {
+            alert('Không thêm được thông tin');
         }
     });
 }

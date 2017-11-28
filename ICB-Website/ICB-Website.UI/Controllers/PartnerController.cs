@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using PagedList;
 
 namespace ICB_Website.UI.Controllers
@@ -10,6 +6,8 @@ namespace ICB_Website.UI.Controllers
     [AttributeRouting.RoutePrefix("doi-tac")]
     public class partnerController : Controller
     {
+        [AttributeRouting.Web.Mvc.Route("")]
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
         // GET: Partner
         public ActionResult Index(int page=1)
         {

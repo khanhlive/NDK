@@ -42,5 +42,8 @@ namespace ICB.Business.Models
 
         public string Content { get; set; }
         public string ContentENG { get; set; }
+        public string Caption { get; set; }
+        public string Description { get; set; }
+        public string ImageURL { get; set; }
     }
 }

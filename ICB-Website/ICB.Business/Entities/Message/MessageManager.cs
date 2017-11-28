@@ -1,11 +1,5 @@
 ﻿using ICB.Business.Entities.Apps;
 using NDK.ApplicationCore.Extensions.ResponseResults;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ICB.Business.Entities.Message
 {
     public class MessageManager

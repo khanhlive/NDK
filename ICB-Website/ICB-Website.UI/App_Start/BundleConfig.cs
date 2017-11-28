@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ICB_Website.UI
 {
@@ -28,22 +27,25 @@ namespace ICB_Website.UI
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/Scripts/js").Include(
-                "~/Plugins/themes/comment-reply.js",
-                "~/Scripts/bootstrap.min.js",
-                "~/Plugins/themes/modernizr.js",
-                "~/Plugins/fotorama-4.6.4/fotorama.js",
-                "~/Plugins/OwlCarousel2/owl.carousel.min.js",
-                "~/Plugins/themes/knd-embed.js",
-                "~/Scripts/underscore.min.js",
-                "~/Plugins/themes/knd-util.js",
-                "~/Scripts/backbone.min.js",
-                "~/Scripts/mediaelement/mediaelement-and-player.min.js",
-                "~/Plugins/themes/knd-playlist.js",
-                "~/Plugins/jssor.slider.min.js",
-                "~/Scripts/apps/app.js"
+                "~/Scripts/jquery.unobtrusive-ajax.min.js",
+    "~/Scripts/jquery.validate.unobtrusive.min.js",
+    "~/Plugins/jssor.slider.min.js",
+     "~/Plugins/themes/comment-reply.js",
+     "~/Scripts/bootstrap.min.js",
+    "~/Plugins/themes/modernizr.js",
+     "~/Plugins/fotorama-4.6.4/fotorama.js",
+    "~/Plugins/themes/owl.carousel.js",
+     "~/Scripts/custom/custom.js",
+     "~/Plugins/themes/knd-embed.js",
+     "~/Scripts/underscore.min.js",
+     "~/Plugins/themes/knd-util.js",
+     "~/Scripts/backbone.min.js",
+     "~/Scripts/mediaelement/mediaelement-and-player.min.js",
+     "~/Plugins/themes/knd-playlist.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
-                "~/Scripts/custom/custom.js"
+                "~/Scripts/custom/custom.js",
+                "~/Scripts/apps/app.js"
                 ));
             BundleTable.EnableOptimizations = true;
         }

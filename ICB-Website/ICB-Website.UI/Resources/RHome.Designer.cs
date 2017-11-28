@@ -88,6 +88,15 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Caption.
+        /// </summary>
+        public static string Caption {
+            get {
+                return ResourceManager.GetString("Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Competency Profile.
         /// </summary>
         public static string CompetencyProfile {
@@ -106,6 +115,24 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact form.
+        /// </summary>
+        public static string Contactform {
+            get {
+                return ResourceManager.GetString("Contactform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Infomation.
+        /// </summary>
+        public static string ContactInfomation {
+            get {
+                return ResourceManager.GetString("ContactInfomation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to days ago.
         /// </summary>
         public static string DaysAgo {
@@ -120,6 +147,15 @@ namespace ICB_Website.UI.Resources {
         public static string Document {
             get {
                 return ResourceManager.GetString("Document", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -147,6 +183,15 @@ namespace ICB_Website.UI.Resources {
         public static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
             }
         }
         
@@ -223,6 +268,15 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send message.
+        /// </summary>
+        public static string SendMessage {
+            get {
+                return ResourceManager.GetString("SendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Services.
         /// </summary>
         public static string Services {
@@ -232,11 +286,29 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tel.
+        /// </summary>
+        public static string Tel {
+            get {
+                return ResourceManager.GetString("Tel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text.
         /// </summary>
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your name.
+        /// </summary>
+        public static string YourName {
+            get {
+                return ResourceManager.GetString("YourName", resourceCulture);
             }
         }
     }

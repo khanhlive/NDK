@@ -1,6 +1,6 @@
 ﻿@{ 
     ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
-    var info = systemConfigProvider.Get();
+    var info = systemConfigProvider.Get()??new ICB.Business.Models.SystemConfig();
     var banner = systemConfigProvider.GetBanner();
     ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
     var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID == 0).ToList();
@@ -71,7 +71,7 @@
     <div class="header-middle" style="padding-top:0px;padding-bottom:3px;">
         <div class="wrapper clearfix" style="position:relative;">
             <div class="kopa-logo pull-left" style="position:absolute;top:26px;left:20px;">
-                <a href="#"><img src="/Images/icblogo.png" alt="Xmax" /></a>
+                <a href="#"><img src="@info.ImageURL" alt="Xmax" /></a>
             </div>
 
             <div class="kopa-logo-small pull-left">
@@ -154,7 +154,7 @@
                     </li>
                     <li><a href='@Url.Action("Index","partner")'>@ICB_Website.UI.Resources.RHome.Partner</a></li>
                     <li><a href='@Url.Action("Index","document")'>@ICB_Website.UI.Resources.RHome.Document</a></li>
-                    <li><a href='#'>@ICB_Website.UI.Resources.RHome.CompetencyProfile</a></li>
+                    <li><a href='@Url.Action("Index","competencyProfile")'>@ICB_Website.UI.Resources.RHome.CompetencyProfile</a></li>
                     <li><a href='@Url.Action("lienhe","Home")'>@ICB_Website.UI.Resources.RHome.Contact</a></li>
                 </ul>
 

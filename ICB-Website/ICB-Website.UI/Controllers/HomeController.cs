@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using ICB.Business.Models;
 using ICB.Business.Access;
-using PagedList;
 
 namespace ICB_Website.UI.Controllers
 {
@@ -17,6 +11,7 @@ namespace ICB_Website.UI.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
         [AttributeRouting.Web.Mvc.Route("trang-chu")]
         public ActionResult Index()
         {
@@ -43,39 +38,41 @@ namespace ICB_Website.UI.Controllers
         {
             return View();
         }
-
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
         [AttributeRouting.Web.Mvc.Route("gioi-thieu")]
         public async Task<ActionResult> gioithieu()
         {
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
             return View((await systemConfigProvider.GetGioiThieuAsync()));
         }
-
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
         [AttributeRouting.Web.Mvc.Route("lien-he")]
-        public async Task<ActionResult> lienhe()
+        public ActionResult lienhe()
         {
-
-            return View();
+            ICB.Business.Access.SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            ViewData["INFO"] = systemConfigProvider.Get();
+            return View(systemConfigProvider.Get());
         }
 
-
-        public async Task<ActionResult> vanban()
+        [HttpPost]
+        public ActionResult lienhePOST(FormCollection form)
         {
-            return View();
-        }
-
-        public async Task<ActionResult> vanban(int? id)
-        {
-            return View();
-        }
-
-        public async Task<ActionResult> tailieu()
-        {
-            return View();
-        }
-        public async Task<ActionResult> tailieu(int? id)
-        {
-            return View();
+            ICB.Business.Access.SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
+            ViewData["INFO"] = systemConfigProvider.Get();
+            string name = form["Name"];
+            string tel = form["Tel"];
+            string email = form["Email"];
+            string caption = form["Caption"];
+            string message = form["Message"];
+            ICB.Business.Access.FeedbackProvider feedbackProvider = new FeedbackProvider();
+            Feedback feedback = new Feedback { CreateTime = DateTime.Now, Content = message, Answered=false, Email = email, Name = name, PhoneNumber = tel, Theme = caption, Status = 0, UserID=null };
+            var result = feedbackProvider.Insert(feedback);
+            if (result == NDK.ApplicationCore.Extensions.ResponseResults.AccessEntityStatusCode.OK)
+            {
+                ViewBag.Status = true;
+            }
+            else ViewBag.Status = false;
+            return View("lienhe");
         }
     }
 }

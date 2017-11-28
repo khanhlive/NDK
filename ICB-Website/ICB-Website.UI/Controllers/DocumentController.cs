@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using PagedList;
 
 namespace ICB_Website.UI.Controllers
 {
+    [ICB_Website.UI.Models.Security.GuestAuthorize]
     [AttributeRouting.RoutePrefix("tai-lieu")]
     public class documentController : Controller
     {
@@ -41,6 +40,13 @@ namespace ICB_Website.UI.Controllers
         public ActionResult TL_Detail(int id)
         {
             return View();
+        }
+        [AttributeRouting.Web.Mvc.Route("chi-tiet/{id}")]
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
+        public ActionResult Detail(int id)
+        {
+            ICB.Business.Access.DocumentProvider documentProvider = new ICB.Business.Access.DocumentProvider();
+            return View(documentProvider.GetByID(id));
         }
     }
 }

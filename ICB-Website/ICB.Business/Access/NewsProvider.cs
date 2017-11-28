@@ -108,6 +108,17 @@ namespace ICB.Business.Access
             int status = (int)ModelStatus.Active;
             return (await this.FindAllAsync(p => p.Status == status)).OrderByDescending(p => p.PostedDate).Take(5).ToList();
         }
+
+        public List<News> GetRelatedPost(int id)
+        {
+            var news = this.GetByID(id);
+            return (this.GetAll()).Where(p => p.Status == (int)ModelStatus.Active && p.Category==news.Category && p.ID!=id).OrderByDescending(p => p.PostedDate).Take(4).ToList();
+        }
+        public async Task<List<News>> GetRelatedPostAsync(int id)
+        {
+            var news = this.GetByID(id);
+            return ((await this.GetAllAsync())).Where(p => p.Status == (int)ModelStatus.Active && p.Category == news.Category && p.ID != id).OrderByDescending(p => p.PostedDate).Take(4).ToList();
+        }
         #endregion
 
     }

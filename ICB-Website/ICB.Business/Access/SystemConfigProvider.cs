@@ -51,7 +51,7 @@ namespace ICB.Business.Access
 
         public async Task<AccessEntityResult> InsertOrUpdateAsync(SystemConfig systemConfig)
         {
-            SystemConfig item = this.GetAll().FirstOrDefault();
+            SystemConfig item = this.Get();
             if (item == null)
             {
                 //thêm mới
@@ -66,6 +66,7 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
+                item.ImageURL = systemConfig.ImageURL;
                 var result = (await this.InsertAsync(item));
                 return new AccessEntityResult { Status = result.Item1, Data=result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
@@ -82,6 +83,7 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
+                item.ImageURL = systemConfig.ImageURL;
                 var result = await this.UpdateAsync(item, item.ID);
                 return new AccessEntityResult { Status = result.Item1, Data = result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
@@ -147,6 +149,25 @@ namespace ICB.Business.Access
                 return (result);
             }
             
+        }
+
+        public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> INSERTorUPDATE_HOSO_Description(string caption,string description)
+        {
+            var edit = this.GetHOSONANGLUC();
+            if (edit == null)
+            {
+                SystemConfig systemConfig = new SystemConfig { Name = "", Status = 1, Category = (int)WebsiteCategory.HosoNangLuc,Caption=caption,Description=description };
+                var result = await this.InsertAsync(systemConfig);
+                return (result);
+            }
+            else
+            {
+                edit.Caption = caption;
+                edit.Description = description;
+                var result = await this.UpdateAsync(edit, edit.ID);
+                return (result);
+            }
+
         }
 
         public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> INSERTorUPDATE_GIOITHIEU(string name, string content)

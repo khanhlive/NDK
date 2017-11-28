@@ -8,7 +8,12 @@
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">Thông tin chi tiết</h3>
-
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
         </div>
         <div class="box-body">
             <form class="form-horizontal form-no-bottom" id="frm-setting-website" onsubmit="return false" novalidate>
@@ -60,7 +65,7 @@
                             <div class="form-group has-feedback">
                                 <label class="control-label col-md-4">Email:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" name="Email" placeholder="Email" />
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -94,6 +99,22 @@
 
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group has-feedback">
+                                <label class="control-label col-md-4">Logo: </label>
+                                <div class="col-md-8">
+                                    <img class="img-responsive img-thumbnail" id="img-customer-thumbnail" src="~/Uploads/Images/Koala.jpg" />
+                                    <div class="input-group" style="margin-top:15px;">
+                                        <input readonly class="form-control" name="ImageURL" id="txtImageURL" alt="" />
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btn-logo-browser" class="btn btn-primary">Browser</button>
+                                        </span>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -108,7 +129,12 @@
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">Slide ảnh</h3>
-
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
         </div>
         <div class="box-body">
             <form class="form-horizontal form-no-bottom" id="frm-setting-website-slider" onsubmit="return false" novalidate>
@@ -140,7 +166,12 @@
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title">Hồ sơ năng lực</h3>
-
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
         </div>
         <div class="box-body">
             <form class="form-horizontal form-no-bottom" id="frm-setting-website-hoso" onsubmit="return false" novalidate>
@@ -165,8 +196,32 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <label class="control-label">Tiêu đề:</label>
+                                <input class="form-control" name="Caption" id="txtCaption" value="@ViewBag.Caption" />
+                            </div>
+                            <div class="">
+                                <label class="control-label">Nội dung:</label>
+                                <textarea class="form-control" name="Description" id="txtDescription">@ViewBag.Description</textarea>
+                            </div>
+                            <div class="text-right" style="margin-top:20px;">
+                                <button class="btn btn-primary" onclick="SETTING_UPDATE_HOSO_Description();" type="button"><i class="fa fa-save"></i> Lưu </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        CKEDITOR.replace('txtDescription', {
+            height: 300,
+            customConfig: '/Plugins/ckeditor/config.js'
+        });
+
+    });
+</script>

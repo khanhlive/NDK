@@ -42,7 +42,7 @@
                                 <p class="entry-date">
                                     @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@Math.Abs(NDK.ApplicationCore.Models.Common.GetDaysBetweenTimeAndToday(item.PostedDate)) @ICB_Website.UI.Resources.RHome.DaysAgo</span>
                                 </p>
-                                <h4 class="entry-title"><a href="@Url.Action("tintuc","Home",new { id=item.ID })" title="@item.Caption">@caption</a></h4>
+                                <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { id=item.ID })" title="@item.Caption">@caption</a></h4>
                             </header>
                         </div>
                     </article>

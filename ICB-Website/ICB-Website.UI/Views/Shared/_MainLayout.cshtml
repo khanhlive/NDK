@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
-
+@{ 
+    ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
+    var info = systemConfigProvider.Get()??new ICB.Business.Models.SystemConfig();
+}
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    @*@Styles.Render("~/Content/css")*@
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/magnific-popup.css" rel="stylesheet" />
     <link href="~/Content/megafish.css" rel="stylesheet" />
@@ -20,7 +22,7 @@
     <link href="~/Content/xmax-theme.css" rel="stylesheet" />
     <link href="~/Content/responsive.css" rel="stylesheet" />
     <link href="~/Scripts/mediaelement/knd-mediaelement.css" rel="stylesheet" />
-    <link href="~/Content/icb-style.css" rel="stylesheet" />
+    <link href="~/Content/icb-style.css" rel="stylesheet" />*@
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -32,24 +34,42 @@
     <div class="wrapper clearfix">
         <div style="border:1px solid #dadada;">
             @RenderSection("TopSlider",false)
-            
             <div class="main-wrapper clearfix">
                 @if (ViewBag.IsBreadcrumb == null || ViewBag.IsBreadcrumb == true)
                 {
+                    var breadcrumbs = (List<ICB_Website.UI.Models.Breadcrumb>)(ViewBag.Breadcrumb ?? new List<ICB_Website.UI.Models.Breadcrumb>());
                     <div class="kopa-breadcrumb clearfix">
-                        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                            <a href="http://upsidethemes.net/demo/xmax" itemprop="url">
+                        <span itemscope itemtype="@Url.Action("Index","Home")">
+                            <a href="@Url.Action("Index","Home")" itemprop="url">
                                 <span itemprop="title">
-                                </span>Home
-                            </a>
-                        </span>&nbsp;/&nbsp;<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                            <a href="index363a.html?cat=45" itemprop="url"><span itemprop="title">People</span></a>
-                        </span>&nbsp;/&nbsp;
-                        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                            <a class="current-page" itemprop="url" href="index9e97.html?p=1486">
-                                <span itemprop="title">Driving in Leather Driving Gloves</span>
+                                </span>@ICB_Website.UI.Resources.RHome.Home
                             </a>
                         </span>
+                        @if (breadcrumbs.Count == 0)
+                        {
+                            <text>&nbsp;/ &nbsp;</text>
+                        }
+                        else
+                        {
+                            for (int i = 0; i < breadcrumbs.Count; i++)
+                            {
+                                if (i == breadcrumbs.Count - 1)
+                                {
+                                    <text>&nbsp;/&nbsp;</text>
+                                    <span itemscope itemtype="@breadcrumbs[i].URL">
+                                        <a class="current-page" href="javascript:;" itemprop="url"><span itemprop="title">@breadcrumbs[i].Name</span></a>
+                                    </span>
+                                }
+                                else
+                                {
+                                    <text>&nbsp;/&nbsp;</text>
+                                    <span itemscope itemtype="@breadcrumbs[i].URL">
+                                        <a href="@breadcrumbs[i].URL" itemprop="url"><span itemprop="title">@breadcrumbs[i].Name</span></a>
+                                    </span>     }
+                            }
+                        }
+
+
                     </div>
                 }
 
@@ -76,84 +96,15 @@
 
             @RenderSection("KhachHang",false)
 
-
-            <div class="bottom-sidebar clearfix">
-                <div class="main-wrapper clearfix">
-                    <div class="bottom-sidebar-wrapper clearfix">
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-7">
-                            <div id="tag_cloud-2" class="widget widget_tag_cloud clearfix">
-                                <h3 class="widget-title">Tags</h3><div class="tagcloud">
-                                    <a href='indexe939.html?tag=audio' class='tag-link-54 tag-link-position-1' title='5 topics' style='font-size: 8pt;'>audio</a>
-                                    <a href='indexa5c4.html?tag=gallery' class='tag-link-56 tag-link-position-2' title='5 topics' style='font-size: 8pt;'>gallery</a>
-                                    <a href='indexc7e9.html?tag=post' class='tag-link-57 tag-link-position-3' title='21 topics' style='font-size: 22pt;'>post</a>
-                                    <a href='indexa491.html?tag=soundcloud' class='tag-link-55 tag-link-position-4' title='5 topics' style='font-size: 8pt;'>soundcloud</a>
-                                    <a href='indexecab.html?tag=standard' class='tag-link-51 tag-link-position-5' title='6 topics' style='font-size: 9.75pt;'>standard</a>
-                                    <a href='index62ae.html?tag=video' class='tag-link-52 tag-link-position-6' title='5 topics' style='font-size: 8pt;'>video</a>
-                                    <a href='index3562.html?tag=vimeo' class='tag-link-53 tag-link-position-7' title='5 topics' style='font-size: 8pt;'>vimeo</a>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-8">
-                            <div id="kopa_twitter-2" class="widget widget-twitters clearfix">
-                                <h3 class="widget-title">Recent Twitter</h3>            <div class="widget-content">
-                                    <div id="tweets" class="tweets" data-username="wordPress" data-limit="2">
-                                        Sorry, there was a problem when load
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-9">
-                            <div id="kopa-posts-list-square-thumbnail-4" class="widget kopa-posts-list-square-thumbnail clearfix">
-                                <h3 class="widget-title">Recent Articles</h3>            <ul class="sub-menu-list-article">
-                                    <li class="clearfix">
-                                        <article class="entry-item clearfix">
-                                            <div class="entry-thumb">
-                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="~/Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5728c0eemqkef4a.jpg" alt="Driving in Leather Driving Gloves"></a>
-
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <h2 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h2>
-                                                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
-                                            </div>
-                                        </article>
-                                    </li>
-                                    <li class="clearfix ">
-                                        <article class="entry-item clearfix">
-                                            <div class="entry-thumb">
-                                                <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="~/Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28k8d34le4a151je.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia"></a>
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <h2 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h2>
-                                                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
-                                            </div>
-                                        </article>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-10"><div id="kopa-flickr-widget-2" class="widget kopa-flickr-widget clearfix"><h3 class="widget-title">Photo Flickr</h3><div class="widget-content"><div class="flickr-wrap clearfix" data-id="71865026@N00" data-limit="6" data-tag=""><ul class="clearfix list-unstyled"></ul></div></div></div></section>
-                    </div>
-                </div>
-            </div>
             <!--/end BOTTOM-SIDERBAR-->
-
-            <footer id="kopa-footer">
-                <nav class="footer-nav">
-                    <ul id="footer-menu" class="footer-menu clearfix">
-                        <li id="menu-item-1652" class="menu-item "><a href="index9bef.html?page_id=54">Blogpost</a></li>
-                        <li id="menu-item-1653" class="menu-item "><a href="indexf536.html?page_id=50">Video</a></li>
-                        <li id="menu-item-1654" class="menu-item "><a href="index028b.html?page_id=52">Gallery</a></li>
-                        <li id="menu-item-1651" class="menu-item "><a href="indexedfb.html?page_id=58">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                    <p>© COPYRIGHT 2014. XMAX THEME BY KOPASOFT</p>
+            <footer id="kopa-footer" class="" style="padding:20px 0 35px; ">
+                <div class="" style="margin-left:350px">
+                    <p class="" style="font-size:23px; margin-bottom:10px;">@info.Name</p>
+                    
+                    <p>Địa chỉ: @info.Address</p>
+                    <p>Điện thoại: @info.Tel - Fax: @info.Fax</p>
+                    <p>Email: @info.Email</p>
+                    <p>Website: @info.Website</p>
                 </div>
             </footer>
         </div>
@@ -173,19 +124,17 @@
         var kopa_variable_fonts = ["Roboto:400,500,700", "Open+Sans:300,400,600,700,800"];
 /* ]]> */
     </script>
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/js")
-    @Scripts.Render("~/bundles/custom")*@
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/Scripts/js")*@
+    @*@Scripts.Render("~/bundles/custom")*@
+    @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Plugins/jssor.slider.min.js"></script>
     <script type='text/javascript' src="~/Plugins/themes/comment-reply.js"></script>
     <script type='text/javascript' src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Plugins/themes/modernizr.js"></script>
     <script type='text/javascript' src="~/Plugins/fotorama-4.6.4/fotorama.js"></script>
     <script src="~/Plugins/themes/owl.carousel.js"></script>
-    @*<script type='text/javascript' src="~/Plugins/OwlCarousel2/owl.carousel.min.js"></script>*@
     <script type='text/javascript' src='~/Scripts/custom/custom.js'></script>
     <script type='text/javascript' src='~/Plugins/themes/knd-embed.js'></script>
     <script type='text/javascript' src='~/Scripts/underscore.min.js'></script>
@@ -193,7 +142,6 @@
     <script type='text/javascript' src='~/Scripts/backbone.min.js'></script>
     <script type='text/javascript' src='~/Scripts/mediaelement/mediaelement-and-player.min.js'></script>
     <script type='text/javascript' src='~/Plugins/themes/knd-playlist.js'></script>
-    
     <script src="~/Scripts/apps/app.js"></script>
 </body>
 </html>

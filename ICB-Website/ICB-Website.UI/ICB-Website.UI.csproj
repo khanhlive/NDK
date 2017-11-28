@@ -336,6 +336,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Breadcrumb.cs" />
+    <Compile Include="Models\Security\GuestAuthorizeAttribute.cs" />
+    <Compile Include="Models\StoriesAccess.cs" />
     <Compile Include="Models\ControllerBase.cs" />
     <Compile Include="Models\Entities\LoginModel.cs" />
     <Compile Include="Models\Entities\Register.cs" />
@@ -3978,11 +3981,15 @@
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Document\Vanban.cshtml" />
     <Content Include="Views\Document\Tailieu.cshtml" />
+    <Content Include="Views\competencyProfile\Index.cshtml" />
+    <Content Include="Views\Shared\_sectionSlider.cshtml" />
+    <Content Include="Views\Document\VB_Detail.cshtml" />
+    <Content Include="Views\Document\TL_Detail.cshtml" />
+    <Content Include="Views\Document\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Uploads\Documents\" />
-    <Folder Include="Views\competencyProfile\" />
     <Folder Include="Views\contacts\" />
   </ItemGroup>
   <ItemGroup>

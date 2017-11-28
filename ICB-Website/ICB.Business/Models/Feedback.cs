@@ -40,7 +40,7 @@ namespace ICB.Business.Models
 
         public DateTime? CreateTime { get; set; }
 
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
         public virtual Account Account { get; set; }
     }
