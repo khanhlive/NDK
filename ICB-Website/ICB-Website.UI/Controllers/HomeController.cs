@@ -34,7 +34,7 @@ namespace ICB_Website.UI.Controllers
         }
 
         
-        public async Task<ActionResult> Index2()
+        public ActionResult Index2()
         {
             return View();
         }

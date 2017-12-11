@@ -21,14 +21,11 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         public categoryController() : base("Quản lý nhóm danh mục", "Quản lý nhóm danh mục") { }
         // GET: admin/category
         [AttributeRouting.Web.Mvc.Route("")]
-        [AppAuthorize(RoleManager.Admin,RoleManager.Superadmin,RoleManager.Manager)]
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
         public async Task<ActionResult> Index()
         {
-            using (CategoryProvider categoryProvider = new CategoryProvider())
-            {
-                return View(await categoryProvider.GetAllAsync());
-            }
-            
+            CategoryProvider categoryProvider = new CategoryProvider();
+            return View(await categoryProvider.GetAllAsync());
         }
 
         [AttributeRouting.Web.Mvc.Route("get-all")]

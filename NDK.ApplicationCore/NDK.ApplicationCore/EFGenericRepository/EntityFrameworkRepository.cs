@@ -36,6 +36,7 @@ namespace NDK.ApplicationCore.EFGenericRepository
         {
             this.context = db;// new Models.ICB_DbContext();
             this.dbSet = this.context.Set<T>();
+            this.context.Configuration.ProxyCreationEnabled = false;
             //this.db = new DbContext();
         }
 
@@ -152,11 +153,11 @@ namespace NDK.ApplicationCore.EFGenericRepository
                 int counter = this.context.SaveChanges();
                 return (counter > 0 ? AccessEntityStatusCode.OK : AccessEntityStatusCode.Failed);
             }
-            catch (DbUpdateException ex1)
+            catch (DbUpdateException)
             {
                 throw;
             }
-            catch (DbEntityValidationException ex)
+            catch (DbEntityValidationException)
             {
 
                 throw;

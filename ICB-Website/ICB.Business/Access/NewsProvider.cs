@@ -24,7 +24,7 @@ namespace ICB.Business.Access
             Tuple<AccessEntityStatusCode, News> result = await this.InsertAsync(news);
             if (result.Item1 == AccessEntityStatusCode.OK)
             {
-                return new AccessEntityResult { Status = AccessEntityStatusCode.OK, Data = result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, MessageType.Success) };
+                return new AccessEntityResult { Status = AccessEntityStatusCode.OK, Data = null, Message = MessageManager.GetErrorMessage(ModuleType.Base, MessageType.Success) };
             }
             else
             {

@@ -4,7 +4,7 @@ namespace ICB.Business.Access
 {
     public class ApplicationManager<T, KeyType> : EntityFrameworkRepository<T, KeyType> where T : class
     {
-        public ApplicationManager() : base(new ICB.Business.Models.WebContext()) { }
+        public ApplicationManager() : base(DbContextSingleton.GetInstance()) { }
         
     }
 }

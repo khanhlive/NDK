@@ -54,6 +54,7 @@
     <Compile Include="Access\ApplicationManager.cs" />
     <Compile Include="Access\CategoryProvider.cs" />
     <Compile Include="Access\CustomerProvider.cs" />
+    <Compile Include="Access\DbContextSingleton.cs" />
     <Compile Include="Access\DocumentProvider.cs" />
     <Compile Include="Access\FeedbackProvider.cs" />
     <Compile Include="Access\NewsProvider.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Access\SystemConfigProvider.cs" />
     <Compile Include="Entities\Apps\ModuleManager.cs" />
     <Compile Include="Entities\Apps\RoleManager.cs" />
+    <Compile Include="Entities\CounterDemo.cs" />
     <Compile Include="Entities\Message\MessageManager.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Category.cs" />

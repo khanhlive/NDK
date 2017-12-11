@@ -46,7 +46,7 @@
 
                             <tr>
                                 <td>@i</td>
-                                <td>@item.ThumbnailURL</td>
+                                <td><img class="img-thumbnail" src="@item.ThumbnailURL" style="height:80px;width:150px;"/></td>
                                 <td>@item.Caption</td>
                                 <td>@ICB_Website.UI.Models.HtmlHelper.FormatDatetime(item.PostedDate, NDK.ApplicationCore.Models.Common.DatetimeFormatString[1])</td>
                                 <td>@ICB.Business.Access.AccountProvider.GetName(item.UserID)</td>

@@ -10,6 +10,7 @@ namespace ICB.Business.Models
         public WebContext()
             : base("name=WebContext")
         {
+            Entities.CounterDemo.counter++;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -107,6 +108,12 @@ namespace ICB.Business.Models
             modelBuilder.Entity<SystemConfig>()
                 .Property(e => e.Hotline)
                 .IsUnicode(false);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            Entities.CounterDemo.counter--;
         }
     }
 }
