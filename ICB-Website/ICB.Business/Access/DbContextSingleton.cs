@@ -6,8 +6,9 @@ namespace ICB.Business.Access
     {
         private static Models.WebContext dbContext = new Models.WebContext();
         private DbContextSingleton() { }
-        public static DbContext GetInstance()
+        public static Models.WebContext GetInstance()
         {
+            dbContext.Configuration.ProxyCreationEnabled = false;
             return dbContext;
         }
     }

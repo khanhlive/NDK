@@ -97,7 +97,8 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         public async Task<JsonResult> GetByID(int id)
         {
             AccountProvider accountProvider = new AccountProvider();
-            return Json(await accountProvider.GetByIDAsync(id), JsonRequestBehavior.AllowGet);
+            var d = await accountProvider.GetByIDAsync(id);
+            return Json(d, JsonRequestBehavior.AllowGet);
         }
     }
 }

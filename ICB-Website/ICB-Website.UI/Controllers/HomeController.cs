@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using System.Threading.Tasks;
 using ICB.Business.Models;
 using ICB.Business.Access;
+using System.Reflection;
+using System.Linq;
 
 namespace ICB_Website.UI.Controllers
 {
@@ -15,7 +17,13 @@ namespace ICB_Website.UI.Controllers
         [AttributeRouting.Web.Mvc.Route("trang-chu")]
         public ActionResult Index()
         {
-            
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            var dt = assembly.GetTypes()
+        .Where(type => typeof(System.Web.Mvc.Controller).IsAssignableFrom(type))
+        .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
+        .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
+        .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name, ReturnType = x.ReturnType.Name, Attributes = String.Join(",", x.GetCustomAttributes().Select(a => a.GetType().Name.Replace("Attribute", ""))) })
+        .OrderBy(x => x.Controller).ThenBy(x => x.Action).ToList();
             return View();
         }
 

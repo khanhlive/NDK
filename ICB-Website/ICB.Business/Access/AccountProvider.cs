@@ -90,12 +90,12 @@ namespace ICB.Business.Access
                 {
                     account.Password = edit.Password;
                     account.CreateTime = edit.CreateTime;
-                    account.Documents = edit.Documents;
-                    account.Feedbacks = edit.Feedbacks;
+                    //account.Documents = edit.Documents;
+                    //account.Feedbacks = edit.Feedbacks;
                     account.IsDeleted = edit.IsDeleted;
                     account.LastLoginTime = edit.LastLoginTime;
                     account.LastMordifiedTime = edit.LastMordifiedTime;
-                    account.Services = edit.Services;
+                    //account.Services = edit.Services;
                     return this.Update(account, id);
                 }
                 else
@@ -120,12 +120,12 @@ namespace ICB.Business.Access
             {
                 account.Password = edit.Password;
                 account.CreateTime = edit.CreateTime;
-                account.Documents = edit.Documents;
-                account.Feedbacks = edit.Feedbacks;
+                //account.Documents = edit.Documents;
+                //account.Feedbacks = edit.Feedbacks;
                 account.IsDeleted = edit.IsDeleted;
                 account.LastLoginTime = edit.LastLoginTime;
                 account.LastMordifiedTime = edit.LastMordifiedTime;
-                account.Services = edit.Services;
+                //account.Services = edit.Services;
                 if (string.IsNullOrEmpty(account.Password) || string.IsNullOrWhiteSpace(account.Password))
                 {
                     account.Password = edit.Password;
