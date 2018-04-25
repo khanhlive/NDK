@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NDK.ApplicationCore", "..\NDK.ApplicationCore\NDK.ApplicationCore\NDK.ApplicationCore.csproj", "{DB073180-EE6A-409D-9A24-620E6443207D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICB-Website.UI", "ICB-Website.UI\ICB-Website.UI.csproj", "{CFE95589-6DF3-446C-8F16-AD434ABAB004}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICB.Business", "ICB.Business\ICB.Business.csproj", "{1FF71339-E504-444B-AB19-20AA47B1C608}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DB073180-EE6A-409D-9A24-620E6443207D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB073180-EE6A-409D-9A24-620E6443207D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB073180-EE6A-409D-9A24-620E6443207D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB073180-EE6A-409D-9A24-620E6443207D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFE95589-6DF3-446C-8F16-AD434ABAB004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFE95589-6DF3-446C-8F16-AD434ABAB004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFE95589-6DF3-446C-8F16-AD434ABAB004}.Release|Any CPU.ActiveCfg = Release|Any CPU

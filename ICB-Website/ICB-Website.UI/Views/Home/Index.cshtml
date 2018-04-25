@@ -55,8 +55,8 @@
 <div id="tin-tuc-noi-bat" class="widget kopa-article-list-widget-1 clearfix">
     <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.News<a href="@Url.Action("Index","news")">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
     <article class="entry-item clearfix last-item ">
-        <div class="entry-thumb">
-            <a href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption"><img src="@newsFirst.ThumbnailURL" alt="@newsFirst.Caption" /></a>
+        <div class="entry-thumb" style="width:220px">
+            <a href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption"><img style="width:200px;height:200px" src="@newsFirst.ThumbnailURL" alt="@newsFirst.Caption" /></a>
             <div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
@@ -117,7 +117,7 @@
     <h3 class="widget-title"><span class="icon-title fa fa-address-book"></span>@ICB_Website.UI.Resources.RHome.Text<a href="@Url.Action("Detail","document")">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
     <article class="entry-item clearfix last-item post-754 ">
         <div class="entry-thumb">
-            <a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:250px;" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
+            <a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:200px;width:200px" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
             <div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>

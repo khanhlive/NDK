@@ -1,4 +1,15 @@
-﻿.name-company {
+﻿body {
+    font-family: 'Open Sans', sans-serif !important;
+}
+.link-email {
+    color: blue !important;
+    text-decoration: none !important;
+}
+    .link-email:hover {
+        text-decoration: underline !important;
+        cursor: pointer !important;
+    }
+.name-company {
     float: right;
     position: absolute;
     top: 20px;
@@ -91,7 +102,10 @@
         display: none !important;
     }
 }
-
+.main-wrapper aside:last-child{
+    margin-right:0px !important;
+    margin-left:15px !important;
+}
 #tin-tuc-noi-bat .kopa-other-post .entry-thumb {
     width: 98px;
     margin-right: 15px;
@@ -105,10 +119,10 @@
     font-size: 13px !important;
 }
 .main-wrapper {
-    width: 1140px !important;
+    width: 98% !important;
 }
 .kopa-main-col{
-    width:831px !important;
+    width:630px !important;
 }
 .grid-partner {
     margin: 0 -15px 15px -15px;

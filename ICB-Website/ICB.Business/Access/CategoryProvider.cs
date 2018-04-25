@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace ICB.Business.Access
 {
-    public class CategoryProvider : ApplicationManager<Models.Category,int>
+    public class CategoryProvider : ApplicationManager<Models.Category, int>
     {
-        public CategoryProvider() { 
+        public CategoryProvider()
+        {
         }
         public CategoryProvider(bool proxy)
         {

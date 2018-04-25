@@ -10,11 +10,11 @@ using NDK.ApplicationCore.Extensions.Hepler;
 
 namespace ICB.Business.Access
 {
-    public class AccountProvider : ApplicationManager<Models.Account,int>
+    public class AccountProvider : ApplicationManager<Models.Account, int>
     {
         public AccountProvider()
         {
-            
+
         }
 
         public Account SignIn(string username, string password)
@@ -59,7 +59,7 @@ namespace ICB.Business.Access
             }
         }
 
-        public async Task <AccessEntityResult> RegisterAsync(Account account)
+        public async Task<AccessEntityResult> RegisterAsync(Account account)
         {
             if (await this.CheckUsernameAsync(account.Username))
             {
@@ -90,12 +90,12 @@ namespace ICB.Business.Access
                 {
                     account.Password = edit.Password;
                     account.CreateTime = edit.CreateTime;
-                    //account.Documents = edit.Documents;
-                    //account.Feedbacks = edit.Feedbacks;
+                    account.Documents = edit.Documents;
+                    account.Feedbacks = edit.Feedbacks;
                     account.IsDeleted = edit.IsDeleted;
                     account.LastLoginTime = edit.LastLoginTime;
                     account.LastMordifiedTime = edit.LastMordifiedTime;
-                    //account.Services = edit.Services;
+                    account.Services = edit.Services;
                     return this.Update(account, id);
                 }
                 else
@@ -120,12 +120,12 @@ namespace ICB.Business.Access
             {
                 account.Password = edit.Password;
                 account.CreateTime = edit.CreateTime;
-                //account.Documents = edit.Documents;
-                //account.Feedbacks = edit.Feedbacks;
+                account.Documents = edit.Documents;
+                account.Feedbacks = edit.Feedbacks;
                 account.IsDeleted = edit.IsDeleted;
                 account.LastLoginTime = edit.LastLoginTime;
                 account.LastMordifiedTime = edit.LastMordifiedTime;
-                //account.Services = edit.Services;
+                account.Services = edit.Services;
                 if (string.IsNullOrEmpty(account.Password) || string.IsNullOrWhiteSpace(account.Password))
                 {
                     account.Password = edit.Password;
@@ -147,7 +147,7 @@ namespace ICB.Business.Access
         public static string GetName(int id)
         {
             AccountProvider accountProvider = new AccountProvider();
-            Account account =  accountProvider.GetByID(id);
+            Account account = accountProvider.GetByID(id);
             return account == null ? "" : account.Username;
         }
 

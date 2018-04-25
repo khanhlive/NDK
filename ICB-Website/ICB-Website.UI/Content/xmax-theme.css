@@ -118,7 +118,7 @@ body {
     background: #f9f9f9;
     font-size: 13px;
     line-height: 20px;
-    color: #888;
+    color: #4e4e4e;
 }
 .kopa-relative {
     position: relative;
@@ -137,7 +137,7 @@ ul {
 }
 /**************************/
 .wrapper {
-    width: 1166px;
+    width: 1150px;
     margin: 0 auto;
 }
 .main-wrapper {
@@ -170,7 +170,7 @@ ul {
 /************* TOP-MENU ******************/
 ul.top-menu > li {
     float: left;
-    padding: 16px 18px;
+    padding: 5px 18px;
     border-right: 1px solid #dbdbdb;
     position: relative;
     cursor: pointer;
@@ -184,7 +184,7 @@ ul.top-menu > li:first-child:hover {
 ul.top-menu > li > a {
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
-    text-transform: uppercase;
+    text-transform: none;
     color: #8F8F8F;
     line-height: 18px;
     transition-property: none;
@@ -459,19 +459,19 @@ li.mega-item ul li {
     font-size: 13px;
     color: #acacac;
     width: 210px;
-    height: 52px;
+    height: 30px;
     padding: 10px 71px 10px 20px;
     background: #fafafa;
     border-left: 1px solid #dbdbdb;
 }
 .search-box  .search-submit{
-    font-size: 17px;
+    font-size: 14px;
     display: block;
     width: 50px;
-    height: 54px;
-    line-height: 34px;
+    height: 32px;
+    
     color: #acacac;
-    padding: 10px 17px;
+    padding: 0px 17px;
     position: absolute;
     top: 0;
     right: 0;
@@ -494,13 +494,13 @@ li.mega-item ul li {
 }
 .widget-title {
     font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
+    text-transform: none;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: normal;
     color: #fff;
     background: #0088b2;
-    padding: 15px 15px;
-    margin-bottom: 25px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
 }
 .widget-title a {
     font-family: 'Open Sans', sans-serif;
@@ -593,7 +593,7 @@ li.mega-item ul li {
     font-weight: 600;
     color: #444;
     line-height: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     word-spacing: 1px;
 }
 .sub-menu-list-article .entry-title {
@@ -844,7 +844,7 @@ li.mega-item ul li {
 }
 
 .sidebar {
-    width: 290px;
+    width: 230px;
     float: left;
 }
 .widget-area-2 {
@@ -975,7 +975,7 @@ li.mega-item ul li {
 }
 .kopa-other-post ul li {
     float: left;
-    width: 50%;
+    width: 100%;
     border: 0;
     margin: 0;
     padding: 0;

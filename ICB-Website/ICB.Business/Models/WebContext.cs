@@ -21,6 +21,7 @@ namespace ICB.Business.Models
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
+        public virtual DbSet<Role> RoleManagers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

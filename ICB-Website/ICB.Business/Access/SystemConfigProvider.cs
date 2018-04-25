@@ -28,7 +28,7 @@ namespace ICB.Business.Access
                 item.Website = systemConfig.Website;
                 item.Status = 1;
                 item.Category = 0;
-                var result = ( this.Insert(item));
+                var result = (this.Insert(item));
                 return new AccessEntityResult { Status = result, Message = MessageManager.GetErrorMessage(ModuleType.Base, result) };
             }
             else
@@ -45,7 +45,7 @@ namespace ICB.Business.Access
                 item.Status = 1;
                 item.Category = 0;
                 var result = this.Update(item, item.ID);
-                return new AccessEntityResult { Status = result.Item1,Data=result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
+                return new AccessEntityResult { Status = result.Item1, Data = result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
         }
 
@@ -68,7 +68,7 @@ namespace ICB.Business.Access
                 item.Category = 0;
                 item.ImageURL = systemConfig.ImageURL;
                 var result = (await this.InsertAsync(item));
-                return new AccessEntityResult { Status = result.Item1, Data=result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
+                return new AccessEntityResult { Status = result.Item1, Data = result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, result.Item1) };
             }
             else
             {
@@ -91,7 +91,7 @@ namespace ICB.Business.Access
 
         public SystemConfig Get()
         {
-            return this.GetAll().Where(p=>p.Category==(int)WebsiteCategory.Info).FirstOrDefault();
+            return this.GetAll().Where(p => p.Category == (int)WebsiteCategory.Info).FirstOrDefault();
         }
 
         public async Task<SystemConfig> GetAsync()
@@ -106,10 +106,10 @@ namespace ICB.Business.Access
             return (result);
         }
 
-        public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> EditBanner(int id,string src)
+        public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> EditBanner(int id, string src)
         {
             var edit = this.GetByID(id);
-            if (edit==null)
+            if (edit == null)
             {
                 return new Tuple<AccessEntityStatusCode, SystemConfig>(AccessEntityStatusCode.NotFound, null);
             }
@@ -119,7 +119,7 @@ namespace ICB.Business.Access
                 var result = await this.UpdateAsync(edit, id);
                 return (result);
             }
-            
+
         }
 
         public List<SystemConfig> GetBanner()
@@ -148,15 +148,15 @@ namespace ICB.Business.Access
                 var result = await this.UpdateAsync(edit, edit.ID);
                 return (result);
             }
-            
+
         }
 
-        public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> INSERTorUPDATE_HOSO_Description(string caption,string description)
+        public async Task<Tuple<AccessEntityStatusCode, SystemConfig>> INSERTorUPDATE_HOSO_Description(string caption, string description)
         {
             var edit = this.GetHOSONANGLUC();
             if (edit == null)
             {
-                SystemConfig systemConfig = new SystemConfig { Name = "", Status = 1, Category = (int)WebsiteCategory.HosoNangLuc,Caption=caption,Description=description };
+                SystemConfig systemConfig = new SystemConfig { Name = "", Status = 1, Category = (int)WebsiteCategory.HosoNangLuc, Caption = caption, Description = description };
                 var result = await this.InsertAsync(systemConfig);
                 return (result);
             }

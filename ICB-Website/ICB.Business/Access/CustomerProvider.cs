@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ICB.Business.Access
 {
-    public class CustomerProvider : ApplicationManager<Models.Customer,int>
+    public class CustomerProvider : ApplicationManager<Models.Customer, int>
     {
         public async Task<AccessEntityResult> AddAsync(Customer customer)
         {
@@ -27,7 +27,7 @@ namespace ICB.Business.Access
         public AccessEntityResult Add(Customer customer)
         {
 
-            AccessEntityStatusCode result =  this.Insert(customer);
+            AccessEntityStatusCode result = this.Insert(customer);
             if (result == AccessEntityStatusCode.OK)
             {
                 return new AccessEntityResult { Status = AccessEntityStatusCode.OK, Message = MessageManager.GetErrorMessage(ModuleType.Customer, MessageType.Success) };
@@ -42,7 +42,7 @@ namespace ICB.Business.Access
         public async Task<AccessEntityResult> EditAsync(int id, Customer customer)
         {
             Customer edit = this.GetByID(id);
-            if (edit==null)
+            if (edit == null)
             {
                 return new AccessEntityResult { Status = AccessEntityStatusCode.NotFound, Message = MessageManager.GetErrorMessage(ModuleType.Customer, MessageType.NotFound) };
             }
