@@ -27,7 +27,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         #region Văn bản
         [HttpGet]
-        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        [AppAuthorize(ICB.Business.Entities.Apps.RoleManager.Admin, ICB.Business.Entities.Apps.RoleManager.Superadmin, ICB.Business.Entities.Apps.RoleManager.Manager)]
         [AttributeRouting.Web.Mvc.Route("van-ban")]
         public ActionResult Vanban(int page = 1, int pagesize = 20)
         {
@@ -37,7 +37,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
 
         [HttpGet]
-        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        [AppAuthorize(ICB.Business.Entities.Apps.RoleManager.Admin, ICB.Business.Entities.Apps.RoleManager.Superadmin, ICB.Business.Entities.Apps.RoleManager.Manager)]
         [AttributeRouting.Web.Mvc.Route("van-ban/them-moi")]
         public ActionResult VB_Create()
         {
@@ -64,7 +64,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         }
 
         [HttpGet]
-        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        [AppAuthorize(ICB.Business.Entities.Apps.RoleManager.Admin, ICB.Business.Entities.Apps.RoleManager.Superadmin, ICB.Business.Entities.Apps.RoleManager.Manager)]
         [AttributeRouting.Web.Mvc.Route("van-ban/chinh-sua")]
         public ActionResult VB_Edit(int id)
         {
@@ -101,7 +101,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         #region Tài liệu
         [HttpGet]
-        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        [AppAuthorize(ICB.Business.Entities.Apps.RoleManager.Admin, ICB.Business.Entities.Apps.RoleManager.Superadmin, ICB.Business.Entities.Apps.RoleManager.Manager)]
         [AttributeRouting.Web.Mvc.Route("tai-lieu")]
         public ActionResult Tailieu(int page = 1, int pagesize = 10)
         {
@@ -111,7 +111,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
 
         [HttpGet]
-        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        [AppAuthorize(ICB.Business.Entities.Apps.RoleManager.Admin, ICB.Business.Entities.Apps.RoleManager.Superadmin, ICB.Business.Entities.Apps.RoleManager.Manager)]
         [AttributeRouting.Web.Mvc.Route("tai-lieu/them-moi")]
         public ActionResult TL_Create()
         {
@@ -139,7 +139,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         }
 
         [HttpGet]
-        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
+        [AppAuthorize(ICB.Business.Entities.Apps.RoleManager.Admin, ICB.Business.Entities.Apps.RoleManager.Superadmin, ICB.Business.Entities.Apps.RoleManager.Manager)]
         [AttributeRouting.Web.Mvc.Route("tai-lieu/chinh-sua")]
         public ActionResult TL_Edit(int id)
         {

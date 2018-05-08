@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="EFGenericRepository\EntityFrameworkRepository.cs" />
     <Compile Include="EFGenericRepository\IRepository.cs" />
+    <Compile Include="Encrypt\RSAEncrypt.cs" />
     <Compile Include="Extensions\Hepler\StringHelper.cs" />
     <Compile Include="Extensions\ResponseResults\AccessEntityStatusCode.cs" />
     <Compile Include="Extensions\ResponseResults\Class1.cs" />

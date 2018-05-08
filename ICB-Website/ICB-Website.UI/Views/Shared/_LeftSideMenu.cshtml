@@ -1,6 +1,6 @@
-﻿@{ 
-    ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
-    var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID==0).ToList();
+﻿@model List<ICB.Business.Models.Service>
+@{
+
     ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
     var news = newsProvider.GetRecentPost();
 }
@@ -9,7 +9,7 @@
     <div class="widget clearfix" id="kopa-services">
         <h3 class="widget-title"><span class="icon-title fa fa-list"></span>@ICB_Website.UI.Resources.RHome.Services</h3>
         <ul class="clearfix">
-            @foreach (var item in services)
+            @foreach (var item in Model)
             {
                 <li class="item item-other">
                     <article class="entry-item clearfix">
@@ -24,13 +24,13 @@
                     </article>
                 </li>
             }
-            
+
         </ul>
     </div>
     <div id="danh-sach-tin-tuc-noi-bat" class="widget kopa-article-list-widget article-icon clearfix">
-        <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.RecentPost</h3> 
+        <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.RecentPost</h3>
         <ul class="clearfix">
-            
+
             @foreach (var item in news)
             {
                 string caption = item.Caption.Length > ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength ? item.Caption.Substring(0, ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength) + "..." : item.Caption;

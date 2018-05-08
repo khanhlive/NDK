@@ -1,15 +1,15 @@
 ﻿@using ICB_Website.UI.Models
 @{ 
-    List<ICB.Business.Models.Document> list = new List<ICB.Business.Models.Document>();
-    ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
-    ICB.Business.Access.DocumentProvider documentProvider = new ICB.Business.Access.DocumentProvider();
-    list.AddRange(documentProvider.TL_GetRecentPost().Take(2).ToList());
-    list.AddRange(documentProvider.VB_GetRecentPost().Take(2).ToList());
-    var news = newsProvider.GetRecentPost().Take(4).ToList();
+//List<ICB.Business.Models.Document> list = new List<ICB.Business.Models.Document>();
+//ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
+//ICB.Business.Access.DocumentProvider documentProvider = new ICB.Business.Access.DocumentProvider();
+//list.AddRange(documentProvider.TL_GetRecentPost().Take(2).ToList());
+//list.AddRange(documentProvider.VB_GetRecentPost().Take(2).ToList());
+//var news = newsProvider.GetRecentPost().Take(4).ToList();
 }
 
 
-    <section class="widget-area-1 clearfix">
+    @*<section class="widget-area-1 clearfix">
         <div class="widget kopa-list-post-no-thumb clearfix">
             <span></span>
             <h3 class="widget-title">New<span>Stories</span></h3>
@@ -39,5 +39,5 @@
                 </div>
             </div>
         </div><!--/end widget.kopa-list-post-no-thumb-->
-    </section>
+    </section>*@
 

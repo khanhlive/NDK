@@ -4,6 +4,160 @@
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 <div data-controller="support">
+    <div class="row" id="rowobj">
+        <div id="templates" style="display:none">
+            <div class="col-md-3">
+                <div class="box box-primary direct-chat direct-chat-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+
+                        <div class="box-tools pull-right">
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-success">3</span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <input type="hidden" name="nickname" value="" />
+                        <input type="hidden" name="lastTextisLocal" value="false" />
+                        <div class="direct-chat-messages">
+
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="form-chat">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-flat">Send</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
+@section scripts{
+
+    <script src="~/Scripts/jquery.signalR-1.0.1.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script>
+        var localname = "admin";
+        var arrayUser = [];
+        $(document).ready(function () {
+            StartChathub();
+            $('.form-chat [name="message"]').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $(this).closest('.box').find('.form-chat .btn').click();
+                } 
+            })
+            
+        });
+        var lastTextisLocal = false;
+        function scrollToBottom(chatroom) {
+            var height = 0;
+            $.each(chatroom.find('.direct-chat-messages .direct-chat-msg'), function (a, b) {
+                height += $(b).height();
+            });
+            chatroom.find(".direct-chat-messages").animate({ scrollTop: height }, 1000);
+        }
+        function StartChathub() {
+            var chat = $.connection.chatHub;
+            // Get the user name.
+            chat.client.broadcastMessage = function (name, message, value) {
+                addMesageToChat(name, message, value);
+            };
+
+            $.connection.hub.start().done(function () {
+                //Calls the notify method of the server
+                chat.server.notify(localname, $.connection.hub.id);
+                $('.form-chat .btn').click(function () {
+                    var target = $(this).closest('.box').find('input[name="nickname"]').val();
+                    chat.server.sendToSpecific(localname, $(this).closest('.box').find('.form-chat [name="message"]').val(), target);
+                    // Clear text box and reset focus for next comment.
+                    $(this).closest('.box').find('.form-chat [name="message"]').val('').focus();
+                });
+
+            });
+        }
+        function addNickname(name) {
+            if (arrayUser.indexOf(name) == -1) {
+                arrayUser.push(name);
+            }
+        }
+        function addMesageToChat(name, message, value) {
+            var chatroom;
+            if (name != 'admin') {
+                addNickname(name);
+                if ($('#rowobj .box input[name="nickname"][value="' + name + '"]').length <= 0) {
+                    var obj = $('#templates .col-md-3').clone(true);
+                    $(obj).find('input[name="nickname"]').val(name);
+                    $(obj).find('.box-title').html(name);
+                    chatroom = obj;
+                    $('#rowobj').append(obj);
+                } else {
+                    chatroom = $('#rowobj .box input[name="nickname"][value="' + name + '"]').closest('.col-md-3');
+                }
+            } else {
+                chatroom = $('#rowobj .box input[name="nickname"][value="' + value + '"]').closest('.col-md-3');
+            }
+            
+
+            var lastTextisLocal = chatroom.find('input[name="lastTextisLocal"]').val()=='true';
+            if (name == localname) {
+                if (lastTextisLocal) {
+                    var div = chatroom.find('.direct-chat-msg.right:last-child').find('.direct-chat-text').append('<span style="display:block;">' + message + '</span>');
+                } else {
+                    var text = '<div class="direct-chat-msg right">'
+                    text += '<div class="direct-chat-info clearfix" >';
+                    text += '<span class="direct-chat-name pull-right">' + name + '</span>';
+                    text += '</div>';
+                    text += '<img class="direct-chat-img" src="/Images/img/support.png" alt="Message User Image">';
+                    text += '<div class="direct-chat-text"><span style="display:block;">' + message + '</span> </div>';
+                    text += ' </div>';
+                    chatroom.find('.direct-chat-messages').append(text);
+
+                }
+                lastTextisLocal = true;
+            } else {
+                if (lastTextisLocal) {
+                    var text = '<div class="direct-chat-msg">';
+                    text += '<div class="direct-chat-info clearfix" >';
+                    text += '<span class="direct-chat-name pull-left">' + name + '</span>';
+                    text += '</div>';
+                    text += '<img class="direct-chat-img" src="/Images/img/5.png" alt="Message User Image">';
+                    text += '<div class="direct-chat-text"><span style="display:block;">' + message + '</span> </div>';
+                    text += ' </div>';
+                    chatroom.find('.direct-chat-messages').append(text);
+                } else {
+                    if (chatroom.find('.direct-chat-msg').length > 0) {
+                        var div = chatroom.find('.direct-chat-msg:last-child').find('.direct-chat-text').append('<span style="display:block;">' + message + '</span>');
+                    } else {
+                        var text = '<div class="direct-chat-msg">';
+                        text += '<div class="direct-chat-info clearfix" >';
+                        text += '<span class="direct-chat-name pull-left">' + name + '</span>';
+                        text += '</div>';
+                        text += '<img class="direct-chat-img" src="/Images/img/5.png" alt="Message User Image">';
+                        text += '<div class="direct-chat-text"><span style="display:block;">' + message + '</span> </div>';
+                        text += ' </div>';
+                        chatroom.find('.direct-chat-messages').append(text);
+                    }
+                }
+
+                lastTextisLocal = false;
+            }
+            chatroom.find('input[name="lastTextisLocal"]').val(lastTextisLocal);
+            scrollToBottom(chatroom);
+        }
+
+    </script>
+}

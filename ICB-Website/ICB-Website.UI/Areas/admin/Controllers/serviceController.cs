@@ -94,6 +94,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             else
             {
                 ServiceProvider serviceProvider = new ServiceProvider(false);
+                data.Add(new SelectListItem { Value = "-1", Text = "Mặc định" });
                 foreach (var item in serviceProvider.GetRootList().ToList())
                 {
                     data.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Name });

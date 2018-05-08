@@ -1,0 +1,26 @@
+﻿@model List<ICB.Business.Models.Service>
+<aside class="sidebar widget-area-5">
+
+    <div class="widget clearfix" id="kopa-services">
+        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>@ICB_Website.UI.Resources.RHome.Services</h3>
+        <ul class="clearfix">
+            @foreach (var item in Model)
+            {
+                <li class="item item-other">
+                    <article class="entry-item clearfix">
+                        <a class="entry-item-img">
+                            <img src="@item.ThumbnailURL" />
+                        </a>
+                        <div class="entry-content">
+                            <header>
+                                <h4 class="entry-title" style="font-size:13px;"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a></h4>
+                            </header>
+                        </div>
+                    </article>
+                </li>
+            }
+
+        </ul>
+    </div>
+
+</aside>

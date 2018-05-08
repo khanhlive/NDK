@@ -126,13 +126,13 @@ namespace ICB.Business.Entities.Message
         {
             switch (messageType)
             {
-                case MessageType.Account_Existed:
+                case MessageType.Existed:
                     return this.AccountExisted;
-                case MessageType.Account_NotFound:
+                case MessageType.NotFound:
                     return this.AccountNotFound;
-                case MessageType.Register_Success:
+                case MessageType.Success:
                     return this.Success;
-                case MessageType.Register_Failed:
+                case MessageType.Failed:
                     return this.Failed;
                 case MessageType.Register_ModelFailed:
                     return this.ModelFailed;

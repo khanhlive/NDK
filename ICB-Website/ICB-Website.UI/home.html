@@ -2,996 +2,239 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/magnific-popup.css" rel="stylesheet" />
-    <link href="Content/megafish.css" rel="stylesheet" />
-    <link href="Content/mega-menu.css" rel="stylesheet" />
-    <link href="Content/flexslider.css" rel="stylesheet" />
-    <link href="Content/owl.carousel.css" rel="stylesheet" />
-    <link href="Content/owl.theme.css" rel="stylesheet" />
-    <link href="Plugins/fotorama-4.6.4/fotorama.css" rel="stylesheet" />
-    <link href="Content/jquery.mCustomScrollbar.css" rel="stylesheet" />
-    <link href="Content/xmax-theme.css" rel="stylesheet" />
-    <link href="Content/responsive.css" rel="stylesheet" />
-    <link href="Scripts/mediaelement/knd-mediaelement.css" rel="stylesheet" />
-    <link href="Content/icb-style.css" rel="stylesheet" />
-    <title>Xmax - Magazine WordPress Theme</title>
-    
+    <title></title>
+    <style>
+        body {
+            font-size: .85em;
+            font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+            color: #232323;
+            background-color: #fff;
+        }
+
+        header, footer, nav, section {
+            display: block;
+        }
+
+
+        /* Styles for basic forms
+-----------------------------------------------------------*/
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 0 1.4em 1.4em 1.4em;
+            margin: 0 0 1.5em 0;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        textarea {
+            min-height: 75px;
+        }
+
+        .editor-label {
+            margin: 1em 0 0 0;
+        }
+
+        .editor-field {
+            margin: 0.5em 0 0 0;
+        }
+
+
+        /* Styles for validation helpers
+-----------------------------------------------------------*/
+        .field-validation-error {
+            color: #f00;
+        }
+
+        .field-validation-valid {
+            display: none;
+        }
+
+        .input-validation-error {
+            border: 1px solid #f00;
+            background-color: #fee;
+        }
+
+        .validation-summary-errors {
+            font-weight: bold;
+            color: #f00;
+        }
+
+        .validation-summary-valid {
+            display: none;
+        }
+
+        #container {
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #chatlog {
+            width: 250px;
+            background-color: aliceblue;
+            float: left;
+        }
+
+        #onlineusers {
+            float: right;
+            width: 100px;
+            background-color: #D4D4D4;
+        }
+
+        #chatarea {
+            clear: both;
+            width: 200px;
+        }
+
+            #chatarea .messagelog {
+                float: left;
+                height: 90%;
+                top: 10%;
+                position: relative;
+            }
+
+                #chatarea .messagelog .messagebox {
+                    width: 400px;
+                    height: 80%;
+                }
+
+            #chatarea .actionpane {
+                position: relative;
+                float: left;
+            }
+
+        .smileys {
+            width: 14px;
+            height: 14px;
+        }
+
+    </style>
 </head>
 <body>
 
-
-    <!-- header -->
-    <header id="kopa-header">
-        <div class="header-top">
-            <div class="wrapper clearfix">
-                <nav id="top-nav" class="top-nav pull-left">
-                    <ul id="top-menu" class="top-menu clearfix">
-                        <li id="menu-item-1352" class="menu-item "><a href="indexedfb.html?page_id=58">Contact Us</a></li>
-                        <li id="menu-item-1322" class="menu-item "><a href="wp-admin/index.html">Sign in</a></li>
-                    </ul>
-                </nav><nav class="top-nav-mobile clearfix">
-                    <a class="pull" href="#">Menu<span class="fa fa-caret-down"></span></a><ul id="top-menu-mobile" class="top-menu-mobile">
-                        <li class="menu-item"><a href="indexedfb.html?page_id=58">Contact Us</a></li>
-                        <li class="menu-item"><a href="wp-admin/index.html">Sign in</a></li>
-                    </ul>
-                </nav>
-
-                <div class="search-box pull-right">
-                    <form method="get" class="search-form" action="http://upsidethemes.net/demo/xmax/">
-                        <input type="text" name="s" placeholder="Search..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search...'">
-                        <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-
-            </div><!--/end .search-box-->
-        </div><!--/end .header-top-->
-
-        <div class="header-middle" style="padding-top:0px;padding-bottom:3px;">
-            <div class="wrapper clearfix" style="position:relative;">
-                <div class="kopa-logo pull-left" style="position:absolute;top:26px;left:20px;">
-                    <a href="#"><img src="/Images/icblogo.png" alt="Xmax" /></a>
-                </div>
-
-                <div class="kopa-logo-small pull-left">
-                    <a href="#"><img src="/Images/icblogo.png" alt="Xmax" /></a>
-                </div>
-
-                <div class="kopa-top-banner">
-
-                    
-                    <div id="slider1_container" style=" height: 200px;">
-                        <!-- Slides Container -->
-                        <div u="slides" style="cursor: move; width:1166px; height: 200px;">
-                            <div><img u="image" src="/Images//banner-1.jpg" /></div>
-                            <div><img u="image" src="/Images//banner-2.jpg" /></div>
-                            <div><img u="image" src="/Images//banner-3.jpg" /></div>
-                            
-                        </div>
-                        <!-- Trigger -->
-                        
-                    </div>
-
-                </div>
-                <div class="">
-                    <span class="name-company"> CÔNG TY CỔ PHẦN CHỨNG NHẬN QUỐC TẾ </span>
-                </div>
-                <nav class="main-nav-mobile clearfix">
-                    <a class="pull"><span class="fa fa-bars"></span></a><ul id="main-menu-mobile" class="main-menu-mobile">
-                        <li class="menu-item"><a href="indexedfb.html?page_id=58">Contact Us</a></li>
-                        <li class="menu-item"><a href="wp-admin/index.html">Sign in</a></li>
-                    </ul>
-                </nav>
+    <div id="container">
+        <input type="hidden" id="nickname" />
+        <div id="chatlog"></div>
+        <div id="onlineusers">
+            <b>Online Users</b>
+        </div>
+        <div id="chatarea">
+            <div class="messagelog">
+                <textarea spellcheck="true" id="message" class="messagebox"></textarea>
             </div>
-        </div><!--/end .header-middle-->
-
-        <div class="header-bottom">
-            <div class="wrapper clearfix">
-                <nav id='cssmenu' class="kopa-main-nav">
-                    <div style="display:none;" class="logo-mobile"><a href="index.html">Responsive </a></div>
-                    <div id="head-mobile"></div>
-                    <div class="button"></div>
-
-                    <ul style="margin-bottom:0px;" class="main-menu sf-menu">
-                        <li class='active'><a href='#'>HOME</a></li>
-                        <li class="menu-item"><a href='#'>ABOUT</a></li>
-                        <li class="menu-item">
-                            <a href='#'>PRODUCTS</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item">
-                                    <a href='#'>Product 1</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                        <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item">
-                                    <a href='#'>Product 2</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                        <li class="menu-item"><a href='#'>Sub Product</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href='#'>BIO</a></li>
-                        <li><a href='#'>VIDEO</a></li>
-                        <li><a href='#'>GALLERY</a></li>
-                        <li><a href='#'>CONTACT</a></li>
-                    </ul>
-
-                </nav>
+            <div class="actionpane">
+                <input type="button" id="btnsend" value="Send" />
             </div>
-        </div><!--/end .header-bottom-->
-    </header>
-
-    <!-- end header-->
-    <!--begin body-->
-
-    <div class="wrapper clearfix">
-        <div style="border:1px solid #dadada;">
-            <section class="widget-area-1 clearfix">
-                <div class="widget kopa-list-post-no-thumb clearfix">
-                    <span></span>
-
-                    <h3 class="widget-title">New<span>Stories</span></h3>
-
-                    <div class="list-post-main">
-                        <div class="owl-carousel owl-carousel1">
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="index9e97.html?p=1486">Driving in Leather Driving Gloves</a></h4>
-                                    <span class="entry-date">June 19, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="index3f68.html?p=1681">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-                                    <span class="entry-date">June 19, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="indexd5ec.html?p=1189">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-                                    <span class="entry-date">June 10, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="index62bc.html?p=754">The Gallery Library of Sammy</a></h4>
-                                    <span class="entry-date">May 15, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="indexd13e.html?p=719">Paul si Cristina Rad Wedding Day</a></h4>
-                                    <span class="entry-date">April 13, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="indexdc32.html?p=1309">Life Round Here (Feat. Angel Haze)</a></h4>
-                                    <span class="entry-date">March 11, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="index5628.html?p=1305">Fashion Glasses Symmetrical</a></h4>
-                                    <span class="entry-date">February 11, 2014</span>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <h4 class="entry-title"><a href="index4ac2.html?p=1331">Five Of London’s Best</a></h4>
-                                    <span class="entry-date">January 3, 2014</span>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/end widget.kopa-list-post-no-thumb-->
-            </section>
-
-            <div class="main-wrapper clearfix">
-               
-                <aside class="sidebar widget-area-5" style="margin-right:35px;">
-                    
-                    <div id="kopa-ads-widget-3" class="widget kopa-ads-widget clearfix"><a href="#" target="">
-                        <img class="kopa-adv-000x000 kopa-adv-block img-responsive" src="Uploads/Images/2014/06/2.jpg"></a>
-                    </div>
-                    <div class="widget clearfix" id="kopa-services">
-                        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>Services</h3>
-                        <ul class="clearfix">
-                            <li class="item item-other">
-                                <article class="entry-item clearfix">
-                                    <a class="entry-item-img" >
-                                        <img src="Images/ne.jpg" />
-                                    </a>
-                                    <div class="entry-content" >
-                                        <header>
-                                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="item item-other">
-                                <article class="entry-item clearfix">
-                                    <a class="entry-item-img">
-                                        <img src="Images/ne.jpg" />
-                                    </a>
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="item item-other">
-                                <article class="entry-item clearfix">
-                                    <a class="entry-item-img">
-                                        <img src="Images/ne.jpg" />
-                                    </a>
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="item item-other">
-                                <article class="entry-item clearfix">
-                                    <a class="entry-item-img">
-                                        <img src="Images/ne.jpg" />
-                                    </a>
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="item item-other">
-                                <article class="entry-item clearfix">
-                                    <a class="entry-item-img">
-                                        <img src="Images/ne.jpg" />
-                                    </a>
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="item item-other">
-                                <article class="entry-item clearfix">
-                                    <a class="entry-item-img">
-                                        <img src="Images/ne.jpg" />
-                                    </a>
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title" style="font-size:13px;"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="categories-2" class="widget widget_categories clearfix">
-                        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>Categories List</h3>		<ul>
-                            <li class="cat-item cat-item-48">
-                                <a href="indexb0b4.html?cat=48">Fashion</a> (4)
-                            </li>
-                            <li class="cat-item cat-item-46">
-                                <a href="index38d0.html?cat=46">Food</a> (1)
-                            </li>
-                            <li class="cat-item cat-item-45">
-                                <a href="index363a.html?cat=45">People</a> (7)
-                            </li>
-                            <li class="cat-item cat-item-47">
-                                <a href="indexf528.html?cat=47">Sunlights</a> (4)
-                            </li>
-                            <li class="cat-item cat-item-49">
-                                <a href="index3cd0.html?cat=49">Technology</a> (2)
-                            </li>
-                            <li class="cat-item cat-item-50">
-                                <a href="index8dbd.html?cat=50">Wedding</a> (3)
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="kopa-article-list-widget-5" class="widget kopa-article-list-widget clearfix">
-                        <h3 class="widget-title"><span class="icon-title fa fa-arrows"></span>Wedding<a href="index363a.html?cat=45">All Articles</a></h3>     
-                    <ul class="clearfix">
-
-                            <li class="item last-item ">
-                                <article class="entry-item clearfix">
-
-
-                                    <div class="entry-thumb">
-                                        <a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z"><img src="Uploads/Images/bfi_thumb/Girl-on-Rialto-Bridge-Venice-Italy-2xau0ht7c03xx8pz4bxngq.jpg" alt="Drunk In Love &#8211; Beyonce ft. Jay Z" class="img-responsive" /></a>
-                                    </div>
-
-
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>June 10, 2014</span>
-
-                                            </p>
-
-
-                                        </header>
-
-                                        <p>Phasellus feugiat venenatis volutpat. Sed posuere convallis eleifend. Nulla id ante quis neque</p>
-
-                                    </div>
-                                </article>
-                            </li>
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title"><a href="index8bfb.html?p=721" title="Wedding Photographer">Wedding Photographer</a></h4>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>June 23, 2013</span>
-
-                                            </p>
-
-
-                                        </header>
-
-
-
-                                    </div>
-                                </article>
-                            </li>
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-
-                                    <div class="entry-content">
-                                        <header>
-                                            <h4 class="entry-title"><a href="indexfa8d.html?p=570" title="Lifeline">Lifeline</a></h4>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>December 14, 2012</span>
-
-                                            </p>
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="kopa-article-list-widget-12" class="widget kopa-article-list-widget article-icon clearfix">
-                        <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>Recent Post</h3>            
-                        <ul class="clearfix">
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-                                    <span class="entry-icon">
-                                        <img src="Images/ne.jpg" />
-                                    </span>
-
-                                    <div class="entry-content">
-                                        <header>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>June 19, 2014</span>
-
-                                            </p>
-
-                                            <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                        </header>
-                                    </div>
-                                </article>
-                            </li>
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-                                    <span class="entry-icon fa fa-link"></span>
-
-                                    <div class="entry-content">
-                                        <header>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>June 19, 2014</span>
-
-                                            </p>
-
-                                            <h4 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-
-                                        </header>
-
-
-
-                                    </div>
-                                </article>
-                            </li>
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-                                    <span class="entry-icon fa fa-music"></span>
-
-                                    <div class="entry-content">
-                                        <header>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>June 10, 2014</span>
-
-                                            </p>
-
-                                            <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                                        </header>
-
-
-
-                                    </div>
-                                </article>
-                            </li>
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-                                    <span class="entry-icon fa fa-picture-o"></span>
-
-                                    <div class="entry-content">
-                                        <header>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>May 15, 2014</span>
-
-                                            </p>
-
-                                            <h4 class="entry-title"><a href="index62bc.html?p=754" title="The Gallery Library of Sammy">The Gallery Library of Sammy</a></h4>
-
-                                        </header>
-
-
-
-                                    </div>
-                                </article>
-                            </li>
-
-                            <li class="item other-item">
-                                <article class="entry-item clearfix">
-
-                                    <span class="entry-icon fa fa-film"></span>
-
-                                    <div class="entry-content">
-                                        <header>
-
-                                            <p class="entry-date">
-                                                Posted:&nbsp;                                                <span>April 13, 2014</span>
-
-                                            </p>
-
-                                            <h4 class="entry-title"><a href="indexd13e.html?p=719" title="Paul si Cristina Rad Wedding Day">Paul si Cristina Rad Wedding Day</a></h4>
-
-                                        </header>
-
-
-
-                                    </div>
-                                </article>
-                            </li>
-
-                        </ul>
-                    </div>
-                </aside>
-                <div class="kopa-main-col" style="margin-right:0px;">
-                    <section class="widget-area-1 clearfix">
-                        <div class="widget kopa-list-post-no-thumb slide-tintuc clearfix">
-                            <div class="list-post-main-2" style="">
-                                <div class="owl-carousel owl-carousel5" style="display:block;" id="pnl-demo">
-                                    <div class="item">
-                                        <article class="entry-item clearfix ">
-                                            <div class="entry-thumb">
-                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                                                <div class="thumb-hover">
-                                                    <div class="thumb-icon">
-                                                        <span class="icon-top"></span>
-                                                        <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <header>
-                                                    <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                                    <p class="entry-date">
-                                                        Posted:&nbsp;                                            <span>June 19, 2014</span>
-
-                                                    </p>
-                                                </header>
-
-                                                <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                                                <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="item">
-                                        <article class="entry-item clearfix ">
-                                            <div class="entry-thumb">
-                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                                                <div class="thumb-hover">
-                                                    <div class="thumb-icon">
-                                                        <span class="icon-top"></span>
-                                                        <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <header>
-                                                    <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                                    <p class="entry-date">
-                                                        Posted:&nbsp;                                            <span>June 19, 2014</span>
-
-                                                    </p>
-                                                </header>
-
-                                                <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                                                <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="item">
-                                        <article class="entry-item clearfix ">
-                                            <div class="entry-thumb">
-                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                                                <div class="thumb-hover">
-                                                    <div class="thumb-icon">
-                                                        <span class="icon-top"></span>
-                                                        <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <header>
-                                                    <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                                    <p class="entry-date">
-                                                        Posted:&nbsp;                                            <span>June 19, 2014</span>
-
-                                                    </p>
-                                                </header>
-
-                                                <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                                                <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="item">
-                                        <article class="entry-item clearfix ">
-                                            <div class="entry-thumb">
-                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                                                <div class="thumb-hover">
-                                                    <div class="thumb-icon">
-                                                        <span class="icon-top"></span>
-                                                        <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <header>
-                                                    <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                                    <p class="entry-date">
-                                                        Posted:&nbsp;<span>June 19, 2014</span>
-                                                    </p>
-                                                </header>
-                                                <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-                                                <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--/end widget.kopa-list-post-no-thumb-->
-                    </section>
-                    <div id="kopa-posts-list-two-parts-5" class="widget kopa-article-list-widget-1 clearfix">
-                        <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>News<a href="index3cd0.html?cat=49">All Articles</a></h3>
-                        <article class="entry-item clearfix ">
-                            <div class="entry-thumb">
-                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5nf1kd588clkc96.jpg" alt="Driving in Leather Driving Gloves" /></a>
-                                <div class="thumb-hover">
-                                    <div class="thumb-icon">
-                                        <span class="icon-top"></span>
-                                        <a class="fa fa-link" href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="entry-content">
-                                <header>
-                                    <h4 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h4>
-
-                                    <p class="entry-date">
-                                        Posted:&nbsp; <span>June 19, 2014</span>
-                                    </p>
-                                </header>
-                                <p>Aenean dui lectus, accumsan nec nulla sit amet, consectetur iaculis neque. Ut nec odio sem. Donec aliquam posuere imperdiet. Morbi luctus dolor id fringilla sagittis. Nulla fermentum risus nec accumsan mollis. Integer sit amet dui non tellus</p>
-
-                                <a href="index9e97.html?p=1486" class="more-link" title="Driving in Leather Driving Gloves">Read more<span class="fa fa-angle-double-right "></span></a>
-                            </div>
-                        </article>
-                        <div class="kopa-other-post">
-                            <h4 class="list-post-title">
-                                <span>Other post</span>
-                            </h4>
-                            <ul class="clearfix">
-                                <li>
-                                    <article class="entry-item clearfix ">
-
-                                        <div class="entry-thumb">
-                                            <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28piaw9cbwa4tfka.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia" /></a>
-                                        </div>
-
-                                        <div class="entry-content">
-                                            <header>
-                                                <h4 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h4>
-
-                                                <p class="entry-date">
-                                                    Posted:&nbsp;<span>June 19, 2014</span>
-                                                </p>
-                                            </header>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article class="entry-item clearfix ">
-
-                                        <div class="entry-thumb">
-                                            <a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z"><img src="Uploads/Images/bfi_thumb/Girl-on-Rialto-Bridge-Venice-Italy-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Drunk In Love &#8211; Beyonce ft. Jay Z" /></a>
-                                        </div>
-
-                                        <div class="entry-content">
-                                            <header>
-                                                <h4 class="entry-title"><a href="indexd5ec.html?p=1189" title="Drunk In Love &#8211; Beyonce ft. Jay Z">Drunk In Love &#8211; Beyonce ft. Jay Z</a></h4>
-
-                                                <p class="entry-date">
-                                                    Posted:&nbsp;<span>June 10, 2014</span>
-                                                </p>
-                                            </header>
-                                        </div>
-                                    </article>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div id="kopa-posts-list-two-parts-6" class="widget kopa-article-list-widget-2 clearfix">
-                        <h3 class="widget-title">Technology<a href="indexfa15.html?cat=51">All Articles</a></h3>
-                        <article class="entry-item clearfix last-item post-754 ">
-                            <div class="entry-thumb">
-                                <a href="index62bc.html?p=754" title="The Gallery Library of Sammy"><img src="Uploads/Images/bfi_thumb/Cafe-Workspace-with-Diary-2xau0ibap68p1fpgnso9vu.jpg" alt="The Gallery Library of Sammy" /></a>
-                                <div class="thumb-hover">
-                                    <div class="thumb-icon">
-                                        <span class="icon-top"></span>
-                                        <a class="fa fa-picture-o" href="index62bc.html?p=754" title="The Gallery Library of Sammy"></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="entry-content">
-                                <header>
-                                    <h4 class="entry-title"><a href="index62bc.html?p=754" title="The Gallery Library of Sammy">The Gallery Library of Sammy</a></h4>
-                                    <p class="entry-date">
-                                        Posted:&nbsp;<span>May 15, 2014</span>
-                                    </p>
-                                </header>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                            </div>
-                        </article>
-                        <div class="kopa-other-post">
-                            <h4 class="list-post-title">
-                                <span>Other post</span>
-                            </h4>
-                            <ul class="clearfix">
-                                <li>
-                                    <article class="entry-item clearfix item-other ">
-
-                                        <div class="entry-thumb">
-                                            <a href="indexdc32.html?p=1309" title="Life Round Here (Feat. Angel Haze)"><img src="Uploads/Images/bfi_thumb/Speed-Run-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Life Round Here (Feat. Angel Haze)" /></a>
-                                        </div>
-
-                                        <div class="entry-content">
-                                            <header>
-                                                <h4 class="entry-title"><a href="indexdc32.html?p=1309" title="Life Round Here (Feat. Angel Haze)">Life Round Here (Feat. Angel Haze)</a></h4>
-
-                                                <p class="entry-date">
-                                                    Posted:&nbsp;<span>March 11, 2014</span>
-                                                </p>
-                                            </header>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article class="entry-item clearfix item-other">
-
-                                        <div class="entry-thumb">
-                                            <a href="index5628.html?p=1305" title="Fashion Glasses Symmetrical"><img src="Uploads/Images/bfi_thumb/Fashion-Glasses-Symmetrical-2xau0hk5cc6555ceqo2t56.jpg" alt="Fashion Glasses Symmetrical" /></a>
-                                        </div>
-
-                                        <div class="entry-content">
-                                            <header>
-                                                <h4 class="entry-title"><a href="index5628.html?p=1305" title="Fashion Glasses Symmetrical">Fashion Glasses Symmetrical</a></h4>
-
-                                                <p class="entry-date">
-                                                    Posted:&nbsp;<span>February 11, 2014</span>
-                                                </p>
-                                            </header>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article class="entry-item clearfix item-other">
-
-                                        <div class="entry-thumb">
-                                            <a href="index4ac2.html?p=1331" title="Five Of London’s Best"><img src="Uploads/Images/bfi_thumb/Another-Edit-of-Steel-Bridge-2xau0ht70x8ip8u5ieg4cq.jpg" alt="Five Of London’s Best" /></a>
-                                        </div>
-                                        <div class="entry-content">
-                                            <header>
-                                                <h4 class="entry-title"><a href="index4ac2.html?p=1331" title="Five Of London’s Best">Five Of London’s Best</a></h4>
-                                                <p class="entry-date">
-                                                    Posted:&nbsp;<span>January 3, 2014</span>
-                                                </p>
-                                            </header>
-                                        </div>
-                                    </article>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="actionpane">
+                <select id="users">
+                    <option value="All">All</option>
+                </select>
             </div>
-
-            <section class="widget-area-1 clearfix">
-                <div class="widget kopa-list-post-no-thumb clearfix">
-                    
-                    <div class="list-post-main" style="width:100%;">
-                        <div class="owl-carousel owl-carousel7" style="display:block;opacity:1;">
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                            <div class="item">
-                                <article class="entry-item clearfix">
-                                    <a href="#"><img src="Images/ne2.jpg"  /></a>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/end widget.kopa-list-post-no-thumb-->
-            </section>
-
-
-            <div class="bottom-sidebar clearfix">
-                <div class="main-wrapper clearfix">
-                    <div class="bottom-sidebar-wrapper clearfix">
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-7">
-                            <div id="tag_cloud-2" class="widget widget_tag_cloud clearfix">
-                                <h3 class="widget-title">Tags</h3><div class="tagcloud">
-                                    <a href='indexe939.html?tag=audio' class='tag-link-54 tag-link-position-1' title='5 topics' style='font-size: 8pt;'>audio</a>
-                                    <a href='indexa5c4.html?tag=gallery' class='tag-link-56 tag-link-position-2' title='5 topics' style='font-size: 8pt;'>gallery</a>
-                                    <a href='indexc7e9.html?tag=post' class='tag-link-57 tag-link-position-3' title='21 topics' style='font-size: 22pt;'>post</a>
-                                    <a href='indexa491.html?tag=soundcloud' class='tag-link-55 tag-link-position-4' title='5 topics' style='font-size: 8pt;'>soundcloud</a>
-                                    <a href='indexecab.html?tag=standard' class='tag-link-51 tag-link-position-5' title='6 topics' style='font-size: 9.75pt;'>standard</a>
-                                    <a href='index62ae.html?tag=video' class='tag-link-52 tag-link-position-6' title='5 topics' style='font-size: 8pt;'>video</a>
-                                    <a href='index3562.html?tag=vimeo' class='tag-link-53 tag-link-position-7' title='5 topics' style='font-size: 8pt;'>vimeo</a>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-8">
-                            <div id="kopa_twitter-2" class="widget widget-twitters clearfix">
-                                <h3 class="widget-title">Recent Twitter</h3>            <div class="widget-content">
-                                    <div id="tweets" class="tweets" data-username="wordPress" data-limit="2">
-                                        Sorry, there was a problem when load
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-9">
-                            <div id="kopa-posts-list-square-thumbnail-4" class="widget kopa-posts-list-square-thumbnail clearfix">
-                                <h3 class="widget-title">Recent Articles</h3>            <ul class="sub-menu-list-article">
-                                    <li class="clearfix">
-                                        <article class="entry-item clearfix">
-                                            <div class="entry-thumb">
-                                                <a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves"><img src="Uploads/Images/bfi_thumb/Driving-in-Leather-Driving-Gloves-2xau0hk5728c0eemqkef4a.jpg" alt="Driving in Leather Driving Gloves"></a>
-                                            
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <h2 class="entry-title"><a href="index9e97.html?p=1486" title="Driving in Leather Driving Gloves">Driving in Leather Driving Gloves</a></h2>
-                                                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
-                                            </div>
-                                        </article>
-                                    </li>
-                                    <li class="clearfix ">
-                                        <article class="entry-item clearfix">
-                                            <div class="entry-thumb">
-                                                <a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia"><img src="Uploads/Images/bfi_thumb/2816239243_c185caa78a_b-2xau0i28k8d34le4a151je.jpg" alt="5 Maneras de Ahorrar en Los Viajes en Familia"></a>
-                                            </div>
-
-                                            <div class="entry-content">
-                                                <h2 class="entry-title"><a href="index3f68.html?p=1681" title="5 Maneras de Ahorrar en Los Viajes en Familia">5 Maneras de Ahorrar en Los Viajes en Familia</a></h2>
-                                                <p class="entry-date">Posted:<span>June 19, 2014</span></p>
-                                            </div>
-                                        </article>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section class="col-md-3 col-sm-3 col-xs-12 widget-area-10"><div id="kopa-flickr-widget-2" class="widget kopa-flickr-widget clearfix"><h3 class="widget-title">Photo Flickr</h3><div class="widget-content"><div class="flickr-wrap clearfix" data-id="71865026@N00" data-limit="6" data-tag=""><ul class="clearfix list-unstyled"></ul></div></div></div></section>
-                    </div>
-                </div>
-            </div>
-            <!--/end BOTTOM-SIDERBAR-->
-
-            <footer id="kopa-footer">
-                <nav class="footer-nav">
-                    <ul id="footer-menu" class="footer-menu clearfix">
-                        <li id="menu-item-1652" class="menu-item "><a href="index9bef.html?page_id=54">Blogpost</a></li>
-                        <li id="menu-item-1653" class="menu-item "><a href="indexf536.html?page_id=50">Video</a></li>
-                        <li id="menu-item-1654" class="menu-item "><a href="index028b.html?page_id=52">Gallery</a></li>
-                        <li id="menu-item-1651" class="menu-item "><a href="indexedfb.html?page_id=58">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="copyright">
-                    <p>© COPYRIGHT 2014. XMAX THEME BY KOPASOFT</p>
-                </div>
-            </footer>
+        </div>
+        <div id="dialog" title="Enter your name to start a chat.">
+            <input type="text" id="nick" />
         </div>
     </div>
 
-    <!--end body-->
-    
-    
-    <script type='text/javascript'>
-        /* <![CDATA[ */
-        var kopa_variable = {
-            "url": {
-                "template_directory_uri": "./Plugins/themes",
-                "ajax": "http:\/\/upsidethemes.net\/demo\/xmax\/wp-admin\/admin-ajax.php"
-            }, "template": { "post_id": 1696 },
-            "contact": {
-                "address": " B7+B9 Building - Tran Thai Tong Street",
-                "marker": "http:\/\/upsidethemes.net\/demo\/xmax\/wp-content\/themes\/xmax-1.0.0\/images\/marker.png"
-            }, "recaptcha": { "status": true },
-            "i18n": {
-                "SEARCH": "Search...",
-                "LOADING": "Loading...",
-                "LOAD_MORE": "Load more",
-                "VIEW": "View",
-                "VIEWS": "Views",
-                "validate": {
-                    "form": { "CHECKING": "Checking", "SUBMIT": "Submit", "SENDING": "Sending..." },
-                    "recaptcha": { "INVALID": "Your captcha is incorrect. Please try again", "REQUIRED": "Captcha is required" },
-                    "name": { "REQUIRED": "Please enter your name", "MINLENGTH": "At least {0} characters required" },
-                    "email": { "REQUIRED": "Please enter your email", "EMAIL": "Please enter a valid email" },
-                    "url": { "REQUIRED": "Please enter your url", "URL": "Please enter a valid url" },
-                    "message": {
-                        "REQUIRED": "Please enter a message",
-                        "MINLENGTH": "At least {0} characters required"
+    <script src="Scripts/modernizr-2.7.1.js"></script>
+
+
+    <script src="Plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="Plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="Scripts/jquery.signalR-1.0.1.min.js"></script>
+    <script src="signalr/hubs"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            showModalUserNickName();
+        });
+
+        function showModalUserNickName() {
+
+
+
+
+            $("#dialog").dialog({
+                modal: true,
+                buttons: {
+                    Ok: function () {
+                        $(this).dialog("close");
+                        startChartHub();
                     }
                 }
+            });
+        }
+
+        function startChartHub() {
+            var chat = $.connection.chatHub;
+
+            // Get the user name.
+            $('#nickname').val($('#nick').val());
+            chat.client.differentName = function (name) {
+                showModalUserNickName();
+                return false;
+                // Prompts for different user name
+                $('#nickname').val($('#nick').val());
+                chat.server.notify($('#nickname').val(), $.connection.hub.id);
+                console.log('diff');
+            };
+
+            chat.client.online = function (name) {
+                // Update list of users
+                if (name == $('#nickname').val())
+                    $('#onlineusers').append('<div class="border" style="color:green">You: ' + name + '</div>');
+                else {
+                    $('#onlineusers').append('<div class="border">' + name + '</div>');
+                    $("#users").append('<option value="' + name + '">' + name + '</option>');
+                }
+            };
+
+            chat.client.enters = function (name) {
+                $('#chatlog').append('<div style="font-style:italic;"><i>' + name + ' joins the conversation</i></div>');
+                $("#users").append('<option value="' + name + '">' + name + '</option>');
+                $('#onlineusers').append('<div class="border">' + name + '</div>');
+            };
+            // Create a function that the hub can call to broadcast chat messages.
+            chat.client.broadcastMessage = function (name, message) {
+                //Interpret smileys
+                message = message.replace(":)", "<img src=\"/images/smile.gif\" class=\"smileys\" />");
+                message = message.replace("lol", "<img src=\"/images/laugh.gif\" class=\"smileys\" />");
+                message = message.replace(":o", "<img src=\"/images/cool.gif\" class=\"smileys\" />");
+
+                //display the message
+                $('#chatlog').append('<div class="border"><span style="color:red">' + name + '</span>: ' + message + '</div>');
+            };
+
+            chat.client.disconnected = function (name) {
+                //Calls when someone leaves the page
+                $('#chatlog').append('<div style="font-style:italic;"><i>' + name + ' leaves the conversation</i></div>');
+                $('#onlineusers div').remove(":contains('" + name + "')");
+                $("#users option").remove(":contains('" + name + "')");
             }
-        };
-        var kopa_variable_fonts = ["Roboto:400,500,700", "Open+Sans:300,400,600,700,800"];
-/* ]]> */
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                //Calls the notify method of the server
+                chat.server.notify($('#nickname').val(), $.connection.hub.id);
+                console.log($.connection.hub.id);
+                $('#btnsend').click(function () {
+                    if ($("#users").val() == "All") {
+                        // Call the Send method on the hub.
+                        chat.server.send($('#nickname').val(), $('#message').val());
+                    }
+                    else {
+                        chat.server.sendToSpecific($('#nickname').val(), $('#message').val(), $("#users").val());
+                    }
+                    // Clear text box and reset focus for next comment.
+                    $('#message').val('').focus();
+                });
+
+            });
+        }
+
     </script>
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <script src="Plugins/jssor.slider.min.js"></script>
-    <script type='text/javascript' src="Plugins/themes/comment-reply.js"></script>
-    <script type='text/javascript' src="Scripts/bootstrap.min.js"></script>
-    <script src="Plugins/themes/modernizr.js"></script>
-    <script type='text/javascript' src="Plugins/fotorama-4.6.4/fotorama.js"></script>
-    <!--<script type='text/javascript' src="Plugins/OwlCarousel2/owl.carousel.min.js"></script>-->
-    <script src="Plugins/themes/owl.carousel.js"></script>
-    <script type='text/javascript' src='Scripts/custom/custom.js'></script>
-    <script type='text/javascript' src='Plugins/themes/knd-embed.js'></script>
-    <script type='text/javascript' src='Scripts/underscore.min.js'></script>
-    <script type='text/javascript' src='Plugins/themes/knd-util.js'></script>
-    <script type='text/javascript' src='Scripts/backbone.min.js'></script>
-    <script type='text/javascript' src='Scripts/mediaelement/mediaelement-and-player.min.js'></script>
-    <script type='text/javascript' src='Plugins/themes/knd-playlist.js'></script>
-    <script src="Plugins/jssor.slider.min.js"></script>
-    <script src="Scripts/apps/app.js"></script>
 </body>
 </html>

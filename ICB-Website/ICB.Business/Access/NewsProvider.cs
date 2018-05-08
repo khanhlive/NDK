@@ -112,7 +112,7 @@ namespace ICB.Business.Access
         public List<News> GetRelatedPost(int id)
         {
             var news = this.GetByID(id);
-            return (this.GetAll()).Where(p => p.Status == (int)ModelStatus.Active && p.Category==news.Category && p.ID!=id).OrderByDescending(p => p.PostedDate).Take(4).ToList();
+            return (this.GetAll()).Where(p => p.Status == (int)ModelStatus.Active && p.Category == news.Category && p.ID != id).OrderByDescending(p => p.PostedDate).Take(4).ToList();
         }
         public async Task<List<News>> GetRelatedPostAsync(int id)
         {

@@ -24,7 +24,7 @@ namespace ICB.Business.Access
             Tuple<AccessEntityStatusCode, Document> result = await this.InsertAsync(document);
             if (result.Item1 == AccessEntityStatusCode.OK)
             {
-                return new AccessEntityResult { Status = AccessEntityStatusCode.OK,Data=result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, MessageType.Success) };
+                return new AccessEntityResult { Status = AccessEntityStatusCode.OK, Data = result.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, MessageType.Success) };
             }
             else
             {
@@ -50,7 +50,7 @@ namespace ICB.Business.Access
 
         public async Task<AccessEntityResult> EditAsync(int id, Document document)
         {
-            
+
             Document edit = this.GetByID(id);
             if (edit == null)
             {
@@ -61,10 +61,10 @@ namespace ICB.Business.Access
                 edit.Caption = document.Caption;
                 edit.CategoryID = document.CategoryID;
                 edit.Content = document.Content;
-                edit.UpdateTime= DateTime.Now;
+                edit.UpdateTime = DateTime.Now;
                 edit.Description = document.Description;
                 edit.Path = document.Path;
-                edit.Status= document.Status;
+                edit.Status = document.Status;
                 edit.UserUpdate = document.UserUpdate;
                 var ressult = await this.UpdateAsync(edit, id);
                 return new AccessEntityResult { Status = ressult.Item1, Data = ressult.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, ressult.Item1) };
