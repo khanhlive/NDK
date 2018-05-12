@@ -1768,9 +1768,15 @@ function TINTUC_DELETE_ACTION(element) {
 function SERVICE_LOADGroup(type) {
     APPLICATION.Ajax('/admin/service/getcategory?type=' + type, 'application/json', 'GET', null, function (d) {
         var ddl = $("#frm-service-create #CategoryID");
+        var ddl2 = $("#frm-service-edit #CategoryID");
         ddl.empty();
+        ddl2.empty();
         $.each(d, function (a, b) {
-            ddl.append('<option value="' + b.Value + '">' + b.Text + '</option>');
+            if (ddl.length>0) {
+                ddl.append('<option value="' + b.Value + '">' + b.Text + '</option>');
+            } else
+
+            ddl2.append('<option value="' + b.Value + '">' + b.Text + '</option>');
         });
     })
 }

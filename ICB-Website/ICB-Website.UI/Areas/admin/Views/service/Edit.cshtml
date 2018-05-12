@@ -49,16 +49,23 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Nhóm: <span class="text-required">(*)</span></label>
-                                    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.Category, new { @class = "form-control" })
+
+                                    <select class="form-control valid" data-val="true" data-val-number="The field CategoryID must be a number." data-val-required="Bạn chưa chọn nhóm" id="CategoryID" name="CategoryID" aria-required="true" aria-describedby="CategoryID-error" aria-invalid="false">
+                                        @foreach (var item in (List<SelectListItem>)ViewBag.Category)
+    {
+                                    <option value="@item.Value" @if (item.Selected) { <text> selected="selected"</text> }>@item.Text</option>
+}
+                                        
+                                    </select>
                                     @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group control-hide">
+                                <div class="form-group control-hide" @if (Model.HasChild) { <text> style="display:none;"</text> }>
                                     <label class="control-label">Mô tả ngắn: </label>
-                                    @Html.TextAreaFor(x => x.Introduction, new { @class = "form-control", @rows = "5", @id = "txtIntroduction" })
+                                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "5", @id = "txtDescription" })
                                     
                                 </div>
                             </div>
@@ -93,14 +100,33 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group control-hide">
-                            <label class="control-label">Nội dung:</label>
-                            
-                            @Html.TextAreaFor(x=>x.Procedure, new { @id = "txtContent" })
-                            
+                        <div class="form-group control-hide" @if (Model.HasChild) { <text> style="display:none;" </text> }>
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tabnoidung_1" data-toggle="tab" aria-expanded="true">Giới thiệu</a></li>
+                                    <li class=""><a href="#tabnoidung_2" data-toggle="tab" aria-expanded="false">Quy trình thực hiện</a></li>
+                                    <li class=""><a href="#tabnoidung_3" data-toggle="tab" aria-expanded="false">Tài liệu liên quan</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tabnoidung_1">
+                                        @Html.TextAreaFor(x => x.Introduction, new { @id = "txtIntroduction" })
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="tabnoidung_2">
+                                        @Html.TextAreaFor(x => x.Procedure, new { @id = "txtContent" })
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="tabnoidung_3">
+                                        @Html.TextAreaFor(x => x.DocumentView, new { @id = "txtDocumentView" })
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div>
                         </div>
                     </div>
-                </div>
+                    </div>
+                
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button type="submit" id="btn-tintuc-save" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Lưu</button>
@@ -119,8 +145,18 @@
         
         CKEDITOR.replace('txtContent', {
             customConfig: '/Plugins/ckeditor/config.js',
-            height: 600
+            height: 300
         });
+
+        CKEDITOR.replace('txtIntroduction', {
+            customConfig: '/Plugins/ckeditor/config.js',
+            height: 300
+        });
+        CKEDITOR.replace('txtDocumentView', {
+            customConfig: '/Plugins/ckeditor/config.js',
+            height: 300
+        });
+        CKFinder.setupCKEditor(null, '/ckfinder')
         $('#ckbHasChild').on('ifChanged', function (e) {
             if ($(this).is(':checked')) {
                 $('#frm-service-edit .control-hide').hide();
@@ -131,6 +167,7 @@
             }
 
         });
+        
         $('#browser').click(function () {
             var ckfinder = new CKFinder();
 

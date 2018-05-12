@@ -31,6 +31,7 @@ namespace ICB.Business.Models
         public string Content { get; set; }
         public int UserUpdate { get; set; }
         public DateTime? UpdateTime { get; set; }
+        public string Filename { get; set; }
 
         public virtual Account Account { get; set; }
     }

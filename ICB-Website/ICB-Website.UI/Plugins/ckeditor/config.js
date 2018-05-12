@@ -14,12 +14,12 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserBrowseUrl = '/Plugins/ckfinder/ckfinder.html';
     config.filebrowserImageBrowseUrl = '/Plugins/ckfinder/ckfinder.html?type=Images';
     config.filebrowserFlashBrowseUrl = '/Plugins/ckfinder/ckfinder.html?type=Flash';
-    config.filebrowserUploadUrl = '/Plugins/ckfinder/connector.aspx?command=QuickUpload&type=Files';
+    config.filebrowserUploadUrl = '/Plugins/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files';
     config.filebrowserImageUploadUrl = '/Plugins/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
     config.filebrowserFlashUploadUrl = '/Plugins/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
     config.filebrowserWindowWidth = '1000';
     config.filebrowserWindowHeight = '700';
 
-    //CKFinder.setupCKEditor(null, "/Plugins/ckfinder/");
+    CKFinder.setupCKEditor(null, "/Plugins/ckfinder/");
     //FCKConfig.ProcessHTMLEntities = false;
 };

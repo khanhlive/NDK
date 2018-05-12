@@ -38,18 +38,31 @@
             <div class="main-wrapper clearfix" style="padding-top:15px;">
                 @{
                     ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
-                    var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID == 0).ToList();
-                    List<ICB.Business.Models.Service> serLeft = new List<ICB.Business.Models.Service>();
-                    List<ICB.Business.Models.Service> serRight = new List<ICB.Business.Models.Service>();
-                    if (services.Count < 10)
+                    //var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID == 0).ToList();
+                    //List<ICB.Business.Models.Service> serLeft = new List<ICB.Business.Models.Service>();
+                    //List<ICB.Business.Models.Service> serRight = new List<ICB.Business.Models.Service>();
+                    List<ICB.Business.Models.ListService> serLeft = new List<ICB.Business.Models.ListService>();
+                    List<ICB.Business.Models.ListService> serRight = new List<ICB.Business.Models.ListService>();
+                    List<ICB.Business.Models.ListService> data = serviceProvider.GetFullServices();
+                    //if (services.Count < 10)
+                    //{
+                    //    serLeft = services;
+                    //}
+                    //else
+                    //{
+                    //    int left = Convert.ToInt32(services.Count / 2);
+                    //    serLeft = services.Take(left).ToList();
+                    //    serRight = services.Skip(left + 1).ToList();
+                    //}
+                    if (data.Count < 10)
                     {
-                        serLeft = services;
+                        serLeft = data;
                     }
                     else
                     {
-                        int left = Convert.ToInt32(services.Count / 2);
-                        serLeft = services.Take(left).ToList();
-                        serRight = services.Skip(left + 1).ToList();
+                        int left = Convert.ToInt32(data.Count / 2);
+                        serLeft = data.Take(left).ToList();
+                        serRight = data.Skip(left + 1).ToList();
                     }
                 }
 
@@ -210,7 +223,7 @@
     <script type='text/javascript' src='~/Plugins/themes/knd-playlist.js'></script>
     <script src="~/Scripts/apps/app.js"></script>
     <script src="~/Scripts/AdminLTE/app.min.js"></script>
-
+    @*<script src="~/Scripts/custom/menu-doc.js"></script>*@
     <script src="/signalr/hubs"></script>
     <script>
         $(document).ready(function () {
@@ -312,5 +325,7 @@
             });
         }
     </script>
+
+    @RenderSection("scripts", false)
 </body>
 </html>

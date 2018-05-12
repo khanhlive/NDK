@@ -4,8 +4,10 @@ using ICB.Business.Models;
 using NDK.ApplicationCore.Extensions.ResponseResults;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ICB.Business.Access
 {
@@ -16,11 +18,20 @@ namespace ICB.Business.Access
             this.context.Configuration.ProxyCreationEnabled = false;
         }
 
+        private string GetFilename(string path)
+        {
+            if (File.Exists(HttpContext.Current.Server.MapPath("~")+"\\"+ path))
+            {
+                return Path.GetFileName(HttpContext.Current.Server.MapPath("~") + "\\" + path);
+            }
+            else return string.Empty;
+        }
+
         #region Chung
 
         public async Task<AccessEntityResult> AddAsync(Document document)
         {
-
+            document.Filename = this.GetFilename(document.Path);
             Tuple<AccessEntityStatusCode, Document> result = await this.InsertAsync(document);
             if (result.Item1 == AccessEntityStatusCode.OK)
             {
@@ -35,7 +46,7 @@ namespace ICB.Business.Access
 
         public AccessEntityResult Add(Document document)
         {
-
+            document.Filename = this.GetFilename(document.Path);
             AccessEntityStatusCode result = this.Insert(document);
             if (result == AccessEntityStatusCode.OK)
             {
@@ -63,6 +74,7 @@ namespace ICB.Business.Access
                 edit.Content = document.Content;
                 edit.UpdateTime = DateTime.Now;
                 edit.Description = document.Description;
+                edit.Filename = this.GetFilename(document.Path);
                 edit.Path = document.Path;
                 edit.Status = document.Status;
                 edit.UserUpdate = document.UserUpdate;
@@ -80,6 +92,7 @@ namespace ICB.Business.Access
             }
             else
             {
+                edit.Filename = this.GetFilename(document.Path);
                 edit.Caption = document.Caption;
                 edit.CategoryID = document.CategoryID;
                 edit.Content = document.Content;

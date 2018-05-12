@@ -4023,6 +4023,7 @@
     <Content Include="Scripts\custom\custom.js" />
     <Content Include="Scripts\backbone.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\custom\menu-doc.js" />
     <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />

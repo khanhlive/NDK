@@ -3,13 +3,16 @@
     ViewBag.Title = Model.Caption;
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     List<ICB_Website.UI.Models.Breadcrumb> list = new List<ICB_Website.UI.Models.Breadcrumb>();
-    list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 1, Name = ICB_Website.UI.Resources.RHome.News, URL = Url.Action("Index","news") });
+    list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 1, Name = ICB_Website.UI.Resources.RHome.News, URL = Url.Action("Index", "news") });
     list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 2, Name = Model.Caption, URL = "#" });
     ViewBag.Breadcrumb = list;
 }
 @section TopSlider{
     @Html.Partial("_sectionSlider")
 }
+<style>
+    
+</style>
 
 <div class="kopa-entry-post">
     <div class="kopa-entry-post">
@@ -41,7 +44,7 @@
                 </div>
             </div>
         }
-        
+
 
         <div class="single-post-bottom">
             <div class="kopa-social-link">
@@ -60,12 +63,12 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="kopa-recent-post">
             <h3 class="recent-title">Related articles</h3>
             <ul class="clearfix">
-                @{ 
-                    List<ICB.Business.Models.News> relatedPost=(List<ICB.Business.Models.News>)ViewData["REALTEDPOST"];
+                @{
+                    List<ICB.Business.Models.News> relatedPost = (List<ICB.Business.Models.News>)ViewData["REALTEDPOST"];
                 }
 
                 @foreach (var item in relatedPost)

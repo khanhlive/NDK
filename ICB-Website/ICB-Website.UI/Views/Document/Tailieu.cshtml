@@ -2,6 +2,7 @@
 @model PagedList.IPagedList<ICB.Business.Models.Document>
 @{
     Layout = null;
+    int i = 1;
 }
 <div id="kopa-posts-list-two-parts-tailieu" class="widget kopa-article-list-widget-2 clearfix">
     <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.Document<a href="#">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
@@ -10,21 +11,22 @@
             <ul class="clearfix">
                 @foreach (var item in Model)
             {
-                    <li>
+                    <li style="margin:0;padding-top:0;">
                         <article class="entry-item clearfix item-other ">
-                            <div class="entry-thumb">
-                                <a href="@Url.Action("Detail","document",new { @id=item.ID })" title="@item.Caption"><img src="@item.Path" alt="@item.Caption" /></a>
-                            </div>
                             <div class="entry-content">
                                 <header>
-                                    <h4 class="entry-title"><a href="@Url.Action("Detail","document",new { @id=item.ID })" title="@item.Caption">@item.Caption</a></h4>
-                                    <p class="entry-date">
-                                        @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@item.CreateTime</span>
+                                    <h4 class="entry-title" style="color:#0206a9">@i. @item.Caption.ToUpper()</h4>
+                                    <p style="padding-left:20px;">
+                                       <a href="@item.Path" style="color:#0088ba;"><span class="fa fa-download"></span> @item.Filename</a>
                                     </p>
+                                    @*<p class="entry-date">
+                                        @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@item.CreateTime</span>
+                                    </p>*@
                                 </header>
                             </div>
                         </article>
                     </li>
+                    i++;
                 }
             </ul>
 

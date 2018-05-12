@@ -32,7 +32,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         [AttributeRouting.Web.Mvc.Route("them-moi")]
         public ActionResult Create()
         {
-            ViewBag.Category= CreateValue(2);
+            ViewBag.Category= CreateValue(2,-1);
             return View();
         }
 
@@ -42,7 +42,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         public ActionResult CreatePOST(Service service)
         {
             ModelState.Remove("ServiceID");
-            ViewBag.Category = CreateValue(2);
+            ViewBag.Category = CreateValue(2,service.ServiceID??-1);
             if (ModelState.IsValid)
             {
                 ServiceProvider serviceProvider = new ServiceProvider();
@@ -79,7 +79,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         }
 
-        private List<SelectListItem> CreateValue(int type)
+        private List<SelectListItem> CreateValue(int type, int value)
         {
             List<SelectListItem> data = new List<SelectListItem>();
             if (type == 1)
@@ -88,7 +88,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
                 foreach(var item in categoryProvider.GetAll().Where(p => p.Active == 1).ToList())
                 {
-                    data.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Name });
+                    data.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Name, Selected=item.ID==value});
                 }
             }
             else
@@ -97,7 +97,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
                 data.Add(new SelectListItem { Value = "-1", Text = "Mặc định" });
                 foreach (var item in serviceProvider.GetRootList().ToList())
                 {
-                    data.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Name });
+                    data.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.Name, Selected = item.ID == value });
                 }
             }
             return data;
@@ -109,7 +109,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         {
             ServiceProvider serviceProvider = new ServiceProvider();
             var model = serviceProvider.GetByID(id);
-            ViewBag.Category = this.CreateValue(model.HasChild ? 1 : 2);
+            ViewBag.Category = this.CreateValue(model.HasChild ? 1 : 2,model.HasChild?model.CategoryID:model.ServiceID??-1);
             return View(model);
         }
 
@@ -118,7 +118,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         public ActionResult EditPOST(Service service)
         {
             ModelState.Remove("ServiceID");
-            ViewBag.Category = CreateValue(2);
+            ViewBag.Category = CreateValue(2,service.ServiceID??-1);
             if (ModelState.IsValid)
             {
                 ServiceProvider serviceProvider = new ServiceProvider();
@@ -178,7 +178,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         public JsonResult GetCategory(int type)
         {
-            var data = this.CreateValue(type);
+            var data = this.CreateValue(type,-1);
             return Json(data, JsonRequestBehavior.AllowGet);
 
         }

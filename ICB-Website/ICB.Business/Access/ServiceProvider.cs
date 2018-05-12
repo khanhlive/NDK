@@ -71,13 +71,14 @@ namespace ICB.Business.Access
                 edit.ThumbnailURL = service.ThumbnailURL;
                 edit.Introduction = service.Introduction;
                 edit.Procedure = service.Procedure;
-
+                edit.ServiceID = service.ServiceID;
                 edit.LastMordifiedTime = service.LastMordifiedTime;
                 edit.Caption = service.Name;
                 edit.CaptionENG = service.NameENG;
                 edit.Title = service.Name;
                 edit.TitleENG = service.NameENG;
-
+                edit.Description = service.Description;
+                edit.DocumentView= service.DocumentView;
                 var ressult = this.Update(edit, id);
                 return new AccessEntityResult { Status = ressult.Item1, Data = ressult.Item2, Message = MessageManager.GetErrorMessage(ModuleType.Base, ressult.Item1) };
             }

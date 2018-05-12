@@ -68,7 +68,72 @@ $(document).ready(function () {
     $('input.datepicker').datetimepicker({
         format: 'DD/MM/YYYY'
     });
+    CKEDITOR.on('dialogDefinition', function (ev) {
 
+        // Take the dialog name and its definition 
+        // from the event data.
+
+        var dialogName = ev.data.name;
+        var dialogDefinition = ev.data.definition;
+
+        // Check if the definition is from the 
+        // dialog window you are interested in.
+
+        if (dialogName == 'link') {
+            dialogDefinition.minWidth = 450;
+            console.log(dialogDefinition)
+            var info = dialogDefinition.getContents("info");
+            info.elements.push({
+                type: 'text',
+                id: 'name',
+                label: 'Tên liên kết',
+                'default': '',
+                validate: function () {
+                    if (!this.getValue()) {
+                        alert('Tên liên kết không được để trống.');
+                        return false;
+                    }
+                }, commit: function (data) {
+                    data.filename = this.getValue();
+                }
+            });
+            dialogDefinition.onOk = function (a, b) {
+                var editor = this.getParentEditor();
+                var dialog = this,
+                    data = {},
+                    link = editor.document.createElement('a');
+                this.commitContent(data);
+                link.setAttribute('href', data.url.url);
+                
+                if (data.newPage)
+                    link.setAttribute('target', '_blank');
+                
+                switch (data.style) {
+                    case 'b':
+                        link.setStyle('font-weight', 'bold');
+                        break;
+                    case 'u':
+                        link.setStyle('text-decoration', 'underline');
+                        break;
+                    case 'i':
+                        link.setStyle('font-style', 'italic');
+                        break;
+                }
+
+                link.setHtml(data.filename);
+                
+                editor.insertElement(link);
+            };
+            // Get a reference to the "Link Info" tab.
+            // var infoTab = dialogDefinition.getContents( 'info' );
+
+            // Set the default value for the URL field.
+            // var urlField = infoTab.get( 'url' );
+            //     urlField['default'] = 'www.example.com';
+
+        }
+
+    });
 
     ////event for button checkall in table header
 

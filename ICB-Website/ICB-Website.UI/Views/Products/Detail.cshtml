@@ -34,11 +34,30 @@
                 </div>
             </header>
             <div class="entry-content">
+
+                
+
                 <div class="entry-content">
                     <div id="lipsum">
-                        @Html.Raw(Model.Procedure)
+                        <div class="block-tab">
+                            <ul>
+                                <li data-tab="1" class="active-tab">Giới thiệu</li>
+                                <li data-tab="2" class="">Quy trình thực hiện</li>
+                                <li data-tab="3" class="">Tài liệu liên quan</li>
+                            </ul>
+                        </div>
+                        <div class="block-content-tab item-tab1 active-content">
+                            @Html.Raw(Model.Introduction)
+                        </div>
+                        <div class="block-content-tab item-tab2">
+                            @Html.Raw(Model.Procedure)
+                        </div>
+                        <div class="block-content-tab item-tab3">
+                            @Html.Raw(Model.DocumentView)
+                        </div>
+                        
                     </div>
-                </div>
+                    </div>
             </div>
         }
         <!--/kopa-about-author-->
@@ -46,5 +65,20 @@
 
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('.block-tab li').click(function () {
+                $('.block-tab li').removeClass('active-tab');
+                $(this).addClass('active-tab');
+                id_tab = $(this).attr("data-tab");
+                $('.block-content-tab').removeClass('active-content');
+                $('.item-tab' + id_tab).addClass('active-content');
+
+
+            })
+        });
+    </script>
+    }
 
 

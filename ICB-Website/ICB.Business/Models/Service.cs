@@ -23,7 +23,8 @@
         [StringLength(500)]
         public string Title { get; set; }
 
-        
+        public string Description { get; set; }
+
         [StringLength(500)]
         public string TitleENG { get; set; }
 
@@ -52,6 +53,7 @@
 
         [Required(ErrorMessage ="Bạn chưa chọn nhóm")]
         public int CategoryID { get; set; }
+        public string DocumentView { get; set; }
 
         public bool HasChild { get; set; }
 
