@@ -12,6 +12,7 @@ namespace ICB_Website.UI
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapHubs();
             ConfigureAuth(app);
         }
     }

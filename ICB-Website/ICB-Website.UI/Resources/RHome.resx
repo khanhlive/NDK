@@ -201,4 +201,10 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Send message</value>
   </data>
+  <data name="Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="StatisticalAccess" xml:space="preserve">
+    <value>Statistical Access</value>
+  </data>
 </root>

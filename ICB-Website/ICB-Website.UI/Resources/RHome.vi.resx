@@ -201,4 +201,10 @@
   <data name="SendMessage" xml:space="preserve">
     <value>Gửi đi</value>
   </data>
+  <data name="Support" xml:space="preserve">
+    <value>Hỗ trợ khách hàng</value>
+  </data>
+  <data name="StatisticalAccess" xml:space="preserve">
+    <value>Thống kê truy cập</value>
+  </data>
 </root>

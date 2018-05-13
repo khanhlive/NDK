@@ -65,6 +65,7 @@
     <Compile Include="Access\FeedbackProvider.cs" />
     <Compile Include="Access\NewsProvider.cs" />
     <Compile Include="Access\ServiceProvider.cs" />
+    <Compile Include="Access\SupportProvider.cs" />
     <Compile Include="Access\SystemConfigProvider.cs" />
     <Compile Include="Entities\Apps\ModuleManager.cs" />
     <Compile Include="Entities\Apps\RoleManager.cs" />
@@ -78,8 +79,8 @@
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\ListService.cs" />
     <Compile Include="Models\News.cs" />
-    <Compile Include="Models\RoleManager.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Support.cs" />
     <Compile Include="Models\SystemConfig.cs" />
     <Compile Include="Models\WebContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

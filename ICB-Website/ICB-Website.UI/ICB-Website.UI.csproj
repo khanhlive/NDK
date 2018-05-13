@@ -339,6 +339,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHubs.cs" />
+    <Compile Include="Hubs\CounterHub.cs" />
     <Compile Include="Models\Breadcrumb.cs" />
     <Compile Include="Models\Security\GuestAuthorizeAttribute.cs" />
     <Compile Include="Models\StoriesAccess.cs" />

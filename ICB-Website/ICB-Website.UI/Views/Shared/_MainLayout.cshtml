@@ -251,7 +251,19 @@
                     
                 }
             })
+            
+            var counterHub = $.connection.counterHub;
+            $.connection.hub.start().done(function () {
+                //do something after hub connected
+            });
+            //function receive data from server. server call in on code behind
 
+            counterHub.client.UpdateCount = function (count) {
+                $('#UserOnline').text(count);
+            }
+            counterHub.client.UpdateTotalVisitor = function (total) {
+                $('#totalvisitor').text(total);
+            }
         });
         var lastTextisLocal = false;
         function scrollToBottom() {

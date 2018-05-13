@@ -286,6 +286,24 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statistical Access.
+        /// </summary>
+        public static string StatisticalAccess {
+            get {
+                return ResourceManager.GetString("StatisticalAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support.
+        /// </summary>
+        public static string Support {
+            get {
+                return ResourceManager.GetString("Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tel.
         /// </summary>
         public static string Tel {

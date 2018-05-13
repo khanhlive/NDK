@@ -26,13 +26,13 @@ namespace ICB.Business.Models
 
         public int? Order { get; set; }
 
-        public int? Active { get; set; }
-
         [StringLength(500)]
         public string NameENG { get; set; }
 
         [StringLength(500)]
         public string TitleENG { get; set; }
+
+        public int? Active { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Service> Services { get; set; }

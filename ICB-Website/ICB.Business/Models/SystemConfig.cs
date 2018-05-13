@@ -40,10 +40,19 @@ namespace ICB.Business.Models
 
         public int Status { get; set; }
 
+        [Column(TypeName = "ntext")]
         public string Content { get; set; }
+
+        [Column(TypeName = "ntext")]
         public string ContentENG { get; set; }
+
+        [Column(TypeName = "ntext")]
         public string Caption { get; set; }
+
+        [Column(TypeName = "ntext")]
         public string Description { get; set; }
+
+        [StringLength(500)]
         public string ImageURL { get; set; }
     }
 }

@@ -13,7 +13,7 @@
         Login,
         Customer,
         Category,
-        Document
-        
+        Document,
+        Support
     }
 }

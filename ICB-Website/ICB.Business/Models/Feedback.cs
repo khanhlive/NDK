@@ -31,12 +31,12 @@ namespace ICB.Business.Models
         [Column(TypeName = "ntext")]
         public string Content { get; set; }
 
-        public int? Status { get; set; }
+        public int Status { get; set; }
 
         [Column(TypeName = "ntext")]
         public string ContentFeedback { get; set; }
 
-        public bool? Answered { get; set; }
+        public bool Answered { get; set; }
 
         public DateTime? CreateTime { get; set; }
 

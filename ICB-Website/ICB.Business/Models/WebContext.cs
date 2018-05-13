@@ -10,7 +10,6 @@ namespace ICB.Business.Models
         public WebContext()
             : base("name=WebContext")
         {
-            Entities.CounterDemo.counter++;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -19,9 +18,10 @@ namespace ICB.Business.Models
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<News> News { get; set; }
+        //public virtual DbSet<RoleManager> RoleManagers { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<Support> Supports { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
-        public virtual DbSet<Role> RoleManagers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,9 +49,8 @@ namespace ICB.Business.Models
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Feedbacks)
-                .WithRequired(e => e.Account)
-                .HasForeignKey(e => e.UserID)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.Account)
+                .HasForeignKey(e => e.UserID);
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.News)
@@ -59,11 +58,15 @@ namespace ICB.Business.Models
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);
 
+            //modelBuilder.Entity<Account>()
+            //    .HasMany(e => e.RoleManagers)
+            //    .WithRequired(e => e.Account)
+            //    .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.Services)
-                .WithRequired(e => e.Account)
-                .HasForeignKey(e => e.UserID)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.Account)
+                .HasForeignKey(e => e.UserID);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.NameENG)
@@ -94,6 +97,18 @@ namespace ICB.Business.Models
                 .Property(e => e.CaptionENG)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Support>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Support>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Support>()
+                .Property(e => e.Skype)
+                .IsUnicode(false);
+
             modelBuilder.Entity<SystemConfig>()
                 .Property(e => e.NameENG)
                 .IsUnicode(false);
@@ -109,12 +124,6 @@ namespace ICB.Business.Models
             modelBuilder.Entity<SystemConfig>()
                 .Property(e => e.Hotline)
                 .IsUnicode(false);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            Entities.CounterDemo.counter--;
         }
     }
 }

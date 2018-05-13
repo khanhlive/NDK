@@ -24,6 +24,8 @@ namespace ICB_Website.UI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
             Application["Counter"] = 0;
+            HttpContext.Current.Application["totalvisitor"] = 0;
+            Application["Online"] = 0;
             ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
             Application["IsSetup"] = systemConfigProvider.Get() != null;
         }
@@ -53,6 +55,21 @@ namespace ICB_Website.UI
         {
             int count = Convert.ToInt32(Application["Counter"]);
             Application["Counter"] = count + 1;
+            if (Application["Online"]!=null)
+            {
+                int online = Convert.ToInt32(Application["Online"]);
+                Application["Online"] = online+1;
+            }
+            else
+                Application["Online"] = 1;
+        }
+        public void Session_End(object sender, EventArgs e)
+        {
+            if (Application["Online"] != null)
+            {
+                int online = Convert.ToInt32(Application["Online"]);
+                Application["Online"] = online - 1;
+            }
         }
     }
 }

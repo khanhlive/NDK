@@ -1,5 +1,13 @@
 ﻿@*@model List<ICB.Business.Models.Service>*@
 @model List<ICB.Business.Models.ListService>
+    @*@{ 
+        var appOnline = System.Web.HttpContext.Current.Application["Online"];
+        int online = 0;
+        int.TryParse(appOnline.ToString(), out online);
+        var appCounter = System.Web.HttpContext.Current.Application["Counter"];
+        int counter = 0;
+        int.TryParse(appCounter.ToString(), out counter);
+    }*@
 <aside class="sidebar widget-area-5">
 
     <div class="widget clearfix" id="kopa-services">
@@ -53,5 +61,16 @@
             }
         </ul>
     </div>
-
+    <div class="widget clearfix">
+        <h3 class="widget-title"><span class="icon-title fa fa-universal-access"></span>@ICB_Website.UI.Resources.RHome.StatisticalAccess</h3>
+        <ul style="margin-top:20px;margin-left:5px;">
+            <li>
+                <b>Đang online:</b> <b style="color:red;" id="UserOnline"></b>
+            </li>
+            <li>
+                <b>Tổng truy cập:</b> <b style="color:red;" id="totalvisitor"></b>
+            </li>
+        </ul>
+    </div>
 </aside>
+

@@ -48,10 +48,7 @@
     border: 0px solid #fff;
 }
 .kopa-logo {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+   margin:0;
     z-index:999;
 }
 .entry-item-img{
@@ -356,9 +353,9 @@
             border-left: 3px solid #3dbd99;
         }
 
-    .menu-doc li:hover > a {
-        /*color: #3dbd99;*/
-    }
+    /*.menu-doc li:hover > a {
+        /*color: #3dbd99;
+    }*/
 
         .menu-doc ul li:hover {
             background: #06779a;
@@ -487,3 +484,59 @@
 .active-content {
     display: block;
 }
+
+
+
+/*----------*/
+.tuvan-baogia {
+    background: #f9fafc none repeat scroll 0 0;
+    /*border: 1px solid #e0e0e0;*/
+    /*border-top: none;*/
+    display: inline-block;
+    padding: 5px;
+    width: 100%;
+}
+    .tuvan-baogia ul {
+        display: inline-block;
+        list-style: outside none none;
+        padding: 0;
+        width: 100%;
+    }
+    .tuvan-baogia li {
+        border: 1px solid #ddd;
+        border-top: 1px solid #ddd !important;
+        float: left;
+        line-height: 18px;
+        list-style: outside none none;
+        margin-bottom: 8px;
+        padding-top:5px !important;
+        padding: 5px 0;
+        width: 100%;
+    }
+        .tuvan-baogia li img {
+            float: left;
+            height: 40px;
+            margin: 0 5px;
+            width: 50px;
+        }
+        .tuvan-baogia li p.name {
+            color: #1252a9;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .tuvan-baogia li p {
+            margin: 0;
+            width: 100%;
+        }
+            .tuvan-baogia li p.phonex {
+                color: #333;
+                font-size: 15px;
+                font-weight: bold;
+                margin: 5px 0;
+            }
+            .tuvan-baogia li p.other {
+                color: #333;
+                font-size: 13px;
+                line-height: 25px;
+                margin-left:5px;
+            }
