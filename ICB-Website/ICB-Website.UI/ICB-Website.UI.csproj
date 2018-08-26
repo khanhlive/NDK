@@ -3991,6 +3991,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\admin\Views\support\InfoSupport.cshtml" />
+    <Content Include="Areas\admin\Views\support\Create.cshtml" />
+    <Content Include="Areas\admin\Views\support\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\setting\SoDoToChuc.cshtml" />
+    <Content Include="Areas\admin\Views\setting\ChinhSachChatLuong.cshtml" />
+    <Content Include="Areas\admin\Views\setting\TamNhinSuMenh.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="Images\1.jpg" />
@@ -4287,6 +4293,9 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\mediaelement\silverlightmediaelement.xap" />
     <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Home\TamNhinSuMenh.cshtml" />
+    <Content Include="Views\Home\chinhsachchatluong.cshtml" />
+    <Content Include="Views\Home\sodotochuc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\admin\Models\" />

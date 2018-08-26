@@ -12,10 +12,11 @@ namespace ICB_Website.UI.Controllers
         // GET: news
         [ICB_Website.UI.Models.Security.GuestAuthorize]
         [AttributeRouting.Web.Mvc.Route("")]
-        public async Task<ActionResult> Index(int page = 1)
+        public async Task<ActionResult> Index(int page = 1,int? loai=1)
         {
             NewsProvider newsProvider = new NewsProvider();
-            return View((await newsProvider.GetShowActiveAsync()).ToPagedList(page, 10));
+            ViewBag.loai = loai;
+            return View((await newsProvider.GetShowActiveAsync(loai)).ToPagedList(page, 10));
         }
         [ICB_Website.UI.Models.Security.GuestAuthorize]
         [AttributeRouting.Web.Mvc.Route("{id}")]

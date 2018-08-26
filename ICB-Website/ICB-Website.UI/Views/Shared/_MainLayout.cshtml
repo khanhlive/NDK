@@ -25,8 +25,22 @@
     <link href="~/Content/icb-style.css" rel="stylesheet" />
     <link href="~/Content/AdminLTE/AdminLTE.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
+    <style>
+        body {
+            background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png)
+        }
+
+        .wrapper {
+            /*box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;*/
+            background: #fdfdfd;
+        }
+    </style>
 </head>
 <body>
+    @{
+        ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
+        
+    }
     <!-- header -->
     @Html.Partial("_Header")
     <!-- end header-->
@@ -36,41 +50,12 @@
         <div style="border-width:0 1px 1px 1px;border-style:solid;border-color:#dadada;">
             @RenderSection("TopSlider", false)
             <div class="main-wrapper clearfix" style="padding-top:15px;">
-                @{
-                    ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
-                    //var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID == 0).ToList();
-                    //List<ICB.Business.Models.Service> serLeft = new List<ICB.Business.Models.Service>();
-                    //List<ICB.Business.Models.Service> serRight = new List<ICB.Business.Models.Service>();
-                    List<ICB.Business.Models.ListService> serLeft = new List<ICB.Business.Models.ListService>();
-                    List<ICB.Business.Models.ListService> serRight = new List<ICB.Business.Models.ListService>();
-                    List<ICB.Business.Models.ListService> data = serviceProvider.GetFullServices();
-                    //if (services.Count < 10)
-                    //{
-                    //    serLeft = services;
-                    //}
-                    //else
-                    //{
-                    //    int left = Convert.ToInt32(services.Count / 2);
-                    //    serLeft = services.Take(left).ToList();
-                    //    serRight = services.Skip(left + 1).ToList();
-                    //}
-                    if (data.Count < 10)
-                    {
-                        serLeft = data;
-                    }
-                    else
-                    {
-                        int left = Convert.ToInt32(data.Count / 2);
-                        serLeft = data.Take(left).ToList();
-                        serRight = data.Skip(left + 1).ToList();
-                    }
-                }
 
 
                 @if (ViewBag.NotRenderSideBar == null || ViewBag.NotRenderSideBar == false)
                 {
                     <!--Left SideBar Menu-->
-                    @Html.Partial("_LeftSideMenu", serLeft)
+                    @Html.Partial("_LeftSideMenu", serviceProvider.GetServicesLeft())
                     <!-- End Left SideBar Menu-->
                     <div class="kopa-main-col" style="margin-right:0px;">
                         @if (ViewBag.IsBreadcrumb == null || ViewBag.IsBreadcrumb == true)
@@ -114,7 +99,7 @@
                         <!-- End RenderBody -->
                     </div>
 
-                    @Html.Partial("_RightSideMenu", serRight)
+                    @Html.Partial("_RightSideMenu", serviceProvider.GetServicesRight())
                 }
                 else
                 {
@@ -128,14 +113,44 @@
             @RenderSection("KhachHang", false)
 
             <!--/end BOTTOM-SIDERBAR-->
-            <footer id="kopa-footer" class="" style="padding:20px 0 35px; ">
-                <div class="" style="margin-left:350px">
-                    <p class="" style="font-size:23px; margin-bottom:10px;">@info.Name</p>
+            <footer id="kopa-footer" class="" style="padding:15px 20px">
+                <div class="" style="margin-left:250px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="" style="font-size:23px; margin-bottom:10px;">@info.Name</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            @if (info.Address != null)
+                            {
+                                string[] arr = info.Address.Replace("\n", ";").Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                                for (int i = 0; i < arr.Length; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <p>Địa chỉ: @arr[i]</p>
+                                    }
+                                    else
+                                    {
+                                        <p>@arr[i]</p>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <p>
+                                    Địa chỉ: @info.Address
+                                </p>
+                            }
+                        </div>
+                        <div class="col-md-4">
 
-                    <p>Địa chỉ: @info.Address</p>
-                    <p>Điện thoại: @info.Tel - Fax: @info.Fax</p>
-                    <p>Email: @info.Email</p>
-                    <p>Website: @info.Website</p>
+                            <p>Điện thoại: @info.Tel - Fax: @info.Fax</p>
+                            <p>Email: @info.Email</p>
+                            <p>Website: @info.Website</p>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </div>
@@ -143,7 +158,7 @@
 
     </div>
     <div class="">
-        <div class="" style="position:fixed;right:65px;bottom:8px;width:350px;">
+        <div class="" style="position:fixed;right:65px;bottom:8px;width:350px;z-index:1000;">
             <!-- DIRECT CHAT PRIMARY -->
             <div class="box box-primary direct-chat direct-chat-primary collapsed-box" style="margin-bottom:5px;box-shadow:0 2px 25px rgba(0,0,0,.2)">
                 <div class="box-header with-border">
@@ -159,7 +174,7 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="height:400px">
                     <div class="direct-chat-messages" id="chatlog" style="height:auto">
-                        
+
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -198,14 +213,21 @@
             }, "template": { "post_id": 1696 }, "contact": { "address": " B7+B9 Building - Tran Thai Tong Street", "marker": "http:\/\/upsidethemes.net\/demo\/xmax\/wp-content\/themes\/xmax-1.0.0\/images\/marker.png" }, "recaptcha": { "status": true }, "i18n": { "SEARCH": "Search...", "LOADING": "Loading...", "LOAD_MORE": "Load more", "VIEW": "View", "VIEWS": "Views", "validate": { "form": { "CHECKING": "Checking", "SUBMIT": "Submit", "SENDING": "Sending..." }, "recaptcha": { "INVALID": "Your captcha is incorrect. Please try again", "REQUIRED": "Captcha is required" }, "name": { "REQUIRED": "Please enter your name", "MINLENGTH": "At least {0} characters required" }, "email": { "REQUIRED": "Please enter your email", "EMAIL": "Please enter a valid email" }, "url": { "REQUIRED": "Please enter your url", "URL": "Please enter a valid url" }, "message": { "REQUIRED": "Please enter a message", "MINLENGTH": "At least {0} characters required" } } }
         };
         var kopa_variable_fonts = ["Roboto:400,500,700", "Open+Sans:300,400,600,700,800"];
-                    /* ]]> */
+        /* ]]> */
     </script>
     @*@Scripts.Render("~/bundles/jquery")*@
 
     @*@Scripts.Render("~/Scripts/js")*@
     @*@Scripts.Render("~/bundles/custom")*@
     @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
+    @*<link href="~/Content/superfish.css" rel="stylesheet" />
+        <link href="~/Content/superfish-vertical.css" rel="stylesheet" />
+        <link href="~/Content/superfish-navbar.css" rel="stylesheet" />
+        <link href="~/Content/megafish.css" rel="stylesheet" />*@
     <script src="~/Plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/hoverIntent.js"></script>
+    <script src="~/Scripts/superfish.min.js"></script>
+    <script src="~/Scripts/supersubs.js"></script>
     <script src="~/Scripts/jquery.signalR-1.0.1.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Plugins/jssor.slider.min.js"></script>
@@ -235,7 +257,7 @@
                 $('#frmNickname').hide();
                 StartChathub();
             });
-            
+
             if (localname) {
                 $('#frmChatroom').show();
                 $('#frmNickname').hide();
@@ -248,10 +270,10 @@
                 if (e.keyCode == 13) {
                     $('#frmChatroom #btnSend').click();
                 } else {
-                    
+
                 }
             })
-            
+
             var counterHub = $.connection.counterHub;
             $.connection.hub.start().done(function () {
                 //do something after hub connected
@@ -280,7 +302,7 @@
                     if (lastTextisLocal) {
                         var div = $('#chatlog .direct-chat-msg.right:last-child').find('.direct-chat-text').append('<span style="display:block;">' + message + '</span>');
                     } else {
-                        var text = '<div class="direct-chat-msg right">' 
+                        var text = '<div class="direct-chat-msg right">'
                         text += '<div class="direct-chat-info clearfix" >';
                         text += '<span class="direct-chat-name pull-right">' + name + '</span>';
                         text += '</div>';
@@ -315,9 +337,9 @@
                             $('#chatlog').append(text);
                         }
 
-                        
+
                     }
-                    
+
                     lastTextisLocal = false;
                 }
                 //display the message

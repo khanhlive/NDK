@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using ICB.Business.Models;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace ICB_Website.UI.Hubs
 {
     public class ChatHub : Hub
     {
-        static ConcurrentDictionary<string, string> dic = new ConcurrentDictionary<string, string>();
+        public static ConcurrentDictionary<string, string> dic = new ConcurrentDictionary<string, string>();
 
         public void Send(string name, string message)
         {
@@ -21,6 +22,13 @@ namespace ICB_Website.UI.Hubs
         {
             // Call the broadcastMessage method to update clients.
             Clients.Caller.broadcastMessage(name, message,to);
+            using (WebContext db =new WebContext())
+            {
+                Message msg = new Message { Content = message, CreateDate = DateTime.Now, Name = name, Status = 0, UserID = null };
+                db.Messages.Add(msg);
+                int count = db.SaveChanges();
+                
+            }
             Clients.Client(dic[to]).broadcastMessage(name, message,to);
         }
 
@@ -45,7 +53,10 @@ namespace ICB_Website.UI.Hubs
         {
             var name = dic.FirstOrDefault(x => x.Value == Context.ConnectionId.ToString());
             string s;
-            dic.TryRemove(name.Key, out s);
+            if (name.Key!=null)
+            {
+                dic.TryRemove(name.Key, out s);
+            }
             return Clients.All.disconnected(name.Key);
         }
 

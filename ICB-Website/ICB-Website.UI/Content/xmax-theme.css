@@ -2845,7 +2845,7 @@ kopa-scrollbar .item img {
     background-color: #0088b2;
     color: #fff;
     font-size: 14px;
-    font-family: 'Roboto',serif;
+    /*font-family: 'Roboto',serif;*/
     border: none;
     padding: 8px 25px;
     margin: 0px;
@@ -3255,13 +3255,13 @@ color: #c8c8c8;
     margin-bottom: 35px;
 }
 #contact-box {
-    width: 812px;
+    /*width: 812px;*/
     margin-right: 35px;
     float: left;
     margin-bottom: 20px;
 }
 #contact-info {
-    width: 249px;
+    /*width: 249px;*/
     float: left;
 }
 .contact-title {

@@ -16,70 +16,84 @@
     .form-control {
         border-radius: 0px;
     }
-    #contact_response{
-        text-align:center;
-        margin-top:30px;
+
+    #contact_response {
+        text-align: center;
+        margin-top: 30px;
     }
 </style>
-<!--kp-map-->
-<div id="contact-box" style="margin-bottom:35px;">
 
-    @if (ViewBag.Status == null)
-    {
-        <h4 class="contact-title">@ICB_Website.UI.Resources.RHome.Contactform</h4>
-        using (Html.BeginForm("lienhePOST", "Home", FormMethod.Post, new { @id = "contact-form", @class = "form-horizontal", @novalidate = "novalidate" }))
+<div class="row">
+
+    <!--kp-map-->
+    <div id="" style="margin-bottom:35px;" class="col-md-7">
+
+        @if (ViewBag.Status == null)
         {
-            <div class="row">
-                <div class="form-group">
-                    <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.YourName <span>*</span></label>
-                    <div class="col-md-9"><input type="text" value="" id="fcontact_name" name="Name" class="form-control"></div>
-                </div>
-                <div class="form-group">
-                    <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Tel <span>*</span></label>
-                    <div class="col-md-9"><input type="text" value="" id="fcontact_tel" name="Tel" class="form-control"></div>
+            <h4 class="contact-title">@ICB_Website.UI.Resources.RHome.Contactform</h4>
+            using (Html.BeginForm("lienhePOST", "Home", FormMethod.Post, new { @id = "contact-form", @class = "form-horizontal", @novalidate = "novalidate" }))
+            {
+                <div class="row">
+                    <div class="form-group">
+                        <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.YourName <span>*</span></label>
+                        <div class="col-md-9"><input type="text" value="" id="fcontact_name" name="Name" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Tel <span>*</span></label>
+                        <div class="col-md-9"><input type="text" value="" id="fcontact_tel" name="Tel" class="form-control"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Email <span>*</span></label>
+                        <div class="col-md-9"><input type="text" value="" id="fcontact_email" name="Email" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Caption <span>*</span></label>
+                        <div class="col-md-9"><input type="text" value="" id="fcontact_caption" name="Caption" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Message <span>*</span></label>
+                        <div class="col-md-9"><textarea name="Message" class="form-control" id="fcontact_message" rows="6"></textarea></div>
+                    </div>
+                    <div class="text-right">
+                        <input type="submit" value="@ICB_Website.UI.Resources.RHome.SendMessage" id="submit-contact" />
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Email <span>*</span></label>
-                    <div class="col-md-9"><input type="text" value="" id="fcontact_email" name="Email" class="form-control"></div>
-                </div>
-                <div class="form-group">
-                    <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Caption <span>*</span></label>
-                    <div class="col-md-9"><input type="text" value="" id="fcontact_caption" name="Caption" class="form-control"></div>
-                </div>
-                <div class="form-group">
-                    <label for="contact_name" class="required control-label col-md-3">@ICB_Website.UI.Resources.RHome.Message <span>*</span></label>
-                    <div class="col-md-9"><textarea name="Message" class="form-control" id="fcontact_message" rows="6"></textarea></div>
-                </div>
-                <div class="text-right">
-                    <input type="submit" value="@ICB_Website.UI.Resources.RHome.SendMessage" id="submit-contact" />
-                </div>
-            </div>
-
+            }
         }
-    }
-    else if (ViewBag.Status == false)
-    {
-        <div id="contact_response">Đã có lỗi xảy ra, vui lòng thử lại sau. Cám ơn bạn đã đóng góp cho chúng tôi!!!</div>
-    }
-    else
-    {
-        <div id="contact_response">Yêu cầu của bạn đã được gửi đi. Chúng tôi sẽ hồi đáp cho bạn sớm nhất. Cám ơn sự đóng góp của bạn!!!</div>
-    }
+        else if (ViewBag.Status == false)
+        {
+            <div id="contact_response">Đã có lỗi xảy ra, vui lòng thử lại sau. Cám ơn bạn đã đóng góp cho chúng tôi!!!</div>
+        }
+        else
+        {
+            <div id="contact_response">Yêu cầu của bạn đã được gửi đi. Chúng tôi sẽ hồi đáp cho bạn sớm nhất. Cám ơn sự đóng góp của bạn!!!</div>
+        }
+
+    </div>
+
+    <!--contact-box-->
+    <div id="contact-info" class="col-md-5" style="padding-left:30px;padding-right:30px;">
+        <h2 class="contact-title">@ICB_Website.UI.Resources.RHome.ContactInfomation</h2>
+        <address>
+            <p class="clearfix">
+                <i class="fa fa-map-marker"></i>
+                @if (model1.Address != null)
+                {
+                    string arr = model1.Address.Replace("\n", "<br/>");//.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                    <span class="media-body">
+                        @Html.Raw(arr);
+                    </span>
+                }
+            </p>
+
+            <p class="clearfix"><i class="fa fa-phone"></i><span class="media-body">@model1.Tel</span></p>
+
+            <p class="clearfix"><i class="fa fa-envelope"></i><a class="media-body" href="mailto:@model1.Email">@model1.Email</a></p>
+
+            <p class="clearfix"><i class="fa fa-clock-o"></i><span class="media-body">Monday - Friday 9.00 - 12.00</span></p>
+        </address>
+    </div>
 
 </div>
-
-<!--contact-box-->
-<div id="contact-info">
-    <h2 class="contact-title">@ICB_Website.UI.Resources.RHome.ContactInfomation</h2>
-    <address>
-        <p class="clearfix"><i class="fa fa-map-marker"></i><span class="media-body">@model1.Address </span></p>
-
-        <p class="clearfix"><i class="fa fa-phone"></i><span class="media-body">@model1.Tel</span></p>
-
-        <p class="clearfix"><i class="fa fa-envelope"></i><a class="media-body" href="mailto:@model1.Email">@model1.Email</a></p>
-
-        <p class="clearfix"><i class="fa fa-clock-o"></i><span class="media-body">Monday - Friday 9.00 - 12.00</span></p>
-    </address>
-</div>
-

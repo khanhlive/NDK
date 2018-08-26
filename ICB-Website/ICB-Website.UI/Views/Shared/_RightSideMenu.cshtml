@@ -1,6 +1,6 @@
 ﻿@*@model List<ICB.Business.Models.Service>*@
 @model List<ICB.Business.Models.ListService>
-    @*@{ 
+@*@{
         var appOnline = System.Web.HttpContext.Current.Application["Online"];
         int online = 0;
         int.TryParse(appOnline.ToString(), out online);
@@ -10,10 +10,12 @@
     }*@
 <aside class="sidebar widget-area-5">
 
-    <div class="widget clearfix" id="kopa-services">
-        <h3 class="widget-title"><span class="icon-title fa fa-list"></span>@ICB_Website.UI.Resources.RHome.Services</h3>
-        <ul class="clearfix menu-doc menu-right">
-            @*@foreach (var item in Model)
+    @foreach (var service in Model)
+    {
+        <div class="widget clearfix" id="kopa-services">
+            <h3 class="widget-title"><span class="icon-title fa fa-tag"></span>@service.Caption</h3>
+            <ul class="clearfix menu-doc menu-right">
+                @foreach (var item in service.Services_2)
                 {
                     <li class="item item-other">
                         <article class="entry-item clearfix">
@@ -23,44 +25,67 @@
                             <div class="entry-content">
                                 <header>
                                     <h4 class="entry-title" style="font-size:13px;"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a></h4>
+                                    @if (item.Services.Count > 0)
+                                    {
+                                        <span class="fa fa-angle-double-right"></span>
+                                    }
                                 </header>
+
                             </div>
                         </article>
-                    </li>
-                }*@
-            @foreach (var item in Model)
-            {
-                <li class="item item-other">
-                    <article class="entry-item clearfix">
-                        <a class="entry-item-img">
-                            <img src="@item.ThumbnailURL" />
-                        </a>
-                        <div class="entry-content">
-                            <header>
-                                <h4 class="entry-title" style="font-size:13px;"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a></h4>
-                                @if (item.Services.Count > 0)
+                        @if (item.Services.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var child in item.Services)
                                 {
-                                    <span class="fa fa-angle-double-right"></span>
+                                    <li class="has-sub">
+                                        <a href="@Url.Action("Detail","products",new { id=child.ID })" title="@item.Name"><span>@child.Name</span></a>
+                                    </li>
                                 }
-                            </header>
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    }
 
-                        </div>
-                    </article>
-                    @if (item.Services.Count > 0)
-                    {
-                        <ul>
-                            @foreach (var child in item.Services)
-                            {
-                                <li class="has-sub">
-                                    <a href="@Url.Action("Detail","products",new { id=child.ID })" title="@item.Name"><span>@child.Name</span></a>
-                                </li>
-                            }
-                        </ul>
-                    }
-                </li>
-            }
-        </ul>
-    </div>
+    @*<div class="widget clearfix" id="kopa-services">
+            <h3 class="widget-title"><span class="icon-title fa fa-list"></span>@ICB_Website.UI.Resources.RHome.Services</h3>
+            <ul class="clearfix menu-doc menu-right">
+                @foreach (var item in Model)
+                {
+                    <li class="item item-other">
+                        <article class="entry-item clearfix">
+                            <a class="entry-item-img">
+                                <img src="@item.ThumbnailURL" />
+                            </a>
+                            <div class="entry-content">
+                                <header>
+                                    <h4 class="entry-title" style="font-size:13px;"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a></h4>
+                                    @if (item.Services.Count > 0)
+                                    {
+                                        <span class="fa fa-angle-double-right"></span>
+                                    }
+                                </header>
+
+                            </div>
+                        </article>
+                        @if (item.Services.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var child in item.Services)
+                                {
+                                    <li class="has-sub">
+                                        <a href="@Url.Action("Detail","products",new { id=child.ID })" title="@item.Name"><span>@child.Name</span></a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>*@
     <div class="widget clearfix">
         <h3 class="widget-title"><span class="icon-title fa fa-universal-access"></span>@ICB_Website.UI.Resources.RHome.StatisticalAccess</h3>
         <ul style="margin-top:20px;margin-left:5px;">

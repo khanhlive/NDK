@@ -1,12 +1,15 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<ICB.Business.Models.News>
 @{
-    ViewBag.Title = "Tin tức";
+
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     var pageOption = new PagedList.Mvc.PagedListRenderOptions();
     List<ICB_Website.UI.Models.Breadcrumb> list = new List<ICB_Website.UI.Models.Breadcrumb>();
     list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 1, Name = ICB_Website.UI.Resources.RHome.News, URL = "#" });
     ViewBag.Breadcrumb = list;
+    int? loai = null;
+    if (ViewBag.loai != null) { loai = (int)ViewBag.loai; }
+    ViewBag.Title = loai == 0 ? "Tin tức - Sự kiện" : "Bản tin tổng hợp";
 }
 @section TopSlider{
     @Html.Partial("_sectionSlider")
@@ -31,7 +34,18 @@
     }
 </style>
 <div id="danh-sach-tin-tuc" class="widget kopa-article-list-widget-1 clearfix">
-    <h3 class="widget-title"><span class="icon-title fa fa-asterisk"></span>@ICB_Website.UI.Resources.RHome.News<a href="">@ICB_Website.UI.Resources.RHome.AllArticles</a></h3>
+    <h3 class="widget-title">
+        <span class="icon-title fa fa-asterisk"></span>
+        @if (loai == 0)
+        {
+            <text>@ICB_Website.UI.Resources.RHome.TinTucSuKien</text>
+        }
+        else
+        {
+            <text>@ICB_Website.UI.Resources.RHome.BanTinTongHop</text>
+        }
+        <a href="">@ICB_Website.UI.Resources.RHome.AllArticles</a>
+    </h3>
     @foreach (var item in Model)
     {
         <article class="entry-item clearfix last-item ">

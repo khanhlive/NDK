@@ -207,4 +207,10 @@
   <data name="StatisticalAccess" xml:space="preserve">
     <value>Thống kê truy cập</value>
   </data>
+  <data name="BanTinTongHop" xml:space="preserve">
+    <value>Bản tin tổng hợp</value>
+  </data>
+  <data name="TinTucSuKien" xml:space="preserve">
+    <value>Tin tức - Sự kiện</value>
+  </data>
 </root>

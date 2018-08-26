@@ -145,10 +145,30 @@
                             <i class="fa fa-tag"></i> Thông tin giới thiệu
                         </a>
                     </li>
+                    <li>
+                        <a data-nav="sodotochuc" href="@Url.Action("sodotochuc","setting",new {area="admin" })">
+                            <i class="fa fa-tag"></i> Sơ đồ tổ chức
+                        </a>
+                    </li>
+                    <li>
+                        <a data-nav="chinhsachchatluong" href="@Url.Action("chinhsachchatluong","setting",new {area="admin" })">
+                            <i class="fa fa-tag"></i> Chính sách chất lượng
+                        </a>
+                    </li>
+                    <li>
+                        <a data-nav="tamnhinsumenh" href="@Url.Action("tamnhinsumenh","setting",new {area="admin" })">
+                            <i class="fa fa-tag"></i> Tầm nhìn sứ mệnh
+                        </a>
+                    </li>
+                    <li>
+                        <a data-nav="supportinfo" href="@Url.Action("InfoSupport","support",new {area="admin" })">
+                            <i class="fa fa-tag"></i> Thông tin hỗ trợ
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li>
-                <a data-nav="support" href="@Url.Action("Index","support",new {area="admin" })" data-nav="hotro">
+                <a data-nav="support" href="@Url.Action("Index","support",new {area="admin" })">
                     <i class="fa fa-question-circle-o"></i> <span>Hỗ trợ</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-aqua">SP</small>

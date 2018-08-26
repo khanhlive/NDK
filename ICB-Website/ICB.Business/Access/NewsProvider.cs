@@ -89,14 +89,14 @@ namespace ICB.Business.Access
             }
         }
 
-        public async Task<List<News>> GetShowActiveAsync()
+        public async Task<List<News>> GetShowActiveAsync(int? loai)
         {
-            return (await this.GetAllAsync()).Where(p => p.Status == (int)ModelStatus.Active).OrderByDescending(p => p.PostedDate).ToList();
+            return (await this.GetAllAsync()).Where(p => (p.Status == (int)ModelStatus.Active) && (loai == null ? true : p.Category == loai)).OrderByDescending(p => p.PostedDate).ToList();
         }
 
-        public List<News> GetShow_Active()
+        public List<News> GetShow_Active(int? loai)
         {
-            return (this.GetAll()).Where(p => p.Status == (int)ModelStatus.Active).OrderByDescending(p => p.PostedDate).ToList();
+            return (this.GetAll()).Where(p => (p.Status == (int)ModelStatus.Active) && (loai == null ? true : p.Category == loai)).OrderByDescending(p => p.PostedDate).ToList();
         }
 
         public List<News> GetRecentPost()

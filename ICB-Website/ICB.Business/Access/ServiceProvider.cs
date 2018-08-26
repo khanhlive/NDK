@@ -11,7 +11,7 @@ namespace ICB.Business.Access
     {
         public ServiceProvider()
         {
-            
+
         }
         public ServiceProvider(bool proxy)
         {
@@ -26,6 +26,18 @@ namespace ICB.Business.Access
         {
             return dbSet.Where(p => p.Status == 1 && p.ServiceID == id && (!p.HasChild)).ToList();
         }
+        public List<ListService> GetNodeOfParent_2(int id)
+        {
+            var dt = dbSet.Where(p => p.Status == 1 && p.ServiceID == id && (!p.HasChild)).ToList();
+            List<ListService> all = new List<ListService>();
+            foreach (var item in dt)
+            {
+                ListService listService = new ListService { Caption = item.Caption, CategoryID = item.CategoryID, ID = item.ID, Name = item.Name, NameENG = item.NameENG, Services = this.GetNodeOfParent(item.ID), Status = item.Status, ThumbnailURL = item.ThumbnailURL, Title = item.Title, TitleENG = item.TitleENG };
+
+                all.Add(listService);
+            }
+            return all;
+        }
 
         public List<ListService> GetFullServices()
         {
@@ -34,12 +46,49 @@ namespace ICB.Business.Access
             foreach (var item in services)
             {
                 ListService listService = new ListService { Caption = item.Caption, CategoryID = item.CategoryID, ID = item.ID, Name = item.Name, NameENG = item.NameENG, Services = this.GetNodeOfParent(item.ID), Status = item.Status, ThumbnailURL = item.ThumbnailURL, Title = item.Title, TitleENG = item.TitleENG };
-                
+
                 all.Add(listService);
             }
             return all;
         }
+        public List<ListService> GetServicesLeft()
+        {
+            using (WebContext webContext = new WebContext())
+            {
+                var services = (from a in webContext.Services
+                                join b in webContext.Categories on a.CategoryID equals b.ID
+                                where a.Status == 1 && a.ServiceID == 0 && a.HasChild && (b.Order == 1 || b.Order == 2)
+                                select a).ToList();
+                List<ListService> all = new List<ListService>();
+                foreach (var item in services)
+                {
+                    ListService listService = new ListService { Caption = item.Caption, CategoryID = item.CategoryID, ID = item.ID, Name = item.Name, NameENG = item.NameENG, Services_2 = this.GetNodeOfParent_2(item.ID), Status = item.Status, ThumbnailURL = item.ThumbnailURL, Title = item.Title, TitleENG = item.TitleENG };
 
+                    all.Add(listService);
+                }
+                return all;
+            }
+
+        }
+        public List<ListService> GetServicesRight()
+        {
+            using (WebContext webContext = new WebContext())
+            {
+                var services = (from a in webContext.Services
+                                join b in webContext.Categories on a.CategoryID equals b.ID
+                                where a.Status == 1 && a.ServiceID == 0 && a.HasChild && (b.Order != 1 && b.Order != 2)
+                                select a).ToList();
+                List<ListService> all = new List<ListService>();
+                foreach (var item in services)
+                {
+                    ListService listService = new ListService { Caption = item.Caption, CategoryID = item.CategoryID, ID = item.ID, Name = item.Name, NameENG = item.NameENG, Services_2 = this.GetNodeOfParent_2(item.ID), Status = item.Status, ThumbnailURL = item.ThumbnailURL, Title = item.Title, TitleENG = item.TitleENG };
+
+                    all.Add(listService);
+                }
+                return all;
+            }
+
+        }
         public AccessEntityResult Add(Service service)
         {
 

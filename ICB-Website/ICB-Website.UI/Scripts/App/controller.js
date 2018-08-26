@@ -1067,6 +1067,18 @@ function SETTING_INIT() {
         ckfinder.popup();
     });
 
+    $('#btn-select-hosonangluc').click(function () {
+        var ckfinder = new CKFinder();
+        ckfinder.selectActionFunction = function (url, a, b) {
+            var decodedUri = decodeURIComponent(url);
+            //$('#img-customer-thumbnail').attr({ src: decodedUri });
+            //$('#iframe-hoso-demo').attr({ src: decodedUri });
+            SETTING_UPDATE_HOSO();
+            $('#txtHosonangluc').val(decodedUri);
+        }
+        ckfinder.popup();
+    });
+
     if ($('#frm-vanban-create').length > 0) {
         $('#frm-vanban-create #browser').click(function () {
             var ckfinder = new CKFinder();
@@ -1683,6 +1695,7 @@ function TINTUC_CREATE() {
     var content = CKEDITOR.instances.txtContent.getData();
     var contentReview = form.find('[name=ContentReview]').val();
     var posted = form.find('[name=PostedDate]').val();
+    var category = form.find('[name=Category]').val();
     //var status = form.find('[name=Status]').val();
     var thumbnail = form.find('[name=ThumbnailURL]').val();
     var News = {
@@ -1691,7 +1704,8 @@ function TINTUC_CREATE() {
         ThumbnailURL: thumbnail,
         //Status: status,
         Content: content,
-        PostedDate: posted
+        PostedDate: posted,
+        Category: category
     };
     APPLICATION.Ajax('/admin/news/CreatePost', 'application/json', 'POST', JSON.stringify(News), function (d) {
         if (d.Status == ResponseStatus.OK) {
@@ -1713,6 +1727,7 @@ function TINTUC_EDIT() {
     var id = form.find('[name=ID]').val();
     var status = form.find('[name=Status]').val();
     var thumbnail = form.find('[name=ThumbnailURL]').val();
+    var category = form.find('[name=Category]').val();
     var News = {
         ID: id,
         Caption: caption,
@@ -1720,7 +1735,7 @@ function TINTUC_EDIT() {
         ThumbnailURL: thumbnail,
         Status: status,
         Content: content,
-        PostedDate: posted
+        PostedDate: posted, Category: category
     };
     APPLICATION.Ajax('/admin/news/EditPut/' + News.ID, 'application/json', 'PUT', JSON.stringify(News), function (d) {
         if (d.Status == ResponseStatus.OK) {

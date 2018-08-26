@@ -1,13 +1,57 @@
-﻿@*@model List<ICB.Business.Models.Service>*@
+﻿ @*@model List<ICB.Business.Models.Service>*@
 @model List<ICB.Business.Models.ListService>
 @{
 
-    ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
-    var news = newsProvider.GetRecentPost();
+    //ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
+    ICB.Business.Access.SupportProvider supportProvider = new ICB.Business.Access.SupportProvider();
+
+    //var news = newsProvider.GetRecentPost();
+
 }
 <aside class="sidebar widget-area-5" style="margin-right:15px;">
 
-    <div class="widget clearfix" id="kopa-services">
+    @foreach (var service in Model)
+    {
+        <div class="widget clearfix" id="kopa-services">
+            <h3 class="widget-title"><span class="icon-title fa fa-tag"></span>@service.Caption</h3>
+            <ul class="clearfix menu-doc menu-left">
+                @foreach (var item in service.Services_2 )
+                {
+                    <li class="item item-other">
+                        <article class="entry-item clearfix">
+                            <a class="entry-item-img">
+                                <img src="@item.ThumbnailURL" />
+                            </a>
+                            <div class="entry-content">
+                                <header>
+                                    <h4 class="entry-title" style="font-size:13px;"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a></h4>
+                                    @if (item.Services.Count > 0)
+                                    {
+                                        <span class="fa fa-angle-double-right"></span>
+                                    }
+                                </header>
+
+                            </div>
+                        </article>
+                        @if (item.Services.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var child in item.Services)
+                                {
+                                    <li class="has-sub">
+                                        <a href="@Url.Action("Detail","products",new { id=child.ID })" title="@child.Name"><span>@child.Name</span></a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+
+            </ul>
+        </div>
+    }
+
+    @*<div class="widget clearfix" id="kopa-services">
         <h3 class="widget-title"><span class="icon-title fa fa-list"></span>@ICB_Website.UI.Resources.RHome.Services</h3>
 
         <ul class="clearfix menu-doc menu-left">
@@ -44,48 +88,45 @@
             }
 
         </ul>
-    </div>
-    <div id="danh-sach-tin-tuc-noi-bat" class="widget kopa-article-list-widget article-icon clearfix">
-        <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.RecentPost</h3>
-        <ul class="clearfix">
+    </div>*@
+    @*<div id="danh-sach-tin-tuc-noi-bat" class="widget kopa-article-list-widget article-icon clearfix">
+            <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.RecentPost</h3>
+            <ul class="clearfix">
 
-            @foreach (var item in news)
-            {
-                string caption = item.Caption.Length > ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength ? item.Caption.Substring(0, ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength) + "..." : item.Caption;
-                <li class="item other-item">
-                    <article class="entry-item clearfix">
-                        <span class="entry-icon fa fa-link"></span>
-                        <div class="entry-content">
-                            <header>
-                                <p class="entry-date">
-                                    @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@Math.Abs(NDK.ApplicationCore.Models.Common.GetDaysBetweenTimeAndToday(item.PostedDate)) @ICB_Website.UI.Resources.RHome.DaysAgo</span>
-                                </p>
-                                <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { id=item.ID })" title="@item.Caption">@caption</a></h4>
-                            </header>
-                        </div>
-                    </article>
-                </li>
-            }
-        </ul>
-    </div>
+                @foreach (var item in news)
+                {
+                    string caption = item.Caption.Length > ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength ? item.Caption.Substring(0, ICB_Website.UI.Models.HtmlHelper.TitleRecentPostMaxLength) + "..." : item.Caption;
+                    <li class="item other-item">
+                        <article class="entry-item clearfix">
+                            <span class="entry-icon fa fa-link"></span>
+                            <div class="entry-content">
+                                <header>
+                                    <p class="entry-date">
+                                        @ICB_Website.UI.Resources.RHome.Posted:&nbsp;<span>@Math.Abs(NDK.ApplicationCore.Models.Common.GetDaysBetweenTimeAndToday(item.PostedDate)) @ICB_Website.UI.Resources.RHome.DaysAgo</span>
+                                    </p>
+                                    <h4 class="entry-title"><a href="@Url.Action("Detail","news",new { id=item.ID })" title="@item.Caption">@caption</a></h4>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                }
+            </ul>
+        </div>*@
     <div id="ho-tro-khach-hang" style="border:1px solid #ddd;" class="widget kopa-article-list-widget article-icon clearfix">
         <h3 class="widget-title"><span class="icon-title fa fa-inbox"></span>@ICB_Website.UI.Resources.RHome.Support</h3>
         <div class="tuvan-baogia">
             <ul class="clearfix">
-                <li>
-                    <img alt="Phòng Sales" src="http://www.knacert.com/images/2017-02-23-11-36-31tu-van-iso.jpg">
-                    <p class="name">Phòng Sales</p>
-                    <p class="phonex"><i style="color: #f35b5b" class="fa fa-phone"></i>&nbsp;093.2211.786</p>
-                    <p class="other"><i style="color: #1252A9" class="fa fa-envelope-o"></i>&nbsp;<a href="mailto:salesmanager@knacert.com">salesmanager@knacert.com</a></p>
-                    <p class="other"><i style="color: #0AA4AB" class="fa fa-skype"></i>&nbsp;<a href="skype:salesmanager@knacert.com?chat">salesmanager@knacert.com</a></p>
-                </li>
-                <li>
-                    <img alt="Phòng kỹ thuật" src="http://www.knacert.com/images/2016-08-16-09-39-13xuanlai-1459484940-lamaca-ky-thuat.png">
-                    <p class="name">Phòng kỹ thuật</p>
-                    <p class="phonex"><i style="color: #f35b5b" class="fa fa-phone"></i>&nbsp;090.4444.679</p>
-                    <p class="other"><i style="color: #1252A9" class="fa fa-envelope-o"></i>&nbsp;<a href="mailto:salesmanager@knacert.com">salesmanager@knacert.com</a></p>
-                    <p class="other"><i style="color: #0AA4AB" class="fa fa-skype"></i>&nbsp;<a href="skype:salesmanager@knacert.com?chat">salesmanager@knacert.com</a></p>
-                </li>
+                @foreach (var item in supportProvider.GetAll())
+                {
+                    <li>
+                        <img alt="Phòng Sales" src="@item.Thumbnail">
+                        <p class="name">@item.Name</p>
+                        <p class="phonex"><i style="color: #f35b5b" class="fa fa-phone"></i>&nbsp;@item.Phone</p>
+                        <p class="other"><i style="color: #1252A9" class="fa fa-envelope-o"></i>&nbsp;<a href="mailto:@item.Email">@item.Email</a></p>
+                        <p class="other"><i style="color: #0AA4AB" class="fa fa-skype"></i>&nbsp;<a href="skype:@item.Skype?chat">@item.Skype</a></p>
+                    </li>
+                }
+
 
             </ul>
         </div>

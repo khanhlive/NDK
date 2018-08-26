@@ -89,11 +89,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group has-feedback">
-                                <label class="control-label col-md-4">Địa chỉ: </label>
-                                <div class="col-md-8">
-                                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @rows = "2", @placeholder = "Địa chỉ" })
+                                <label class="control-label col-md-2">Địa chỉ: </label>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @rows = "10", @placeholder = "Địa chỉ" })
                                     <span class="help-block"></span>
                                 </div>
 
@@ -182,7 +182,8 @@
                             <div class="input-group">
                                 <input name="hosonangluc" class="form-control" id="txtHosonangluc" value="@ViewBag.HOSONANGLUC" type="text" />
                                 <span class="input-group-btn">
-                                    <button type="button" onclick="SETTING_UPDATE_HOSO();" class="btn btn-primary"><i class="fa fa-save"></i> Lưu </button>
+                                    <button id="btn-select-hosonangluc" class="btn btn-success">&nbsp;Chọn năng lực...&nbsp;</button>
+                                    @*<button type="button" onclick="SETTING_UPDATE_HOSO();" class="btn btn-primary"><i class="fa fa-save"></i> Lưu </button>*@
                                 </span>
                             </div>
                         </div>

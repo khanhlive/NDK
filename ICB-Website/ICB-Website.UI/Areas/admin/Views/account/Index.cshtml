@@ -34,8 +34,8 @@
                             <td>@account.Email</td>
                             <td>@account.CreateTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
                             <td>@ICB.Business.Entities.Apps.RoleManager.GetDisplayName(account.Role)</td>
-                            <td><span @if (account.IsActive) { <text> class="icheckbox_minimal-blue checked" </text>  } else { <text> class="icheckbox_minimal-blue" </text> }> </span></td>
-                            <td><span @if (account.IsLocked) { <text> class="icheckbox_minimal-blue checked" </text>   } else { <text> class="icheckbox_minimal-blue" </text>  }> </span></td>
+                            <td><span @if (account.IsActive==null?false:account.IsActive.Value) { <text> class="icheckbox_minimal-blue checked" </text>  } else { <text> class="icheckbox_minimal-blue" </text> }> </span></td>
+                            <td><span @if (account.IsLocked==null?false:account.IsLocked.Value) { <text> class="icheckbox_minimal-blue checked" </text>   } else { <text> class="icheckbox_minimal-blue" </text>  }> </span></td>
                         </tr>
                     }
                 </tbody>

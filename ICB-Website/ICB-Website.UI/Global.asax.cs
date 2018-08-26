@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICB_Website.UI.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace ICB_Website.UI
             log4net.Config.XmlConfigurator.Configure();
             Application["Counter"] = 0;
             HttpContext.Current.Application["totalvisitor"] = 0;
+            ChatHub.dic.TryAdd("admin", Guid.NewGuid().ToString());
             Application["Online"] = 0;
             ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
             Application["IsSetup"] = systemConfigProvider.Get() != null;

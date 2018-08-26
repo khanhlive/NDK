@@ -29,6 +29,7 @@
                             <th>#</th>
                             <th>Ảnh đại diện</th>
                             <th>Tiêu đề</th>
+                            <th>Phân loại</th>
                             <th>Ngày đăng</th>
                             <th>Người đăng</th>
                             <th>Mô tả ngắn</th>
@@ -48,6 +49,16 @@
                                 <td>@i</td>
                                 <td><img class="img-thumbnail" src="@item.ThumbnailURL" style="height:80px;width:150px;"/></td>
                                 <td>@item.Caption</td>
+                                <td>
+                                    @if (item.Category == 0)
+                                    {
+                                        <text>Tin tức - sự kiện</text>
+                                    }
+                                    else if (item.Category == 1)
+                                    {
+                                        <text>Bản tin tổng hợp</text>
+                                    }
+                                </td>
                                 <td>@ICB_Website.UI.Models.HtmlHelper.FormatDatetime(item.PostedDate, NDK.ApplicationCore.Models.Common.DatetimeFormatString[1])</td>
                                 <td>@ICB.Business.Access.AccountProvider.GetName(item.UserID)</td>
                                 <td>@item.ContentReview</td>

@@ -99,7 +99,7 @@ $(document).ready(function () {
     });
     var owl7 = jQuery(".owl-carousel7");
     owl7.owlCarousel({
-        items: 10,
+        items: 7,
         itemsDesktop: [1024, 2],
         itemsDesktopSmall: [980, 2],
         itemsTablet: [640, 1],

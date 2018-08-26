@@ -11,8 +11,8 @@
 @section TopSlider{
     @Html.Partial("_sectionSlider")
 }
-<div class="kopa-entry-post">
-    <div class="kopa-entry-post post-1486 post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-post tag-standard">
+<div class="kopa-entry-post" style="background-color:#fff;">
+    <div class="kopa-entry-post post-1486">
 
         @if (Model != null)
         {
@@ -35,29 +35,108 @@
             </header>
             <div class="entry-content">
 
-                
+                @*<section class="design-process-section" id="process-tab">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <!-- design process steps-->
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#discover" aria-controls="discover" role="tab" data-toggle="tab">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                            <p>Discover</p>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#strategy" aria-controls="strategy" role="tab" data-toggle="tab">
+                                            <i class="fa fa-send-o" aria-hidden="true"></i>
+                                            <p>Strategy</p>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab">
+                                            <i class="fa fa-qrcode" aria-hidden="true"></i>
+                                            <p>Optimization</p>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#content" aria-controls="content" role="tab" data-toggle="tab">
+                                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                            <p>Content</p>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#reporting" aria-controls="reporting" role="tab" data-toggle="tab">
+                                            <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                            <p>Reporting</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- end design process steps-->
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="discover">
+                                        <div class="design-process-content">
+                                            <h3 class="semi-bold">Discovery</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="strategy">
+                                        <div class="design-process-content">
+                                            <h3 class="semi-bold">Strategy</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="optimization">
+                                        <div class="design-process-content">
+                                            <h3 class="semi-bold">Optimization</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="content">
+                                        <div class="design-process-content">
+                                            <h3 class="semi-bold">Content</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat</p>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="reporting">
+                                        <div class="design-process-content">
+                                            <h3>Reporting</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                </section>*@
 
-                <div class="entry-content">
-                    <div id="lipsum">
-                        <div class="block-tab">
-                            <ul>
-                                <li data-tab="1" class="active-tab">Giới thiệu</li>
-                                <li data-tab="2" class="">Quy trình thực hiện</li>
-                                <li data-tab="3" class="">Tài liệu liên quan</li>
-                            </ul>
-                        </div>
-                        <div class="block-content-tab item-tab1 active-content">
-                            @Html.Raw(Model.Introduction)
-                        </div>
-                        <div class="block-content-tab item-tab2">
-                            @Html.Raw(Model.Procedure)
-                        </div>
-                        <div class="block-content-tab item-tab3">
-                            @Html.Raw(Model.DocumentView)
-                        </div>
-                        
+
+
+
+
+
+
+                <div id="lipsum">
+                    <div class="block-tab">
+                        <ul>
+                            <li data-tab="1" class="active-tab">Giới thiệu</li>
+                            <li data-tab="2" class="">Quy trình thực hiện</li>
+                            <li data-tab="3" class="">Tài liệu liên quan</li>
+                        </ul>
                     </div>
+                    <div class="block-content-tab item-tab1 active-content">
+                        @Html.Raw(Model.Introduction)
                     </div>
+                    <div class="block-content-tab item-tab2">
+                        @Html.Raw(Model.Procedure)
+                    </div>
+                    <div class="block-content-tab item-tab3">
+                        @Html.Raw(Model.DocumentView)
+                    </div>
+
+                </div>
             </div>
         }
         <!--/kopa-about-author-->
@@ -76,7 +155,19 @@
                 $('.item-tab' + id_tab).addClass('active-content');
 
 
-            })
+            });
+            // script for tab steps
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+                var href = $(e.target).attr('href');
+                var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+                $('.process-model li').removeClass();
+
+                $curr.addClass("active");
+                $curr.prevAll().addClass("visited");
+            });
+// end  script for tab steps
         });
     </script>
     }

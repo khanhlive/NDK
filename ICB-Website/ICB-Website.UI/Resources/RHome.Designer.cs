@@ -88,6 +88,15 @@ namespace ICB_Website.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Newsletters.
+        /// </summary>
+        public static string BanTinTongHop {
+            get {
+                return ResourceManager.GetString("BanTinTongHop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caption.
         /// </summary>
         public static string Caption {
@@ -318,6 +327,15 @@ namespace ICB_Website.UI.Resources {
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event - News.
+        /// </summary>
+        public static string TinTucSuKien {
+            get {
+                return ResourceManager.GetString("TinTucSuKien", resourceCulture);
             }
         }
         

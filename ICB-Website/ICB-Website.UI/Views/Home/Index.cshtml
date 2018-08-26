@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ICB.Business.Access.NewsProvider newsProvider = new ICB.Business.Access.NewsProvider();
     var newsRecent = newsProvider.GetRecentPost().Take(3).ToList();
-    var news = newsProvider.GetShow_Active().Take(7).ToList();
+    var news = newsProvider.GetShow_Active(null).Take(7).ToList();
     var newsFirst = news.Count == 0 ? new ICB.Business.Models.News() : news.FirstOrDefault();
     news = news.Count > 0 ? news.Skip(1).ToList() : new List<ICB.Business.Models.News>();
 }
@@ -24,12 +24,12 @@
                         <article class="entry-item clearfix ">
                             <div class="entry-thumb">
                                 <a href="@Url.Action("Detail","news",new { @id=item.ID })" title="@item.Caption"><img style="width:200px;height:200px;" src="@item.ThumbnailURL" alt="@item.Caption" /></a>
-                                <div class="thumb-hover">
+                                @*<div class="thumb-hover">
                                     <div class="thumb-icon">
                                         <span class="icon-top"></span>
                                         <a class="fa fa-link" href="@Url.Action("Detail","news",new { @id=item.ID })" title="@item.Caption"></a>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="entry-content">
                                 <header>
@@ -57,12 +57,12 @@
     <article class="entry-item clearfix last-item ">
         <div class="entry-thumb" style="width:220px">
             <a href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption"><img style="width:200px;height:200px" src="@newsFirst.ThumbnailURL" alt="@newsFirst.Caption" /></a>
-            <div class="thumb-hover">
+            @*<div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
                     <a class="fa fa-link" href="@Url.Action("Detail","news",new { @id=newsFirst.ID})" title="@newsFirst.Caption"></a>
                 </div>
-            </div>
+            </div>*@
         </div>
 
         <div class="entry-content">
@@ -118,12 +118,12 @@
     <article class="entry-item clearfix last-item post-754 ">
         <div class="entry-thumb">
             <a href="@Url.Action("vanban","Home",new { @id=documentFirst.ID })" title="@documentFirst.Caption"><img style="height:150px;width:200px" src="@documentFirst.Path" alt="@documentFirst.Caption" /></a>
-            <div class="thumb-hover">
+            @*<div class="thumb-hover">
                 <div class="thumb-icon">
                     <span class="icon-top"></span>
                     <a class="fa fa-picture-o" href="@Url.Action("Detail","document",new { @id=documentFirst.ID })" title="@documentFirst.Caption"></a>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="entry-content">
             <header>
@@ -171,14 +171,13 @@
     }
     <section class="widget-area-1 clearfix">
         <div class="widget kopa-list-post-no-thumb clearfix">
-
             <div class="list-post-main" style="width:100%;">
                 <div class="owl-carousel owl-carousel7" style="display:block;opacity:1;">
                     @foreach (var item in khachhang)
                     {
                         <div class="item">
                             <article class="entry-item clearfix">
-                                <a href="javascript:void(0);"><img alt="@item.Name" src="@item.Thumbnail" /></a>
+                                <a href="javascript:void(0);"><img height="90" alt="@item.Name" src="@item.Thumbnail" /></a>
                             </article>
                         </div>
                     }

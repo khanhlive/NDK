@@ -78,6 +78,7 @@
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\ListService.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Support.cs" />

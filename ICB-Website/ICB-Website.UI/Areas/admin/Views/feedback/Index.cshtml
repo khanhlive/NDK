@@ -1,9 +1,54 @@
-﻿
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ICB.Business.Models.Message>
 @{
     ViewBag.Title = "Admin: Quản lý phản hồi";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    ViewBag.ContentName = "Quản lý phản hồi";
+    ViewBag.Header = "Quản lý phản hồi";
 }
 <div data-controller="feedback">
-
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách phản hồi</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped jambo_table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Họ tên</th>
+                            <th>Ngày tạo</th>
+                            <th>Nội dung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Name</td>
+                                <td>@item.CreateDate</td>
+                                <td>@item.Content</td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination text-right pull-right">
+                @Html.PagedListPager(Model, page => Url.Action("Index", "feedback", new { area = "admin", page, pagesize = 20 }), ICB_Website.UI.Models.HtmlHelper.GetPagedListRenderOptions)
+            </div>
+        </div>
+    </div>
 </div>
 

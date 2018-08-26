@@ -5,6 +5,7 @@ using ICB.Business.Models;
 using ICB_Website.UI.Models;
 using ICB_Website.UI.Models.Security;
 using NDK.ApplicationCore.Extensions.ResponseResults;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -16,7 +17,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
     {
         public settingController() : base("Thông tin trang web", "Thông tin trang web") { }
         // GET: admin/setting
-        [AppAuthorize(RoleManager.Admin,RoleManager.Superadmin,RoleManager.Manager)]
+        [AppAuthorize(RoleManager.Admin, RoleManager.Superadmin, RoleManager.Manager)]
         public ActionResult Index()
         {
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
@@ -63,7 +64,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             {
                 SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
                 var result = await systemConfigProvider.AddBanner(src);
-                return Json(new { result= result.Item1, data = result.Item2 });
+                return Json(new { result = result.Item1, data = result.Item2 });
             }
         }
 
@@ -107,7 +108,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Update_HOSO_Description(string Caption,string Description)
+        public async Task<JsonResult> Update_HOSO_Description(string Caption, string Description)
         {
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
             var result = await systemConfigProvider.INSERTorUPDATE_HOSO_Description(Caption, Description);
@@ -120,7 +121,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
             var about = systemConfigProvider.GetGioiThieu();
             ViewData["model"] = about == null ? "" : about.Content;
-            ViewData["name"]= about == null ? "" : about.Name;
+            ViewData["name"] = about == null ? "" : about.Name;
             return View(about);
         }
 
@@ -132,8 +133,8 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             model.Status = 1;
             model.Category = (int)WebsiteCategory.GioiThieu;
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();
-            var result = await systemConfigProvider.INSERTorUPDATE_GIOITHIEU(model.Name,model.Content);
-            if (result.Item1== AccessEntityStatusCode.OK)
+            var result = await systemConfigProvider.INSERTorUPDATE_GIOITHIEU(model.Name, model.Content);
+            if (result.Item1 == AccessEntityStatusCode.OK)
             {
                 TempData["message"] = "Chỉnh sửa thông tin thành công";
                 return RedirectToAction("AboutUs");
@@ -143,7 +144,148 @@ namespace ICB_Website.UI.Areas.admin.Controllers
                 TempData["message"] = "Không chỉnh sửa được thông tin giới thiệu";
                 return View("AboutUs");
             }
-            
+
+        }
+        [AttributeRouting.Web.Mvc.Route("so-do-to-chuc")]
+        public ActionResult SoDoToChuc()
+        {
+            using (WebContext db = new WebContext())
+            {
+                int _loai = (int)WebsiteCategory.SoDoToChuc;
+                return View(db.SystemConfigs.FirstOrDefault(p=>p.Category== _loai));
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        [ValidateInput(false)]
+        public ActionResult SoDoToChucPOST(SystemConfig model)
+        {
+            using (WebContext db = new WebContext())
+            {
+                int _loai = (int)WebsiteCategory.SoDoToChuc;
+                bool hasSoDo = db.SystemConfigs.Any(p => p.Category == _loai);
+
+                if (hasSoDo)
+                {
+                    //update
+                    var obj = db.SystemConfigs.AsNoTracking().FirstOrDefault(p => p.Category == _loai);
+                    obj.Name = model.Name;
+                    obj.Content = model.Content;
+                    db.Entry<SystemConfig>(obj).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    //insert
+                    model.Status = 1;
+                    model.Category = _loai;
+                    db.SystemConfigs.Add(model);
+                }
+                int count = db.SaveChanges();
+                if (count >= 0)
+                {
+                    TempData["message"] = "Chỉnh sửa thông tin thành công";
+                    return RedirectToAction("SoDoToChuc");
+                }
+                else
+                {
+                    TempData["message"] = "Không chỉnh sửa được thông tin";
+                    return View("SoDoToChuc");
+                }
+            }
+        }
+        [AttributeRouting.Web.Mvc.Route("chinh-sach-chat-luong")]
+        public ActionResult ChinhSachChatLuong()
+        {
+            using (WebContext db = new WebContext())
+            {
+                int _loai = (int)WebsiteCategory.ChinhSachChatLuong;
+                return View(db.SystemConfigs.FirstOrDefault(p => p.Category == _loai));
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        [ValidateInput(false)]
+        public ActionResult ChinhSachChatLuongPOST(SystemConfig model)
+        {
+            using (WebContext db = new WebContext())
+            {
+                int _loai = (int)WebsiteCategory.ChinhSachChatLuong;
+                bool hasSoDo = db.SystemConfigs.Any(p => p.Category == _loai);
+
+                if (hasSoDo)
+                {
+                    //update
+                    var obj = db.SystemConfigs.AsNoTracking().FirstOrDefault(p => p.Category == _loai);
+                    obj.Name = model.Name;
+                    obj.Content = model.Content;
+                    db.Entry<SystemConfig>(obj).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    //insert
+                    model.Status = 1;
+                    model.Category = (int)WebsiteCategory.ChinhSachChatLuong;
+                    db.SystemConfigs.Add(model);
+                }
+                int count = db.SaveChanges();
+                if (count >= 0)
+                {
+                    TempData["message"] = "Chỉnh sửa thông tin thành công";
+                    return RedirectToAction("ChinhSachChatLuong");
+                }
+                else
+                {
+                    TempData["message"] = "Không chỉnh sửa được thông tin";
+                    return View("ChinhSachChatLuong");
+                }
+            }
+        }
+        [AttributeRouting.Web.Mvc.Route("tam-nhin-su-menh")]
+        public ActionResult TamNhinSuMenh()
+        {
+            using (WebContext db = new WebContext())
+            {
+                int _loai = (int)WebsiteCategory.TamNhinSuMenh;
+                return View(db.SystemConfigs.FirstOrDefault(p => p.Category == _loai));
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        [ValidateInput(false)]
+        public ActionResult TamNhinSuMenhPOST(SystemConfig model)
+        {
+            using (WebContext db = new WebContext())
+            {
+                int _loai = (int)WebsiteCategory.TamNhinSuMenh;
+                bool hasSoDo = db.SystemConfigs.Any(p => p.Category == _loai);
+
+                if (hasSoDo)
+                {
+                    //update
+                    var obj = db.SystemConfigs.AsNoTracking().FirstOrDefault(p => p.Category == _loai);
+                    obj.Name = model.Name;
+                    obj.Content = model.Content;
+                    db.Entry<SystemConfig>(obj).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    //insert
+                    model.Status = 1;
+                    model.Category = (int)WebsiteCategory.TamNhinSuMenh;
+                    db.SystemConfigs.Add(model);
+                }
+                int count = db.SaveChanges();
+                if (count >= 0)
+                {
+                    TempData["message"] = "Chỉnh sửa thông tin thành công";
+                    return RedirectToAction("TamNhinSuMenh");
+                }
+                else
+                {
+                    TempData["message"] = "Không chỉnh sửa được thông tin";
+                    return View("TamNhinSuMenh");
+                }
+            }
         }
     }
 }

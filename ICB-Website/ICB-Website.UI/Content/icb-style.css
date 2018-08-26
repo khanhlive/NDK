@@ -9,16 +9,52 @@
         text-decoration: underline !important;
         cursor: pointer !important;
     }
+.hotline {
+    color: #ef0a3d;
+    -webkit-animation: flash linear 1s infinite;
+    animation: flash linear 1s infinite;
+}
+@-webkit-keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 .name-company {
     float: right;
     position: absolute;
     top: 20px;
     /*right: 80px;*/
-    font-weight:600;
+    font-weight: 600;
     font-size: 36px;
-    color: #fff;
-    text-align:center;
-    width:100%;
+    color: #2680a2;
+    text-align: center;
+    width: 100%;
+    /*background: #0e8dbc;*/
+    color: white;
+    color: #244f98;
+    text-shadow: 0 1px 0 #fff, 0 2px 0 #ececec, 0 3px 0 #e8e8e8, 0 4px 0 #e2e2e2, 0 5px 0 #d8d6d6, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
 }
 
 .owl-carousel5 .entry-thumb {
@@ -268,11 +304,17 @@
 .kopa-pagination ul li.active a{
     color: #fff !important;
 }
+
+#main-nav .menu-item span.fa {
+    float: right;
+    line-height: 20px;
+}
+
  /*menu doc*/
 
  .menu-doc{
      position:relative;
-     z-index:600;
+     /*z-index:600;*/
      float:left;
      width:100%;
  }
@@ -540,3 +582,187 @@
                 line-height: 25px;
                 margin-left:5px;
             }
+
+#contact-box{
+    
+}
+.wrapper{
+    overflow-x:unset !important;
+    overflow-y:unset !important;
+}
+
+/******************************/
+.design-process-section .text-align-center {
+    line-height: 25px;
+    margin-bottom: 12px;
+}
+
+.design-process-content {
+    border: 1px solid #e9e9e9;
+    position: relative;
+    padding: 16px 34% 30px 30px;
+}
+
+    .design-process-content img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        max-height: 100%;
+    }
+
+    .design-process-content h3 {
+        margin-bottom: 16px;
+    }
+
+    .design-process-content p {
+        line-height: 26px;
+        margin-bottom: 12px;
+    }
+
+.process-model {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto 26px;
+    border: none;
+    z-index: 0;
+}
+
+    .process-model li::after {
+        background: #e5e5e5 none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 4px;
+        margin: 0 auto;
+        position: absolute;
+        right: -35px;
+        top: 20px;
+        width: 62%;
+        z-index: -1;
+    }
+
+    .process-model li.visited::after {
+        background: #57b87b;
+    }
+
+    .process-model li:last-child::after {
+        width: 0;
+    }
+
+    .process-model li {
+        display: inline-block;
+        width: 18%;
+        text-align: center;
+        float: none;
+    }
+
+        .nav-tabs.process-model > li.active > a, .nav-tabs.process-model > li.active > a:hover, .nav-tabs.process-model > li.active > a:focus, .process-model li a:hover, .process-model li a:focus {
+            border: none;
+            /*background: transparent;*/
+        }
+
+        .process-model li a {
+            padding: 0;
+            border: none;
+            color: #606060;
+        }
+
+        .process-model li.active,
+        .process-model li.visited {
+            color: #57b87b;
+        }
+
+            .process-model li.active a,
+            .process-model li.active a:hover,
+            .process-model li.active a:focus,
+            .process-model li.visited a,
+            .process-model li.visited a:hover,
+            .process-model li.visited a:focus {
+                color: #57b87b;
+                background-color: #fff !important;
+            }
+
+            .process-model li.active p,
+            .process-model li.visited p {
+                font-weight: 600;
+            }
+
+        .process-model li i {
+            display: block;
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            margin: 0 auto;
+            background: #f5f6f7;
+            border: 2px solid #e5e5e5;
+            line-height: 38px;
+            font-size: 15px;
+            border-radius: 50%;
+        }
+
+        .process-model li.active i, .process-model li.visited i {
+            
+            border-color: #57b87b;
+        }
+
+        .process-model li p {
+            font-size: 14px;
+            margin-top: 11px;
+        }
+
+    .process-model.contact-us-tab li.visited a, .process-model.contact-us-tab li.visited p {
+        color: #606060 !important;
+        font-weight: normal
+    }
+
+    .process-model.contact-us-tab li::after {
+        display: none;
+    }
+
+    .process-model.contact-us-tab li.visited i {
+        border-color: #e5e5e5;
+    }
+
+
+
+@media screen and (max-width: 560px) {
+    .more-icon-preocess.process-model li span {
+        font-size: 23px;
+        height: 50px;
+        line-height: 46px;
+        width: 50px;
+    }
+
+    .more-icon-preocess.process-model li::after {
+        top: 24px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .process-model.more-icon-preocess li {
+        width: 16%;
+    }
+
+    .more-icon-preocess.process-model li span {
+        font-size: 16px;
+        height: 35px;
+        line-height: 32px;
+        width: 35px;
+    }
+
+    .more-icon-preocess.process-model li p {
+        font-size: 8px;
+    }
+
+    .more-icon-preocess.process-model li::after {
+        top: 18px;
+    }
+
+    .process-model.more-icon-preocess {
+        text-align: center;
+    }
+}

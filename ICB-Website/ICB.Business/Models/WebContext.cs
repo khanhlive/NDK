@@ -22,6 +22,7 @@ namespace ICB.Business.Models
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Support> Supports { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

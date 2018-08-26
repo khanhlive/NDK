@@ -1,0 +1,46 @@
+﻿@model ICB.Business.Models.SystemConfig
+@{
+    ViewBag.Title = "Chính sách chất lượng";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    List<ICB_Website.UI.Models.Breadcrumb> list = new List<ICB_Website.UI.Models.Breadcrumb>();
+    list.Add(new ICB_Website.UI.Models.Breadcrumb { ID = 1, Name = "Chính sách chất lượng", URL = "#" });
+    ViewBag.Breadcrumb = list;
+}
+@section TopSlider{
+    @Html.Partial("_sectionSlider")
+}
+
+<div class="kopa-entry-post">
+    <header class="clearfix">
+        <h4 class="entry-title">
+            @if (Model != null)
+            {<text>@Model.Name</text>}
+        else
+        {
+            <text>Chính sách chất lượng</text>
+        }
+        </h4>
+
+        <div class="entry-meta clearfix">
+            <p class="entry-date">Posted:<span>June 19, 2014</span></p>
+            <p class="entry-categories">in:&nbsp;<a href="" rel="category">People</a></p>
+            <p class="entry-comment"><a href="">No Comment</a></p>
+        </div>
+        <div class="kopa-social-link">
+            <ul class="clearfix">
+                <li><a href="" title="Facebook" target="_blank" class="fa fa-facebook"></a></li>
+                <li><a href="" title="Twitter" target="_blank" class="fa fa-twitter"></a></li>
+                <li><a href="" title="Google" target="_blank" class="fa fa-google-plus"></a></li>
+                <li><a href="" title="Pinterest" target="_blank" class="fa fa-pinterest"></a></li>
+                <li><a href="" title="Email" target="_blank" class="fa fa-envelope"></a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="entry-content">
+        <div class="entry-content">
+            <div id="lipsum">
+                    @Html.Raw(Model?.Content)
+            </div>
+        </div>
+    </div>
+</div>

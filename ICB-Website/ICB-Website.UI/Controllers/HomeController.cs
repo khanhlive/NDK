@@ -6,6 +6,8 @@ using ICB.Business.Models;
 using ICB.Business.Access;
 using System.Reflection;
 using System.Linq;
+using ICB.Business.Entities.Apps;
+using System.Data.Entity;
 
 namespace ICB_Website.UI.Controllers
 {
@@ -81,6 +83,38 @@ namespace ICB_Website.UI.Controllers
             }
             else ViewBag.Status = false;
             return View("lienhe");
+        }
+
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
+        [AttributeRouting.Web.Mvc.Route("tam-nhin-su-menh")]
+        public async Task<ActionResult> TamNhinSuMenh()
+        {
+            int _loai = (int)WebsiteCategory.TamNhinSuMenh;
+            using (WebContext db=new WebContext())
+            {
+                return View(await db.SystemConfigs.FirstOrDefaultAsync(p=>p.Category==_loai));
+            }
+            
+        }
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
+        [AttributeRouting.Web.Mvc.Route("chinh-sach-chat-luong")]
+        public async Task<ActionResult> chinhsachchatluong()
+        {
+            int _loai = (int)WebsiteCategory.ChinhSachChatLuong;
+            using (WebContext db = new WebContext())
+            {
+                return View(await db.SystemConfigs.FirstOrDefaultAsync(p => p.Category == _loai));
+            }
+        }
+        [ICB_Website.UI.Models.Security.GuestAuthorize]
+        [AttributeRouting.Web.Mvc.Route("so-do-to-chuc")]
+        public async Task<ActionResult> sodotochuc()
+        {
+            int _loai = (int)WebsiteCategory.SoDoToChuc;
+            using (WebContext db = new WebContext())
+            {
+                return View(await db.SystemConfigs.FirstOrDefaultAsync(p => p.Category == _loai));
+            }
         }
     }
 }

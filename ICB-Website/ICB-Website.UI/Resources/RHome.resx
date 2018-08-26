@@ -207,4 +207,10 @@
   <data name="StatisticalAccess" xml:space="preserve">
     <value>Statistical Access</value>
   </data>
+  <data name="BanTinTongHop" xml:space="preserve">
+    <value>General Newsletters</value>
+  </data>
+  <data name="TinTucSuKien" xml:space="preserve">
+    <value>Event - News</value>
+  </data>
 </root>

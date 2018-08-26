@@ -17,5 +17,6 @@ namespace ICB.Business.Models
         public string ThumbnailURL { get; set; }
         public int ID { get; set; }
         public List<Service> Services { get; set; }
+        public List<ListService> Services_2 { get; set; }
     }
 }

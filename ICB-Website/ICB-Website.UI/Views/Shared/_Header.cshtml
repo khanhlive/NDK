@@ -1,29 +1,30 @@
-﻿@{ 
+﻿@{
     ICB.Business.Access.SystemConfigProvider systemConfigProvider = new ICB.Business.Access.SystemConfigProvider();
-    var info = systemConfigProvider.Get()??new ICB.Business.Models.SystemConfig();
+    var info = systemConfigProvider.Get() ?? new ICB.Business.Models.SystemConfig();
     var banner = systemConfigProvider.GetBanner();
     ICB.Business.Access.ServiceProvider serviceProvider = new ICB.Business.Access.ServiceProvider();
-    var services = serviceProvider.GetAll().Where(p => p.HasChild == false || p.ServiceID == 0).ToList();
+    var _left = serviceProvider.GetServicesLeft();
+    _left.AddRange(serviceProvider.GetServicesRight());
 }
 <header id="kopa-header">
     <div class="header-top">
         <div class="wrapper clearfix">
             <nav id="top-nav" class="top-nav pull-left">
                 <ul id="top-menu" class="top-menu clearfix">
-                    <li class="menu-item ">
-                        Hotline: <a href="">@info.Hotline</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li class="menu-item">
+                        <span class="hotline">Hotline: <a style="font-weight:bold;color:#ef0a3d !important" href="">@info.Hotline</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
                         Email: <a href="mailto:@info.Email" class="link-email">@info.Email</a>
                     </li>
 
                     <li class="menu-item ">
-                    @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
-                    {
-                        <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
-                    }
+                        @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
+                        {
+                            <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
+                        }
                     </li>
                     @if (ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Admin
                 || ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Superadmin)
@@ -32,11 +33,11 @@
                     }
                 </ul>
             </nav>
-            
+
             <div class="search-box pull-right">
-                
+
                 <form method="get" class="search-form" action="">
-                    <input type="text" name="search" placeholder="Tìm kiếm"/>
+                    <input type="text" name="search" placeholder="Tìm kiếm" />
                     <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -45,7 +46,7 @@
                     <li class="menu-item"><a href="@Url.Action("ChangeLanguage","Home",new { lang="vi" })"><img style="margin-top:-4px;" src="~/Images/vi.png" /> Tiếng Việt</a></li>
                     <li class="menu-item" style="margin-right:-1px;"><a href="@Url.Action("ChangeLanguage","Home",new { lang="en" })"><img style="margin-top:-4px;" src="~/Images/en.png" /> English</a></li>
                 </ul>
-               
+
             </div>
 
         </div><!--/end .search-box-->
@@ -66,10 +67,10 @@
                     <!-- Slides Container -->
                     <div u="slides" style="cursor: move; width:1150px; height: 200px;">
                         @foreach (var item in banner)
-        {
-            <div><img style="height:200px;" u="image" src="@item.Name" /></div>
-        }
-                        
+                        {
+                            <div><img style="height:200px;" u="image" src="@item.Name" /></div>
+                        }
+
 
                     </div>
                     <!-- Trigger -->
@@ -81,23 +82,23 @@
             </div>
             <nav class="main-nav-mobile clearfix">
                 <a class="pull"><span class="fa fa-bars"></span></a><ul id="main-menu-mobile" class="main-menu-mobile">
-    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
-    <li class="menu-item">
-        @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
-        {
-            <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
-        }
-        else
-        {
-            <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
-        }
-    </li>
-    @if (ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Admin
-        || ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Superadmin)
-    {
-        <li class="menu-item"><a href="@Url.Action("Index","dashboard",new { area="admin"})">@ICB_Website.UI.Resources.RHome.AdminPanel</a></li>
-    }
-</ul>
+                    <li class="menu-item"><a href="">@ICB_Website.UI.Resources.RHome.Contact</a></li>
+                    <li class="menu-item">
+                        @if (ICB_Website.UI.Models.Security.SessionApp.IsLogin)
+                        {
+                            <a href="@Url.Action("Logout","Account")">@ICB_Website.UI.Resources.RHome.Logout</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Login","Account")">@ICB_Website.UI.Resources.RHome.Login</a>
+                        }
+                    </li>
+                    @if (ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Admin
+                        || ICB_Website.UI.Models.Security.SessionApp.RoleType == ICB.Business.Entities.Apps.RoleManager.Superadmin)
+                    {
+                        <li class="menu-item"><a href="@Url.Action("Index","dashboard",new { area="admin"})">@ICB_Website.UI.Resources.RHome.AdminPanel</a></li>
+                    }
+                </ul>
 
             </nav>
         </div>
@@ -105,36 +106,65 @@
 
     <div class="header-bottom" style="margin-bottom:-1px;">
         <div class="wrapper clearfix">
-            <nav id='cssmenu' class="kopa-main-nav">
+            <nav id='main-nav' class="kopa-main-nav">
                 <div style="display:none;" class="logo-mobile"><a href="index.html">Responsive </a></div>
                 <div id="head-mobile"></div>
                 <div class="button"></div>
                 <ul style="margin-bottom:0px;" class="main-menu sf-menu">
-                    <li class='menu-item'><a href='@Url.Action("Index","Home")'>@ICB_Website.UI.Resources.RHome.Home</a></li>
-                    <li class="menu-item"><a href='@Url.Action("gioithieu","Home")'>@ICB_Website.UI.Resources.RHome.AboutUS</a></li>
-                    <li class="menu-item"><a href='@Url.Action("Index","news")'>@ICB_Website.UI.Resources.RHome.News</a></li>
+                    <li class='menu-item'>
+                        <a href='@Url.Action("Index","Home")'>@ICB_Website.UI.Resources.RHome.Home</a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href='@Url.Action("gioithieu","Home")'>@ICB_Website.UI.Resources.RHome.AboutUS</a></li>
+                            <li class="menu-item"><a href='@Url.Action("sodotochuc","Home")'>Sơ đồ tổ chức</a></li>
+                            <li class="menu-item"><a href='@Url.Action("chinhsachchatluong","Home")'>Chính sách chất lượng</a></li>
+                            <li class="menu-item"><a href='@Url.Action("tamnhinsumenh","Home")'>Tầm nhìn và sứ mệnh</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href='javascript:void(0);'>@ICB_Website.UI.Resources.RHome.News</a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="@Url.Action("Index","news",new { loai=0 })">Tin tức - Sự kiện</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Index","news",new { loai=1})">Bản tin tổng hợp</a></li>
+                        </ul>
+                    </li>
                     <li class="menu-item">
                         <a href='#'>@ICB_Website.UI.Resources.RHome.Products</a>
-                        <div class="sf-mega col-md-push-0 col-sm-push-0 col-xs-push-0 col-md-12 col-sm-12 col-xs-12" style="padding-bottom:35px;">
-                            @foreach (var item in services)
-                            {
-                                <div class="sf-mega-section col-md-4 col-xs-4 col-sm-4 sub-menu-list-article" style="margin-bottom:0px;">
-                                    <div class="widget kopa-posts-list-square-thumbnail clearfix" style="margin-bottom:20px;">
-                                        <div class="clearfix post type-post ">
-                                            <article class="entry-item clearfix">
-                                                <div class="entry-thumb" style="width:45px;">
-                                                    <a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Caption"><img src="@item.ThumbnailURL" alt="@item.Caption"></a>
-                                                </div>
-                                                <div class="entry-content">
-                                                    <h2 class="entry-title"><a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Caption">@item.Caption</a></h2>
-                                                </div>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                        @if (_left.Count > 0)
+                        {
+                            <ul class="sub-menu">
+                                @foreach (var item in _left)
+                                {
+                                    <li class="menu-item">
+                                        <a href="@Url.Action("Detail","products",new { id=item.ID })" title="@item.Name">@item.Name</a>
+                                        @if (item.Services_2.Count > 0)
+                                        {
+                                            <span class="fa fa-angle-right"></span>
+                                            <ul class="sub-menu">
+                                                @foreach (var item1 in item.Services_2)
+                                                {
+                                                    <li class="menu-item">
+                                                        <a href="@Url.Action("Detail","products",new { id=item1.ID })" title="@item1.Name">@item1.Name</a>
 
-                        </div>
+                                                        @if (item1.Services.Count > 0)
+                                                        {
+                                                            <span class="fa fa-angle-right"></span>
+                                                            <ul>
+                                                                @foreach (var child in item1.Services)
+                                                                {
+                                                                    <li class="has-sub">
+                                                                        <a href="@Url.Action("Detail","products",new { id=child.ID })" title="@child.Name"><span>@child.Name</span></a>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
                     </li>
                     <li><a href='@Url.Action("Index","partner")'>@ICB_Website.UI.Resources.RHome.Partner</a></li>
                     <li><a href='@Url.Action("Index","document")'>@ICB_Website.UI.Resources.RHome.Document</a></li>

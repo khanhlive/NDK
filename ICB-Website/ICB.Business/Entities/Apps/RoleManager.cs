@@ -12,7 +12,7 @@ namespace ICB.Business.Entities.Apps
         public const int Member = 4;
         public const int Guest = 5;
 
-        
+
         public static string GetDisplayName(int role)
         {
             List<RoleModel> list = new List<RoleModel>();
@@ -58,7 +58,8 @@ namespace ICB.Business.Entities.Apps
             if (status == 0)
             {
                 return "Chưa duyệt";
-            } else if (status == 1)
+            }
+            else if (status == 1)
             {
                 return "Đã duyệt";
             }
@@ -84,6 +85,9 @@ namespace ICB.Business.Entities.Apps
         Info = 0,
         Slider = 1,
         HosoNangLuc = 3,
-        GioiThieu = 4
+        GioiThieu = 4,
+        SoDoToChuc = 5,
+        ChinhSachChatLuong = 6,
+        TamNhinSuMenh = 7
     }
 }
