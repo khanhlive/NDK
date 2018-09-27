@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿/// <reference path="common.js" />
+$(document).ready(function () {
     if ($('[data-controller=account]').length > 0) {
         ACCOUNT_INIT_TABLE_ALLACCOUNT();
         ACCOUNT_ADD_INITFORM();

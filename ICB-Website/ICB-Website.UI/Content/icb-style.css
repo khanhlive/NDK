@@ -10,10 +10,12 @@
         cursor: pointer !important;
     }
 .hotline {
-    color: #ef0a3d;
-    -webkit-animation: flash linear 1s infinite;
-    animation: flash linear 1s infinite;
+    font-weight:bold;
+    /*color: #ef0a3d;*/
+    /*-webkit-animation: flash linear 1s infinite;
+    animation: flash linear 1s infinite;*/
 }
+
 @-webkit-keyframes flash {
     0% {
         opacity: 1;
@@ -294,7 +296,7 @@
                 transition-delay: 0.21s;
             }
 .kopa-pagination ul li:first-child {
-    padding-top: 10px !important;
+    /*padding-top: 10px !important;*/
     margin-top: 3px !important;
     border: 1px solid #dbdbdb !important;
 }
@@ -309,7 +311,33 @@
     float: right;
     line-height: 20px;
 }
+.kopa-pagination ul li {
+    padding: 0;
+}
 
+
+    .kopa-pagination ul li a {
+        padding: 10px 15px;
+        display:block;
+    }
+
+    .kopa-pagination ul li:first-child a {
+        padding-top: 10px !important
+    }
+.direct-chat-msg.center{
+
+}
+.direct-chat-text-welcome {
+    /*background: #f39c12;*/
+    /*border-color: #f39c12;*/
+    border-radius: 5px;
+    position: relative;
+    padding: 5px 10px;
+    background: #d2d6de;
+    border: 1px solid #d2d6de;
+    margin: 5px 8px 0 8px;
+    color: #444;
+}
  /*menu doc*/
 
  .menu-doc{
@@ -535,6 +563,7 @@
     /*border: 1px solid #e0e0e0;*/
     /*border-top: none;*/
     display: inline-block;
+    overflow:hidden;
     padding: 5px;
     width: 100%;
 }

@@ -3,6 +3,7 @@
     background-color: #fefefe;
     font-size: 13px;
     width: 100%;
+    color:#333333;
 }
 
 #top-header {
@@ -108,7 +109,6 @@ a:hover {
     background-color: #fff;
     margin-top: 5px;
 }
-
 
 
 

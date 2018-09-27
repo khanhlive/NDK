@@ -12360,3 +12360,703 @@ For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
    at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
    at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:08:54,800 [5] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:10:14,051 [8] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:11:56,291 [14] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:15:32,682 [8] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:17:30,139 [39] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:17:39,316 [23] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-14 21:17:57,095 [43] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:04:17,333 [5] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:06:49,969 [22] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:10:06,202 [28] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:10:37,925 [47] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:12:08,299 [47] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:15:24,190 [52] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:16:12,279 [64] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:18:34,167 [56] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:23:22,854 [45] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:28:38,679 [48] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:30:22,840 [22] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:31:47,851 [44] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:34:11,995 [25] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:34:23,722 [40] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:35:06,451 [64] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:36:56,711 [23] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:37:57,370 [37] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2018-09-28 05:38:06,453 [22] ERROR ICB_Website.UI.WebApiApplication - System error
+System.InvalidOperationException: WebSockets is unsupported in the current application configuration. To enable this, set the following configuration switch in Web.config:
+<system.web>
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+For more information, see http://go.microsoft.com/fwlink/?LinkId=252465.
+   at System.Web.Util.SynchronizationContextUtil.ValidateMode(SynchronizationContextMode currentMode, SynchronizationContextMode requiredMode, String specificErrorMessage)
+   at System.Web.Util.SynchronizationContextUtil.ValidateModeForWebSockets()
+   at System.Web.HttpContext.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at System.Web.HttpContextWrapper.AcceptWebSocketRequest(Func`2 userFunc, AspNetWebSocketOptions options)
+   at Microsoft.Owin.Host.SystemWeb.OwinCallContext.DoWebSocketUpgrade(IDictionary`2 acceptOptions, Func`2 webSocketFunc)
+   at Microsoft.AspNet.SignalR.Owin.ServerRequest.AcceptWebSocketRequest(Func`2 callback)
+   at Microsoft.AspNet.SignalR.Transports.WebSocketTransport.ProcessRequest(ITransportConnection connection)
+   at Microsoft.AspNet.SignalR.PersistentConnection.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Hubs.HubDispatcher.ProcessRequest(HostContext context)
+   at Microsoft.AspNet.SignalR.Owin.CallHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.AspNet.SignalR.Owin.Handlers.HubDispatcherHandler.Invoke(IDictionary`2 environment)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
