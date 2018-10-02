@@ -60,7 +60,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             return View(newsProvider.GetByID(id));
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateInput(false)]
         public async Task<JsonResult> EditPut(int id, News model)
         {

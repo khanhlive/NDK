@@ -1,4 +1,5 @@
-﻿using ICB_Website.UI.Hubs;
+﻿using ICB.Business.Access;
+using ICB_Website.UI.Hubs;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -55,6 +56,7 @@ namespace ICB_Website.UI
         }
         public void Session_Start(object sender, EventArgs e)
         {
+            new App_CounterProvider().SetCounter();
             int count = Convert.ToInt32(Application["Counter"]);
             Application["Counter"] = count + 1;
             if (Application["Online"]!=null)

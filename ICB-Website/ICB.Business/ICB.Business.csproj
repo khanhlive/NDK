@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Access\AccountProvider.cs" />
     <Compile Include="Access\ApplicationManager.cs" />
+    <Compile Include="Access\App_CounterProvider.cs" />
     <Compile Include="Access\CategoryProvider.cs" />
     <Compile Include="Access\CustomerProvider.cs" />
     <Compile Include="Access\DbContextSingleton.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Entities\Message\MessageManager.cs" />
     <Compile Include="ModelBase\AccountBase.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\App_Counter.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Document.cs" />

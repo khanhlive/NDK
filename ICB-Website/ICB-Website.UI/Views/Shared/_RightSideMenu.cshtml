@@ -90,10 +90,10 @@
         <h3 class="widget-title"><span class="icon-title fa fa-universal-access"></span>@ICB_Website.UI.Resources.RHome.StatisticalAccess</h3>
         <ul style="margin-top:20px;margin-left:5px;">
             <li>
-                <b>Đang online:</b> <b style="color:red;" id="UserOnline"></b>
+                <b>Đang online:</b> <b style="color:red;" id="UserOnline"></b>@*UserOnline*@
             </li>
             <li>
-                <b>Tổng truy cập:</b> <b style="color:red;" id="totalvisitor"></b>
+                <b>Tổng truy cập:</b> <b style="color:red;" id="">@System.Web.HttpContext.Current.Application["Couter"] @ICB.Business.Access.App_CounterProvider.GetCounter()</b>@*totalvisitor*@
             </li>
         </ul>
     </div>

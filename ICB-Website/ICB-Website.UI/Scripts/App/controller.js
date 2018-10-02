@@ -348,7 +348,7 @@ function ACCOUNT_UPDATE_ACCOUNT() {
         IsLocked: isLocked,
         PhoneNumber: phone
     };
-    APPLICATION.Ajax('/admin/account/update/'+Account.ID, 'application/json', 'PUT', JSON.stringify(Account), function (d) {
+    APPLICATION.Ajax('/admin/account/update/'+Account.ID, 'application/json', 'POST', JSON.stringify(Account), function (d) {
         if (d.Status == ResponseStatus.OK) {
             ACCOUNT_RESETFIELD('add');
             $('#modal-account-update').modal('hide');
@@ -641,7 +641,7 @@ function CUSTOMER_UPDATE() {
         ID: id
     };
 
-    APPLICATION.Ajax('/admin/customer/update/' + Customer.ID, 'application/json', 'PUT', JSON.stringify(Customer), function (d) {
+    APPLICATION.Ajax('/admin/customer/update/' + Customer.ID, 'application/json', 'POST', JSON.stringify(Customer), function (d) {
         if (d.Status == ResponseStatus.OK) {
             CUSTOMER_RESETFIELD();
             $('#modal-customer-update').modal('hide');
@@ -893,13 +893,15 @@ function CATEGORY_ADD() {
     var title = form.find('[name=Title]').val();
     var nameENG = form.find('[name=NameENG]').val();
     var titleENG = form.find('[name=TitleENG]').val();
+    var order = form.find('[name=Order]').val();
     var active = form.find('[name=Active]').is(':checked');
     var Category = {
         Name: name,
         Title: title,
         NameENG: nameENG,
         TitleENG: titleENG,
-        Active: active
+        Active: active,
+        Order: order
 
     };
     APPLICATION.Ajax('/admin/category/insert', 'application/json', 'POST', JSON.stringify(Category), function (d) {
@@ -922,18 +924,19 @@ function CATEGORY_UPDATE() {
     var title = form.find('[name=Title]').val();
     var nameENG = form.find('[name=NameENG]').val();
     var titleENG = form.find('[name=TitleENG]').val();
-    var active = form.find('[name=Active]').is(':checked');
+    var active = form.find('[name=Active]').is(':checked'); var order = form.find('[name=Order]').val();
     var Category = {
         ID: id,
         Name: name,
         Title: title,
         NameENG: nameENG,
         TitleENG: titleENG,
-        Active: active
+        Active: active,
+        Order: order
 
     };
 
-    APPLICATION.Ajax('/admin/category/update/' + Category.ID, 'application/json', 'PUT', JSON.stringify(Category), function (d) {
+    APPLICATION.Ajax('/admin/category/update/' + Category.ID, 'application/json', 'POST', JSON.stringify(Category), function (d) {
         if (d.Status == ResponseStatus.OK) {
             CATEGORY_RESETFIELD();
             $('#modal-category-update').modal('hide');
@@ -1257,7 +1260,7 @@ function VANBAN_INIT() {
         $("#frm-vanban-edit #btn-vanban-save").click(function () {
             $('#frm-vanban-edit').data('formValidation').validate();
             if ($('#frm-vanban-edit').data('formValidation').isValid()) {
-                CATEGORY_UPDATE();
+                VANBAN_UPDATE();
             }
         });
     }
@@ -1335,7 +1338,7 @@ function VANBAN_CREATE() {
 }
 
 
-function CATEGORY_UPDATE() {
+function VANBAN_UPDATE() {
     var form = $("#frm-vanban-edit");
     var caption = form.find('[name=Caption]').val();
     var id = form.find('[name=ID]').val();
@@ -1356,7 +1359,7 @@ function CATEGORY_UPDATE() {
         Content: content
 
     };
-    APPLICATION.Ajax('/admin/document/vb_update/' + Document.ID, 'application/json', 'PUT', JSON.stringify(Document), function (d) {
+    APPLICATION.Ajax('/admin/document/vb_update/' + Document.ID, 'application/json', 'POST', JSON.stringify(Document), function (d) {
         if (d.Status == ResponseStatus.OK) {
             ShowNotifySuccess('Cập nhật thành công');
             var backList = $('#lnk-list-vanban').attr('href');
@@ -1536,7 +1539,7 @@ function TAILIEU_UPDATE() {
         Content: content,
         CategoryID: categoryID
     };
-    APPLICATION.Ajax('/admin/document/TL_Update/' + Document.ID, 'application/json', 'PUT', JSON.stringify(Document), function (d) {
+    APPLICATION.Ajax('/admin/document/TL_Update/' + Document.ID, 'application/json', 'POST', JSON.stringify(Document), function (d) {
         if (d.Status == ResponseStatus.OK) {
             $('#modal-tailieu-edit').modal('hide');
             alert(d.Message);
@@ -1738,7 +1741,7 @@ function TINTUC_EDIT() {
         Content: content,
         PostedDate: posted, Category: category
     };
-    APPLICATION.Ajax('/admin/news/EditPut/' + News.ID, 'application/json', 'PUT', JSON.stringify(News), function (d) {
+    APPLICATION.Ajax('/admin/news/EditPut/' + News.ID, 'application/json', 'POST', JSON.stringify(News), function (d) {
         if (d.Status == ResponseStatus.OK) {
             alert(d.Message);
             var backList = $('#lnk-list-vanban').attr('href');

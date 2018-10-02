@@ -72,7 +72,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             return View(documentProvider.GetByID(id));
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<JsonResult> VB_Update(int id, Document model)
         {
             if (ModelState.IsValid)
@@ -155,7 +155,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             return Json(document, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<JsonResult> TL_Update(int id, Document model)
         {
             if (ModelState.IsValid)

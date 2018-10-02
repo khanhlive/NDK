@@ -57,7 +57,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<JsonResult> Update(int id, Category category)
         {
             if (ModelState.IsValid)

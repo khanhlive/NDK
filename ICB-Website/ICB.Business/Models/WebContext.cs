@@ -23,6 +23,7 @@ namespace ICB.Business.Models
         public virtual DbSet<Support> Supports { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<App_Counter> App_Counters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
