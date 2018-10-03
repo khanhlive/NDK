@@ -74,7 +74,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
                 return Json(new AccessEntityResult { Status = AccessEntityStatusCode.ModelFailed, Message = "Thông tin tin tức không hợp lệ, thử lại." });
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<JsonResult> Delete(int id)
         {
             NewsProvider newsProvider = new NewsProvider();

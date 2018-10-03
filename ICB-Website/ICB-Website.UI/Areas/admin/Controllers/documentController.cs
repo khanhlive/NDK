@@ -90,7 +90,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<JsonResult> VB_Delete(int id)
         {
             DocumentProvider documentProvider = new DocumentProvider();
@@ -173,7 +173,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<JsonResult> TL_Delete(int id)
         {
             DocumentProvider documentProvider = new DocumentProvider();

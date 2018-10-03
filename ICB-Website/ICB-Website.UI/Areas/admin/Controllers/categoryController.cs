@@ -71,7 +71,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<JsonResult> Delete(int id)
         {
             CategoryProvider categoryProvider = new CategoryProvider();

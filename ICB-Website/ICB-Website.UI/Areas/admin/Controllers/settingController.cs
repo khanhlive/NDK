@@ -83,7 +83,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<JsonResult> RemoveBanner(int id)
         {
             SystemConfigProvider systemConfigProvider = new SystemConfigProvider();

@@ -77,7 +77,7 @@ namespace ICB_Website.UI.Areas.admin.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPost]
         public async Task<JsonResult> Delete(int id)
         {
             AccountProvider accountProvider = new AccountProvider();

@@ -363,7 +363,7 @@ function ACCOUNT_UPDATE_ACCOUNT() {
 function ACCOUNT_DELETE_ACCOUNT(id) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa tài khoản này không?', 'Xóa tài khoản', function (e) {
-            APPLICATION.Ajax('/admin/account/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/account/delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     ShowNotifySuccess('Xóa thành công');
                     $('#modal-account-update').modal('hide');
@@ -656,7 +656,7 @@ function CUSTOMER_UPDATE() {
 function CUSTOMER_DELETE(id) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa khách hàng này không?', 'Xóa khách hàng', function (e) {
-            APPLICATION.Ajax('/admin/customer/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/customer/delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     ShowNotifySuccess('Xóa thành công');
                     $('#modal-customer-update').modal('hide');
@@ -952,7 +952,7 @@ function CATEGORY_UPDATE() {
 function CATEGORY_DELETE(id) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa nhóm danh mục này không?', 'Xóa nhóm danh mục', function (e) {
-            APPLICATION.Ajax('/admin/category/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/category/delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     ShowNotifySuccess('Xóa thành công');
                     $('#modal-category-update').modal('hide');
@@ -1189,7 +1189,7 @@ function SETTING_ADD_BANNER(src) {
 function SETTING_REMOVE_BANNER(id) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa ảnh này không?', 'Xóa ảnh', function (e) {
-            APPLICATION.Ajax('/admin/setting/RemoveBanner/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/setting/RemoveBanner/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.result == ResponseStatus.OK) {
                     ShowNotifySuccess('Xóa ảnh thành công');
                     SETTING_REMOVEBANNER_ACTION(id);
@@ -1373,7 +1373,7 @@ function VANBAN_UPDATE() {
 function VANBAN_DELETE(id, isList) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa văn bản này không?', 'Xóa văn bản', function (e) {
-            APPLICATION.Ajax('/admin/document/vb_delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/document/vb_delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     MESSAGEBOX('Xóa văn bản thành công', 'Thông báo', function (e) {
                         if (isList) {
@@ -1583,7 +1583,7 @@ function TAILIEU_OPEN_MODAL_UPDATE(id) {
 function TAILIEU_DELETE(id) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa tài liệu này không?', 'Xóa tài liệu', function (e) {
-            APPLICATION.Ajax('/admin/document/tl_delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/document/tl_delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     MESSAGEBOX('Xóa tài liệu thành công', 'Thông báo', function (e) {
                             location.reload();
@@ -1755,7 +1755,7 @@ function TINTUC_EDIT() {
 function TINTUC_DELETE(id,isList) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa tin tức này không?', 'Xóa tin tức', function (e) {
-            APPLICATION.Ajax('/admin/news/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/news/delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     MESSAGEBOX('Xóa tin tức thành công', 'Thông báo', function (e) {
                         if (isList) {
@@ -1804,7 +1804,7 @@ function SERVICE_LOADGroup(type) {
 function DICHVU_DELETE(id, isList) {
     if (id) {
         CONFIRMBOX('Bạn có muốn xóa dịch vụ này không?', 'Xóa dịch vụ', function (e) {
-            APPLICATION.Ajax('/admin/service/delete/' + id, 'application/json', 'DELETE', null, function (d) {
+            APPLICATION.Ajax('/admin/service/delete/' + id, 'application/json', 'POST', null, function (d) {
                 if (d.Status == ResponseStatus.OK) {
                     MESSAGEBOX('Xóa dịch vụ thành công', 'Thông báo', function (e) {
                         if (isList) {
